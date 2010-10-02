@@ -1,0 +1,17 @@
+javascript
+
+observe.('click',
+	 'mouseover',
+	 'change');
+
+
+//the type of product governs the attributes selections
+
+//the tags pulls out the corresponding items in the front view
+----------//make sure that the tags must match the type of times that are uploaded
+
+//the brand filters the resulting view accordingly
+
+//link to become a vendor is:
+            <!--<a href="{geturl controller='account' action='upgradestoreseller'}">Become a DancewearRialto vendor</a>-->
+

@@ -1,0 +1,1 @@
+	<td>{$inventory.basic.sys_top_size}</td>

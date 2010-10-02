@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AuthException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853170000000" />
+<file name="BadMethodCallException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078240000000" remote="129165853190000000" />
+<file name="Base.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853210000000" />
+<file name="BaseMediaSource.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853230000000" />
+<file name="CaptchaRequiredException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853250000000" />
+<file name="Entry.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853270000000" />
+<file name="Exception.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853280000000" />
+<file name="Extension.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853300000000" />
+<file name="Feed.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078300000000" remote="129165853320000000" />
+<file name="FeedEntryParent.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078300000000" remote="129165853340000000" />
+<file name="FeedSourceParent.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853360000000" />
+<file name="HttpException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853380000000" />
+<file name="InvalidArgumentException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853400000000" />
+<file name="IOException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078280000000" remote="129165853420000000" />
+<file name="LoggingHttpClientAdapterSocket.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078360000000" remote="129165853430000000" />
+<file name="MediaEntry.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078300000000" remote="129165853450000000" />
+<file name="MediaFileSource.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853470000000" />
+<file name="MediaSource.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853490000000" />
+<file name="Util.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078380000000" remote="129165853510000000" />
+<file name="VersionException.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112078260000000" remote="129165853530000000" />
+<file name="AuthException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832840000000" />
+<file name="BadMethodCallException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078240000000" remote="129304832840000000" />
+<file name="Base.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832850000000" />
+<file name="BaseMediaSource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832850000000" />
+<file name="CaptchaRequiredException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832850000000" />
+<file name="Entry.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832850000000" />
+<file name="Exception.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832860000000" />
+<file name="Extension.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832860000000" />
+<file name="Feed.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078300000000" remote="129304832860000000" />
+<file name="FeedEntryParent.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078300000000" remote="129304832860000000" />
+<file name="FeedSourceParent.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832870000000" />
+<file name="HttpException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832870000000" />
+<file name="IOException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832870000000" />
+<file name="InvalidArgumentException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078280000000" remote="129304832880000000" />
+<file name="LoggingHttpClientAdapterSocket.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078360000000" remote="129304832880000000" />
+<file name="MediaEntry.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078300000000" remote="129304832880000000" />
+<file name="MediaFileSource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832880000000" />
+<file name="MediaSource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832890000000" />
+<file name="Util.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078380000000" remote="129304832890000000" />
+<file name="VersionException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112078260000000" remote="129304832890000000" />
+</dwsync>

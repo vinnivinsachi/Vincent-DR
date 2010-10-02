@@ -1,0 +1,1 @@
+Order marked as delivered <a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=delivered">Proceed to delivered</a>

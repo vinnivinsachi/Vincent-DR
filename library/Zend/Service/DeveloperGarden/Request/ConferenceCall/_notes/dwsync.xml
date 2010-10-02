@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AddConferenceTemplateParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079100000000" remote="129165817190000000" />
+<file name="CommitConferenceRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079160000000" remote="129165817210000000" />
+<file name="CreateConferenceRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079100000000" remote="129165817230000000" />
+<file name="CreateConferenceTemplateRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817260000000" />
+<file name="GetConferenceListRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817280000000" />
+<file name="GetConferenceStatusRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817300000000" />
+<file name="GetConferenceTemplateListRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817330000000" />
+<file name="GetConferenceTemplateParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817350000000" />
+<file name="GetConferenceTemplateRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817370000000" />
+<file name="GetParticipantStatusRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817390000000" />
+<file name="GetRunningConferenceRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817420000000" />
+<file name="NewParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079100000000" remote="129165817440000000" />
+<file name="RemoveConferenceRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817460000000" />
+<file name="RemoveConferenceTemplateParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817480000000" />
+<file name="RemoveConferenceTemplateRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817500000000" />
+<file name="RemoveParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079160000000" remote="129165817530000000" />
+<file name="UpdateConferenceRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817550000000" />
+<file name="UpdateConferenceTemplateParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817570000000" />
+<file name="UpdateConferenceTemplateRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079120000000" remote="129165817600000000" />
+<file name="UpdateParticipantRequest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079140000000" remote="129165817620000000" />
+<file name="AddConferenceTemplateParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079100000000" remote="129304826300000000" />
+<file name="CommitConferenceRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079160000000" remote="129304826300000000" />
+<file name="CreateConferenceRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079100000000" remote="129304826300000000" />
+<file name="CreateConferenceTemplateRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826310000000" />
+<file name="GetConferenceListRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826310000000" />
+<file name="GetConferenceStatusRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826310000000" />
+<file name="GetConferenceTemplateListRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826310000000" />
+<file name="GetConferenceTemplateParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826320000000" />
+<file name="GetConferenceTemplateRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826320000000" />
+<file name="GetParticipantStatusRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826320000000" />
+<file name="GetRunningConferenceRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826320000000" />
+<file name="NewParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079100000000" remote="129304826330000000" />
+<file name="RemoveConferenceRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826330000000" />
+<file name="RemoveConferenceTemplateParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826330000000" />
+<file name="RemoveConferenceTemplateRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826330000000" />
+<file name="RemoveParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079160000000" remote="129304826340000000" />
+<file name="UpdateConferenceRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826340000000" />
+<file name="UpdateConferenceTemplateParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826340000000" />
+<file name="UpdateConferenceTemplateRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079120000000" remote="129304826340000000" />
+<file name="UpdateParticipantRequest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079140000000" remote="129304826350000000" />
+</dwsync>

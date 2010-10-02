@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Autoloader.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785790000000" />
+<file name="Builder.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785800000000" />
+<file name="ChannelFile.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785810000000" />
+<file name="Command.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785810000000" />
+<file name="Common.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785820000000" />
+<file name="Config.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785830000000" />
+<file name="Dependency.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785840000000" />
+<file name="Dependency2.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785840000000" />
+<file name="DependencyDB.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785850000000" />
+<file name="Downloader.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785860000000" />
+<file name="ErrorStack.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785870000000" />
+<file name="Exception.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785870000000" />
+<file name="Frontend.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785870000000" />
+<file name="Info.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785880000000" />
+<file name="Installer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785890000000" />
+<file name="PackageFile.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785890000000" />
+<file name="PackageFileManager.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785940000000" />
+<file name="PackageFileManager2.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785950000000" />
+<file name="Packager.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785950000000" />
+<file name="Registry.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785960000000" />
+<file name="Remote.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785970000000" />
+<file name="REST.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785970000000" />
+<file name="RunTest.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785980000000" />
+<file name="Validate.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785980000000" />
+<file name="XMLParser.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165785990000000" />
+</dwsync>

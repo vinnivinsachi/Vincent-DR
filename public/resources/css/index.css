@@ -1,0 +1,909 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face { font-family: "Futura-Light"; src: url("/public/resources/css/fonts/FuturaStd-Light.otf"); }
+@font-face { font-family: "Futura-LightCondensed"; src: url("/public/resources/css/fonts/FuturaStd-CondensedLight.otf"); }
+@font-face { font-family: "Futura-Medium"; src: url("/public/resources/css/fonts/FuturaStd-Medium.otf"); }
+@font-face { font-family: "Futura-Heavy"; src: url("/public/resources/css/fonts/FuturaStd-Heavy.otf"); }
+@font-face { font-family: "Futura-Book"; src: url("/public/resources/css/fonts/FuturaStd-Book.otf"); }
+@font-face { font-family: "Stowe"; src: url("/public/resources/css/fonts/STOWE__.TTF");}
+@font-face { font-family: "Geo-SanLt"; src: url("/public/resources/css/fonts/GeosansLight.ttf");}
+@font-face { font-family: "Geo-SanLt-Oblique"; src: url("/public/resources/css/fonts/GeosansLight-Oblique.ttf");}
+
+
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	width:1000px;
+	margin:0 auto;
+	text-align:left;
+	margin-top:50px;
+	font-size:11px;
+	line-height:12px;
+	color:#333;
+	background-image:url('/htdocs/css/images/LucaLorainBackFlat.png');
+	background-position: top right;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+a.guide{
+}
+a.guide:hover{
+	text-decoration:none;
+}
+.box{
+	float:left;
+	width:100%;
+}
+
+button{
+	float:right;
+}
+
+table {
+border-collapse:collapse;
+}
+tr{
+	margin:0px;
+	padding:0px;
+}
+td{
+	margin:0px;
+	padding-left: 5px;
+	padding-right:3px;
+}
+
+
+/* tooltip styling */
+.tooltip {
+	display:none;
+	padding:5px 5px 5px 5px;
+	font-size:11px;
+	background-color:#white;
+	color:gray;
+	border: 1px solid black;
+}
+
+a{
+	text-decoration:none;
+	color:#F63;
+}
+
+a:hover{
+	text-decoration:underline;
+	/*font-weight:bold;*/
+	color:black;
+	cursor:pointer;
+}
+a:visited{
+	color:gray;
+}
+
+#wrapper{
+	float:left;	
+	width:1000px;
+}
+
+fieldset{
+	margin:5px 0px 5px 0px;
+	padding:5px;
+	float:left;
+	width:98%;
+	border:none;
+}
+#breadcrumbs{
+	float:left;
+	width:100%;
+}
+
+#productRightColumn{
+
+	float:right;
+	width:488px;
+}
+
+.rewardpoint{
+margin:0px;
+padding:0px;
+}
+
+.error{
+width:100%;
+float:left;
+background-color:#FFE877;
+}
+
+.error ul li{
+	list-style: none;
+}
+
+img {
+	border:none;
+}
+
+
+#DancewearRialtoTitle {
+	font-family:Stowe;
+	font-size:24pt;
+	color:black;
+}
+#DancewearRialtoTitleLine{
+	margin-left:100px;
+	color:black;
+}
+
+#leftContainer{
+	width:49%;
+	float:left;
+}
+
+#rightContainer{
+	width:49%;
+	float:right;
+}
+
+#controllerMessage{
+	padding-top:10px;
+}
+
+legend{
+	font-size:14px;
+	/*background:#eee;*/
+	padding:5px 5px 5px 0px;
+	float:left;
+	width:100%;
+	font-weight:bold;
+	margin-bottom:10px;
+	border-bottom: 7px solid #999;
+}
+
+.text{
+	font-size:1em;
+}
+
+label{
+	width:200px;
+	float:left;
+}
+
+label.small{
+	width:100px;
+	float:left;
+}
+
+label.mid{
+	width:150px;
+	float:left;
+}
+
+.submit2{
+	margin-left:200px;	
+}
+
+.captcha{
+	float:left;
+	width:100%;
+	margin-left:200px;
+	margin-bottom:10px;
+}
+
+.row{
+	float:left;
+	width:100%;
+}
+
+.submit{
+	float:left;
+	width:100%;
+}
+
+.inputShiftOne{
+	margin-left:9px;
+}
+/************TITLE BAR***********/
+.titleBarBig{
+	font-size:14px;
+	/*background:#eee;*/
+	padding:5px 0px 5px 0px;
+	float:left;
+	width:100%;
+	font-weight:bold;
+	margin-bottom:15px;
+	border-bottom: 7px solid #999;	
+}
+.titleBarMid{
+	height:20px; 
+	border-bottom: 1px solid; 
+	margin-bottom:5px; 
+	width:100%;
+}
+.fullTitleBarMid{
+	height:20px; 
+	border-bottom: 1px solid; 
+	margin-bottom:5px; 
+	width:100%;
+}
+
+/************TEXT******************/
+.bigFont{
+	font-size:1.2em;
+}
+.bigBoldFont{
+	font-size:1.2em;
+	font-weight:bold;
+}
+.smallBoldFont{
+	font-weight:bold;
+}
+/**************AskAndAnswer********************/
+.askAndAnswerPost{
+	padding:5px 10px 5px 10px;
+	float:left;
+	width:390px;
+	border-bottom:1px solid #eee;
+}
+.askAndAnswerName{
+	width:200px;
+	float:left;
+}
+.askAndAnswerContent{
+	float:left;
+	padding-top:5px;
+}
+.askAndAnswerTime{
+	width:190px;
+	float:right;
+	text-align:right;
+}
+/*********************************Anchor styles**************/
+a.largeAnchorButton{
+padding:5px;
+	font-weight:bold;
+	color:#666;	
+	font-size:1.1em;
+}
+a.submitInputButton{
+padding:3px;
+float:left;
+}
+a.submitInputButton:hover{
+	text-decoration:none;
+	background:#F90;
+	color:#069;
+}
+
+
+/*****account info style*****/
+.shippingAddressBox{
+	width: 220px;
+	float:left;
+	height:130px;
+}
+
+ul#post_images {
+	width:100%;
+	float:left;
+}
+
+ul#post_images li{
+	list-style:none;
+	display:inline;
+	float:left;
+	padding-left:5px;
+}
+
+ul#post_images img{
+}
+
+ul#post_images form{
+}
+
+#userProductEdit label{
+	width:45%;
+	float:left;
+}
+
+#userProductEdit select{
+	float:left;
+	width:45%;
+}
+
+/*CLASSES*/
+.imageAttributeDivContainer{
+	width:100%;
+	float:left;
+}
+.imageAttributeDivContainerElement{
+	width:180px;
+	background-color:#CCC;
+	margin:10px;
+	float:left;
+}
+.imageAttributeDivContainerElement img{
+	width:80px;
+	padding-right:10px;
+	float:left;
+}
+
+.imageAttributeElementDelete img{
+	width:20px;
+	float:right;
+	border:none;
+}
+
+.imageAttributeElementName{
+	width:80px;
+	float:left;
+}
+.imageAttributeElementPriceAdjustment{
+	width:50px;
+	float:left;
+}
+
+.sizeAttributeDivContainer{
+	width:100%;
+	float:left;
+}
+
+.CrossImage img{
+	width:20px;
+	float:left;
+	margin-right:15px;
+	border:none;
+}
+/*********************************************************Messages****************************************/
+#messages{
+	width:100%;
+	height:50px;
+
+}
+
+#messageboxNavigation{
+	border-bottom:2px solid #666666; height:30px; width:100%;
+}
+
+/*********************************************************Navigation**************************************/
+#leftPanelTagNavigation
+{
+	line-height:14px;	
+}
+.LeftPanelTagNavFirstTier{
+	font-size:1.2em;
+	color:#069;
+	font-weight:bold;
+}
+.LeftPanelTagNavSecondTier{
+	font-weight:bold;	
+}
+
+#productTagHeader{
+	width:100%;
+	height:30px;
+	margin-top:12px;
+	border-bottom:7px solid #999;
+}
+
+#productTagSecondHeader{
+	width:100%;
+	padding-top:5px;
+	float:left;
+}
+#productTagBody{
+	float:left;
+}
+
+a.productTagHeaderButton{
+font-size:1.2em;
+font-weight:bold;
+background-color:#CCC;
+border:none;
+height:10px;
+padding:10px;
+color:white;
+float:left;
+cursor:pointer;
+}
+
+a.productTagHeaderButton:hover{
+background-color:#F63;
+color:white;
+
+}
+
+a.currentSeller{
+	background:#999;
+	color:white;
+}
+a.currentSelection{
+	background:#999;
+	color:white;
+}
+
+a.currentTab{
+	background-color:#eee;
+	border-top: 1px solid;
+	border-left:1px solid;
+	border-right:1px solid;
+	border-bottom:1px solid #eee;
+}
+a.tabSelections{
+	background-color:#eee;
+}
+
+a.tabSelections:hover{
+	text-decoration: none;
+}
+a.defaultTab{
+	
+}
+
+/*********************************************************FIELDSET****************************************/
+#rewardLeftColumn ul{
+}
+
+#rewardLeftColumn ul li{
+	list-style:inside;
+}
+
+#rewardLeftColumn ul li a{
+	font-weight:bold;
+}
+
+.formFieldSet{
+	font-size:1.2em;
+}
+
+/***************************************UR LI***************************************/
+#leftContainer ul{
+padding:0px 5px 0px 10px;
+
+}
+#leftContainer ul li{
+	list-style:none;
+	padding:5px 0px 0px 0px;
+}
+
+#post_images{
+margin:0px;
+padding:0px;
+}
+
+.productDetailsRightAttributeSelection ul{
+	margin:0px 0px 0px 10px;
+	padding:0px;
+}
+
+.productDetailsRightAttributeSelection ul li{
+	margin:5px;
+	padding-left:3px;
+	padding-right:3px;
+	border:1px solid #999;
+	background:#EEE;
+	cursor:pointer;
+	display:inline;
+}
+
+.productDetailsRightAttributeSelection ul li.attributeSelected{
+	background:#333;
+	color:#CCC;
+}
+
+
+/*********************************************************BUTTONS*******************************************/
+.addToCart{
+	margin:0px 10px 0px 0px;
+	float:right;
+}
+button.addToCart{
+	margin:0px 10px 0px 0px;
+	float:right;
+	
+}
+button.shippingToThisAddressButton{
+	background:white;
+	width:167px;
+	height:37px;
+	border:none;
+	cursor:pointer;
+	background-image:url(/public/resources/css/images/ShippingButton.gif);
+}
+
+button{
+background:#069;
+color:white;
+}
+
+.submitInputButton{
+background:#069;
+color:white;
+}
+
+button[disabled]{
+background-color:white;
+color:#CCC;
+}
+
+
+
+
+
+/***************************PRODUCT PREVIEW STYLES*****************/
+#productpreviewTitleBar{
+width:100%;
+float:left;
+}
+
+/********************************SHOUT OUT**************************/
+.publicProductShoutOutMessage{
+	padding:3px;
+	border-bottom:1px solid #069;
+}
+.publicProductShoutOutMessageName{
+	font-weight:bold;
+}
+.publicProductShoutOutMessageTime{
+	font-style:italic;
+	text-align:right;
+}
+
+.publicProductShoutOutMessageContent{
+padding:5px 5px 5px 10px;	
+}
+
+/**********************************MESSAGES************************/
+.PrivateMessage{
+	padding:3px;
+	border-bottom:1px solid #069;
+}
+
+/******************reward point section*******************/
+#accountDetailRewardpoints{
+}
+
+#rewardpointTrackingAndPruchase{
+	float:left;
+margin-bottom:10px;
+}
+
+#referralTrackingAndInvite{
+	width:100%;
+	float:left;
+}
+
+.navigation{
+	width:100%;
+	float:left;
+	border-bottom:2px solid #666666; height:30px; width:100%;
+}
+
+.individualTrackingSection{
+	border-bottom:1px solid #006699;
+padding:3px;
+float:left; width:95%; height:35px;
+}
+/********************************PRODUCTPREVIEW TAG*****************/
+#productpreviewAttributeSelection{
+float:left;
+width:100%;
+}
+.productAttribute{
+list-style:none;
+display:inline; 
+border:1px dashed #CCC;
+cursor:pointer;
+}
+
+.productAttributeAvailable{
+	/*background-color:#CCC;*/
+	font-weight:bold;
+	border:1px solid #999;
+	padding:2px;
+}
+
+.productAttributeSelected{
+	background:#666;
+	color:white;
+	border:2px solid #000;
+}
+
+.productPreviewTagAttribute{
+	padding-left:0px;
+	width:100%;
+	float:left;
+}
+
+/*********************************************************************PRODUCT BOX**************/
+.productBox{
+	width:200px;
+	float:left;
+	/*background-color:#CCC;*/
+	margin-top: 3px;
+	margin-bottom:3px;
+}
+
+.productName{
+	padding:5px 5px 5px 5px;
+	background-color:#666;
+	color:#EEE;
+}
+.productSeller{
+	padding:2px 5px 3px 5px;
+	background-color:#999;
+	color:#FFF;
+}
+.productBoxPrice{
+font-weight:bold;
+color:#F63;
+}
+.discountBoxPrice{
+font-weight:bold;
+color:#F63;
+}
+
+.price{
+	font-weight:bold;
+	
+	color:#F63;
+}
+
+.productFirstImage{
+	/*width:191px;*/
+	text-align:center;
+}
+.productFirstImage a{
+	position:relative;
+}
+/*.productFirstImage:hover .productDescription{
+	display:block;
+	position:absolute;
+	background-color:#000;
+	opacity:0.8;filter:alpha(opacity=80);
+	color:#FFF;
+	padding:5px;
+	width:190px;
+	z-index:2;	
+}*/
+
+.productStatistics{
+	/*display:none;*/
+	display:block;
+	position:absolute;
+	height:24px;
+	background-color:#333;
+	opacity:0.6;filter:alpha(opacity=60);
+	color:#FFF;
+	padding:2px;
+	width:196px;
+	z-index:2;
+}
+
+.productDescription{
+display:none;
+}
+
+.productDetails{
+	float:left;
+	width:100%;
+	padding-top:3px;
+	/*background-color:#F0F0F0;*/
+}
+.productImages{
+	float:left;
+	padding:2px 2px 2px 0px;
+}
+.productIndividualImage{
+	float:left;
+	cursor:pointer;
+	margin-right:5px;
+}
+
+.productVideo{
+	float:right;
+	padding-top:5px;
+	padding-right:5px;
+	width:17%;
+}
+.productMedia{
+	float:left;
+	width:100%;
+}
+
+.priceBlock{
+	float:left;
+}
+.quickLook{
+	float:right;
+	margin-bottom:5px;
+}
+
+.currentImage{
+	border: 2px solid #C00;
+}
+
+.productBoxRight{
+	padding:1px;
+}
+
+/*****************************product review***********************/
+.productReviewSections{
+	float:left;
+	width:463px;
+	padding:5px 5px 5px 20px;
+	text-align:left;
+}
+
+.productReviewBox{
+	width:200px;
+	float:left;
+	background-color:#CCC;
+}
+.ProductReviewDetailsMainDiv{
+	padding:3px;
+	border-bottom:1px solid #069;
+	float:left;
+	width:437px;
+}
+.productReviewName{
+	height:11px;
+	font-weight:bold;
+}
+.productReivewTime{
+	float:left;
+	text-align:right;
+}
+.productReviewFormDiv{
+	float:left;
+	background-color:#F0F0F0; 
+	width:100%;
+}
+.productReviewFormInfosection{
+	background-color:#F0F0F0;
+float:left;
+padding:10px 5px 10px 20px;
+width:463px;
+}
+.productReviewDescription{
+	padding:5px 5px 5px 10px;
+}
+
+/********************************product listing***************************************/
+#productUploadTagImage{
+	background-image:url(/public/resources/css/images/product%20tag%20categories/product-tag-category-pictures.jpg);
+	width:450px;
+	height:300px;
+}
+
+.Unlisted{
+	background-color:#FFE877;
+}
+.Listed{
+	background-color:#B1FF91;
+}
+/*********************************************************************FOOTER*******************/
+#footerImage{
+width:100%;
+float:left;
+margin:20px 0px 30px 0px;
+background:#CCC;
+}
+
+.footerIndex{
+	width:20%;
+	float:left;
+}
+/****************************ORDER********************************/
+.orderTitle{
+	margin-bottom:10px;
+	cursor:pointer;
+	float:left; width:100%; font-weight:bold; font-size:16px; background:#666; color:white; padding:5px;
+}
+.orderTitle:hover{
+	background:#F90;	
+}
+
+.orderProductSecondHeader{
+	padding-top:5px;
+}
+/**********************************************************************mislaneous**************/
+.dividerLine{
+	border-bottom:1px dashed #333;
+	width:458px;
+	margin-top:5px;
+	float:left;
+}
+
+.backgroundGreen{
+	background-color:#6F3;
+}
+
+.backgroundRed{
+	background-color:#F66;
+}
+
+.bigFont{
+	font-weight:bold; font-size:18px;
+}
+.italicAlert{
+	font-style:italic;
+	color:#F03;
+}
+
+#toggleAddShipping{
+
+}
+.clickable{
+	cursor: pointer;
+}
+/**********inventory table*************/
+.inventoryTable{
+	width:100%;
+}
+
+.inventoryTable td{
+}
+
+.trTitle{
+	padding-bottom:10px;
+	font-weight:bold;
+}
+
+.trTitle td{
+	/*background-color: gray;*/
+	/*font-weight: bold;*/
+	/*color:white;*/
+	vertical-align: top;
+	
+}
+.trDetails td{
+}
+
+#productListTable a{
+	color:#666;
+	font-weight:bold;
+}
+
+/**********************FORM*******************/
+.formLeftDivision{
+	float:left;
+	width:50%;
+}
+.formRightDivision{
+	float:right;
+	width:50%;
+}
+
+.formContent{
+	width:100%;
+	float:left;
+}
+
+.largeSubmit{
+	float:right; 
+	padding:5px;
+}
+/***************margins and floats and colors and fonts************************/
+.marginTop10{
+	margin-top:10px;
+}
+.marginTop20{
+	margin-top:20px;
+}
+.marginTop30{
+	margin-top:30px;
+}
+.marginBot20{
+	margin-bottom:20px;
+}
+.marginTop10{
+	margin-top:10px;
+}
+
+.right{
+	float:right;
+}
+
+.colorOdd{
+	background-color:#eee;
+}
+.bigFont{
+	font-size:1.2em;
+}

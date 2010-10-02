@@ -1,0 +1,1 @@
+Order was marked complete. <a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=completed">Back to complete page</a>
