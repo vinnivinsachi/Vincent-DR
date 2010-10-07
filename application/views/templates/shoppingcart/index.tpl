@@ -14,9 +14,9 @@
             {/if}
        	<!-- end of product forloop-->
         <div id="proceedShoppingCart" style="width:100%; float:left; text-align:right;">
-         	<a href="{geturl action='resetshoppingcart'}" style="float:left; margin-top:10px;"><img src="/public/resources/css/images/empty Cart.gif" /></a>
+         	<a href="{geturl action='resetshoppingcart'}" style="float:left; margin-top:10px;"><img src="{$siteRoot}/public/resources/css/images/empty Cart.gif" /></a>
             {if $shoppingCartInfo->totalItems >0}
-        	<a href="{geturl controller='checkout' action='index'}" style="float:right; margin-top:10px;"><img src="/public/resources/css/images/nextToCheckout.gif" /></a>
+        	<a href="{geturl controller='checkout' action='index'}" style="float:right; margin-top:10px;"><img src="{$siteRoot}/public/resources/css/images/nextToCheckout.gif" /></a>
             {/if}
         </div>
     </div>

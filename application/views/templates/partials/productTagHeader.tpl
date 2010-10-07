@@ -1,7 +1,7 @@
 <div id="productTagHeader">
     <a class="productTagHeaderButton {if $page=='Customizable'}currentSelection{/if}" href="/productdisplay/index?purchaseType=Customizable{if isset($tag)}&tag={$tag}{/if}">Customizables</a>
     <a class="productTagHeaderButton {if $page=='Buy_now'}currentSelection{/if}" href="/productdisplay/index?purchaseType=Buy_now{if isset($tag)}&tag={$tag}{/if}">Buy it now</a>
-    <a class="shoppingCartIcon" style="float:right; margin-top:3px;" href="{geturl controller='shoppingcart' action='index'}"><img src="/public/resources/css/images/shoppingcart_flattened.png" width="35" /></a>
+    <a class="shoppingCartIcon" style="float:right; margin-top:3px;" href="{geturl controller='shoppingcart' action='index'}"><img src="{$siteRoot}/public/resources/css/images/shoppingcart_flattened.png" width="35" /></a>
     <span style="float:right; margin-top:9px;">{$shoppingCartInfo->totalItems} item in your <a href="{geturl controller='shoppingcart' action='index'}" style="font-size:14px;">cart</a></span>
 </div>
 

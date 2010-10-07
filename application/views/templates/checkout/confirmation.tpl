@@ -27,7 +27,7 @@
                	Please select a shipping address from above
                 {/if}
                 </div>
-                <a href="{geturl action='index'}"><img src="/public/resources/css/images/backToShipping.gif" /></a><br />
+                <a href="{geturl action='index'}"><img src="{$siteRoot}/public/resources/css/images/backToShipping.gif" /></a><br />
         </div>
         
         <div id="orderRewardsDetails" style="width:100%; float:left;margin-top:15px;">
@@ -51,7 +51,7 @@
             
             
             
-           <a href="{geturl action='index'}"><img src="/public/resources/css/images/backToRewardPoint.gif" style="margin-left:-3px;"/></a>
+           <a href="{geturl action='index'}"><img src="{$siteRoot}/public/resources/css/images/backToRewardPoint.gif" style="margin-left:-3px;"/></a>
         
         
 		</div>
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <a href="{geturl action='createorder'}" style="float:right;"><img src="/public/resources/css/images/next to paypal.gif" style="margin-bottom:-1px;"/></a>
+        <a href="{geturl action='createorder'}" style="float:right;"><img src="{$siteRoot}/public/resources/css/images/next to paypal.gif" style="margin-bottom:-1px;"/></a>
     </div>
 </div>
 

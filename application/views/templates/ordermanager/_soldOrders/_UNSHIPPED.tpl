@@ -37,7 +37,7 @@
     
     {if ($product.product_latest_delivery_date|date_format:"%Y-%m-%d")<($smarty.now|date_format:"%Y-%m-%d")}
     
-    <div class='tooltipControl' style="width:100px; float:right;"><img src="/public/resources/css/images/exclamation_mark.jpg"/></div>
+    <div class='tooltipControl' style="width:100px; float:right;"><img src="{$siteRoot}/public/resources/css/images/exclamation_mark.jpg"/></div>
 	<div class='tooltip' style='width:300px;'>
     
     <div class="trackingStatusInfo" style="width:100%; float:left;">

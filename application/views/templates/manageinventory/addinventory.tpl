@@ -171,7 +171,7 @@
 					{foreach from=$inventory.images item=image}
 					<div style='border:1px solid gray; margin-right:3px; float:left;'>
 					<img src='/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/inventory/{$image.image_id}.W50_productSmallPreview.jpg'/>
-					<a href="{geturl controller='manageinventory' action='image'}?id={$image.Product_id}&image={$image.image_id}&delete=true"><img src="/public/resources/css/images/Crosses.png" /></a>
+					<a href="{geturl controller='manageinventory' action='image'}?id={$image.Product_id}&image={$image.image_id}&delete=true"><img src="{$siteRoot}/public/resources/css/images/Crosses.png" /></a>
 					</div> 
 					{/foreach}
 					</td>

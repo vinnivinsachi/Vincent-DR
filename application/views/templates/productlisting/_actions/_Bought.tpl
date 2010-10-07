@@ -1,1 +1,1 @@
-<a href="{geturl action='sendproductdraft'}?id={$product.product_id}&product={$product.product_type}&tag={$product.product_tag}"><img src="/public/resources/css/images/unlist.png" alt="Unlist" title="Unlist"/></a>
+<a href="{geturl action='sendproductdraft'}?id={$product.product_id}&product={$product.product_type}&tag={$product.product_tag}"><img src="{$siteRoot}/public/resources/css/images/unlist.png" alt="Unlist" title="Unlist"/></a>

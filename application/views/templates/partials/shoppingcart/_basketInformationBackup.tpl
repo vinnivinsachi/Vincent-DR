@@ -20,7 +20,7 @@
                 <div class="productOrderBody">
                     <div class="productSellerInfo" style="float:left; width:55%;">
                     	<strong>{$product.uploader_username} / {removeunderscore phrase=$product.purchase_type}</strong><br />
-                        <a href="{geturl controller='shoppingcart' action='removeitemsfromshoppingcart'}?cartProductId={$cartKey}"><img src="/public/resources/css/images/deleteFromShoppingFlattened.png" style="margin-bottom:-10px;"/></a>Product name: {$product.product_name}<br />
+                        <a href="{geturl controller='shoppingcart' action='removeitemsfromshoppingcart'}?cartProductId={$cartKey}"><img src="{$siteRoot}/public/resources/css/images/deleteFromShoppingFlattened.png" style="margin-bottom:-10px;"/></a>Product name: {$product.product_name}<br />
                         
                             <div class="productOrderAttributes" style="padding-left:20px;">
                             <table>

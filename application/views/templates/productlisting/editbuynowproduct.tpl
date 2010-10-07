@@ -177,7 +177,7 @@
 	            <ul id="post_images">
 	                {foreach from=$fp->product->images item=image}
 	                    <li >
-	                        <img src="/public/resources/userdata/tmp/thumbnails/{$signedInUser->generalInfo->username}/{$fp->product->product_tag}/{$image.image_id}.W150_homeFrontFour.jpg" alt="{$image.filename}" />
+	                        <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$signedInUser->generalInfo->username}/{$fp->product->product_tag}/{$image.image_id}.W150_homeFrontFour.jpg" alt="{$image.filename}" />
 	                        
 	                        <form id='imageForm' method="post" action="{geturl action='images'}">
 	                            <div>

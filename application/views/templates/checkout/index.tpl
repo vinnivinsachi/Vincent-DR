@@ -14,7 +14,7 @@
            {include file='partials/shoppingcart/_basketInformation.tpl}
             <div id="proceedShoppingCart" style="width:100%; float:left; text-align:right;">
         	
-        	<a id="proceedToShippingInfoAnchor" style="float:right; margin-top:10px;"><img src="/public/resources/css/images/nextToShipping.gif" style="margin-right:-9px;"/></a>
+        	<a id="proceedToShippingInfoAnchor" style="float:right; margin-top:10px;"><img src="{$siteRoot}/public/resources/css/images/nextToShipping.gif" style="margin-right:-9px;"/></a>
         	</div>
        </div>
         
@@ -35,7 +35,7 @@
                         <a id="deleteShippingAddress_{$Key}" class='deleteShippingAddressAnchor' href="{geturl controller='account' action='deleteshipping'}?editAddress={$Key}">Delete</a><br />
                         
                         {if $defaultShippingKey!=$Key}
-                        <a id="makeShippingAddress_{$Key}" class='makeShippingAddressAnchor' href="{geturl controller='account' action='makedefaultshipping}?editAddress={$Key}"><img src="/public/resources/css/images/ShippingButton.gif" /></a><br />
+                        <a id="makeShippingAddress_{$Key}" class='makeShippingAddressAnchor' href="{geturl controller='account' action='makedefaultshipping}?editAddress={$Key}"><img src="{$siteRoot}/public/resources/css/images/ShippingButton.gif" /></a><br />
                         {/if}
                     </div>
                     {/foreach}
@@ -96,9 +96,9 @@
                     </div>
                 </div>
                 <div style="float:left; width:98%; padding:0px 10px 10px 10px;">
-                	<a id="backToCartInfo" style="float:left;"><img src="/public/resources/css/images/backToCart.gif" style="margin-left:-13px;"/></a>
+                	<a id="backToCartInfo" style="float:left;"><img src="{$siteRoot}/public/resources/css/images/backToCart.gif" style="margin-left:-13px;"/></a>
                 	<a  id="nextToRewardPointAnchor" style="float:right;{if !$defaultShippingKey}
-display:none;{/if}"><img src="/public/resources/css/images/nextToRewardPointsAndPromotions.gif"/></a>
+display:none;{/if}"><img src="{$siteRoot}/public/resources/css/images/nextToRewardPointsAndPromotions.gif"/></a>
                 </div>
         </div>
         <h3><a href="#">Reward points and promotions: Step 3
@@ -134,8 +134,8 @@ display:none;{/if}"><img src="/public/resources/css/images/nextToRewardPointsAnd
                     </div>
                 </div>
             
-             <a id="backToShippingInfoAnchor" style="float:left;"><img src="/public/resources/css/images/backToShipping.gif" /></a>
-              <a id="proceedToComfirmation" style="float:right;"><img src="/public/resources/css/images/continueToConfirmation.gif" style="margin-bottom:-1px;"/></a>
+             <a id="backToShippingInfoAnchor" style="float:left;"><img src="{$siteRoot}/public/resources/css/images/backToShipping.gif" /></a>
+              <a id="proceedToComfirmation" style="float:right;"><img src="{$siteRoot}/public/resources/css/images/continueToConfirmation.gif" style="margin-bottom:-1px;"/></a>
             </div>
         </div>
     </div>

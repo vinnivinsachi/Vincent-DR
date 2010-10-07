@@ -18,7 +18,7 @@
              		{/if}
                 	{if $product.images|@count>0}
                 
-                	<img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$product.images[0].image_id}.W191_productFirstImage.jpg"/>
+                	<img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$product.images[0].image_id}.W191_productFirstImage.jpg"/>
                 	{else}
                         No image
                     {/if}</a>
@@ -59,7 +59,7 @@
 				 	<input type='hidden' name='number' value='{if isset($product.product_inventory_id)}{$product.product_inventory_id}{else}{$product.product_id}{/if}'/>
 				 </form>
 			 </div>
-			  <a onclick="removeFromCompareChart(this);"><img src='/public/resources/css/images/chart_minus.png' alt='Add to compare list' title='Remove from compare list'/></a>
+			  <a onclick="removeFromCompareChart(this);"><img src='{$siteRoot}/public/resources/css/images/chart_minus.png' alt='Add to compare list' title='Remove from compare list'/></a>
             </div>
             {else}
            	<div class='box' style='height:35px; text-align: center;'>  
@@ -69,23 +69,23 @@
 				 	<input type='hidden' name='number' value='{if isset($product.product_inventory_id)}{$product.product_inventory_id}{else}{$product.product_id}{/if}'/>
 				 </form>
 			 </div>
-			  <a onclick="addToCompareChart(this);"><img src='/public/resources/css/images/chart_add.png' alt='Add to compare list' title='Add to compare list'/></a>
+			  <a onclick="addToCompareChart(this);"><img src='{$siteRoot}/public/resources/css/images/chart_add.png' alt='Add to compare list' title='Add to compare list'/></a>
             </div>
             {/if}
             <div class='box' style='height:30px;'> 
-				<a><img src='/public/resources/css/images/flags/flag_{$product.uploader_network}.png' alt='From {$product.uploader_network}' title='From {$product.uploader_network}' height='30'/></a>
+				<a><img src='{$siteRoot}/public/resources/css/images/flags/flag_{$product.uploader_network}.png' alt='From {$product.uploader_network}' title='From {$product.uploader_network}' height='30'/></a>
             </div>
             
             
             
             {if $product.video_youtube!=''}
             <div class='box' style='height:35px;'>               
-                <a class='videoColorBox' href="http://www.youtube.com/v/{$product.video_youtube}"><img src="/public/resources/css/images/video_icon.png" width=37 alt='Product video' title='Product video'/></a>
+                <a class='videoColorBox' href="http://www.youtube.com/v/{$product.video_youtube}"><img src="{$siteRoot}/public/resources/css/images/video_icon.png" width=37 alt='Product video' title='Product video'/></a>
             </div>    
             {/if}
              
              <div class='productBox2' style='height:35px; text-align: center;'>
-             	<span class="tooltipControl box" style='margin-top:5px;'><img src='/public/resources/css/images/add_to_compare_flattened.png'/></span>
+             	<span class="tooltipControl box" style='margin-top:5px;'><img src='{$siteRoot}/public/resources/css/images/add_to_compare_flattened.png'/></span>
 				<div class='tooltip' style='width:600px; height:400px; background-color:white; border:1px solid #eee; z-index:10;'>
 				<!-- now comes the partials -->
 					<div class='box' style='width:300px; height:100%;'>
@@ -96,7 +96,7 @@
 		                       
 		                    </div>
 		                	{if $product.images|@count>0}
-		                	<img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$product.images[0].image_id}.W300_productDetailImage.jpg"/>
+		                	<img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$product.images[0].image_id}.W300_productDetailImage.jpg"/>
 		                	{else}
 		                        No image
 		                    {/if}
@@ -110,16 +110,16 @@
 	                        <div class="productImages">
 	                            {foreach from=$product.images item=image}
 	                                <div class="productIndividualImage">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$image.image_id}.W50_productSmallPreview.jpg" />
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$image.image_id}.W50_productSmallPreview.jpg" />
 	                                <span class="imageLargeAddress" style="display:none">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$image.image_id}.W300_productDetailImage.jpg""/></span>					
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/{$product.product_tag}/{$image.image_id}.W300_productDetailImage.jpg""/></span>					
 	                                </div>
 	                            {/foreach}
 	                            {foreach from=$product.inventoryImages item=inventoryImage}
 	                            	<div class="productIndividualImage">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/inventory/{$inventoryImage.image_id}.W50_productSmallPreview.jpg" />
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/inventory/{$inventoryImage.image_id}.W50_productSmallPreview.jpg" />
 	                                <span class="imageLargeAddress" style="display:none">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/inventory/{$inventoryImage.image_id}.W300_productDetailImage.jpg""/></span>					
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.uploader_username}/inventory/{$inventoryImage.image_id}.W300_productDetailImage.jpg""/></span>					
 	                                </div>
 	                            {/foreach}
 	                        </div>

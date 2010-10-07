@@ -8,7 +8,7 @@
 		                       
 		                    </div>
 		                	{if $product.images|@count>0}
-		                	<img src="/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$product.images[0].image_id}.W300_productDetailImage.jpg"/>
+		                	<img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$product.images[0].image_id}.W300_productDetailImage.jpg"/>
 		                	{else}
 		                        No image
 		                    {/if}
@@ -22,16 +22,16 @@
 	                        <div class="productImages">
 	                            {foreach from=$product.images item=image}
 	                                <div class="productIndividualImage">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$image.image_id}.W50_productSmallPreview.jpg" />
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$image.image_id}.W50_productSmallPreview.jpg" />
 	                                <span class="imageLargeAddress" style="display:none">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$image.image_id}.W300_productDetailImage.jpg""/></span>					
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$image.image_id}.W300_productDetailImage.jpg""/></span>					
 	                                </div>
 	                            {/foreach}
 	                            {foreach from=$product.inventoryImages item=inventoryImage}
 	                            	<div class="productIndividualImage">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/inventory/{$inventoryImage.image_id}.W50_productSmallPreview.jpg" />
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/inventory/{$inventoryImage.image_id}.W50_productSmallPreview.jpg" />
 	                                <span class="imageLargeAddress" style="display:none">
-	                                <img src="/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/inventory/{$inventoryImage.image_id}.W300_productDetailImage.jpg""/></span>					
+	                                <img src="{$siteRoot}/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/inventory/{$inventoryImage.image_id}.W300_productDetailImage.jpg""/></span>					
 	                                </div>
 	                            {/foreach}
 	                        </div>
