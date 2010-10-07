@@ -68,8 +68,8 @@ Zend_Registry::set('config', $config);
 //configure database stuff given from the setttings.ini
 $params = array('host'     => 'localhost',
 				'username' => 'root',
-				'password' => '11141986',
-				'dbname'   => 'DanceRialto');
+				'password' => 'V1NCENTIOU$$',
+				'dbname'   => 'dancerialto');
 
 // get database variables from local configuration file (specific to local testing environment)
 $localConfigFile = 'local_settings.ini';

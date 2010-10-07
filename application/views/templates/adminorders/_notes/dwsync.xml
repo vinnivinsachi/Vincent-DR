@@ -4,10 +4,10 @@
 <file name="getorderprofiletype.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129186926820000000" remote="129186926810000000" />
 <file name="getorderprofiletype.tpl" server="www.dancewearrialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129182149120000000" remote="129182149120000000" />
 <file name="index.tpl" server="www.dancewearrialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129182063220000000" remote="129182063220000000" />
-<file name="getorderprofiletype.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279291520000000" remote="129305965480000000" />
-<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279155740000000" remote="129305965480000000" />
-<file name="getorderprofiletypeBackup.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279282680000000" remote="129305965510000000" />
-<file name="markorderasdelivered.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129186888560000000" remote="129305965520000000" />
-<file name="markorderascomplete.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129186890540000000" remote="129305965520000000" />
-<file name="markorderpaymentstatus.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129186892240000000" remote="129305965520000000" />
+<file name="getorderprofiletype.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103100000000" remote="129309127950000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103120000000" remote="129309127960000000" />
+<file name="getorderprofiletypeBackup.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103120000000" remote="129309127960000000" />
+<file name="markorderasdelivered.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103120000000" remote="129309127970000000" />
+<file name="markorderascomplete.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103120000000" remote="129309127970000000" />
+<file name="markorderpaymentstatus.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103120000000" remote="129309127970000000" />
 </dwsync>

@@ -14,15 +14,15 @@
 <file name="view.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128961564520000000" remote="129165871390000000" />
 <file name="addtrackingtoproduct.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129158543140000000" remote="129165871410000000" />
 <file name="vieworderprofiledetails.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129186929980000000" remote="129186929960000000" />
-<file name="addtrackingtoproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129158543140000000" remote="129305964750000000" />
-<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279368420000000" remote="129305964760000000" />
-<file name="noorder.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516820000000" remote="129305964760000000" />
-<file name="productstat.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128952005540000000" remote="129305964760000000" />
-<file name="test.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516840000000" remote="129305964760000000" />
-<file name="verification.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516840000000" remote="129305964760000000" />
-<file name="view.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128961564520000000" remote="129305964770000000" />
-<file name="vieworderprofiledetails.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129186929980000000" remote="129305964770000000" />
-<file name="soldorders.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129305287740000000" remote="129305964770000000" />
-<file name="orders.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129305305400000000" remote="129305964770000000" />
-<file name="_message.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129277863860000000" remote="129305964860000000" />
+<file name="addtrackingtoproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129305964750000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127300000000" />
+<file name="noorder.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127300000000" />
+<file name="productstat.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127310000000" />
+<file name="test.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129305964760000000" />
+<file name="verification.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129305964760000000" />
+<file name="view.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127310000000" />
+<file name="vieworderprofiledetails.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127320000000" />
+<file name="soldorders.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127310000000" />
+<file name="orders.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103460000000" remote="129309127300000000" />
+<file name="_message.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103440000000" remote="129309127290000000" />
 </dwsync>

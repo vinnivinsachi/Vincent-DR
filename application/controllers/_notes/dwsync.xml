@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IndexController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129263912000000000" remote="129305976030000000" />
-<file name="ErrorController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129205224920000000" remote="129305976030000000" />
-<file name="AccountController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129275887740000000" remote="129305976030000000" />
-<file name="ProductpreviewController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170045060000000" remote="129305976040000000" />
-<file name="RegistrationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129130142160000000" remote="129305976040000000" />
-<file name="ProductlistingController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129274372460000000" remote="129305976040000000" />
-<file name="ManageattributeController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129262094660000000" remote="129305976050000000" />
-<file name="ManageinventoryController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271495480000000" remote="129305976050000000" />
-<file name="CommunicationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129277864440000000" remote="129305976050000000" />
-<file name="ProductdisplayController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271470860000000" remote="129305976060000000" />
-<file name="ComparechartController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271417300000000" remote="129305976060000000" />
-<file name="CheckoutController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279320560000000" remote="129305976060000000" />
-<file name="ShoppingcartController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279340740000000" remote="129305976070000000" />
-<file name="OrdermanagerController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129303062060000000" remote="129305976070000000" />
-<file name="OrderadministrationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279305640000000" remote="129305976070000000" />
-<file name="AdminaccountController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129178206140000000" remote="129305976070000000" />
-<file name="AdminordersController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279154560000000" remote="129305976080000000" />
+<file name="IndexController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129263912000000000" remote="129309126430000000" />
+<file name="ErrorController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129205224920000000" remote="129309126430000000" />
+<file name="AccountController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129275887740000000" remote="129309126440000000" />
+<file name="ProductpreviewController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170045060000000" remote="129309126440000000" />
+<file name="RegistrationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129130142160000000" remote="129309126440000000" />
+<file name="ProductlistingController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129274372460000000" remote="129309126440000000" />
+<file name="ManageattributeController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129262094660000000" remote="129309126450000000" />
+<file name="ManageinventoryController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271495480000000" remote="129309126450000000" />
+<file name="CommunicationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129277864440000000" remote="129309126460000000" />
+<file name="ProductdisplayController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271470860000000" remote="129309126460000000" />
+<file name="ComparechartController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129271417300000000" remote="129309126460000000" />
+<file name="CheckoutController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279320560000000" remote="129309126470000000" />
+<file name="ShoppingcartController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279340740000000" remote="129309126470000000" />
+<file name="OrdermanagerController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129303062060000000" remote="129309126480000000" />
+<file name="OrderadministrationController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279305640000000" remote="129309126480000000" />
+<file name="AdminaccountController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129178206140000000" remote="129309126480000000" />
+<file name="AdminordersController.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129279154560000000" remote="129309126480000000" />
 </dwsync>

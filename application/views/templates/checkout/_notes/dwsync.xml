@@ -19,14 +19,14 @@
 <file name="postshoutout.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129146290180000000" remote="129165873560000000" />
 <file name="index.tpl" server="www.dancewearrialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170055960000000" remote="129170055880000000" />
 <file name="index.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129174965400000000" remote="129174965420000000" />
-<file name="checkoutaddressshipping.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129155313440000000" remote="129305965340000000" />
-<file name="confirmation.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129301958060000000" remote="129305965340000000" />
-<file name="createorder.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129275180300000000" remote="129305965340000000" />
-<file name="guest.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128956216140000000" remote="129305965340000000" />
-<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129275176220000000" remote="129305965350000000" />
-<file name="ipn.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515840000000" remote="129305965350000000" />
-<file name="member.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515860000000" remote="129305965350000000" />
-<file name="postshoutout.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129146290180000000" remote="129305965360000000" />
-<file name="rewardsandpromotions.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129155313280000000" remote="129305965360000000" />
-<file name="test.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515860000000" remote="129305965360000000" />
+<file name="checkoutaddressshipping.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127840000000" />
+<file name="confirmation.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127840000000" />
+<file name="createorder.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127840000000" />
+<file name="guest.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127850000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127850000000" />
+<file name="ipn.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129305965350000000" />
+<file name="member.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127860000000" />
+<file name="postshoutout.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129305965360000000" />
+<file name="rewardsandpromotions.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129309127860000000" />
+<file name="test.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129309103140000000" remote="129305965360000000" />
 </dwsync>
