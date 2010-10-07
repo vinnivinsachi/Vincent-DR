@@ -6,4 +6,8 @@ application/configs/local_settings.ini
 data/logs
 data/logs/
 data/logs/*
+<<<<<<< HEAD
 data/logs/*/*
+=======
+data/logs/*/*
+>>>>>>> 21203f8388fbbe2c50b05199faa56694ae8de04e
