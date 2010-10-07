@@ -15,10 +15,10 @@
 		}
 		else
 		{
-		$request = Zend_Controller_Front::getInstance()->getRequest();
+			$request = Zend_Controller_Front::getInstance()->getRequest();
 		
-		$url = rtrim($request->getBaseUrl(), '/');
-		$url .=$helper->simple($action, $controller);
+			//$url = rtrim($request->getBasePath(), '/');
+			$url .=$helper->simple($action, $controller);
 		}
 		
 		return $url;

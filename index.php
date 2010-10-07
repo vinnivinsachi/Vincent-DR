@@ -16,7 +16,10 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),realpath(APPLICATION_PATH . '/models')
     //get_include_path()
 )));
-	
+
+// Define path to site root from server root
+define('SITE_ROOT', str_replace('/index.php', '', $_SERVER['PHP_SELF']));
+
 
 require_once "Zend/Loader/Autoloader.php"; 
 $autoloader = Zend_Loader_Autoloader::getInstance();
@@ -28,7 +31,7 @@ $autoloader->setFallbackAutoloader(true);
 //$productConfig['purchase_type']=array('buy_now','customize');
 //echo get_include_path();
 
-$config = new Zend_Config_Ini(APPLICATION_PATH.'\configs\settings.ini', 'development');
+$config = new Zend_Config_Ini(APPLICATION_PATH.'/configs/settings.ini', 'development');
 
 
 $logger = new Zend_Log(new Zend_Log_Writer_Null());
@@ -67,6 +70,14 @@ $params = array('host'     => 'localhost',
 				'username' => 'root',
 				'password' => '11141986',
 				'dbname'   => 'DanceRialto');
+
+// get database variables from local configuration file (specific to local testing environment)
+$localConfigFile = 'local_settings.ini';
+if(file_exists(APPLICATION_PATH.'/configs/'.$localConfigFile)) {
+	$localConfig = new Zend_Config_Ini(APPLICATION_PATH.'/configs/'.$localConfigFile, 'development');
+	$params = array_merge($params, $localConfig->db->toArray());	
+}
+
 
 //I guess combining the type of sql with the informatin in params
 $db = Zend_Db::factory("pdo_mysql", $params);

@@ -1,0 +1,4 @@
+application/configs/local_settings.ini
+data/tmp
+data/tmp/
+data/tmp/*

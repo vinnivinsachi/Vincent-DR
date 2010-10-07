@@ -127,6 +127,7 @@
 			$this->shoppingCartInfoSession->setExpirationSeconds(43200);
 			
 			//$this->view->productConfig = $this->productConfig;
+			$this->view->siteRoot = SITE_ROOT;
 		}
 		
 		public function postDispatch(){

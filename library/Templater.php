@@ -11,7 +11,7 @@
 			require_once ('Smarty/Smarty.class.php');
 			
 			$this->_engine = new Smarty();
-			$this->_engine->template_dir = APPLICATION_PATH.'\views\templates';
+			$this->_engine->template_dir = APPLICATION_PATH.'/views/templates';
 			$this->_engine->compile_dir = dirname(__FILE__).'/../data/tmp/templates_c';
 			
 			$this->_engine->plugins_dir = dirname(__FILE__).'/Templater/smarty_plugins';
