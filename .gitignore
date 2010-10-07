@@ -3,3 +3,7 @@ data/tmp/
 data/tmp/*
 data/tmp/*/*
 application/configs/local_settings.ini
+data/logs
+data/logs/
+data/logs/*
+data/logs/*/*

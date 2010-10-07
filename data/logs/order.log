@@ -1,211 +1,0 @@
-2009-08-01T17:24:34-04:00 INFO (6): 1====fsockepen starting''
-2009-08-01T17:24:34-04:00 INFO (6): 3====fsockepen is open''
-2009-08-01T17:24:34-04:00 INFO (6): invoice id is: e5daf065c77de58041e5ab5c8c7bbc0f
-2009-08-01T17:24:34-04:00 INFO (6): createOrder is TURE
-2009-08-01T17:24:34-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-01T17:24:34-04:00 INFO (6): invoice
-2009-08-01T17:24:34-04:00 INFO (6): e5daf065c77de58041e5ab5c8c7bbc0f
-2009-08-01T17:24:34-04:00 INFO (6): payment_status
-2009-08-01T17:24:34-04:00 INFO (6): Pending
-2009-08-01T17:24:34-04:00 INFO (6): at after fclose fp
-2009-08-01T17:24:34-04:00 WARN (4): starting to do stuff
-2009-08-01T17:24:34-04:00 INFO (6): at email = true -- guest
-2009-08-01T17:24:34-04:00 WARN (4): starting to do stuff 7
-2009-08-01T17:24:34-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-01T17:24:34-04:00 WARN (4): id is: 4
-2009-08-01T17:24:34-04:00 INFO (6): after all the profile is done
-2009-08-01T17:24:34-04:00 INFO (6): sending email at guest before
-2009-08-01T18:05:41-04:00 INFO (6): 1====fsockepen starting''
-2009-08-01T18:05:41-04:00 INFO (6): 3====fsockepen is open''
-2009-08-01T18:05:42-04:00 INFO (6): invoice id is: 4d593d7785123a056913bd909deb02d4
-2009-08-01T18:05:42-04:00 INFO (6): createOrder is TURE
-2009-08-01T18:05:42-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-01T18:05:42-04:00 INFO (6): invoice
-2009-08-01T18:05:42-04:00 INFO (6): 4d593d7785123a056913bd909deb02d4
-2009-08-01T18:05:42-04:00 INFO (6): payment_status
-2009-08-01T18:05:42-04:00 INFO (6): Pending
-2009-08-01T18:05:42-04:00 INFO (6): at after fclose fp
-2009-08-01T18:05:42-04:00 WARN (4): starting to do stuff
-2009-08-01T18:05:42-04:00 INFO (6): at email = true -- guest
-2009-08-01T18:05:42-04:00 WARN (4): starting to do stuff 7
-2009-08-01T18:05:42-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-01T18:05:42-04:00 WARN (4): id is: 5
-2009-08-01T18:05:42-04:00 INFO (6): after all the profile is done
-2009-08-01T18:05:42-04:00 INFO (6): sending email at guest before
-2009-08-01T18:09:25-04:00 WARN (4): starting to do stuff 7
-2009-08-01T18:09:25-04:00 INFO (6): sending email at guest before
-2009-08-01T18:11:31-04:00 WARN (4): starting to do stuff 7
-2009-08-01T18:12:10-04:00 WARN (4): starting to do stuff 7
-2009-08-01T18:12:10-04:00 INFO (6): sending email at guest before
-2009-08-01T18:12:14-04:00 INFO (6): sending email at guest after
-2009-08-01T18:19:05-04:00 INFO (6): 1====fsockepen starting''
-2009-08-01T18:19:05-04:00 INFO (6): 3====fsockepen is open''
-2009-08-01T18:19:05-04:00 INFO (6): invoice id is: 36a373bfeea441774cb8e06e7e791845
-2009-08-01T18:19:05-04:00 INFO (6): createOrder is TURE
-2009-08-01T18:19:05-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-01T18:19:05-04:00 INFO (6): invoice
-2009-08-01T18:19:05-04:00 INFO (6): 36a373bfeea441774cb8e06e7e791845
-2009-08-01T18:19:05-04:00 INFO (6): payment_status
-2009-08-01T18:19:05-04:00 INFO (6): Pending
-2009-08-01T18:19:05-04:00 INFO (6): at after fclose fp
-2009-08-01T18:19:05-04:00 WARN (4): starting to do stuff
-2009-08-01T18:19:05-04:00 INFO (6): at email = true -- guest
-2009-08-01T18:19:05-04:00 WARN (4): starting to do stuff 7
-2009-08-01T18:19:05-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-01T18:19:05-04:00 WARN (4): id is: 2
-2009-08-01T18:19:05-04:00 INFO (6): after all the profile is done
-2009-08-01T18:19:05-04:00 INFO (6): sending email at guest before
-2009-08-01T18:19:09-04:00 INFO (6): sending email at guest after
-2009-08-01T18:19:09-04:00 INFO (6): runned query at delete invholder
-2009-08-01T18:19:09-04:00 INFO (6): at create order created!!!!
-2009-08-19T23:55:43-04:00 INFO (6): 1====fsockepen starting''
-2009-08-19T23:55:43-04:00 INFO (6): 3====fsockepen is open''
-2009-08-19T23:55:43-04:00 INFO (6): invoice id is: 07afafbf1e7b17e60b0638143ca98c7a
-2009-08-19T23:55:43-04:00 INFO (6): createOrder is TURE
-2009-08-19T23:55:43-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-19T23:55:43-04:00 INFO (6): invoice
-2009-08-19T23:55:43-04:00 INFO (6): 07afafbf1e7b17e60b0638143ca98c7a
-2009-08-19T23:55:43-04:00 INFO (6): payment_status
-2009-08-19T23:55:43-04:00 INFO (6): Pending
-2009-08-19T23:55:43-04:00 INFO (6): at after fclose fp
-2009-08-19T23:55:43-04:00 WARN (4): starting to do stuff
-2009-08-19T23:55:43-04:00 INFO (6): at email = true -- guest
-2009-08-19T23:55:43-04:00 WARN (4): starting to do stuff 7
-2009-08-19T23:55:46-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-19T23:55:46-04:00 WARN (4): id is: 3
-2009-08-19T23:55:47-04:00 INFO (6): after all the profile is done
-2009-08-19T23:55:47-04:00 INFO (6): sending email at guest before
-2009-08-19T23:56:14-04:00 INFO (6): sending email at guest after
-2009-08-19T23:56:14-04:00 INFO (6): runned query at delete invholder
-2009-08-19T23:56:15-04:00 INFO (6): at create order created!!!!
-2009-08-30T14:10:46-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T14:10:46-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T14:10:47-04:00 INFO (6): invoice id is: a1aa1e523e070475c6ea8b1fbcac02de
-2009-08-30T14:10:47-04:00 INFO (6): createOrder is TURE
-2009-08-30T14:10:47-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T14:10:47-04:00 INFO (6): invoice
-2009-08-30T14:10:47-04:00 INFO (6): a1aa1e523e070475c6ea8b1fbcac02de
-2009-08-30T14:10:47-04:00 INFO (6): payment_status
-2009-08-30T14:10:47-04:00 INFO (6): Pending
-2009-08-30T14:10:47-04:00 INFO (6): at after fclose fp
-2009-08-30T14:10:47-04:00 WARN (4): starting to do stuff
-2009-08-30T14:10:47-04:00 INFO (6): at email = true -- guest
-2009-08-30T14:10:47-04:00 WARN (4): starting to do stuff 7
-2009-08-30T14:10:47-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T14:10:47-04:00 WARN (4): id is: 4
-2009-08-30T14:10:47-04:00 INFO (6): after all the profile is done
-2009-08-30T14:10:47-04:00 INFO (6): sending email at guest before
-2009-08-30T16:01:36-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T16:01:36-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T16:01:37-04:00 INFO (6): invoice id is: 9e7950ad54320690322bf603c25764d4
-2009-08-30T16:01:37-04:00 INFO (6): createOrder is TURE
-2009-08-30T16:01:37-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T16:01:37-04:00 INFO (6): invoice
-2009-08-30T16:01:37-04:00 INFO (6): 9e7950ad54320690322bf603c25764d4
-2009-08-30T16:01:37-04:00 INFO (6): payment_status
-2009-08-30T16:01:37-04:00 INFO (6): Pending
-2009-08-30T16:01:37-04:00 INFO (6): at after fclose fp
-2009-08-30T16:01:37-04:00 WARN (4): starting to do stuff
-2009-08-30T16:01:37-04:00 INFO (6): at email = true -- guest
-2009-08-30T16:01:37-04:00 WARN (4): starting to do stuff 7
-2009-08-30T16:01:37-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T16:01:37-04:00 WARN (4): id is: 5
-2009-08-30T16:01:37-04:00 INFO (6): after all the profile is done
-2009-08-30T16:01:37-04:00 INFO (6): sending email at guest before
-2009-08-30T16:08:00-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T16:08:00-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T16:08:00-04:00 INFO (6): invoice id is: 9083d23912ef3251cba347f8d4815a12
-2009-08-30T16:08:00-04:00 INFO (6): createOrder is TURE
-2009-08-30T16:08:00-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T16:08:00-04:00 INFO (6): invoice
-2009-08-30T16:08:00-04:00 INFO (6): 9083d23912ef3251cba347f8d4815a12
-2009-08-30T16:08:00-04:00 INFO (6): payment_status
-2009-08-30T16:08:00-04:00 INFO (6): Pending
-2009-08-30T16:08:00-04:00 INFO (6): at after fclose fp
-2009-08-30T16:08:00-04:00 WARN (4): starting to do stuff
-2009-08-30T16:08:00-04:00 INFO (6): at email = true -- guest
-2009-08-30T16:08:00-04:00 WARN (4): starting to do stuff 7
-2009-08-30T16:08:00-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T16:08:00-04:00 WARN (4): id is: 6
-2009-08-30T16:08:00-04:00 INFO (6): after all the profile is done
-2009-08-30T16:08:00-04:00 INFO (6): sending email at guest before
-2009-08-30T17:04:38-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T17:04:38-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T17:04:39-04:00 INFO (6): invoice id is: 58967fc3a3b1b71644e52c071ab5053d
-2009-08-30T17:04:39-04:00 INFO (6): createOrder is TURE
-2009-08-30T17:04:39-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T17:04:39-04:00 INFO (6): invoice
-2009-08-30T17:04:39-04:00 INFO (6): 58967fc3a3b1b71644e52c071ab5053d
-2009-08-30T17:04:39-04:00 INFO (6): payment_status
-2009-08-30T17:04:39-04:00 INFO (6): Pending
-2009-08-30T17:04:39-04:00 INFO (6): at after fclose fp
-2009-08-30T17:04:39-04:00 WARN (4): starting to do stuff
-2009-08-30T17:04:39-04:00 INFO (6): at email = true -- guest
-2009-08-30T17:04:39-04:00 WARN (4): starting to do stuff 7
-2009-08-30T17:04:40-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T17:04:40-04:00 WARN (4): id is: 7
-2009-08-30T17:04:40-04:00 INFO (6): after all the profile is done
-2009-08-30T17:04:40-04:00 INFO (6): sending email at guest before
-2009-08-30T17:04:56-04:00 INFO (6): sending email at guest after
-2009-08-30T17:04:56-04:00 INFO (6): runned query at delete invholder
-2009-08-30T17:04:56-04:00 INFO (6): at create order created!!!!
-2009-08-30T17:16:30-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T17:16:30-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T17:16:31-04:00 INFO (6): invoice id is: 413dd9571b00f1b311af079afd8305fd
-2009-08-30T17:16:31-04:00 INFO (6): createOrder is TURE
-2009-08-30T17:16:31-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T17:16:31-04:00 INFO (6): invoice
-2009-08-30T17:16:31-04:00 INFO (6): 413dd9571b00f1b311af079afd8305fd
-2009-08-30T17:16:31-04:00 INFO (6): payment_status
-2009-08-30T17:16:31-04:00 INFO (6): Pending
-2009-08-30T17:16:31-04:00 INFO (6): at after fclose fp
-2009-08-30T17:16:31-04:00 WARN (4): starting to do stuff
-2009-08-30T17:16:32-04:00 INFO (6): at email = true -- guest
-2009-08-30T17:16:32-04:00 WARN (4): starting to do stuff 7
-2009-08-30T17:16:32-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T17:16:32-04:00 WARN (4): id is: 8
-2009-08-30T17:16:33-04:00 INFO (6): after all the profile is done
-2009-08-30T17:16:33-04:00 INFO (6): sending email at guest before
-2009-08-30T17:16:57-04:00 INFO (6): sending email at guest after
-2009-08-30T17:16:57-04:00 INFO (6): runned query at delete invholder
-2009-08-30T17:16:58-04:00 INFO (6): at create order created!!!!
-2009-08-30T21:45:51-04:00 INFO (6): 1====fsockepen starting''
-2009-08-30T21:45:51-04:00 INFO (6): 3====fsockepen is open''
-2009-08-30T21:45:51-04:00 INFO (6): invoice id is: 5cf561085479b9879a637260720ac8a7
-2009-08-30T21:45:51-04:00 INFO (6): createOrder is TURE
-2009-08-30T21:45:51-04:00 INFO (6): 8888 == The response from IPN was: VERIFIED
-2009-08-30T21:45:51-04:00 INFO (6): invoice
-2009-08-30T21:45:51-04:00 INFO (6): 5cf561085479b9879a637260720ac8a7
-2009-08-30T21:45:51-04:00 INFO (6): payment_status
-2009-08-30T21:45:51-04:00 INFO (6): Pending
-2009-08-30T21:45:51-04:00 INFO (6): at after fclose fp
-2009-08-30T21:45:51-04:00 WARN (4): starting to do stuff
-2009-08-30T21:45:51-04:00 INFO (6): at email = true -- guest
-2009-08-30T21:45:51-04:00 WARN (4): starting to do stuff 7
-2009-08-30T21:45:51-04:00 WARN (4): starting to do stuff 7.5--
-2009-08-30T21:45:51-04:00 WARN (4): id is: 9
-2009-08-30T21:45:51-04:00 INFO (6): after all the profile is done
-2009-08-30T21:45:51-04:00 INFO (6): sending email at guest before
-2009-08-30T21:45:55-04:00 INFO (6): sending email at guest after
-2009-08-30T21:45:55-04:00 INFO (6): runned query at delete invholder
-2009-08-30T21:45:55-04:00 INFO (6): at create order created!!!!
-2009-09-08T15:58:48-04:00 INFO (6): 1====fsockepen starting''
-2009-09-08T15:58:48-04:00 INFO (6): 3====fsockepen is open''
-2009-09-08T15:58:49-04:00 INFO (6): at after fclose fp
-2009-09-08T15:58:49-04:00 INFO (6): at createorder is false
-2009-09-08T20:57:55-04:00 INFO (6): 1====fsockepen starting''
-2009-09-08T20:57:56-04:00 INFO (6): 3====fsockepen is open''
-2009-09-08T20:57:57-04:00 INFO (6): at after fclose fp
-2009-09-08T20:57:57-04:00 INFO (6): at createorder is false
-2009-09-09T05:53:52-04:00 INFO (6): 1====fsockepen starting''
-2009-09-09T05:53:52-04:00 INFO (6): 3====fsockepen is open''
-2009-09-09T05:53:52-04:00 INFO (6): at after fclose fp
-2009-09-09T05:53:52-04:00 INFO (6): at createorder is false
-2009-09-09T12:27:30-04:00 INFO (6): 1====fsockepen starting''
-2009-09-09T12:27:30-04:00 INFO (6): 3====fsockepen is open''
-2009-09-09T12:27:31-04:00 INFO (6): at after fclose fp
-2009-09-09T12:27:31-04:00 INFO (6): at createorder is false
-2009-09-09T12:42:45-04:00 INFO (6): 1====fsockepen starting''
-2009-09-09T12:42:45-04:00 INFO (6): 3====fsockepen is open''
-2009-09-09T12:42:46-04:00 INFO (6): at after fclose fp
-2009-09-09T12:42:46-04:00 INFO (6): at createorder is false
