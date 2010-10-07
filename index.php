@@ -28,7 +28,7 @@ $autoloader->setFallbackAutoloader(true);
 //$productConfig['purchase_type']=array('buy_now','customize');
 //echo get_include_path();
 
-$config = new Zend_Config_Ini(APPLICATION_PATH.'\configs\settings.ini', 'development');
+$config = new Zend_Config_Ini(APPLICATION_PATH.'/configs/settings.ini', 'development');
 
 
 $logger = new Zend_Log(new Zend_Log_Writer_Null());

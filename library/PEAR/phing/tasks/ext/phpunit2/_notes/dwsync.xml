@@ -10,4 +10,14 @@
 <file name="PlainPHPUnit2ResultFormatter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785220000000" />
 <file name="SummaryPHPUnit2ResultFormatter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785220000000" />
 <file name="XMLPHPUnit2ResultFormatter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785220000000" />
+<file name="BatchTest.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978010000000" />
+<file name="FormatterElement.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978010000000" />
+<file name="PHPUnit2ReportTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978010000000" />
+<file name="PHPUnit2ResultFormatter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978020000000" />
+<file name="PHPUnit2Task.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978020000000" />
+<file name="PHPUnit2TestRunner.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978020000000" />
+<file name="PHPUnit2Util.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978030000000" />
+<file name="PlainPHPUnit2ResultFormatter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978030000000" />
+<file name="SummaryPHPUnit2ResultFormatter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978030000000" />
+<file name="XMLPHPUnit2ResultFormatter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978030000000" />
 </dwsync>

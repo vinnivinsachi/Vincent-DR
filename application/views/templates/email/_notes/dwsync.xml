@@ -16,4 +16,12 @@
 <file name="order-notice.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128961410640000000" remote="129165873050000000" />
 <file name="user-fetch-password.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129062930380000000" remote="129165873060000000" />
 <file name="user-register.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129063516580000000" remote="129165873080000000" />
+<file name="affiliate-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515980000000" remote="129305965240000000" />
+<file name="club-register-admin-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515980000000" remote="129305965240000000" />
+<file name="due-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515980000000" remote="129305965240000000" />
+<file name="member-register-admin-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515980000000" remote="129305965240000000" />
+<file name="message-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864515980000000" remote="129305965250000000" />
+<file name="order-notice.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128961410640000000" remote="129305965250000000" />
+<file name="user-fetch-password.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129062930380000000" remote="129305965250000000" />
+<file name="user-register.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129063516580000000" remote="129305965250000000" />
 </dwsync>

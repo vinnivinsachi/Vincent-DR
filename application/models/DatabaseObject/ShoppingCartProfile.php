@@ -21,6 +21,7 @@
 			$this->add('product_name');
 			$this->add('product_price');
 			$this->add('product_tag');
+			$this->add('return_allowed');
 			$this->add('backorder_time');
 			$this->add('product_image_id');
 			$this->add('reward_points_awarded');

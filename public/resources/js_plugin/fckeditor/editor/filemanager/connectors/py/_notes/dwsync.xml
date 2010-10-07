@@ -20,4 +20,14 @@
 <file name="upload.py" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864518040000000" remote="129165776050000000" />
 <file name="wsgi.py" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864518040000000" remote="129165776050000000" />
 <file name="zope.py" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864518040000000" remote="129165776060000000" />
+<file name="config.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058530000000" />
+<file name="connector.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058550000000" />
+<file name="fckcommands.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058570000000" />
+<file name="fckconnector.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058590000000" />
+<file name="fckoutput.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058620000000" />
+<file name="fckutil.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518020000000" remote="129306058640000000" />
+<file name="htaccess.txt" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518040000000" remote="129306058660000000" />
+<file name="upload.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518040000000" remote="129306058680000000" />
+<file name="wsgi.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518040000000" remote="129306058700000000" />
+<file name="zope.py" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864518040000000" remote="129306058720000000" />
 </dwsync>

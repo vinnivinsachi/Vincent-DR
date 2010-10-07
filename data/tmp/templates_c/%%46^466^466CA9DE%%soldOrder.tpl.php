@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.19, created on 2010-09-29 16:16:09
+<?php /* Smarty version 2.6.19, created on 2010-10-02 17:44:21
          compiled from ordermanager/_soldOrders/soldOrder.tpl */ ?>
 			<table width="100%;">
                 
                 <?php $_from = $this->_tpl_vars['itemsSold']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['Key'] => $this->_tpl_vars['order']):
 ?>
-                <tr style='border-bottom:1px solid #999;'><td style='width:100px;'><?php echo $this->_tpl_vars['order']->buyer_name; ?>
+                <tr style='border-bottom:3px solid #999;'><td style='width:100px;'><?php echo $this->_tpl_vars['order']->buyer_name; ?>
 <br />
                         <?php echo $this->_tpl_vars['order']->shippingAddress->address_one; ?>
 <br />

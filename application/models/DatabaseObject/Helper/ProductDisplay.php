@@ -287,7 +287,7 @@
 					->order('last_status_change DESC')
 					->where('i.product_inventory_id in (?)', $compareChart['inventory'])
 					->where("p.status='Listed'");
-				$select->join(array('u'=>'users'),
+				$select2->join(array('u'=>'users'),
 						'u.userID=p.uploader_id');
 				$tempInventory=$db->fetchAll($select2);
 				

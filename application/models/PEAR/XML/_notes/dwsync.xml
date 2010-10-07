@@ -12,4 +12,16 @@
 <file name="Unserializer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782140000000" />
 <file name="Util.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782140000000" />
 <file name="XML_HTMLSax.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782150000000" />
+<file name="Beautifier.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969030000000" />
+<file name="FastCreate.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969030000000" />
+<file name="NITF.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969030000000" />
+<file name="Parser.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969070000000" />
+<file name="RPC.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969080000000" />
+<file name="SVG.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969080000000" />
+<file name="Serializer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969090000000" />
+<file name="Unserializer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969090000000" />
+<file name="Util.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969100000000" />
+<file name="XML_HTMLSax.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969100000000" />
+<file name="fo2pdf.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969100000000" />
+<file name="image2svg.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305969110000000" />
 </dwsync>

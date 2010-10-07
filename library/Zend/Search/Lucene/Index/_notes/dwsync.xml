@@ -10,14 +10,14 @@
 <file name="TermInfo.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112080220000000" remote="129165821820000000" />
 <file name="TermsPriorityQueue.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112080240000000" remote="129165821840000000" />
 <file name="Writer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112080240000000" remote="129165821860000000" />
-<file name="DictionaryLoader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129304827090000000" />
-<file name="DocsFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129304827090000000" />
-<file name="FieldInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080260000000" remote="129304827090000000" />
-<file name="SegmentInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129304827100000000" />
-<file name="SegmentMerger.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129304827110000000" />
-<file name="SegmentWriter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129304827110000000" />
-<file name="Term.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080260000000" remote="129304827110000000" />
-<file name="TermInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129304827120000000" />
-<file name="TermsPriorityQueue.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129304827120000000" />
-<file name="Writer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129304827120000000" />
+<file name="DictionaryLoader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129306013380000000" />
+<file name="DocsFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129306013400000000" />
+<file name="FieldInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080260000000" remote="129306013420000000" />
+<file name="SegmentInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129306013480000000" />
+<file name="SegmentMerger.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129306013500000000" />
+<file name="SegmentWriter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129306013520000000" />
+<file name="Term.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080260000000" remote="129306013540000000" />
+<file name="TermInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080220000000" remote="129306013560000000" />
+<file name="TermsPriorityQueue.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129306013570000000" />
+<file name="Writer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112080240000000" remote="129306013590000000" />
 </dwsync>

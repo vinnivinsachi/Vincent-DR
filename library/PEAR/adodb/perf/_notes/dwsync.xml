@@ -6,4 +6,10 @@
 <file name="perf-mysql.inc.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165797110000000" />
 <file name="perf-oci8.inc.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165797130000000" />
 <file name="perf-postgres.inc.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165797150000000" />
+<file name="perf-db2.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979310000000" />
+<file name="perf-informix.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979310000000" />
+<file name="perf-mssql.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979310000000" />
+<file name="perf-mysql.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979320000000" />
+<file name="perf-oci8.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979320000000" />
+<file name="perf-postgres.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979320000000" />
 </dwsync>

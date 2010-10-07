@@ -26,7 +26,7 @@
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; {if $product.product_order_status=='shipped'}color:#069;{elseif $product.product_order_status=='return shipped' || $product.product_absolute_latest_delivery_date|date_format < $smarty.now|date_format}color:#F30;{elseif $product.product_order_status=='order completed' || $product.product_order_status=='order return completed'}color:#0C0;{else} color:#F90;{/if} font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
+		                        <span style="font-weight:bold; color:#F90; font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
 		                        
 		                        | 
 		                        <span style=''><a>Cancel this order</a></span> 
@@ -78,7 +78,7 @@
 								    {if $product.product_warning_delivery_date|date_format:"%Y-%m-%d"<$smarty.now|date_format:"%Y-%m-%d" && $product.product_latest_delivery_date|date_format:"%Y-%m-%d"<$smarty.now|date_format:"%Y-%m-%d"}
 								    	<span style="color:#F30; font-size:1.2em; padding-left:10px;">This product is now past due. The buyer will be able to cancel this order and be refunded. If the order is cancelled, you will no longer be able to provide any tracking information.</span>
 								    {else}
-								        <span style="color:#F90; padding-left:10px;"> Please submit a tracking info! The buyer will be able to cancel this order if this order is not shipped before {$product.product_latest_delivery_date|date_format:"%D"}.</span>
+								        <span style="padding-left:10px;"> Please submit a tracking info! The buyer will be able to cancel this order if this order is not shipped before {$product.product_latest_delivery_date|date_format:"%D"}.</span>
 								    {/if}
 								    </div>
 									<div class="trackingActions" style="width:50%; float:right;">

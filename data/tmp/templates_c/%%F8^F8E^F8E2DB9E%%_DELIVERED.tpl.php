@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-09-29 17:49:04
+<?php /* Smarty version 2.6.19, created on 2010-10-04 18:11:21
          compiled from ordermanager/_soldOrders/_DELIVERED.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_DELIVERED.tpl', 14, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_DELIVERED.tpl', 29, false),)), $this); ?>
@@ -38,7 +38,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
 		                        	</table>
 		                           
 		                        </div> 
-		                        <div class='box'> 
+		                        <div class='box orderProductSecondHeader'> 
 		                        <span style="font-weight:bold; <?php if ($this->_tpl_vars['product']['product_order_status'] == 'shipped'): ?>color:#069;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'return shipped' || ((is_array($_tmp=$this->_tpl_vars['product']['product_absolute_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)) < ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp))): ?>color:#F30;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'order completed' || $this->_tpl_vars['product']['product_order_status'] == 'order return completed'): ?>color:#0C0;<?php else: ?> color:#F90;<?php endif; ?> font-size:12px; "><?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
 </span> 
 		                        | Ordered on: <?php echo ((is_array($_tmp=$this->_tpl_vars['product']['ts_created'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%D") : smarty_modifier_date_format($_tmp, "%D")); ?>
@@ -99,17 +99,17 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
 								</div>
 								
 								<div class="orderProductFormSection" style="width:100%; float:left;">
-								[<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
+								<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " >Message buyer: <?php echo $this->_tpl_vars['product']['buyer_name']; ?>
-</a>
-								[<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
+</a> |
+								<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " title="<?php echo $this->_tpl_vars['product']['product_tracking']; ?>
-">Tracking status</a>]
+">Tracking status</a>
 
-								<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => 'ordermanager/_message.tpl', 'smarty_include_vars' => array()));
+								        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'ordermanager/_soldOrders/_message.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
@@ -119,4 +119,4 @@ _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " style="display:none; float:left;"></div>
 								           
-								 </div>
+								</div>

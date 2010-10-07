@@ -15,4 +15,19 @@
 <file name="sqlite.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787970000000" />
 <file name="syslog.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787970000000" />
 <file name="win.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787980000000" />
+<file name="composite.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984400000000" />
+<file name="console.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984420000000" />
+<file name="daemon.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984430000000" />
+<file name="display.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984450000000" />
+<file name="error_log.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984460000000" />
+<file name="file.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984480000000" />
+<file name="mail.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984490000000" />
+<file name="mcal.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984510000000" />
+<file name="mdb2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984520000000" />
+<file name="null.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984540000000" />
+<file name="observer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984560000000" />
+<file name="sql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984570000000" />
+<file name="sqlite.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984590000000" />
+<file name="syslog.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984600000000" />
+<file name="win.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984630000000" />
 </dwsync>

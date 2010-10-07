@@ -8,4 +8,9 @@
 <file name="details.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170574000000000" remote="129170574070000000" />
 <file name="index.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170618660000000" remote="129170618650000000" />
 <file name="tag.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129190467440000000" remote="129190467440000000" />
+<file name="details.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170574020000000" remote="129305964270000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170618660000000" remote="129305964270000000" />
+<file name="listingpreview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129116413820000000" remote="129305964280000000" />
+<file name="quicklook.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129133306820000000" remote="129305964280000000" />
+<file name="tag.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129190467440000000" remote="129305964280000000" />
 </dwsync>

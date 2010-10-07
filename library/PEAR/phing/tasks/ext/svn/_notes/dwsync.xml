@@ -3,4 +3,7 @@
 <file name="SvnBaseTask.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785140000000" />
 <file name="SvnExportTask.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785140000000" />
 <file name="SvnLastRevisionTask.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785140000000" />
+<file name="SvnBaseTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977960000000" />
+<file name="SvnExportTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977970000000" />
+<file name="SvnLastRevisionTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977970000000" />
 </dwsync>

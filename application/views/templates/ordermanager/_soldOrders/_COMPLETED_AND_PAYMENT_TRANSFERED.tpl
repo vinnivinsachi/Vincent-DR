@@ -45,12 +45,12 @@
  <div class="productShippingBody">
  
 			                        <div class='orderStatus bigFont box' style='padding:5px 0px 5px 0px; background-color:#ccc;'>
-			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:30%;">
+			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:20%;">
 Completed		                            </div>
-			                            <div class='box' style='width:35%;'>
-			                            Status: {removeunderscore phrase=$product.order_status} on {$product.product_fund_allocation_date|date_format}
+			                            <div class='box' style='width:58%;'>
+			                            Status: {removeunderscore phrase=$product.order_status} <br/>on {$product.product_fund_allocation_date|date_format}
 			                            </div>
-			                            <div class='productShippingInfo' style='float:left; width:30%; text-align:right; width:33%;'>Shipping: <span class='price'>${$product.current_shipping_rate}</span>
+			                            <div class='productShippingInfo' style='float:left; width:30%; text-align:right; width:20%;'>Shipping: <span class='price'>${$product.current_shipping_rate}</span>
 			                            </div>
 			                        </div>  
 		                        </div>

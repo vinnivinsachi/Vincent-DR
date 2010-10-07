@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-10-01 23:58:00
+<?php /* Smarty version 2.6.19, created on 2010-10-02 17:57:20
          compiled from ordermanager/_soldOrders/_COMPLETED_AND_PAYMENT_TRANSFERED.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_COMPLETED_AND_PAYMENT_TRANSFERED.tpl', 14, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_COMPLETED_AND_PAYMENT_TRANSFERED.tpl', 29, false),)), $this); ?>
@@ -60,14 +60,14 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
  <div class="productShippingBody">
  
 			                        <div class='orderStatus bigFont box' style='padding:5px 0px 5px 0px; background-color:#ccc;'>
-			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:30%;">
+			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:20%;">
 Completed		                            </div>
-			                            <div class='box' style='width:35%;'>
+			                            <div class='box' style='width:58%;'>
 			                            Status: <?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
- on <?php echo ((is_array($_tmp=$this->_tpl_vars['product']['product_fund_allocation_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)); ?>
+ <br/>on <?php echo ((is_array($_tmp=$this->_tpl_vars['product']['product_fund_allocation_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)); ?>
 
 			                            </div>
-			                            <div class='productShippingInfo' style='float:left; width:30%; text-align:right; width:33%;'>Shipping: <span class='price'>$<?php echo $this->_tpl_vars['product']['current_shipping_rate']; ?>
+			                            <div class='productShippingInfo' style='float:left; width:30%; text-align:right; width:20%;'>Shipping: <span class='price'>$<?php echo $this->_tpl_vars['product']['current_shipping_rate']; ?>
 </span>
 			                            </div>
 			                        </div>  

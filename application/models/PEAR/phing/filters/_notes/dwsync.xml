@@ -18,4 +18,22 @@
 <file name="TidyFilter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785740000000" />
 <file name="TranslateGettext.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785740000000" />
 <file name="XsltFilter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785750000000" />
+<file name="BaseFilterReader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967630000000" />
+<file name="BaseParamFilterReader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967630000000" />
+<file name="ChainableReader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967640000000" />
+<file name="ExpandProperties.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967640000000" />
+<file name="HeadFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967640000000" />
+<file name="LineContains.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967640000000" />
+<file name="LineContainsRegexp.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967650000000" />
+<file name="PrefixLines.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967650000000" />
+<file name="ReplaceRegexp.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967650000000" />
+<file name="ReplaceTokens.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967660000000" />
+<file name="StripLineBreaks.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967660000000" />
+<file name="StripLineComments.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967660000000" />
+<file name="StripPhpComments.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967660000000" />
+<file name="TabToSpaces.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967670000000" />
+<file name="TailFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967670000000" />
+<file name="TidyFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967670000000" />
+<file name="TranslateGettext.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967670000000" />
+<file name="XsltFilter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967680000000" />
 </dwsync>

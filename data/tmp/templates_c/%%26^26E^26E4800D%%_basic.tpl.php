@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-08-26 17:54:48
+<?php /* Smarty version 2.6.19, created on 2010-10-02 17:15:23
          compiled from productdisplay/_orderAttribute/_basic.tpl */ ?>
  <table>
   <tr height="350px;">
@@ -13,6 +13,9 @@
   	 <label class='mid'>Size:</label>More available<br/></div>
   	 <div class='box' style='padding-top:10px;'>
   	 <label class='mid'>Brand:</label><?php echo $this->_tpl_vars['product']['brand']; ?>
+</div>
+  	 <div class='box' style='padding-top:10px;'>
+  	 <label class='mid'>Seller:</label><?php echo $this->_tpl_vars['product']['uploader_username']; ?>
 </div>
   	 <div class='box' style='margin-top:10px;'>
      		<label class='mid'>Price:</label>

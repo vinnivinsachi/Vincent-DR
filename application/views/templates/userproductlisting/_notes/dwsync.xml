@@ -19,4 +19,14 @@
 <file name="viewpendingproduct.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129165666860000000" remote="129165875020000000" />
 <file name="index.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170007500000000" remote="129168279510000000" />
 <file name="editproduct.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170131660000000" remote="129168403650000000" />
+<file name="addimageattributetoproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129111083900000000" remote="129305964300000000" />
+<file name="addmeasurementtoproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112234720000000" remote="129305964310000000" />
+<file name="addsizeattributetoproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112904600000000" remote="129305964310000000" />
+<file name="editproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170131660000000" remote="129305964310000000" />
+<file name="images.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129068949380000000" remote="129305964310000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170007500000000" remote="129305964320000000" />
+<file name="sendproductlive.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129130144120000000" remote="129305964320000000" />
+<file name="userproductlistingerror.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129068161040000000" remote="129305964320000000" />
+<file name="userproductlistingpreview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129164630320000000" remote="129305964320000000" />
+<file name="viewpendingproduct.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129165666860000000" remote="129305964330000000" />
 </dwsync>

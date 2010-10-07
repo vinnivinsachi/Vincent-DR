@@ -6,4 +6,10 @@
 <file name="Dialect_MySQL.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782630000000" />
 <file name="Lexer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782640000000" />
 <file name="Parser.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976560000000" remote="129165782650000000" />
+<file name="Compiler.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980310000000" />
+<file name="Dialect_ANSI.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305980310000000" />
+<file name="Dialect_MySQL.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305980310000000" />
+<file name="Lexer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305980310000000" />
+<file name="Parser.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305980320000000" />
+<file name="ctype.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976560000000" remote="129305980320000000" />
 </dwsync>

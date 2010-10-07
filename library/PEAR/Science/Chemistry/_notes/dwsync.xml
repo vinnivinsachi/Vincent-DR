@@ -12,4 +12,16 @@
 <file name="PDBParser.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165783030000000" />
 <file name="Periodic_Table.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165783030000000" />
 <file name="Residue_PDB.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165783040000000" />
+<file name="Atom.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980240000000" />
+<file name="Atom_PDB.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980240000000" />
+<file name="Coordinates.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980250000000" />
+<file name="Element.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980250000000" />
+<file name="Macromolecule.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980250000000" />
+<file name="Macromolecule_PDB.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980250000000" />
+<file name="Molecule.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980260000000" />
+<file name="Molecule_XYZ.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980260000000" />
+<file name="PDBFile.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980260000000" />
+<file name="PDBParser.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980260000000" />
+<file name="Periodic_Table.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980270000000" />
+<file name="Residue_PDB.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980270000000" />
 </dwsync>

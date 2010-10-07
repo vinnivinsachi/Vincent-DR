@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-10-01 23:50:34
+<?php /* Smarty version 2.6.19, created on 2010-10-04 17:53:35
          compiled from ordermanager/soldorders.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'ordermanager/soldorders.tpl', 5, false),array('modifier', 'date_format', 'ordermanager/soldorders.tpl', 10, false),)), $this); ?>
@@ -58,9 +58,9 @@ unset($_smarty_tpl_vars);
     
 <?php if ($this->_tpl_vars['user']->generalInfo->user_type == 'generalSeller' || $this->_tpl_vars['user']->generalInfo->user_type == 'storeSeller'): ?> 
 	<div class='box'>
-		<div class='titleBarBig'>Orders Summary</div>
+		<div class='titleBarBig'>Sold orders</div>
 	</div>
-            <div id="orderHistorySold" style=" width:100%; ">
+            <div id="orderHistorySold" style=" width:100%; float: left;">
              <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => 'ordermanager/_soldOrders/soldOrder.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;

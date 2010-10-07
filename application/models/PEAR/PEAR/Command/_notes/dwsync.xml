@@ -23,4 +23,27 @@
 <file name="Remote.xml" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165786530000000" />
 <file name="Test.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165786540000000" />
 <file name="Test.xml" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976640000000" remote="129165786540000000" />
+<file name="Auth.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971240000000" />
+<file name="Auth.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971240000000" />
+<file name="Build.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971250000000" />
+<file name="Build.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971250000000" />
+<file name="Channels.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971250000000" />
+<file name="Channels.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971250000000" />
+<file name="Common.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971260000000" />
+<file name="Config.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971260000000" />
+<file name="Config.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971260000000" />
+<file name="Install.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971270000000" />
+<file name="Install.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971270000000" />
+<file name="Mirror.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971270000000" />
+<file name="Mirror.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971270000000" />
+<file name="Package.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971280000000" />
+<file name="Package.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971280000000" />
+<file name="Pickle.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971290000000" />
+<file name="Pickle.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971290000000" />
+<file name="Registry.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971290000000" />
+<file name="Registry.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971300000000" />
+<file name="Remote.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971300000000" />
+<file name="Remote.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971300000000" />
+<file name="Test.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971310000000" />
+<file name="Test.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976640000000" remote="129305971310000000" />
 </dwsync>

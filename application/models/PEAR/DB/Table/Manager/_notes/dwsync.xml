@@ -6,4 +6,10 @@
 <file name="oci8.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165791130000000" />
 <file name="pgsql.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165791150000000" />
 <file name="sqlite.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165791170000000" />
+<file name="ibase.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973910000000" />
+<file name="mysql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973910000000" />
+<file name="mysqli.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973920000000" />
+<file name="oci8.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973920000000" />
+<file name="pgsql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973920000000" />
+<file name="sqlite.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305973920000000" />
 </dwsync>

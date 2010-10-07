@@ -28,4 +28,18 @@
 <file name="tags.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864516560000000" remote="129165871940000000" />
 <file name="testing.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864516560000000" remote="129165871960000000" />
 <file name="universalduepreview.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864516560000000" remote="129165871970000000" />
+<file name="confirmaffiliation.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516380000000" remote="129305964910000000" />
+<file name="edituniversaldue.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128927004260000000" remote="129305964910000000" />
+<file name="images.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516400000000" remote="129305964920000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128927584720000000" remote="129305964920000000" />
+<file name="individualduepreview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516400000000" remote="129305964920000000" />
+<file name="individualduesetstatus.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516400000000" remote="129305964920000000" />
+<file name="individualpreviewlist.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516420000000" remote="129305964920000000" />
+<file name="memberlist.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516520000000" remote="129305964930000000" />
+<file name="memberpreview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516540000000" remote="129305964930000000" />
+<file name="removeaffiliate.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516540000000" remote="129305964930000000" />
+<file name="setmemberdues.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516560000000" remote="129305964930000000" />
+<file name="tags.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516560000000" remote="129305964930000000" />
+<file name="testing.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516560000000" remote="129305964940000000" />
+<file name="universalduepreview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516560000000" remote="129305964940000000" />
 </dwsync>

@@ -13,4 +13,17 @@
 <file name="TaskAdapter.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165784530000000" />
 <file name="TaskContainer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165784530000000" />
 <file name="UnknownElement.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165784540000000" />
+<file name="BuildEvent.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977540000000" />
+<file name="BuildException.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977540000000" />
+<file name="BuildListener.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977540000000" />
+<file name="IntrospectionHelper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977550000000" />
+<file name="Phing.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977550000000" />
+<file name="Project.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977560000000" />
+<file name="ProjectComponent.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977560000000" />
+<file name="RuntimeConfigurable.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977560000000" />
+<file name="Target.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977570000000" />
+<file name="Task.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977570000000" />
+<file name="TaskAdapter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977570000000" />
+<file name="TaskContainer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977570000000" />
+<file name="UnknownElement.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305977580000000" />
 </dwsync>

@@ -37,9 +37,9 @@
     
 {if $user->generalInfo->user_type =='generalSeller' ||$user->generalInfo->user_type =='storeSeller'} 
 	<div class='box'>
-		<div class='titleBarBig'>Orders Summary</div>
+		<div class='titleBarBig'>Sold orders</div>
 	</div>
-            <div id="orderHistorySold" style=" width:100%; ">
+            <div id="orderHistorySold" style=" width:100%; float: left;">
              {include file='ordermanager/_soldOrders/soldOrder.tpl'}
              </div>
     {/if}

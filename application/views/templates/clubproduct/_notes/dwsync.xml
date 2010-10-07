@@ -16,4 +16,12 @@
 <file name="select.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128928469080000000" remote="129165873190000000" />
 <file name="tag.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128928553300000000" remote="129165873210000000" />
 <file name="view.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128930405580000000" remote="129165873220000000" />
+<file name="archive.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928554300000000" remote="129305965280000000" />
+<file name="cat.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928469020000000" remote="129305965280000000" />
+<file name="club-not-found.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928469020000000" remote="129305965280000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928548540000000" remote="129305965280000000" />
+<file name="post-not-found.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928469080000000" remote="129305965290000000" />
+<file name="select.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928469080000000" remote="129305965290000000" />
+<file name="tag.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128928553300000000" remote="129305965290000000" />
+<file name="view.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128930405580000000" remote="129305965290000000" />
 </dwsync>

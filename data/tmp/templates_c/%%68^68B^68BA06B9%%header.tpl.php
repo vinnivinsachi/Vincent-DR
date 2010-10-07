@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-08-29 20:04:24
+<?php /* Smarty version 2.6.19, created on 2010-10-02 17:47:31
          compiled from layouts/application/header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'geturl', 'layouts/application/header.tpl', 41, false),array('modifier', 'count', 'layouts/application/header.tpl', 71, false),)), $this); ?>
@@ -56,7 +56,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'geturl', 'l
 ">[Account index]</a>
                 <a href="<?php echo smarty_function_geturl(array('controller' => 'account','action' => 'messages'), $this);?>
 ">[Messages]</a>
-                <a href="<?php echo smarty_function_geturl(array('controller' => 'account','action' => 'orders'), $this);?>
+                <a href="<?php echo smarty_function_geturl(array('controller' => 'ordermanager','action' => 'orders'), $this);?>
 ">[Bought orders]</a>
                <?php if ($this->_tpl_vars['signedInUser']->generalInfo->user_type == 'storeSeller' || $this->_tpl_vars['signedInUser']->generalInfo->user_type == 'generalSeller'): ?>
                	<a href="<?php echo smarty_function_geturl(array('controller' => 'ordermanager','action' => 'soldorders'), $this);?>

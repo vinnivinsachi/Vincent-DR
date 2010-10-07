@@ -26,7 +26,7 @@
 		                           
 		                        </div> 
 		                        <div class='box'> 
-		                        <span style="font-weight:bold; {if $product.product_order_status=='shipped'}color:#069;{elseif $product.product_order_status=='return shipped' || $product.product_absolute_latest_delivery_date|date_format < $smarty.now|date_format}color:#F30;{elseif $product.product_order_status=='order completed' || $product.product_order_status=='order return completed'}color:#0C0;{else} color:#F90;{/if} font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
+		                        <span style="font-weight:bold; font-size:12px; color:#B1FF91;">{removeunderscore phrase=$product.order_status}</span> 
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>
 		                        
@@ -69,7 +69,7 @@
                         </div>
 </div>
 
-<div class="trackingInfo" style="width:100%; float:left; padding:5px 0px 5px 0px;">
+						<div class="trackingInfo" style="width:100%; float:left; padding:5px 0px 5px 0px;">
 								    <div class="trackingInfoDetails box" >
 								   
 								    </div>
@@ -78,8 +78,15 @@
 								</div>
 								
 								<div class="orderProductFormSection" style="width:100%; float:left;">
-[<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-{$order->order_unique_id}_{$product.order_profile_id}" >Message buyer: {$product.uploader_username}</a>]
-								<div style="float:right;">[<a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Return item</a>]</div>
+<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-{$order->order_unique_id}_{$product.order_profile_id}" >Message seller: {$product.uploader_username} </a>|
+								<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Tracking status</a>
+
+
+								{if $product.return_allowed=='1'}
+								<div style="float:right;">
+									<a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Return item</a> |
+									<a >Satisfied and write a review</a>
+								</div>
 								<div class="returnTrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
                                     <form method="post" action="{geturl controller='ordermanager' action='addtrackingtoreturnproduct'}">
                                         <label style="width:50%;">Return Tracking #:</label>
@@ -89,14 +96,48 @@
                                             <option value="USPS">USPS</option>
                                             <option value="FEDEX">FEDEX</option>
                                             <option value="UPS">UPS</option>
-                                        </select>
+                                        </select><br/>
+                                        <label style="width:50%">Rate experience</label>
+                                        <select name='buyerExperienceRating'>
+                                        	<option value='5'>5</option>
+                                        	<option value='4.5'>4.5</option>
+                                        	<option value='4'>4</option>
+                                        	<option value='3.5'>3.5</option>
+                                        	<option value='3'>3</option>
+                                        </select><br/>
+                                        <label style="width:50%">Reason for return</label>
+                                        <textarea name='returnReason' cols='20' rows='3'></textarea><br/>
+                                       
                                         <input type="hidden" name="returnProductId" value="{$product.order_profile_id}" />
-                                        <input type="submit" value="Add tracking info" />
+                                        <input type="submit" style='margin-left:50%;' value="Return this item" />
                                     </form>
                                 </div>    
+                                {else}
+                                <div style="float:right;"><a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Wrong item?</a></div>
+								<div class="returnTrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
+                                    You may not return this item because this item is not returnable specified by the seller during listing. <br/>
+                                    If the item shipped is not the right item, you may <strong>file a claim</strong>. We will then investigate this order and approve your return request. After the return is approved, you may submit a return tracking information be full refunded for the item.
+                                    <form>
+                                    	
+                                        <label style="width:50%;">Reason for claim:</label>
+                                        <select name="orderClaimReason">
+                                            <option value="Wrong item">Wrong item</option>
+                                            <option value="Severely damaged">Severely damanged</option>
+                                            <option value="Manufacturing defect">Manufacturing defect</option>
+                                            <option value="Do not like it">Do not like it</option>
+                                            <option value="Other">Other</option>
+                                        </select><br/>
+                                        <label style="width:50%;">Phone number:</label>
+                                        <input type="text" name='claimBuyerPhoneNumber' />
+                                        <input type="hidden" name="" value="{$product.order_profile_id}" />
+                                        <input type="submit" value="File this claim" />
+                                    </form>
+                                </div>   
+                                {/if}
 								{include file='ordermanager/_orders/_message.tpl'}
-								[<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Tracking status</a>]
 								
 								<div class="trackingStatusInfo {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" style="display:none; float:left;"></div>
 								           
 								</div>
+								
+								

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.19, created on 2010-10-01 23:57:59
+<?php /* Smarty version 2.6.19, created on 2010-10-02 17:54:33
          compiled from ordermanager/_soldOrders/_SHIPPED.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_SHIPPED.tpl', 14, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_SHIPPED.tpl', 29, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_SHIPPED.tpl', 14, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_SHIPPED.tpl', 33, false),)), $this); ?>
      <div class='box' style='width:100%;'>
 <div style="font-weight:bold; width:500px; float:left;">
                     <div class='tooltipControl' style='float:left; font-size:1.4em; cursor: pointer;'><?php echo $this->_tpl_vars['product']['product_name']; ?>
@@ -39,7 +39,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; <?php if ($this->_tpl_vars['product']['product_order_status'] == 'shipped'): ?>color:#069;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'return shipped' || ((is_array($_tmp=$this->_tpl_vars['product']['product_absolute_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)) < ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp))): ?>color:#F30;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'order completed' || $this->_tpl_vars['product']['product_order_status'] == 'order return completed'): ?>color:#0C0;<?php else: ?> color:#F90;<?php endif; ?> font-size:12px; "><?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
+		                        <span style="font-weight:bold; font-size:12px;"><?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
 </span> 
 		                        
 		                        | 

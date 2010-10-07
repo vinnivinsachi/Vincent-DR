@@ -9,6 +9,8 @@
   	 <label class='mid'>Size:</label>More available<br/></div>
   	 <div class='box' style='padding-top:10px;'>
   	 <label class='mid'>Brand:</label>{$product.brand}</div>
+  	 <div class='box' style='padding-top:10px;'>
+  	 <label class='mid'>Seller:</label>{$product.uploader_username}</div>
   	 <div class='box' style='margin-top:10px;'>
      		<label class='mid'>Price:</label>
                  {if $product.discount_price=='' || $product.discount_price==0}

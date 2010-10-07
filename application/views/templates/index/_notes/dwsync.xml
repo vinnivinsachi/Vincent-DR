@@ -19,4 +19,15 @@
 <file name="test.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128936212640000000" remote="129165872670000000" />
 <file name="university.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864516120000000" remote="129165872690000000" />
 <file name="index.tpl" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129151521380000000" remote="129165872700000000" />
+<file name="calender.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128943303020000000" remote="129305965120000000" />
+<file name="clubs.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516080000000" remote="129305965130000000" />
+<file name="dancenatrual.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516080000000" remote="129305965130000000" />
+<file name="index.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129305965140000000" remote="129305965130000000" />
+<file name="indexbackup.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516100000000" remote="129305965130000000" />
+<file name="measurement.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516120000000" remote="129305965130000000" />
+<file name="terms.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516120000000" remote="129305965140000000" />
+<file name="test.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128936212640000000" remote="129305965140000000" />
+<file name="test2.txt" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129170558720000000" remote="129305965140000000" />
+<file name="university.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864516120000000" remote="129305965150000000" />
+<file name="error.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129208448940000000" remote="129305965150000000" />
 </dwsync>

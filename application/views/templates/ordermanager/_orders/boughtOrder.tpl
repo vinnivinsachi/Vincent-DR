@@ -1,7 +1,7 @@
 			<table width="100%;">
                 
                 {foreach from=$orders item=order key=Key}
-                <tr style='border-bottom:1px solid #999;'><td style='width:100px;'>{$order->buyer_name}<br />
+                <tr style='border-bottom:3px solid #999;'><td style='width:100px;'>{$order->buyer_name}<br />
                         {$order->shippingAddress->address_one}<br />
                         {if $order->shippingAddress->address_two!=''}
                             {$order->shippingAddress->address_two}<br />

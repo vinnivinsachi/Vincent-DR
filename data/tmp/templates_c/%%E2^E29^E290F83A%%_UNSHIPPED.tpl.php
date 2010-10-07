@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.19, created on 2010-10-01 23:57:58
+<?php /* Smarty version 2.6.19, created on 2010-10-02 18:22:30
          compiled from ordermanager/_soldOrders/_UNSHIPPED.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 14, false),array('function', 'geturl', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 94, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 29, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 14, false),array('function', 'geturl', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 94, false),array('modifier', 'date_format', 'ordermanager/_soldOrders/_UNSHIPPED.tpl', 33, false),)), $this); ?>
     <div class='box' style='width:100%;'>
                     <div style="font-weight:bold; width:500px; float:left;">
                     <div class='tooltipControl' style='float:left; font-size:1.4em; cursor: pointer;'><?php echo $this->_tpl_vars['product']['product_name']; ?>
@@ -39,7 +39,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; <?php if ($this->_tpl_vars['product']['product_order_status'] == 'shipped'): ?>color:#069;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'return shipped' || ((is_array($_tmp=$this->_tpl_vars['product']['product_absolute_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)) < ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp))): ?>color:#F30;<?php elseif ($this->_tpl_vars['product']['product_order_status'] == 'order completed' || $this->_tpl_vars['product']['product_order_status'] == 'order return completed'): ?>color:#0C0;<?php else: ?> color:#F90;<?php endif; ?> font-size:12px; "><?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
+		                        <span style="font-weight:bold; color:#F90; font-size:12px; "><?php echo smarty_function_removeunderscore(array('phrase' => $this->_tpl_vars['product']['order_status']), $this);?>
 </span> 
 		                        
 		                        | 
@@ -96,7 +96,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunder
 								    <?php if (((is_array($_tmp=$this->_tpl_vars['product']['product_warning_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d") : smarty_modifier_date_format($_tmp, "%Y-%m-%d")) < ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d") : smarty_modifier_date_format($_tmp, "%Y-%m-%d")) && ((is_array($_tmp=$this->_tpl_vars['product']['product_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d") : smarty_modifier_date_format($_tmp, "%Y-%m-%d")) < ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d") : smarty_modifier_date_format($_tmp, "%Y-%m-%d"))): ?>
 								    	<span style="color:#F30; font-size:1.2em; padding-left:10px;">This product is now past due. The buyer will be able to cancel this order and be refunded. If the order is cancelled, you will no longer be able to provide any tracking information.</span>
 								    <?php else: ?>
-								        <span style="color:#F90; padding-left:10px;"> Please submit a tracking info! The buyer will be able to cancel this order if this order is not shipped before <?php echo ((is_array($_tmp=$this->_tpl_vars['product']['product_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%D") : smarty_modifier_date_format($_tmp, "%D")); ?>
+								        <span style="padding-left:10px;"> Please submit a tracking info! The buyer will be able to cancel this order if this order is not shipped before <?php echo ((is_array($_tmp=$this->_tpl_vars['product']['product_latest_delivery_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%D") : smarty_modifier_date_format($_tmp, "%D")); ?>
 .</span>
 								    <?php endif; ?>
 								    </div>

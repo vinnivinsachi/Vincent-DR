@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2010-10-01 22:42:40
+<?php /* Smarty version 2.6.19, created on 2010-10-02 18:10:04
          compiled from ordermanager/_orders/_RETURN_SHIPPED.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'removeunderscore', 'ordermanager/_orders/_RETURN_SHIPPED.tpl', 14, false),array('modifier', 'date_format', 'ordermanager/_orders/_RETURN_SHIPPED.tpl', 29, false),)), $this); ?>
@@ -120,18 +120,18 @@ Waiting for delivery confirmation			                            </div>
 								</div>
 								
 								<div class="orderProductFormSection" style="width:100%; float:left;">
-[<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
+<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " >Message buyer: <?php echo $this->_tpl_vars['product']['uploader_username']; ?>
-</a>]
-								[<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
+</a> |
+								<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " title="<?php echo $this->_tpl_vars['product']['product_tracking']; ?>
-">Tracking status</a>]
-                            [<a class="anchorReturnTrackingStatus" id="anchorID-DivIDreturnTrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
+">Tracking status</a> |
+                            <a class="anchorReturnTrackingStatus" id="anchorID-DivIDreturnTrackingStatusInfo-<?php echo $this->_tpl_vars['order']->order_unique_id; ?>
 _<?php echo $this->_tpl_vars['product']['order_profile_id']; ?>
 " title="<?php echo $this->_tpl_vars['product']['product_tracking']; ?>
-">Return tracking status</a>]
+">Return tracking status</a>
 
 
 
