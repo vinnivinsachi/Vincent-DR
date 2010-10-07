@@ -13,4 +13,17 @@
 <file name="Tokenizer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165788520000000" />
 <file name="Translator.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165788520000000" />
 <file name="Tree.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165788530000000" />
+<file name="Assign.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986050000000" />
+<file name="Compiler.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986070000000" />
+<file name="Element.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986090000000" />
+<file name="Factory.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986110000000" />
+<file name="Plugin.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986130000000" />
+<file name="SmartyAPI.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986140000000" />
+<file name="Test.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986160000000" />
+<file name="Token.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986180000000" />
+<file name="Tokenizer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986210000000" />
+<file name="Translator.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986230000000" />
+<file name="Tree.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986240000000" />
+<file name="compileAll.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986260000000" />
+<file name="example.ini" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305986280000000" />
 </dwsync>

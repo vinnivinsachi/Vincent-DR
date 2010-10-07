@@ -30,7 +30,7 @@
 			$this->add('current_shipping_rate'); //need
 			$this->add('product_type_added_to_shopping_cart'); //need
 			$this->add('order_shipping_id');
-			
+			$this->add('return_allowed');
 			$this->add('seller_receivable');//for seller
 			$this->add('buyer_name');
 			$this->add('buyer_id');

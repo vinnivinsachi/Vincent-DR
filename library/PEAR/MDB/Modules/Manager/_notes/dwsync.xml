@@ -7,4 +7,11 @@
 <file name="mysql.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787580000000" />
 <file name="oci8.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787580000000" />
 <file name="pgsql.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787590000000" />
+<file name="Common.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984230000000" />
+<file name="fbsql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984250000000" />
+<file name="ibase.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984280000000" />
+<file name="mssql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984300000000" />
+<file name="mysql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984320000000" />
+<file name="oci8.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984340000000" />
+<file name="pgsql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305984360000000" />
 </dwsync>

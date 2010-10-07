@@ -6,4 +6,10 @@
 <file name="IdentityMapper.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785570000000" />
 <file name="MergeMapper.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785570000000" />
 <file name="RegexpMapper.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785570000000" />
+<file name="FileNameMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978290000000" />
+<file name="FlattenMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978290000000" />
+<file name="GlobMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978290000000" />
+<file name="IdentityMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978300000000" />
+<file name="MergeMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978300000000" />
+<file name="RegexpMapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305978300000000" />
 </dwsync>

@@ -8,4 +8,12 @@
 <file name="PrefManager.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165794450000000" />
 <file name="RADIUS.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165794470000000" />
 <file name="SASL.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165794480000000" />
+<file name="Anonymous.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993380000000" />
+<file name="Auth.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993400000000" />
+<file name="Container.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993410000000" />
+<file name="Controller.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993420000000" />
+<file name="HTTP.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993440000000" />
+<file name="PrefManager.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993460000000" />
+<file name="RADIUS.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993470000000" />
+<file name="SASL.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305993480000000" />
 </dwsync>

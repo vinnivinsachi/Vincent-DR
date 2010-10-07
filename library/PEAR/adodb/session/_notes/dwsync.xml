@@ -19,4 +19,23 @@
 <file name="crypt.inc.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165796860000000" />
 <file name="session_schema.xml" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165796870000000" />
 <file name="session_schema2.xml" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165796890000000" />
+<file name="adodb-compress-bzip2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979200000000" />
+<file name="adodb-compress-gzip.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979200000000" />
+<file name="adodb-cryptsession.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979200000000" />
+<file name="adodb-cryptsession2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979200000000" />
+<file name="adodb-encrypt-mcrypt.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979210000000" />
+<file name="adodb-encrypt-md5.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979210000000" />
+<file name="adodb-encrypt-secret.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979210000000" />
+<file name="adodb-encrypt-sha1.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979210000000" />
+<file name="adodb-sess.txt" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979210000000" />
+<file name="adodb-session-clob.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979220000000" />
+<file name="adodb-session-clob2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979220000000" />
+<file name="adodb-session.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979230000000" />
+<file name="adodb-session2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979230000000" />
+<file name="adodb-sessions.mysql.sql" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979230000000" />
+<file name="adodb-sessions.oracle.clob.sql" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979240000000" />
+<file name="adodb-sessions.oracle.sql" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979260000000" />
+<file name="crypt.inc.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979270000000" />
+<file name="session_schema.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979270000000" />
+<file name="session_schema2.xml" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305979270000000" />
 </dwsync>

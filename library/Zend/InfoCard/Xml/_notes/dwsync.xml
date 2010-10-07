@@ -8,12 +8,12 @@
 <file name="KeyInfo.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112074120000000" remote="129165844890000000" />
 <file name="Security.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112074100000000" remote="129165844910000000" />
 <file name="SecurityTokenReference.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112074120000000" remote="129165844930000000" />
-<file name="Assertion.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831460000000" />
-<file name="Element.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831460000000" />
-<file name="EncryptedData.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831460000000" />
-<file name="EncryptedKey.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831470000000" />
-<file name="Exception.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831470000000" />
-<file name="KeyInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831470000000" />
-<file name="Security.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074100000000" remote="129304831470000000" />
-<file name="SecurityTokenReference.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129304831480000000" />
+<file name="Assertion.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306031990000000" />
+<file name="Element.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032000000000" />
+<file name="EncryptedData.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032010000000" />
+<file name="EncryptedKey.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032030000000" />
+<file name="Exception.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032070000000" />
+<file name="KeyInfo.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032090000000" />
+<file name="Security.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074100000000" remote="129306032100000000" />
+<file name="SecurityTokenReference.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112074120000000" remote="129306032120000000" />
 </dwsync>

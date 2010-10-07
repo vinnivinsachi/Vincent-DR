@@ -18,4 +18,22 @@
 <file name="SOAP.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165795050000000" />
 <file name="SOAP5.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165795070000000" />
 <file name="vpopmail.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976480000000" remote="129165795090000000" />
+<file name="Array.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974630000000" />
+<file name="DB.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974640000000" />
+<file name="DBLite.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974640000000" />
+<file name="File.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974640000000" />
+<file name="IMAP.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974650000000" />
+<file name="KADM5.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974650000000" />
+<file name="LDAP.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974650000000" />
+<file name="MDB.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974660000000" />
+<file name="MDB2.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974660000000" />
+<file name="Multiple.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974660000000" />
+<file name="PEAR.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974670000000" />
+<file name="POP3.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974670000000" />
+<file name="RADIUS.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974670000000" />
+<file name="SAP.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974670000000" />
+<file name="SMBPasswd.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974680000000" />
+<file name="SOAP.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974680000000" />
+<file name="SOAP5.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974680000000" />
+<file name="vpopmail.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976480000000" remote="129305974690000000" />
 </dwsync>

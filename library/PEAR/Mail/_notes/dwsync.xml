@@ -9,4 +9,13 @@
 <file name="RFC822.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787850000000" />
 <file name="sendmail.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787860000000" />
 <file name="smtp.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787860000000" />
+<file name="Queue.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983050000000" />
+<file name="RFC822.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983070000000" />
+<file name="mail.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983090000000" />
+<file name="mime.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983100000000" />
+<file name="mimeDecode.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983120000000" />
+<file name="mimePart.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983140000000" />
+<file name="null.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983150000000" />
+<file name="sendmail.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983160000000" />
+<file name="smtp.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305983180000000" />
 </dwsync>

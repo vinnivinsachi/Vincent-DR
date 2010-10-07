@@ -22,4 +22,26 @@
 <file name="core.write_compiled_include.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128556341680000000" remote="129165781370000000" />
 <file name="core.write_compiled_resource.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128556341680000000" remote="129165781310000000" />
 <file name="core.write_file.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128556341680000000" remote="129165781360000000" />
+<file name="core.is_secure.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977020000000" />
+<file name="core.write_compiled_resource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341680000000" remote="129305977020000000" />
+<file name="core.get_php_resource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977020000000" />
+<file name="core.smarty_include_php.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977030000000" />
+<file name="core.process_compiled_include.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977030000000" />
+<file name="core.load_resource_plugin.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977030000000" />
+<file name="core.write_cache_file.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341680000000" remote="129305977030000000" />
+<file name="core.assemble_plugin_filepath.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977040000000" />
+<file name="core.get_microtime.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977040000000" />
+<file name="core.assign_smarty_interface.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977040000000" />
+<file name="core.run_insert_handler.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977040000000" />
+<file name="core.create_dir_structure.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977050000000" />
+<file name="core.load_plugins.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977050000000" />
+<file name="core.is_trusted.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977050000000" />
+<file name="core.get_include_path.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977050000000" />
+<file name="core.read_cache_file.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977050000000" />
+<file name="core.rm_auto.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977060000000" />
+<file name="core.rmdir.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977060000000" />
+<file name="core.write_file.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341680000000" remote="129305977060000000" />
+<file name="core.process_cached_inserts.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341660000000" remote="129305977060000000" />
+<file name="core.write_compiled_include.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341680000000" remote="129305977070000000" />
+<file name="core.display_debug_console.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128556341640000000" remote="129305977070000000" />
 </dwsync>

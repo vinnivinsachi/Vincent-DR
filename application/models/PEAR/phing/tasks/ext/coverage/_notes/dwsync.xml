@@ -5,4 +5,9 @@
 <file name="CoverageReportTask.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785340000000" />
 <file name="CoverageReportTransformer.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785340000000" />
 <file name="CoverageSetupTask.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165785340000000" />
+<file name="CoverageMerger.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967350000000" />
+<file name="CoverageMergerTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967350000000" />
+<file name="CoverageReportTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967350000000" />
+<file name="CoverageReportTransformer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967360000000" />
+<file name="CoverageSetupTask.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305967360000000" />
 </dwsync>

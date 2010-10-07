@@ -80,7 +80,7 @@
 			$this->acl->allow('storeSeller', 'checkout');
 			$this->acl->allow('admin', 'checkout');
 			$this->acl->allow('member', 'ordermanager', array('index','orders', 'completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview'));
-			$this->acl->allow('generalSeller', 'ordermanager', array('index','orders', 'completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct'));
+			$this->acl->allow('generalSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct'));
 			$this->acl->allow('storeSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct'));
 			$this->acl->allow('admin', 'ordermanager');
 			$this->acl->allow('guest', 'communication');

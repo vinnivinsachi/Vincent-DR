@@ -7,4 +7,8 @@
 <file name="publicShoutBoxMessages.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170603160000000" remote="129170603190000000" />
 <file name="privateMessages.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129170617420000000" remote="129170617420000000" />
 <file name="rewardPoint.tpl" server="www.dancewearRialto.com//home/dancewearrialto/dancewearrialto.com/html/" local="129174858880000000" remote="129174858920000000" />
+<file name="customerReview.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129161229440000000" remote="129305965020000000" />
+<file name="privateMessages.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129258769700000000" remote="129305965030000000" />
+<file name="publicShoutBoxMessages.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129259438620000000" remote="129305965030000000" />
+<file name="rewardPoint.tpl" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129174858880000000" remote="129305965030000000" />
 </dwsync>

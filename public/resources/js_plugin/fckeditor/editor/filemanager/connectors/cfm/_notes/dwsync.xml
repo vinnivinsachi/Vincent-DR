@@ -26,4 +26,17 @@
 <file name="image.cfc" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864517940000000" remote="129165776210000000" />
 <file name="ImageObject.cfc" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864517940000000" remote="129165776210000000" />
 <file name="upload.cfm" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128864517940000000" remote="129165776220000000" />
+<file name="ImageObject.cfc" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517940000000" remote="129306059260000000" />
+<file name="cf5_connector.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059280000000" />
+<file name="cf5_upload.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059300000000" />
+<file name="cf_basexml.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059320000000" />
+<file name="cf_commands.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059350000000" />
+<file name="cf_connector.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059370000000" />
+<file name="cf_io.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059390000000" />
+<file name="cf_upload.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059410000000" />
+<file name="cf_util.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059430000000" />
+<file name="config.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517920000000" remote="129306059450000000" />
+<file name="connector.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517940000000" remote="129306059470000000" />
+<file name="image.cfc" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517940000000" remote="129306059500000000" />
+<file name="upload.cfm" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128864517940000000" remote="129306059520000000" />
 </dwsync>

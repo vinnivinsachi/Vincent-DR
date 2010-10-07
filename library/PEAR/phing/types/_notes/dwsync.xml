@@ -18,4 +18,22 @@
 <file name="RegularExpression.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976520000000" remote="129165784690000000" />
 <file name="TokenReader.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165784690000000" />
 <file name="TokenSource.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165784690000000" />
+<file name="AbstractFileSet.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977630000000" />
+<file name="Commandline.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977630000000" />
+<file name="DataType.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977640000000" />
+<file name="Description.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977640000000" />
+<file name="DirSet.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977640000000" />
+<file name="FileList.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977650000000" />
+<file name="FileSet.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977650000000" />
+<file name="FilterChain.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977650000000" />
+<file name="Mapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977650000000" />
+<file name="Parameter.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977660000000" />
+<file name="Parameterizable.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977660000000" />
+<file name="Path.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977660000000" />
+<file name="PatternSet.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977660000000" />
+<file name="PhingFilterReader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977670000000" />
+<file name="Reference.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977670000000" />
+<file name="RegularExpression.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976520000000" remote="129305977670000000" />
+<file name="TokenReader.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305977680000000" />
+<file name="TokenSource.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305977680000000" />
 </dwsync>

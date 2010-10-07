@@ -30,7 +30,7 @@
 
 <div id="rightColumn" style="width:77%; float:right;">
 
-        <div id="orderHistoryBox" style=" max-height:800px; width:100%; color:black;">
+        <div id="orderHistoryBox" style="width:100%; color:black;">
         	{include file='ordermanager/_orders/boughtOrder.tpl' orders=$orders}
         </div>
 </div>

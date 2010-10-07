@@ -9,4 +9,13 @@
 <file name="Transport.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165782800000000" />
 <file name="Value.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165782800000000" />
 <file name="WSDL.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976540000000" remote="129165782810000000" />
+<file name="Base.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980340000000" />
+<file name="Client.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980340000000" />
+<file name="Disco.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980350000000" />
+<file name="Fault.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980350000000" />
+<file name="Parser.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980350000000" />
+<file name="Server.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980360000000" />
+<file name="Transport.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980360000000" />
+<file name="Value.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980360000000" />
+<file name="WSDL.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976540000000" remote="129305980370000000" />
 </dwsync>

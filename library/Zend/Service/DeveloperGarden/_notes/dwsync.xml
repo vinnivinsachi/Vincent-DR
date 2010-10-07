@@ -10,14 +10,14 @@
 <file name="SendSms.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079200000000" remote="129165814320000000" />
 <file name="SmsValidation.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079200000000" remote="129165814340000000" />
 <file name="VoiceCall.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="129112079200000000" remote="129165814360000000" />
-<file name="BaseUserService.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129304825830000000" />
-<file name="ConferenceCall.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079080000000" remote="129304825830000000" />
-<file name="Credential.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129304825830000000" />
-<file name="Exception.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079260000000" remote="129304825830000000" />
-<file name="IpLocation.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129304825840000000" />
-<file name="LocalSearch.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129304825840000000" />
-<file name="SecurityTokenServer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129304825840000000" />
-<file name="SendSms.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129304825840000000" />
-<file name="SmsValidation.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129304825850000000" />
-<file name="VoiceCall.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129304825850000000" />
+<file name="BaseUserService.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129306007410000000" />
+<file name="ConferenceCall.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079080000000" remote="129306007440000000" />
+<file name="Credential.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129306007450000000" />
+<file name="Exception.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079260000000" remote="129306007470000000" />
+<file name="IpLocation.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129306007480000000" />
+<file name="LocalSearch.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129306007500000000" />
+<file name="SecurityTokenServer.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079240000000" remote="129306007510000000" />
+<file name="SendSms.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129306007530000000" />
+<file name="SmsValidation.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129306007540000000" />
+<file name="VoiceCall.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="129112079200000000" remote="129306007560000000" />
 </dwsync>

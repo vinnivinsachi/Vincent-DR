@@ -22,6 +22,7 @@
 				$currentItem['uploader_username']=$item[0]['uploader_username'];
 				$currentItem['uploader_email']=$item[0]['uploader_email'];
 				$currentItem['uploader_id']=$item[0]['uploader_id'];
+				$currentItem['return_allowed']=$item[0]['return_allowed'];
 				$currentItem['product_country_origin']=$item[0]['uploader_network'];
 				$currentItem['product_name']=$item[0]['name'];
 				//this must change
@@ -75,6 +76,7 @@
 				$currentItem['uploader_email']=$item[0]['uploader_email'];
 				$currentItem['uploader_id']=$item[0]['uploader_id'];
 				$currentItem['product_name']=$item[0]['name'];
+				$currentItem['return_allowed']=$item[0]['return_allowed'];
 				$currentItem['product_country_origin']=$item[0]['uploader_network'];
 				$currentItem['inventory_attribute_table']=$item[0]['inventory_attribute_table'];
 				//this must change

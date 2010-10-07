@@ -15,4 +15,19 @@
 <file name="querysim.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787470000000" />
 <file name="QueryTool.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787470000000" />
 <file name="reverse_engineer_xml_schema.php" server="www.dancewearrialto.com/dancewearrialto.com/html/" local="128426976500000000" remote="129165787480000000" />
+<file name="Common.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972150000000" />
+<file name="Date.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972150000000" />
+<file name="Manager.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972160000000" />
+<file name="Parser.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972170000000" />
+<file name="QueryTool.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972170000000" />
+<file name="fbsql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972170000000" />
+<file name="ibase.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972180000000" />
+<file name="metabase_wrapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972190000000" />
+<file name="mssql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972190000000" />
+<file name="mysql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972200000000" />
+<file name="oci8.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972210000000" />
+<file name="peardb_wrapper.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972210000000" />
+<file name="pgsql.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972210000000" />
+<file name="querysim.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972220000000" />
+<file name="reverse_engineer_xml_schema.php" server="dancerialto.com//home/dr/dancerialto.com/html/" local="128426976500000000" remote="129305972220000000" />
 </dwsync>
