@@ -19,8 +19,8 @@
 	
 		public function indexAction()
 		{
-			$this->breadcrumbs->addStep('Dancewear Rialto', $this->getUrl(null, 'index'));
-			echo 'first leg';
+//			$this->breadcrumbs->addStep('Dancewear Rialto', $this->getUrl(null, 'index'));
+//			echo 'first leg';
 			//$this->view->layout =''
 		}
 		

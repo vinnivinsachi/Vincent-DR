@@ -128,6 +128,9 @@
 			
 			//$this->view->productConfig = $this->productConfig;
 			$this->view->siteRoot = SITE_ROOT;
+			$this->view->cssDir = CSS_DIR;
+			$this->view->imagesDir = IMAGES_DIR;
+			$this->view->jsDir = JS_DIR;
 		}
 		
 		public function postDispatch(){
