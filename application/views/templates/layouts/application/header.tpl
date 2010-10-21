@@ -44,6 +44,12 @@
 	<div id='logo'><img src='{$imagesDir}/layout/logo_title.jpg'/></div>
 
 
+<!-- ACCOUNT MENU -->
+	<div id='account_menu'>
+		<a href='#'>Account</a> &nbsp;|&nbsp; <a href='#'>Logout</a>
+	</div>
+
+
 <!-- MINI CART -->
 	<a id='mini_cart_link' href='#'>
 		<div id='mini_cart'>

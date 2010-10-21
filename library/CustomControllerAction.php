@@ -79,7 +79,7 @@
 			}
 						
 			if(!isset($this->shoppingCartInfoSession->cartInfo->totalCost)){
-				echo 'here at set totalCost = 0';
+				//echo 'here at set totalCost = 0';
 				$this->shoppingCartInfoSession->cartInfo->totalCost=0;
 			}
 			
