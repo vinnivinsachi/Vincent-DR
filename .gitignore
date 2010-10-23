@@ -6,8 +6,16 @@ application/configs/local_settings.ini
 data/logs
 data/logs/
 data/logs/*
-<<<<<<< HEAD
 data/logs/*/*
-=======
-data/logs/*/*
->>>>>>> 21203f8388fbbe2c50b05199faa56694ae8de04e
+public/resources/userdata/tmp
+public/resources/userdata/tmp/
+public/resources/userdata/tmp/*
+public/resources/userdata/tmp/*/*
+public/resources/userdata/uploaded-files
+public/resources/userdata/uploaded-files/
+public/resources/userdata/uploaded-files/*
+public/resources/userdata/uploaded-files/*/*
+application/controllers/IndexController.php
+application/views/templates/layouts/application/header.tpl
+index.php
+library/CustomControllerAction.php

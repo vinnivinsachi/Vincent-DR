@@ -81,7 +81,7 @@
 			}
 						
 			if(!isset($this->shoppingCartInfoSession->cartInfo->totalCost)){
-				echo 'here at set totalCost = 0';
+				//echo 'here at set totalCost = 0';
 				$this->shoppingCartInfoSession->cartInfo->totalCost=0;
 			}
 			
@@ -131,6 +131,9 @@
 			
 			//$this->view->productConfig = $this->productConfig;
 			$this->view->siteRoot = SITE_ROOT;
+			$this->view->cssDir = CSS_DIR;
+			$this->view->imagesDir = IMAGES_DIR;
+			$this->view->jsDir = JS_DIR;
 		}
 		
 		public function postDispatch(){
