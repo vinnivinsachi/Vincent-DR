@@ -1,6 +1,6 @@
-#Wed Oct 06 08:42:01 JST 2010
+#Tue Oct 19 21:17:17 EDT 2010
 eclipse.preferences.version=1
-include_path=0;/dr\u00055;org.zend.php.framework.CONTAINER
+include_path=5;org.zend.php.framework.CONTAINER
 org.eclipse.php.core.phpForamtterIndentationSize=1
 org.eclipse.php.core.phpForamtterUseTabs=true
 phpVersion=php5

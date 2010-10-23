@@ -65,22 +65,31 @@
 			//when the product_completion_date < now
 			if($product->load($orderItemId)){
 				if($product->orderStatus->order_status == 'DELIVERED' && strtotime($product->orderStatus->product_completion_date)<time()){
-					$product->orderStatus->order_status ='COMPLETED';	
+					$product->orderStatus->order_status ='ORDER_COMPLETED';	
 					$this->messenger->addMessage($product->late_delivery_confirmation_date);
 					$this->messenger->addMessage('order profile completed');
-					$product->orderStatus->save();
-					$this->adminOrders->orderProfiles->completedOrders[$orderItemId]=$this->adminOrders->orderProfiles->deliveredOrders[$orderItemId];
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'ORDER_COMPLETED');
+
+					
+					$this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId]=$this->adminOrders->orderProfiles->deliveredOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->deliveredOrders[$orderItemId]);
-				}else if($product->product_order_status=='RETURN_DELIVERED' && strtotime($product->orderStatus->product_return_completion_date)<time()){
+					}
+				}else if($product->orderStatus->order_status=='RETURN_DELIVERED'){
 					$product->orderStatus->order_status='RETURN_COMPLETED';
 					$this->messenger->addMessage($product->late_return_delivery_confirmation_date);
 					$this->messenger->addMessage('order profile return completed');
-					$product->orderStatus->save();
-					$this->adminOrders->orderProfiles->returnCompleteOrders[$orderItemId]=$this->adminOrders->orderProfiles->returnShippedDeliveredOrders[$orderItemId];
-					unset($this->adminOrders->orderProfiles->returnShippedDeliveredOrders[$orderItemId]);
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'RETURN_COMPLETED');
+						
+							
+					$this->adminOrders->orderProfiles->returnCompletedOrders[$orderItemId]=$this->adminOrders->orderProfiles->returnDeliveredOrders[$orderItemId];
+					unset($this->adminOrders->orderProfiles->returnDeliveredOrders[$orderItemId]);
+					$this->messenger->addMessage('return completed');
+					
+					}
 				}else{
 					$this->messenger->addMessage('This order is not ready to be completed');
-					
 				}
 				
 				$this->_redirect($_SERVER['HTTP_REFERER']);
@@ -98,21 +107,29 @@
 			if($product->load($orderItemId)){
 				if($product->orderStatus->order_status == 'SHIPPED'){
 					$product->orderStatus->order_status ='DELIVERED';	
-					$product->orderStatus->product_delivered_date=date('Y-m-d G:i:s',mktime(0,0,0,date("m"),date("d"),date("Y")));
-					$product->orderStatus->product_completion_date=date('Y-m-d G:i:s',mktime(0,0,0,date("m"),date("d")+14,date("Y")));
+					$product->orderStatus->product_delivered_date=date('Y-m-d',mktime(0,0,0,date("m"),date("d"),date("Y")));
+					$product->orderStatus->product_completion_date=date('Y-m-d',mktime(0,0,0,date("m"),date("d")+7,date("Y")));
 					$this->messenger->addMessage($product->late_delivery_confirmation_date);
 					$this->messenger->addMessage('shipped delivered');
-					$product->orderStatus->save();
+					if($product->orderStatus->save()){
+						//update profile status tracking
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'DELIVERED');
+						
+					}
 					$this->adminOrders->orderProfiles->deliveredOrders[$orderItemId]=$this->adminOrders->orderProfiles->shippedOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->shippedOrders[$orderItemId]);
-				}else if($product->product_order_status=='RETURN_SHIPPED'){
+				}else if($product->orderStatus->order_status=='RETURN_SHIPPED'){
 					$product->orderStatus->order_status='RETURN_DELIVERED';
-					$product->orderStatus->product_return_delivered_date=date('Y-m-d G:i:s',mktime(0,0,0,date("m"),date("d"),date("Y")));
-					$product->orderStatus->product_return_completion_date = date('Y-m-d G:i:s',mktime(0,0,0,date("m"),date("d")+14,date("Y")));
+					$product->orderStatus->product_return_delivered_date=date('Y-m-d',mktime(0,0,0,date("m"),date("d"),date("Y")));
+					$product->orderStatus->product_return_completion_date = date('Y-m-d',mktime(0,0,0,date("m"),date("d")+3,date("Y")));
 					$this->messenger->addMessage($product->late_return_delivery_confirmation_date);
+					if($product->orderStatus->save()){
+						//update profile status tracking
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'RETURN_DELIVERED');
+					}
 					$this->messenger->addMessage('return shipped delivered');
-					$product->save();
-					$this->adminOrders->orderProfiles->returnShippedDeliveredOrders[$orderItemId]=$this->adminOrders->orderProfiles->returnShippedOrders[$orderItemId];
+
+					$this->adminOrders->orderProfiles->returnDeliveredOrders[$orderItemId]=$this->adminOrders->orderProfiles->returnShippedOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->returnShippedOrders[$orderItemId]);
 				}
 				$this->_redirect($_SERVER['HTTP_REFERER']);
@@ -122,6 +139,8 @@
 			$this->_redirect($_SERVER['HTTP_REFERER']);
 			//edit orderprofile stuff afterwarcds
 		}
+		
+	
 		
 	public function completeorderAction(){
 			$request=$this->getRequest();
@@ -154,6 +173,7 @@
 				}
 			}
 		}
+		
 		
 	}
 ?>

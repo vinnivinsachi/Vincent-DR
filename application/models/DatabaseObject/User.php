@@ -14,6 +14,7 @@
 		public $shippingAddress=array();
 		public $sellerInformation;
 		public $shippingObject;
+		public $accountBalanceSummary;
 		
 		public function __construct($db)
 		{
@@ -39,6 +40,7 @@
 			
 			$this->profile = new Profile_User($db);
 			$this->shippingObject = new DatabaseObject_ShippingAddress($db);
+			$this->accountBalanceSummary = new DatabaseObject_Account_UserAccountBalanceSummary($db);
 			//$this->defaultShippingAddress = new DatabaseObject_ShippingAddress($db);
 		}
 		
@@ -55,7 +57,14 @@
 		{
 			$this->profile->setUserId($this->getId());
 			$this->profile->load();
+			$select = $this->_db->select();
+			$select->from('user_account_balance_summary', '*')
+			->where('user_id = ?', $this->getId());
+			
+			//echo $select;
+			$this->accountBalanceSummary->_load($select);
 			//$this->defaultShippingAddress->load($this->profile->defaultShippingAddress);
+			
 	
 		}
 		
@@ -72,19 +81,37 @@
 				DatabaseObject_StaticUtility::addTypeClubNumber($this->_db, $this->type_id);
 			}
 			
-			unset($_SESSION['referral']);
-			//remove the current referral session
+			/*****creat account balance now.*/ 
+			if(!$this->accountbalanceExists()){
+				$this->accountBalanceSummary->user_id = $this->getId();
 			
-			echo "at post insert person: ".$this->referral_id;
-			if($this->referral_id !='')
-			{
-				DatabaseObject_Helper_UserManager::addRewardPointToUser($this->_db, $this->referral_id, '4', 'from referred new member registration', $_SERVER['REMOTE_ADDR'], $this->username, $this->getId(), $this->referee_id);
+				$this->accountBalanceSummary->save(false);
 			}
 			
+			unset($_SESSION['referral']);
 			
+			//remove the current referral session
 			
-			DatabaseObject_Helper_UserManager::addRewardPointToUser($this->_db, $this->referee_id, '16', 'Registration reward point bonus', $_SERVER['REMOTE_ADDR'], $this->username, $this->getId(),$this->referee_id);
-			/*send email to referral person information of invitation accepted and reward point earned*/
+			//echo "at post insert person: ".$this->referral_id;
+			if($this->referral_id !='')
+			{
+				
+				$referralUser = new DatabaseObject_User($this->_db);
+				if($referralUser->loadByRefereeId($this->referral_id)){
+					$referralAccountAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->_db, $referralUser);
+					$trackingId=$referralAccountAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_ADDITION', 4, 'caused_by_user_id', $this->getId(), 'Reward points awarded for the referral of user '.$this->first_name.' '.$this->last_name);
+					
+					$referralAccountAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($trackingId);
+				}
+				//DatabaseObject_Helper_UserManager::addRewardPointToUser($this->_db, $this->referral_id, '4', 'from referred new member registration', $_SERVER['REMOTE_ADDR'], $this->username, $this->getId(), $this->referee_id);
+			}
+			
+			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->_db, $this);
+			$trackingId=$userAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_ADDITION', 8, 'caused_by_user_id', $this->getId(), 'Reward points awarded for registration');
+			
+			$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($trackingId);
+			
+		
 			
 			return true;
 		}
@@ -142,6 +169,20 @@
 			//echo "$query";
 			$result = $this->_db->fetchOne($query, $username);
 			return $result;
+		}
+		
+		//bool function
+		public function accountbalanceExists(){
+			$query= sprintf('select * from user_account_balance_summary where user_id =?');
+			
+			$result=$this->_db->fetchOne($query, $this->getId());
+			//echo 'result is here: '.Zend_Debug::dump($result);
+			if($result){
+				
+				return true;
+			}else{
+				return false;
+			}
 		}
 		
 		public function emailExists($email){
@@ -313,6 +354,13 @@
 			$logger = Zend_Registry::get('logger');
 			$logger->warn($message);
 			
+		}
+		
+		public function loadByRefereeId($id){
+			$query = sprintf('select %s from %s where referee_id = ?', join(', ', $this->getSelectFields()), $this->_table);
+			$query = $this->_db->quoteInto($query, $id);
+			return $this->_load($query);
+
 		}
 		
 		

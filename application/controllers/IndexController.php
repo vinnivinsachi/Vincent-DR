@@ -55,10 +55,59 @@
 			
 		public function testAction()
 		{
+			/*testing accountBalanceProcessor*/
+				
+		
+			$user = new DatabaseObject_User($this->db);
+			$user->load(17);
+			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $user);
+			
+			
+			$rewardPointsAndBalanceRecords = $userAccountBalanceAndRewardPointProcessor->loadRewardPointsAndBalanceForUser();
+			
+			Zend_Debug::dump($rewardPointsAndBalanceRecords);
+			$this->view->rewardPointsAndBalanceRecords = $rewardPointsAndBalanceRecords;
+			
+			
+			//Zend_Debug::dump($userAccountBalanceAndRewardPointProcessor);
+			
+			//************REWARD_ADDITION (pending->posted)!
+			//$userAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_ADDITION', 8, 'from_order_id', 8, 'Points deducted with the purchase of order');
+			
+			//REWARD_ADDITION (pending->posted)!
+
+			//$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser(22);
+			//************REWARD_ADDITION (pending->cancelled)!
+			//$userAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser(28);
+			
+			
+			//**********BALANCE_ADDITION******
+			//$userAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', 8, 'from_order_id', 8, 'Points deducted with the purchase of order');
+			//$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser(15);
+			//$userAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser(6);
+			//$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser(7);
+
+			//************REWARD_DEDUCTION (pending->posted)
+			//$userAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_DEDUCTION', 12, 'from_order_id', 8, 'Points deducted with the purchase of order');
+			//$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser(23);
+			//$userAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser(24);
+			
+			//************BALANCE_DEDUCTION (pending->posted)
+			//$userAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', 12, 'from_order_id', 8, 'Points deducted with the purchase of order');
+			//$userAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser(24);
+			//$userAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser(25);
+					
+			
+			Zend_Debug::dump($user->accountBalance);
+			$this->view->accountBalance = $user->accountBalance;
+
+			/*need to work on REWARD_DEDUCTION*/
+			/*need to work on BALANCE_DEDUCTION*/			
+			
 			/*$options=array('productTag'=>'Latin women shoes',
 						   'productShoeSizes' => 'Euro_34_5');
 			DatabaseObject_Helper_SizeFinder::findSizeByAttribute($this->db, $options);*/
-			
+		
 			/*
 			$API_KEY = "your_api_key";
 $SECRET_ACCESS_KEY = "your_secret_key";
@@ -75,7 +124,6 @@ $b64_mac = base64_encode(hash_hmac('sha1', $canonical_string, $SECRET_ACCESS_KEY
 $authentication = "Zeep " . $API_KEY . ":" . $b64_mac;
  
 echo($authentication);*/
-
 
 
 /*

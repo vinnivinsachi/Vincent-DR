@@ -46,7 +46,7 @@
 				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
 			}
 			else{
-				echo "there is no default shipping key set in session variable";
+				//echo "there is no default shipping key set in session variable";
 			}
 			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
 			$ip=$_SERVER['REMOTE_ADDR'];

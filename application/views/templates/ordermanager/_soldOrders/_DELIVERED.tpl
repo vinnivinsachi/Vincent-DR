@@ -26,7 +26,7 @@
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; {if $product.product_order_status=='shipped'}color:#069;{elseif $product.product_order_status=='return shipped' || $product.product_absolute_latest_delivery_date|date_format < $smarty.now|date_format}color:#F30;{elseif $product.product_order_status=='order completed' || $product.product_order_status=='order return completed'}color:#0C0;{else} color:#F90;{/if} font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
+		                        <span style="font-weight:bold; color:#B1FF91; ">{removeunderscore phrase=$product.order_status}</span> 
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>
 		                        

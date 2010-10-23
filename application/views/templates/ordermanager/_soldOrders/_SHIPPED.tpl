@@ -28,8 +28,7 @@
 		                        <div class='box orderProductSecondHeader'> 
 		                        <span style="font-weight:bold; font-size:12px;">{removeunderscore phrase=$product.order_status}</span> 
 		                        
-		                        | 
-		                        <span style=''><a>Cancel this order</a></span> 
+		                     
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>
 		                        

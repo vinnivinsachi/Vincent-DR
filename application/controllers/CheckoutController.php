@@ -24,7 +24,7 @@
 			//Zend_Debug::dump($rewardPointsArray);
 
 			$maxDeductionRewardPointIs = $incrementalRewardNumber*4;
-			$userAvailableIncrement = $this->userObject->reward_point/4;
+			$userAvailableIncrement = $this->userObject->accountBalanceSummary->available_reward_points/4;
 			
 			//echo $userAvailableIncrement;
 			$this->rewardPointsArray[]=0;
@@ -46,7 +46,7 @@
 		public function indexAction()
 		{
 			$this->view->user=$this->signedInUserSessionInfoHolder;
-			$this->view->userRewardPoint=$this->userObject->reward_point;
+			$this->view->userRewardPoint=$this->userObject->accountBalanceSummary->available_reward_points;
 		
 			
 			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
@@ -63,6 +63,12 @@
 			Zend_Debug::dump($this->shoppingCartInfoSession->productInfo);
 			//$this->view->shoppingCartProducts=$this->shoppingCartInfoSession->productInfo;
 			//$this->view
+			if($this->userObject->accountbalanceExists()){
+				
+				echo 'accountbalance exist';
+			}else{
+				echo 'account balance does not exist';
+			}
 		}
 		
 		
@@ -100,6 +106,18 @@
 		
 		public function confirmationAction()
 		{	
+			/*
+				$this->zendSession->variable = blah.
+				
+				$this->zendSession->variable['blah']=blah2;
+				
+				$_SESSION['variable']=blah.
+				
+				$_SESSION['variable']['blah']=2;
+				
+			
+			*/
+
 			if($this->shoppingCartInfoSession->cartInfo->checkoutOk==false){
 				$this->messenger->addMessage('We are sorry, but you have incomplete information during checkout.');
 				$this->_redirect('/shoppingcart/index');	
@@ -252,6 +270,17 @@
 			$shoppingCart->loadCartProducts();
 			Zend_Debug::dump($shoppingCart->products);
 			
+			$buyer = new DatabaseObject_User($this->db);
+			$buyer->load($shoppingCart->buyer_id);
+			$buyerBalanceAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $buyer);
+			
+			$danceRialto = new DatabaseObject_User($this->db);
+			//that is the id of DanceRialto Admin
+			$danceRialto->load(8);
+			$danceRialtoAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $danceRialto);
+			
+			//DanceRialto load;
+			
 			$confirmedOrder = new DatabaseObject_Order($this->db);
 			$confirmedOrder->order_unique_id = $shoppingCart->order_unique_id;
 			$confirmedOrder->buyer_username = $shoppingCart->buyer_username;
@@ -269,7 +298,13 @@
 			$confirmedOrder->promotion_amount_deducted = $shoppingCart->promotion_amount_deducted;
 			$confirmedOrder->final_total_costs = $shoppingCart->final_total_costs;
 			$confirmedOrder->order_shipping_id = $shoppingCart->order_shipping_id;
-			$confirmedOrder->save();
+			
+			if($confirmedOrder->save()){
+				//upate reward points for buyer
+				if($confirmedOrder->reward_points_used>0){
+					$buyerBalanceAccountProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_DEDUCTION', $confirmedOrder->reward_points_used, 'from_order_id', $confirmedOrder->getId(), 'Reward points used for the purchase of order id: '.$confirmedOrder->order_unique_id);
+				}
+			}
 			
 			foreach($shoppingCart->products as $k =>$v){
 				$orderProfile = new DatabaseObject_OrderProfile($this->db);
@@ -286,14 +321,34 @@
 						}
 					}
 				}	
+				$orderProfile->dr_receivable = $orderProfile->product_price*0.15;
 				$orderProfile->order_id = $confirmedOrder->getId();
-				$orderProfile->save();
+				
+				if($orderProfile->save()){
+					//****update reward points for buyer
+					if($orderProfile->reward_points_awarded>0){
+					$buyerBalanceAccountProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_ADDITION', $orderProfile->reward_points_awarded, 'from_order_profile_id', $orderProfile->getId(), 'Reward points awarded for the purchase of '.$orderProfile->product_name.' in order Id: '.$confirmedOrder->order_unique_id);
+					}
+					
+					//****update seller account balance
+					$seller = new DatabaseObject_User($this->db);
+					$seller->load($orderProfile->uploader_id);
+					echo 'orderProfile uploader_id is: '.$seller->getId();
+					//Zend_Debug::dump($seller);
+					$sellerBalanceAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $seller);
+					echo 'account processor user: '.$sellerBalanceAccountProcessor->user->getId();
+					//Zend_Debug::dump($sellerBalanceAccountProcessor);
+					$sellerBalanceAccountProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', $orderProfile->seller_receivable, 'from_order_profile_id', $orderProfile->getId(), 'Balance addition from the sale of '.$orderProfile->product_name.' in order Id: '.$orderProfile->order_unique_id);
+					
+					//update balance for DR.
+					$danceRialtoAccountProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', $orderProfile->dr_receivable, 'from_order_profile_id', $orderProfile->getId(), 'Balance addition from the sale of '.$orderProfile->product_name.' in order Id: '.$orderProfile->order_unique_id);
+					
+				}
+				
 				$orderProfileStatusAndDelivery = new DatabaseObject_OrderProfileStatusAndDelivery($this->db);
 				$orderProfileStatusAndDelivery->order_profile_id=$orderProfile->getId();
 				$orderProfileStatusAndDelivery->save();
 			}
-			
-			
 			
 			//now at deleting the shopping cart after completion. 
 			foreach($shoppingCart->products as $k =>$v){

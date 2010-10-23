@@ -22,6 +22,7 @@
 			
 			//add the resources we want to have control over
 			$this->acl->add(new Zend_Acl_Resource('account'));
+			$this->acl->add(new Zend_Acl_Resource('accountbalance'));
 			$this->acl->add(new Zend_Acl_Resource('registration'));
 			$this->acl->add(new Zend_Acl_Resource('adminaccount')); //need to work on later
 			$this->acl->add(new Zend_Acl_Resource('adminproduct'));
@@ -43,6 +44,7 @@
 			$this->acl->allow();
 			//deny all to a certain controller
 			$this->acl->deny(null,'account');
+			$this->acl->deny(null, 'accountbalance');
 			$this->acl->deny(null, 'adminaccount');
 			$this->acl->deny(null, 'adminproduct');
 			$this->acl->deny(null, 'adminorders');
@@ -62,6 +64,10 @@
 			$this->acl->allow('member', 'account', array('index', 'login', 'fetchpassword' ,'logout', 'verifyselleraccount', 'messages', 'details', 'rewardpoints', 'editbasicinfo', 'editshipping', 'deleteshipping', 'makedefaultshipping', 'upgradegeneralseller', 'upgradestoreseller', 'uploadmeasurement', 'images', 'verifyselleraccount'));
 			$this->acl->allow('generalSeller', 'account');
 			$this->acl->allow('storeSeller', 'account');
+			$this->acl->allow('member', 'accountbalance');
+			$this->acl->allow('generalSeller', 'accountbalance');
+			$this->acl->allow('storeSeller', 'accountbalance');
+			$this->acl->allow('admin','accountbalance');
 			$this->acl->allow('admin', 'account');
 			$this->acl->allow('guest', 'productpreview', array('index', 'tag', 'details', 'ajaxtesttwo'));
 			$this->acl->allow('member', 'productpreview', array('index', 'tag', 'details', 'ajaxtesttwo'));

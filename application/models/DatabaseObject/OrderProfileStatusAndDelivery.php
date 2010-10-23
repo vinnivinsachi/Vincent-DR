@@ -13,8 +13,7 @@
 			$this->add('product_warning_delivery_date',time()+345600, self::TYPE_TIMESTAMP);
 			$this->add('product_latest_delivery_date', time()+518400, self::TYPE_TIMESTAMP);
 			$this->add('product_delivered_date');
-			$this->add('product_completion_date');//
-			$this->add('product_returned', 0);
+			$this->add('product_completion_date');// the date of order completion if not returned and status = DELIVERED. 
 			$this->add('product_return_tracking');
 			$this->add('product_return_tracking_carrier');
 			$this->add('product_return_shipping_date');

@@ -60,6 +60,8 @@
 							$this->signedInUserSessionInfoHolder->sellerInfo=$this->userObject->createSellerInfoSessionObject();
 						}
 					}	
+					$this->view->userObject=$this->userObject;
+					//Zend_Debug::dump($this->userObject);
 				}
 			}
 			else{
@@ -123,6 +125,7 @@
 			}else{
 				$this->view->layout = 'application';
 			}
+			
 			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
 			$this->shoppingCartInfoSession->setExpirationSeconds(43200);
 			

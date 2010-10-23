@@ -40,6 +40,7 @@
             <div id="nav">
             	<a href="{geturl controller='registration' action='newmember'}">[Register]</a><br />
                 <a href="{geturl controller='index' action='index'}">[Index]</a>
+                <a href="{geturl controller='index' action='test'}">[Test]</a>
                 <a href="{geturl controller='productdisplay' action='index'}">[Product display]</a>
                 <a href="{geturl controller='account' action='logout'}">[Logout]</a>
                 <a href="{geturl controller='account' action='login'}">[Login]</a><br />
@@ -51,6 +52,7 @@
                {/if}
 
                 <a href="{geturl controller='account' action='details'}">[acocunt details]</a>
+                <a href="{geturl controller='accountbalance' action='index'}">[Account balance]</a>
                 <a href="{geturl controller='account' action='rewardpoints'}">[your reward points]</a><br />
                 
                 <a href="{geturl controller='productpreview' action='index'}">[view products live!]</a><br />

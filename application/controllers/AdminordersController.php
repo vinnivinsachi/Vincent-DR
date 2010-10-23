@@ -23,14 +23,14 @@
 			parent::preDispatch();	
 			if($this->auth->hasIdentity()){
 				
-				/*if($this->adminOrders->orderProfilesLoaded == true){
+				if($this->adminOrders->orderProfilesLoaded == true){
 					echo 'here at already loaded';
-				}else*/
-				if(true){
+				}else
+				{
 					//load all the orders;
 					$orderProfiles = DatabaseObject_Helper_Admin_OrderManager::loadAllOrderProfiles($this->db);
 					echo 'here at dumping';
-					Zend_Debug::dump($orderProfiles);
+					//Zend_Debug::dump($orderProfiles);
 					foreach($orderProfiles as $k => $v)
 					{
 						
@@ -41,32 +41,46 @@
 							case 'SHIPPED':
 								$this->adminOrders->orderProfiles->shippedOrders[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
 								break;
-							/*case 'delivered':
+							case 'DELIVERED':
 								$this->adminOrders->orderProfiles->deliveredOrders[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
-								break;*/
+								break;
 							case 'RETURN_SHIPPED':
 								$this->adminOrders->orderProfiles->returnShippedOrders[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
 								break;
-							case 'payment transfered':
-								$this->adminOrders->orderProfiles->paymentTransfered[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
+							case 'RETURN_DELIVERED':
+								$this->adminOrders->orderProfiles->returnDeliveredOrders[$orderProfiles[$k]['order_profile_id']]= $orderProfiles[$k];
 								break;
-							/*case 'return delivered':
-								$this->adminOrders->orderProfiles->returnShippedDeliveredOrders[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
-								break;*/
-							case 'completed':
-								$this->adminOrders->orderProfiles->completedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'ORDER_COMPLETED':
+								$this->adminOrders->orderProfiles->orderCompletedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'RETURN_COMPLETED':
+								$this->adminOrders->orderProfiles->returnCompletedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 								break;
-							case 'return completed':
-								$this->adminOrders->orderProfiles->returnCompleteOrders[$orderProfiles[$k]['order_profile_id']]= $orderProfiles[$k];
+							case 'BALANCE_UPDATED':
+								$this->adminOrders->orderProfiles->balanceUpdatedOrders[$orderProfiles[$k]['order_profile_id']]= $orderProfiles[$k];
 								break;
-							case 'payment returned':
-								$this->adminOrders->orderProfiles->paymentReturned[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
+							case 'BALANCE_REFUNDED':
+								$this->adminOrders->orderProfiles->balanceRefundedOrders[$orderProfiles[$k]['order_profile_id']] = $orderProfiles[$k];
 								break;
-							case 'cancelled by buyer':
-								$this->adminOrders->orderProfiles->cancelledByBuyer[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'CANCELLED_BY_SELLER':
+								$this->adminOrders->orderProfiles->cancelledBySellerOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 								break;
-							case 'cancelled by seller':
-								$this->adminOrders->orderProfiles->cancelledBySeller[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'CANCELLED_BY_BUYER':
+								$this->adminOrders->orderProfiles->cancelledByBuyerOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'HELD_BY_BUYER_FOR_ARBITRATION':
+								$this->adminOrders->orderProfiles->heldByBuyerForArbitrationOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'HELP_BY_SELLER_FOR_ARBITRATION':
+								$this->adminOrders->orderProfiles->heldBySellerForArbitrationOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'SELLER_CLAIM_APPROVED_UNSHIPPED':
+								$this->adminOrders->orderProfiles->sellerClaimApprovedUnshippedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'SELLER_CLAIM_APPROVED_RESHIPPED':
+								$this->adminOrders->orderProfiles->sellerClaimApprovedReshippedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'SELLER_CLAIM_APPROVED_DELIVERED':
+							$this->adminOrders->orderProfiles->sellerClaimApprovedDeliveredOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 								break;
 						}
 					}
@@ -95,11 +109,33 @@
 			}else{
 				$orderProfilesType = DatabaseObject_Helper_Admin_OrderManager::loadAllOrderProfiles($this->db, $this->type);
 				$this->view->orderProfilesType = $orderProfilesType;
+				$this->view->orderProfiles = $this->adminOrders->orderProfiles;		
+
 				$this->view->type = $this->type;
 			}
 			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
 		}
 		
+		public function vieworderprofiledetailsAction(){
+			$id = $this->getRequest()->getParam('profileId');
+			$order_id = $this->getRequest()->getParam('orderId');
+			
+			if(isset($id)&&$id!=''){
+			$order = DatabaseObject_Helper_Admin_OrderManager::retrieveOrderProfile($this->db, $id, 'profile_id');
+			$order['statusTracking']=DatabaseObject_Helper_Admin_OrderManager::retrieveStatusTracking($this->db, $id);
+			$this->view->viewType = '_profile_detail.tpl';
+
+			}elseif(isset($order_id)&& $order_id!=''){
+				$order = DatabaseObject_Helper_Admin_OrderManager::retrieveOrderSummaryFromOrderUniqueId($this->db, $order_id);
+
+				$this->view->viewType = '_order_detail.tpl';
+
+			}
+			$this->view->product = $order;
+			$this->view->orderProfiles = $this->adminOrders->orderProfiles;		
+
+			Zend_Debug::dump($order);
+		}
 		
 	}
 ?>

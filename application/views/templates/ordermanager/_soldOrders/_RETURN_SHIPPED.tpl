@@ -26,7 +26,7 @@
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; {if $product.product_order_status=='shipped'}color:#069;{elseif $product.product_order_status=='return shipped' || $product.product_absolute_latest_delivery_date|date_format < $smarty.now|date_format}color:#F30;{elseif $product.product_order_status=='order completed' || $product.product_order_status=='order return completed'}color:#0C0;{else} color:#F90;{/if} font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
+		                        <span style="font-weight:bold;  color:#F90; font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
 		                        
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>
@@ -44,7 +44,7 @@
  
 			                        <div class='orderStatus bigFont box' style='padding:5px 0px 5px 0px; background-color:#B1FF91;'>
 			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:40%;">
-Waiting for delivery confirmation			                            </div>
+Waiting for return delivery confirmation			                            </div>
 			                            <div class='box' style='width:25%;'>
 			                            Status: {removeunderscore phrase=$product.order_status} on {$product.product_shipping_date|date_format}
 			                            </div>
@@ -96,13 +96,13 @@ Waiting for delivery confirmation			                            </div>
 								</div>
 								
 								<div class="orderProductFormSection" style="width:100%; float:left;">
- <a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-{$order->order_unique_id}_{$product.order_profile_id}" >Message buyer: {$product.uploader_username}</a> |
+								<a class="anchorOrderMessageSeller" id="anchorID-DivIDmessageForm-{$order->order_unique_id}_{$product.order_profile_id}" >Message buyer: {$product.buyer_name}</a> |
 								<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Tracking status</a> |
                             <a class="anchorReturnTrackingStatus" id="anchorID-DivIDreturnTrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Return tracking status</a>
 
 
 
-								{include file='ordermanager/_orders/_message.tpl'}
+								{include file='ordermanager/_soldOrders/_message.tpl'}
 				        
 								
 								 <div class="trackingStatusInfo {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" style="display:none;">

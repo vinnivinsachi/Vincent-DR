@@ -1,28 +1,15 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
-Welcome to order management, {$signedInUser->generalInfo->first_name}.<br />
 
-<a href="{geturl controller='ordermanager' action='automatedeliveryttocomplete'}">Automate [delivered/return delivered] to [complete/return complete]</a>
+
+<div id="leftContainer" style="width:210px; float:left;">
+Welcome to order management, {$signedInUser->generalInfo->first_name}.<br />
+<br/>
+
+<a href="{geturl controller='ordermanager' action='automatedeliveryttocomplete'}"><strong>Automate [delivered/return delivered] to [order completed/return completed]</strong></a>
+<br /><br />
 <br />
 
-
-<div id="orderTabs" style="width:99%;">
-
-    	  <ul>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=unshipped">Unshipped ({$orderProfiles->unshippedOrders|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=shipped">Shipped ({$orderProfiles->shippedOrders|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=delivered">Delivered</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=completed">Completed ({$orderProfiles->completedOrders|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=payment transfered">Payment Transfered ({$orderProfiles->paymentTransfered|@count})</a></li>
-			<li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=return shipped">Returned ({$orderProfiles->returnShippedOrders|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=return delivered">Return Delivered </a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=return completed">Return completed ({$orderProfiles->returnCompleteOrders|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=payment returned">Payment returned ({$orderProfiles->paymentReturned|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=cancelled by buyer">B Cancelled ({$orderProfiles->cancelledByBuyer|@count})</a></li>
-            <li><a href="{geturl controller='adminorders' action='getorderprofiletype'}?type=cancelled by seller">S Cancelled ({$orderProfiles->cancelledBySeller|@count})</a></li>
-         </ul>
-    	<!--{foreach from=$orderProfiles->unshippedOrders item=unshippedOrder}
-        	{$unshippedOrder.product_name}
-        {/foreach}-->
+{include file='adminorders/_orderStatusControls/_orderTabs.tpl'}
 </div>
 
 {literal}

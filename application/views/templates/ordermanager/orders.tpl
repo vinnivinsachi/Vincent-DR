@@ -38,7 +38,7 @@
 {literal}
 <script type="text/javascript">
 
-new orderToggle('.anchorOrderMessageSeller', '.anchorTrackingStatus','.anchorReturnTrackingStatus','.anchorReturnItem','.anchorTrackingForm', '.anchorOrderCancelled','.anchorProductReview', 'currentSelection');
+new orderToggle('.anchorOrderMessageSeller', '.anchorTrackingStatus','.anchorReturnTrackingStatus','.anchorReturnItem','.anchorTrackingForm', '.anchorOrderCancelled','.anchorProductReview','.anchorSatisfiedOrder', 'currentSelection');
 
 																										
 </script>

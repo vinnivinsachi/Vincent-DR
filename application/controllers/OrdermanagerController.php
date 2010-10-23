@@ -106,9 +106,13 @@
 						echo 'time is: '.time();
 						echo 'strtotime is: '.date('Y-m-d G:i:s');
 						$product->orderStatus->order_status = 'SHIPPED';
-						$product->orderStatus->save();
+						if($product->orderStatus->save()){
+							//updateing the status of this order.
+							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'SHIPPED');
+							
+						}
 						
-						$product->save();
+						//$product->save();
 						$this->messenger->addMessage('thank you, your tracking information has been updated');
 						$this->_redirect($_SERVER['HTTP_REFERER']);
 						}else{
@@ -159,9 +163,32 @@
 						echo 'strtotime is: '.date('Y-m-d G:i:s');
 						$product->orderStatus->order_status = 'RETURN_SHIPPED';
 						$product->orderStatus->product_returned=1;
-						$product->orderStatus->save();
+						if($product->orderStatus->save()){
+							//now processing status tracking
+							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'RETURN_SHIPPED');
+							
+							
+							//now processing reviews for a returned product.
+							$rating = $request->getParam('buyerExperienceRating');			
+							$productReview = $request->getParam('returnReason');
+							$product_user = new DatabaseObject_User($this->db);
+							$product_user->load($product->uploader_id);
+							$review = new DatabaseObject_UserReview($this->db);
+							$review->rating = $rating;
+							$review->description = $productReview;
+							$review->order_profile_id = $product->getId();
+							$review->order_unique_id = $product->order_unique_id;
+							$review->order_product_name = $product->product_name;
+							$review->User_id = $product->uploader_id;
+							$product_user->review_count = $product_user->review_count+1;
+							$product_user->review_total_score = $product_user->review_total_score+$rating;
+							$product_user->review_average_score = $product_user->review_total_score/($product_user->review_count+1);
+							$product_user->save();
+							$review->save();
+							
+						}
 						
-						$product->save();
+						//$product->save();
 						$this->messenger->addMessage('thank you, your tracking information has been updated');
 						$this->_redirect($_SERVER['HTTP_REFERER']);
 						}else{
@@ -170,7 +197,7 @@
 						}
 					}else{
 						$this->messenger->addMessage(
-						'we are sorry, but you have already entered a tracking info for this item We are sorry, your order is late for delivery. and the Buyer has issued a refund. you may confirm the returned items inorder for the buyer to be refunded after you have received the returned items. Thank you very much.');
+						'We are sorry, your order is late for delivery. and the Buyer has issued a refund. you may confirm the returned items inorder for the buyer to be refunded after you have received the returned items. Thank you very much.');
 						$this->_redirect($_SERVER['HTTP_REFERER']);
 					}
 					
@@ -243,13 +270,7 @@
 				}
 			}
 		}
-		public function vieworderprofiledetailsAction(){
-			$id = $this->getRequest()->getParam('id');
-			$order = new DatabaseObject_OrderProfile($this->db);
-			$order->load($id);
-			
-			$this->view->product = $order;
-		}
+		
 		
 		public function viewAction()
 		{	
@@ -272,5 +293,10 @@
 		}	
 		
 		
+		//this is a public ordermanager action where people can check their order without signing in and stuff. uses the order_unique_id
+		public function orderquickviewAction(){
+			
+			
+		}
 	}
 ?>

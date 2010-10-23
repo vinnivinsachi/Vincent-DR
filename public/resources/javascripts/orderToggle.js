@@ -10,9 +10,10 @@ orderToggle.prototype={
 	cssCurrentStatus:null,
 	cancelOrderAnchor:null,
 	productReviewAnchor:null,
+	fileAClaimAnchor:null,
 	marketSide:null,
 	sectionRow:null,
-	initialize:function(messageAnchor, trackInfoAnchor, returnTrackInfoAnchor, returnItemFormAnchor, submitTrackingAnchor, cancelOrderAnchor, productReviewAnchor, currentStatus, marketSide){
+	initialize:function(messageAnchor, trackInfoAnchor, returnTrackInfoAnchor, returnItemFormAnchor, submitTrackingAnchor, cancelOrderAnchor, productReviewAnchor, fileAClaim, currentStatus, marketSide){
 		//alert('here');
 		this.marketSide = marketSide;
 		this.messageAnchor = $$(messageAnchor);
@@ -22,6 +23,7 @@ orderToggle.prototype={
 		this.submitTrackingAnchor=$$(submitTrackingAnchor);
 		this.cancelOrderAnchor=$$(cancelOrderAnchor);
 		this.productReviewAnchor=$$(productReviewAnchor);
+		this.fileAClaimAnchor=$$(fileAClaim);
 		this.cssCurrentStatus = currentStatus;
 		this.messageAnchor.each(function(value){
 									 value.observe('click', this.toggleSection.bindAsEventListener(this));
@@ -45,6 +47,9 @@ orderToggle.prototype={
 		this.productReviewAnchor.each(function(value){
 									 value.observe('click', this.toggleSection.bindAsEventListener(this));
 									 }.bind(this));
+		this.fileAClaimAnchor.each(function(value){
+			 value.observe('click', this.toggleSection.bindAsEventListener(this));
+			 }.bind(this));
 									 
 	},
 	
@@ -65,7 +70,7 @@ orderToggle.prototype={
 									 
 										if(currentAchor.hasClassName('anchorTrackingStatus') || currentAchor.hasClassName('anchorReturnTrackingStatus')){
 											if(value.innerHTML.strip()==''){
-											var ttp_width = '640'; var ttp_m_width = '200'; var ttp_key='86229f7a29121871a58d1ad8'; var ttp_number = currentAchor.title;
+											var ttp_width = '575'; var ttp_m_width = '200'; var ttp_key='86229f7a29121871a58d1ad8'; var ttp_number = currentAchor.title;
 											//alert(currentAchor.title);
 											if(!ttp_width){var ttp_width=575;}
 											if(!ttp_height){var ttp_height=300;}

@@ -139,5 +139,5 @@ $productConfig['customizeOrder']['bottom']=array('body_height','waist','hip','wa
 $productConfig['customizeOrder']['top']=array('body_height','neck','arm_length','wrist','armpit_circumference','shoulder','chest_or_bust','shoulder_to_chest_or_bust','waist','shoulder_to_waist');
 $productConfig['customizeOrder']['shoes']=array('size_system','shoe_size','brand','dance_style');
 
-$productConfig['orderStatis']=array('CANCELLED_BY_BUYER', 'CANCELLED_BY_SELLER', 'UNSHIPPED','SHIPPED','DELIVERED','COMPLETED','COMPLETED_AND_PAYMENT_TRANSFERED','RETURNED','RETURN_DELIVERED','RETURN_COMPLETED','RETURN_COMPLETED_AND_REFUND_TRANSFERED');
+$productConfig['orderStatis']=array('UNSHIPPED', 'SHIPPED', 'DELIVERED','RETURN_SHIPPED','RETURN_DELIVERED','ORDER_COMPLETED','RETURN_COMPLETED','BALANCE_UPDATED','BALANCE_REFUNDED','CANCELLED_BY_SELLER','CANCELLED_BY_BUYER', 'HELD_BY_BUYER_FOR_ARBITRATION', 'HELP_BY_SELLER_FOR_ARBITRATION','SELLER_CLAIM_APPROVED_UNSHIPPED', 'SELLER_CLAIM_APPROVED_RESHIPPED', 'SELLER_CLAIM_APPROVED_DELIVERED');
 ?>

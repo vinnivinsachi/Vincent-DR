@@ -85,9 +85,10 @@
 								{if $product.return_allowed=='1'}
 								<div style="float:right;">
 									<a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Return item</a> |
-									<a >Satisfied and write a review</a>
+								<a class='anchorSatisfiedOrder' id="anchorID-DivIDSatisfiedOrder-{$order->order_unique_id}_{$product.order_profile_id}">Satisfied and write a review</a>
 								</div>
 								<div class="returnTrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
+                                   <p>Inorder for you to return this item, you MUST supply a return tracking number.</p>
                                     <form method="post" action="{geturl controller='ordermanager' action='addtrackingtoreturnproduct'}">
                                         <label style="width:50%;">Return Tracking #:</label>
                                         <input type="text" name="returnProductTracking" value=""/><br />
@@ -111,9 +112,13 @@
                                         <input type="hidden" name="returnProductId" value="{$product.order_profile_id}" />
                                         <input type="submit" style='margin-left:50%;' value="Return this item" />
                                     </form>
-                                </div>    
+                                </div> 
+                                   
                                 {else}
-                                <div style="float:right;"><a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Wrong item?</a></div>
+                                <div style="float:right;">
+                                <a class="anchorReturnItem" id="anchorID-DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Wrong item?</a> |
+								<a class='anchorSatisfiedOrder' id="anchorID-DivIDSatisfiedOrder-{$order->order_unique_id}_{$product.order_profile_id}">Satisfied and write a review</a>
+                                </div>
 								<div class="returnTrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
                                     You may not return this item because this item is not returnable specified by the seller during listing. <br/>
                                     If the item shipped is not the right item, you may <strong>file a claim</strong>. We will then investigate this order and approve your return request. After the return is approved, you may submit a return tracking information be full refunded for the item.
@@ -132,12 +137,34 @@
                                         <input type="hidden" name="" value="{$product.order_profile_id}" />
                                         <input type="submit" value="File this claim" />
                                     </form>
-                                </div>   
+                                </div>
+                               
                                 {/if}
 								{include file='ordermanager/_orders/_message.tpl'}
 								
 								<div class="trackingStatusInfo {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" style="display:none; float:left;"></div>
-								           
+								    
+								    
+								<div class="satisfiedOrderForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDSatisfiedOrder-{$order->order_unique_id}_{$product.order_profile_id}" style='display:none;'>
+								 <p>Please submit a review to provide this feedback for this seller. Because your feedback is much appreciated and would help other buyers make better purchasing decisions, you will be awarded 4 reward points towards your future purchase.</p>
+                                	<form method="post" action="">
+                                        <label style="width:50%">Rate experience</label>
+                                        <select name='buyerExperienceRating'>
+                                        	<option value='5'>5</option>
+                                        	<option value='4.5'>4.5</option>
+                                        	<option value='4'>4</option>
+                                        	<option value='3.5'>3.5</option>
+                                        	<option value='3'>3</option>
+                                        </select><br/>
+                                        <label style="width:50%">Please write a review about this seller</label>
+                                        <textarea name='returnReason' cols='20' rows='3'></textarea><br/>
+                                       
+                                        <input type="hidden" name="returnProductId" value="{$product.order_profile_id}" />
+                                        <input type="submit" style='margin-left:50%;' value="Complete order and submit review" />
+                                    </form>
+                                
+                                </div>       
 								</div>
+								 
 								
 								

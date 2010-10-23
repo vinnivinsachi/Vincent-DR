@@ -7,7 +7,8 @@
                             {$order->shippingAddress->address_two}<br />
                         {/if}
                         {$order->shippingAddress->city} {$order->shippingAddress->state}, {$order->shippingAddress->zip}<br />
-                        {$order->shippingAddress->country}
+                        {$order->shippingAddress->country}<br/><br/>
+                        Order ID: <br/>#{$order->order_unique_id}
                         </td>
                 	<td>
                 	<table>
