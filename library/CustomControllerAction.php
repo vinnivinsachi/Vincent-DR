@@ -134,6 +134,12 @@
 			$this->view->cssDir = CSS_DIR;
 			$this->view->imagesDir = IMAGES_DIR;
 			$this->view->jsDir = JS_DIR;
+			
+			
+			// Show Debug Stuff At Bottom Of Page
+			print '<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><div>';
+			Zend_Debug::dump($this->getRequest());
+			print '</div>';
 		}
 		
 		public function postDispatch(){
