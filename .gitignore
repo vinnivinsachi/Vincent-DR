@@ -18,4 +18,4 @@ public/resources/userdata/uploaded-files/*/*
 application/controllers/IndexController.php
 application/views/templates/layouts/application/header.tpl
 library/CustomControllerAction.php
-application/views/layouts/*
+application/views/templates/layouts/*
