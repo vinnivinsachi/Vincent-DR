@@ -134,6 +134,7 @@
 			$this->view->cssDir = CSS_DIR;
 			$this->view->imagesDir = IMAGES_DIR;
 			$this->view->jsDir = JS_DIR;
+			//Zend_Debug::dump($this->getRequest());
 		}
 		
 		public function postDispatch(){

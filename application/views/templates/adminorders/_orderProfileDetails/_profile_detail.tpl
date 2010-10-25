@@ -48,31 +48,31 @@
                     {$product.0.product_name}
                     </div>
 		                    		
-									<table width="100%;" style='border:none;'>
-		                            <tr>
-		                            <td width="200px;"><img src='/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$product.0.product_image_id}.W150_homeFrontFour.jpg'/></td>
-		                            <td width="400px;">
-		                            <table width='100%;'>
-		                            {foreach from=$product.attributes item=attribute key=attributeKey}
-		                            <tr width="400px;">
-		                            <td style='width:60%; text-align:right;'>{removeunderscore phrase=$attribute.profile_key}: </td>
-		                            <td style='width:40%; text-align:left;'>{removeunderscore phrase=$attribute.profile_value}</td>
-		                            </tr>
-		                            {/foreach}
-		                            <tr>
-		                      		<td style='width:60%; text-align:right;'>Quantity: 1</td>  
-									<td style='width:40%; text-align:left;' class='price'> ${$product.0.product_price}</td> 
-									</tr>
-                                    
-                                    <tr>
-		                      		<td style='width:60%; text-align:right;'>Shipping: </td>  
-									<td style='width:40%; text-align:left;' class='price'>${$product.0.current_shipping_rate}</td> 
-									</tr>
-                                    
-		                            </table>
-		                            </td>
-		                            </tr>
-		                        	</table>
+                        <table width="100%;" style='border:none;'>
+                        <tr>
+                        <td width="200px;"><img src='/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$product.0.product_image_id}.W150_homeFrontFour.jpg'/></td>
+                        <td width="400px;">
+                        <table width='100%;'>
+                        {foreach from=$product.attributes item=attribute key=attributeKey}
+                        <tr width="400px;">
+                        <td style='width:60%; text-align:right;'>{removeunderscore phrase=$attribute.profile_key}: </td>
+                        <td style='width:40%; text-align:left;'>{removeunderscore phrase=$attribute.profile_value}</td>
+                        </tr>
+                        {/foreach}
+                        <tr>
+                        <td style='width:60%; text-align:right;'>Quantity: 1</td>  
+                        <td style='width:40%; text-align:left;' class='price'> ${$product.0.product_price}</td> 
+                        </tr>
+                        
+                        <tr>
+                        <td style='width:60%; text-align:right;'>Shipping: </td>  
+                        <td style='width:40%; text-align:left;' class='price'>${$product.0.current_shipping_rate}</td> 
+                        </tr>
+                        
+                        </table>
+                        </td>
+                        </tr>
+                        </table>
 		                           
     </div>
 </div>   
@@ -175,10 +175,18 @@
 </div>
 
 
-
 <div id="adminOrderActions box" >
 <div class='titleBarBig'>Adminitration actions</div>
 
-
-
+{if $product.0.order_status == 'ORDER_COMPLETED'}
+<form action="{geturl controller='orderadministration' action='markorderasupdatedorcancelled'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="submit" value="Mark Balance Updated" />
+</form>
+{elseif $product.0.order_status == 'RETURN_COMPLETED'}
+<form action="{geturl controller='orderadministration' action='markorderasupdatedorcancelled'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="submit" value="Mark Balance Refunded" />
+</form>
+{/if}
 </div>

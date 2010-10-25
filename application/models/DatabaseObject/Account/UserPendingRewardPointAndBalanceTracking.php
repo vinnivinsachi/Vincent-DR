@@ -87,5 +87,19 @@
 			
 		}
 		
+		public static function loadTrackingIdByOrderProfileId($db, $userId, $column, $id){
+			$select=$db->select();
+			$select->from('user_pending_reward_point_and_balance_tracking', '*')
+			->where('user_id = ?', $userId)
+			->where("$column = ?", $id);
+			
+			$result = $db->fetchAll($select);
+			if(count($result)>0){
+				return $result[0]['user_pending_reward_point_and_balance_tracking_id'];
+			}else{
+				return false;
+			}
+		}
+		
 	}
 ?>

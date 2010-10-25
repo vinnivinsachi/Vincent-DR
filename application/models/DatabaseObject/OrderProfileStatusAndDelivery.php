@@ -38,6 +38,15 @@
 		protected function postLoad(){
 	
 		}
+		
+		public function loadByProfileId($id){
+				$select = $this->_db->select();
+				$select->from('order_profile_status_and_delivery', '*')
+				->where('order_profile_id = ?', $id);
+				
+				echo $select;
+				return $this->_load($select);
+		}
 
 	}
 ?>
