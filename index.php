@@ -18,11 +18,10 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 
 // Define path to site root from server root
-define('SITE_ROOT', str_replace('/index.php', '', $_SERVER['PHP_SELF']));
+define('SITE_ROOT', substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/index.php')));
 define('CSS_DIR', SITE_ROOT.'/public/resources/css');
 define('IMAGES_DIR', SITE_ROOT.'/public/resources/images');
 define('JS_DIR', SITE_ROOT.'/public/resources/js');
-
 
 require_once "Zend/Loader/Autoloader.php"; 
 $autoloader = Zend_Loader_Autoloader::getInstance();
