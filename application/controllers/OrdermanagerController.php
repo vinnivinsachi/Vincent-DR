@@ -99,6 +99,7 @@
 						echo 'tracking saved to product<br />';
 						echo 'carrier registered<br />';
 						echo 'product status need to be changed';
+						//$product->orderStatus->order_profile_id = $product->getId();
 						
 						$product->orderStatus->product_tracking = $this->productTrackingInfo;
 						$product->orderStatus->product_tracking_carrier = $this->productTrackingCarrier;
@@ -106,6 +107,8 @@
 						echo 'time is: '.time();
 						echo 'strtotime is: '.date('Y-m-d G:i:s');
 						$product->orderStatus->order_status = 'SHIPPED';
+						
+						Zend_Debug::dump($product);
 						if($product->orderStatus->save()){
 							//updateing the status of this order.
 							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'SHIPPED');
@@ -147,15 +150,15 @@
 					if($product->orderStatus->order_status=='DELIVERED'){
 						echo 'here at time good';
 						echo 'product loaded<br />';
-						echo 'product loaded ID: '.$product->product_UserId;
+						//echo 'product loaded ID: '.$product->product_UserId;
 						echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
 						if($product->buyer_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){//update tracking info
-						echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
+						//echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
 						//$product->
 						echo 'tracking saved to product<br />';
 						echo 'carrier registered<br />';
 						echo 'product status need to be changed';
-						
+
 						$product->orderStatus->product_return_tracking = $this->productTrackingInfo;
 						$product->orderStatus->product_return_tracking_carrier = $this->productTrackingCarrier;
 						$product->orderStatus->product_return_shipping_date = date('Y-m-d G:i:s');
@@ -203,6 +206,80 @@
 					
 				}
 			//echo $this->signedInUserSessionInfoHolder->generalInfo->user_type;
+		}
+		
+		public function completeorderAction(){
+			$request = $this->getRequest();
+				$this->productId = $request->getParam('returnProductId');
+				//$this->productTrackingInfo=$request->getParam('returnProductTracking');
+				//$this->productTrackingCarrier = $request->getParam('returnProductCarrier');
+				if($this->productId=='' ||!is_numeric($this->productId)){
+					$this->messenger->addMessage('We are very sorry, there is an error with this request.');
+					$this->_redirect($_SERVER['HTTP_REFERER']);
+				}
+				
+				$product = new DatabaseObject_OrderProfile($this->db);
+				if($product->load($this->productId)){
+					//strtotime ($product->product_latest_delivery_date)>time() this is how you check for time difference.
+					if($product->orderStatus->order_status=='DELIVERED'){
+						echo 'here at time good';
+						echo 'product loaded<br />';
+						//echo 'product loaded ID: '.$product->product_UserId;
+						echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
+						if($product->buyer_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){//update tracking info
+						//echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
+						//$product->
+						echo 'tracking saved to product<br />';
+						echo 'carrier registered<br />';
+						echo 'product status need to be changed';
+
+						$product->orderStatus->product_return_tracking = $this->productTrackingInfo;
+						$product->orderStatus->product_return_tracking_carrier = $this->productTrackingCarrier;
+						$product->orderStatus->product_return_shipping_date = date('Y-m-d G:i:s');
+						echo 'time is: '.time();
+						echo 'strtotime is: '.date('Y-m-d G:i:s');
+						$product->orderStatus->order_status = 'ORDER_COMPLETED';
+						$product->orderStatus->product_returned=1;
+						if($product->orderStatus->save()){
+							//now processing status tracking
+							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'ORDER_COMPLETED');
+							
+							
+							//now processing reviews for a returned product.
+							$rating = $request->getParam('buyerExperienceRating');			
+							$productReview = $request->getParam('returnReason');
+							$product_user = new DatabaseObject_User($this->db);
+							$product_user->load($product->uploader_id);
+							$review = new DatabaseObject_UserReview($this->db);
+							$review->rating = $rating;
+							$review->description = $productReview;
+							$review->order_profile_id = $product->getId();
+							$review->order_unique_id = $product->order_unique_id;
+							$review->order_product_name = $product->product_name;
+							$review->User_id = $product->uploader_id;
+							$product_user->review_count = $product_user->review_count+1;
+							$product_user->review_total_score = $product_user->review_total_score+$rating;
+							$product_user->review_average_score = $product_user->review_total_score/($product_user->review_count+1);
+							$product_user->save();
+							$review->save();
+							
+						}
+						
+						//$product->save();
+						$this->messenger->addMessage('thank you, your tracking information has been updated');
+						$this->_redirect($_SERVER['HTTP_REFERER']);
+						}else{
+							$this->messenger->addMessage( 'you do not have permission to edit tracking for this product');
+							$this->_redirect($_SERVER['HTTP_REFERER']);
+						}
+					}else{
+						$this->messenger->addMessage(
+						'We are sorry, your order is late for delivery. and the Buyer has issued a refund. you may confirm the returned items inorder for the buyer to be refunded after you have received the returned items. Thank you very much.');
+						$this->_redirect($_SERVER['HTTP_REFERER']);
+					}
+					
+				}
+			
 		}
 		
 		public function writereviewAction()

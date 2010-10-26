@@ -90,7 +90,7 @@
 								                            
 								<div style="float:right;"><a class="anchorTrackingForm" id="anchorID-DivIDtrackingForm-{$order->order_unique_id}_{$product.order_profile_id}">Submit tracking info</a></div>
 								
-								    <div class="TrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
+								    <div class="TrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left;">
 								        <form method="post" action="{geturl controller='ordermanager' action='addtrackingtoproduct'}">
 								            <label style="width:50%;">Tracking #:</label>
 								            <input type="text" name="productTracking" value=""/><br />

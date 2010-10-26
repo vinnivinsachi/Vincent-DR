@@ -72,7 +72,7 @@
 		protected function postLoad(){
 			$this->profile->setProfileId($this->getId());
 			$this->profile->load();
-			$this->orderStatus->load($this->getId());
+			$this->orderStatus->loadByProfileId($this->getId());
 			$this->statusTracking = DatabaseObject_Helper_Admin_OrderManager::retrieveStatusTracking($this->_db, $this->getId());
 		}
 	

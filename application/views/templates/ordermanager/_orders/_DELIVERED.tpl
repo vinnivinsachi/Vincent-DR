@@ -145,9 +145,9 @@
 								<div class="trackingStatusInfo {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" style="display:none; float:left;"></div>
 								    
 								    
-								<div class="satisfiedOrderForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDSatisfiedOrder-{$order->order_unique_id}_{$product.order_profile_id}" style='display:none;'>
+								<div class="satisfiedOrderForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDSatisfiedOrder-{$order->order_unique_id}_{$product.order_profile_id}" style=''>
 								 <p>Please submit a review to provide this feedback for this seller. Because your feedback is much appreciated and would help other buyers make better purchasing decisions, you will be awarded 4 reward points towards your future purchase.</p>
-                                	<form method="post" action="">
+                                	<form method="post" action="{geturl controller='ordermanager' action='completeorder'}">
                                         <label style="width:50%">Rate experience</label>
                                         <select name='buyerExperienceRating'>
                                         	<option value='5'>5</option>
@@ -160,6 +160,7 @@
                                         <textarea name='returnReason' cols='20' rows='3'></textarea><br/>
                                        
                                         <input type="hidden" name="returnProductId" value="{$product.order_profile_id}" />
+                                       
                                         <input type="submit" style='margin-left:50%;' value="Complete order and submit review" />
                                     </form>
                                 
