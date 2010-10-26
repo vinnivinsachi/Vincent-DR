@@ -14,6 +14,11 @@
 		
 	<!-- CUSTOM -->
 		<link rel="stylesheet" href="{$siteRoot}/public/resources/css/main.css" type="text/css" media="screen"/>
+		
+<!-- JAVASCRIPT -->
+	<!-- JQUERY -->
+		<script type='text/javascript' src='{$jsDir}/jquery/jquery-1.4.2.min.js'></script>
+		<script type='text/javascript'>var $j = jQuery.noConflict();</script>
 
 </head>
 
@@ -57,3 +62,8 @@
 			</a>
 
 	</div>
+	
+	
+<!-- JAVASCRIPTS -->
+<script type='text/javascript' src='{$jsDir}/custom/rollover.js'></script>
+<script type='text/javascript' src='{$jsDir}/custom/folding.js'></script>
