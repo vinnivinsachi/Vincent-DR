@@ -165,5 +165,12 @@
 			//echo $this->user->getId();
 		}
 		
+		//
+		public function checkCartCompletion($orderUniqueId)
+		{
+			return $this->user->accountBalanceSummary->areEverySingleItemInCartProcessedInPendingAccountAndBalanceTrackingForOrderId($orderUniqueId);
+		}
+		
+		
 	}
 ?>

@@ -155,14 +155,14 @@ function verfityAndSubmitForm(formName){
 	});
 
 	if(verifiedForm){
-		showloadingImage(); 
+		//showloadingImage(); 
 		$(formName).submit();
 	}	
 }
 
 function showloadingImage(){
 	//alert('showing loading image');
-	$('loadingImage').show();
+	//$('loadingImage').show();
 }
 
 function hideloadingImage(){
@@ -184,7 +184,7 @@ function addNewImageBlock(){
 }
 
 function submitMainForm(form){
-	showloadingImage();
+	//showloadingImage();
 	$(form).submit();
 }
 
@@ -203,7 +203,7 @@ function addToCompareChart(element){
 	var options={
 			parameters: form.serialize(true),
 			method: form.method,
-			onLoaded: showloadingImage(), 
+			//onLoaded: showloadingImage(), 
 			onSuccess: function(transport){
 						hideloadingImage();
 						alert('Product added to compare chart.');
@@ -220,7 +220,7 @@ function removeFromCompareChart(element){
 	var options={
 			parameters: form.serialize(true),
 			method: form.method,
-			onLoaded: showloadingImage(), 
+			//onLoaded: showloadingImage(), 
 			onSuccess: function(transport){
 						hideloadingImage();
 						alert('Product removed from compare chart.');

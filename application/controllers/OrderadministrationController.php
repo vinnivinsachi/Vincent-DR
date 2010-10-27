@@ -144,43 +144,63 @@
 		
 		//there are still tracking id problems. 
 		
-		$this->adminOrders = new Zend_Session_Namespace('adminOrders');
-
+			$this->adminOrders = new Zend_Session_Namespace('adminOrders');
 			$orderItemId = $this->getRequest()->getParam('id');
 			$product = new DatabaseObject_OrderProfile($this->db);
 			if($product->load($orderItemId)){
 				
+				//Load dance rialto
 				$danceRialto = new DatabaseObject_User($this->db);
 				//that is the id of DanceRialto Admin
-				$danceRialto->load(8);
+				$danceRialto->load(1);
 				$danceRialtoAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $danceRialto);
 				
+				//load seller.
 				$seller = new DatabaseObject_User($this->db);
 				$seller->load($product->uploader_id);
 				echo 'orderProfile uploader_id is: '.$seller->getId();
 				//Zend_Debug::dump($seller);
 				$sellerBalanceAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $seller);
+				//load buyer
+				$buyer = new DatabaseObject_User($this->db);
+				$buyer->load($product->buyer_id);
+				$buyerAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $buyer);
 			
 				if($product->orderStatus->order_status == 'ORDER_COMPLETED'){
 					$product->orderStatus->order_status ='BALANCE_UPDATED';	
 					//$product->orderStatus->product_delivered_date=date('Y-m-d',mktime(0,0,0,date("m"),date("d"),date("Y")));
 					
-					$this->messenger->addMessage($product->late_delivery_confirmation_date);
-					$this->messenger->addMessage('shipped delivered');
+					//$this->messenger->addMessage($product->late_delivery_confirmation_date);
+					//$this->messenger->addMessage('shipped delivered');
 					if($product->orderStatus->save()){
 						//update profile status tracking
 						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'BALANCE_UPDATED');
 						
+						//buyer reward points gets posted
+						$buyerTrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->buyer_id, 'from_order_profile_id', $orderItemId);
+						
+						foreach($buyerTrackingId as $k=>$v){
+						$buyerAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
 						//***seller balance gets posted
-						$sellerTrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByOrderProfileId($this->db, $product->uploader_id, 'from_order_profile_id', $orderItemId);
-						$sellerBalanceAccountProcessor->postPendingRewardPointsAndBalanceForUser($sellerTrackingId);
+						
+						$sellerTrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->uploader_id, 'from_order_profile_id', $orderItemId);
+						
+						foreach($sellerTrackingId as $k=>$v){
+						$sellerBalanceAccountProcessor->postPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
 						//***danceRialto balance gets posted
-						$DRtrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByOrderProfileId($this->db, $danceRialto->getId(), 'from_order_profile_id', $orderItemId);
-						$danceRialtoAccountProcessor->postPendingRewardPointsAndBalanceForUser($DRtrackingId);
+						$DRtrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $danceRialto->getId(), 'from_order_profile_id', $orderItemId);
+						
+						foreach($DRtrackingId as $k=>$v){
+						$danceRialtoAccountProcessor->postPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
 						echo 'complted';
 					}
 					$this->adminOrders->orderProfiles->balanceUpdatedOrders[$orderItemId]=$this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId]);
+					$this->messenger->addMessage('Balance transfered');
+
 				}else if($product->orderStatus->order_status=='RETURN_COMPLETED'){
 					$product->orderStatus->order_status='BALANCE_REFUNDED';
 					
@@ -190,28 +210,56 @@
 						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'BALANCE_REFUNDED');
 						
 						//***Buyer balance gets posted and updated.
-						$buyer = new DatabaseObject_User($this->db);
-						$buyer->load($product->buyer_id);
-						$buyerAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $buyer);
-						
 						$buyerTrackingId=$buyerAccountBalanceAndRewardPointProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', $product->seller_receivable+$product->dr_receivable, 'from_order_profile_id', $product->getId(), 'Balance addition from the refund of '.$product->product_name.' in order Id: '.$product->order_unique_id);
 						$buyerAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($buyerTrackingId);
 						
+						//***Buyer reward points gets cancelled.
+						$buyerTrackingIdArray = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->buyer_id, 'from_order_profile_id', $orderItemId);
+						
+						foreach($buyerTrackingIdArray as $k=>$v){
+							$buyerAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
+												
 						//***Seller balance gets cancelled.
-						$sellerTrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByOrderProfileId($this->db, $product->uploader_id, 'from_order_profile_id', $orderItemId);
-						$sellerBalanceAccountProcessor->cancelPendingRewardPointsAndBalanceForUser($sellerTrackingId);
+						$sellerTrackingIdArray = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->uploader_id, 'from_order_profile_id', $orderItemId);
+						foreach($sellerTrackingIdArray as $k=>$v){
+						$sellerBalanceAccountProcessor->cancelPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
+						
+						
 						//***danceRialto balance gets Cancelled
-						$DRtrackingId = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByOrderProfileId($this->db, $danceRialto->getId(), 'from_order_profile_id', $orderItemId);
-						$danceRialtoAccountProcessor->cancelPendingRewardPointsAndBalanceForUser($DRtrackingId);
+						$DRtrackingIdArray = DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $danceRialto->getId(), 'from_order_profile_id', $orderItemId);
+						foreach($DRtrackingIdArray as $k=>$v){
+						$danceRialtoAccountProcessor->cancelPendingRewardPointsAndBalanceForUser($v['user_pending_reward_point_and_balance_tracking_id']);
+						}
+						
 						echo 'return complted';
-
 					}
-					$this->messenger->addMessage('return shipped delivered');
+						
+					
+					
+						
+					$this->messenger->addMessage('Balance refunded');
 
-					$this->adminOrders->orderProfiles->balanceUpdatedOrders[$orderItemId]=$this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId];
+					$this->adminOrders->orderProfiles->balanceRefundedOrders[$orderItemId]=$this->adminOrders->orderProfiles->returnCompletedOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->returnCompletedOrders[$orderItemId]);
 				}
 				//$this->_redirect($_SERVER['HTTP_REFERER']);
+				//verifying the cart completion
+					$cartCompletion = $buyerAccountBalanceAndRewardPointProcessor->checkCartCompletion($product->order_unique_id);
+					if($cartCompletion['processed']==true){
+						echo 'here';
+						$buyerCartPendingTrackingIdArray= DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->buyer_id, 'from_order_id', $product->order_unique_id);
+						Zend_Debug::dump($buyerCartPendingTrackingIdArray);
+						if($cartCompletion['allCancelled']==true){
+						echo 'cancel the cart pending info<br />';
+					  	$buyerAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
+					  	
+						}elseif($cartCompletion['allCancelled']==false){
+						echo 'post the cart pending info<br />';
+						$buyerAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
+						}
+					}
 			}else{
 				$this->messenger->addMessage('not even loaded');
 			}

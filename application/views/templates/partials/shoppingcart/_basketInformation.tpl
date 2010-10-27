@@ -27,7 +27,7 @@
 							+ {$product.reward_points_awarded} points
 		                </td>
 		                <td style='text-align: right; width:100px;'>
-		                <a href="{geturl controller='shoppingcart' action='removeitemsfromshoppingcart'}?cartProductId={$cartKey}"><img src="{$siteRoot}/public/resources/css/images/Crosses.png" style="margin-bottom:-10px;"/></a>
+		                <a href="{geturl controller='shoppingcart' action='removeitemsfromshoppingcart'}?cartProductId={$cartKey}"><img src="{$siteRoot}/public/resources/css/images/OLD/Crosses.png" style="margin-bottom:-10px;"/></a>
 		                </td>
 					</tr>
 					{/foreach}

@@ -91,6 +91,7 @@
 			echo "ip is: ".$ip;
 		}
 		
+		//not used anymore
 		public function rewardpointsAction(){
 			$this->view->user=$this->signedInUserSessionInfoHolder;
 			$this->view->userRewardPoint=$this->userObject->reward_point;
@@ -201,7 +202,7 @@
 							$this->userObject->save();
 						}
 					
-						$this->_redirect($_SERVER['HTTP_REFERER']);
+						$this->_redirect('/account/details');
 					}
 
 				}

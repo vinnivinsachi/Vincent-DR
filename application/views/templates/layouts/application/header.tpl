@@ -13,28 +13,24 @@
 		<![endif]-->
 		
 	<!-- CUSTOM -->
-		<link rel="stylesheet" href="{$siteRoot}/public/resources/css/main.css" type="text/css" media="print"/>
 
-
-
-
-						<link rel="stylesheet" type="text/css" href="{$siteRoot}/public/resources/css/index.css"/>
-						<link rel="stylesheet" type="text/css" href="{$siteRoot}/public/resources/css/slidemenu.css" />
-						<script src="{$siteRoot}/public/resources/javascripts/prototype.js" type="text/javascript"></script>
-						<script src="{$siteRoot}/public/resources/javascripts/scriptaculous/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
-						<script src="{$siteRoot}/public/resources/global.js" type="text/javascript"></script>
-						<script src="{$siteRoot}/public/resources/jquery/js/jquery-1.4.2.min.js" type="text/javascript"></script>
-						<script src="{$siteRoot}/public/resources/jquery/js/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
-						<link rel='stylesheet' type='text/css' href="{$siteRoot}/public/resources/jquery/js/colorbox/colorbox.css" />
-						<script src="{$siteRoot}/public/resources/jquery/js/jquery.tools.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/public/resources/css/index.css"/>
+<link rel="stylesheet" type="text/css" href="/public/resources/css/slidemenu.css" />
+<script src="/public/resources/javascripts/prototype.js" type="text/javascript"></script>
+						<script src="/public/resources/javascripts/scriptaculous/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
+						<script src="/public/resources/global.js" type="text/javascript"></script>
+						<script src="/public/resources/js/jquery/jquery-1.4.2.min.js" type="text/javascript"></script>
+						<script src="/public/resources/js/jquery/js/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
+						<link rel='stylesheet' type='text/css' href="/public/resources/js/jquery/js/colorbox/colorbox.css" />
+						<script src="/public/resources/js/jquery/js/jquery.tools.min.js" type="text/javascript"></script>
 						<script>
 						     var $j = jQuery.noConflict();
 						</script>
 						
-						<script src="{$siteRoot}/public/resources/jquery/js/jquery-ui-1.8.custom.min.js"></script>
-						<link rel="stylesheet" type="text/css" href="{$siteRoot}/public/resources/jquery/css/start/jquery-start.custom.css"/>
+						<script src="/public/resources/js/jquery/js/jquery-ui-1.8.custom.min.js"></script>
+						<link rel="stylesheet" type="text/css" href="/public/resources/js/jquery/css/start/jquery-start.custom.css"/>
 						
-						<script type="text/javascript" src="{$siteRoot}/public/resources/javascripts/accountDetailEnhancement.js"></script>
+						<script type="text/javascript" src="/public/resources/javascripts/accountDetailEnhancement.js"></script>
 						<script type="text/javascript" src="{$siteRoot}/public/resources/javascripts/universalToggle.js"></script> 
 						<script type="text/javascript" src="{$siteRoot}/public/resources/javascripts/simpleToggle.js"></script>
 						<script type="text/javascript" src="{$siteRoot}/public/resources/javascripts/orderToggle.js"></script>
@@ -42,7 +38,7 @@
 						<script src="{$siteRoot}/public/resources/javascripts/formEnhancer/formEnhancer.js" type="text/javascript"></script>
 						<script src="{$siteRoot}/public/resources/javascripts/formEnhancer/checkOutEnhancer.js" type="text/javascript"></script>
 						<script src="{$siteRoot}/public/resources/javascripts/productPreview/productImagePreviews.js" type="text/javascript"></script>
-						<script src="{$siteRoot}/public/resources/javascripts/slidemenu.js" type="text/javascript"></script>
+						<script src="/public/resources/javascripts/slidemenu.js" type="text/javascript"></script>
 
 
 </head>
@@ -50,7 +46,6 @@
 <body>
 
 
-<<<<<<< HEAD
 
 
 	<div id="DancewearRialtoTitle">D<span style="font-style:italic;">ancewear</span>R<span style="font-style:italic;">ialto</span></div>
@@ -115,10 +110,10 @@
                 <div id="messages" class="ui-widget" style="display:none"></div>
             {/if}
             
-=======
-<div id='page'>
+=======<!--
+<div id='page'>-->
 
-<!-- TOP MENU -->
+<!-- TOP MENU --><!--
 	<div id="top_menu">
 		<div id='top_menu_bg_l'><img src="{$imagesDir}/top_menu/logo_dancers.jpg"/></div>
 		
@@ -131,25 +126,25 @@
 		<div id='top_menu_bg_r'><img src='{$imagesDir}/top_menu/top_menu_bg_r.jpg'/></div>
 	</div>
 
-
+-->
 <!-- LOGO -->
-	<div id='logo'><img src='{$imagesDir}/layout/logo_title.jpg'/></div>
+<!--	<div id='logo'><img src='{$imagesDir}/layout/logo_title.jpg'/></div>
+-->
 
-
-<!-- ACCOUNT MENU -->
+<!-- ACCOUNT MENU --><!--
 	<div id='account_menu'>
 		<a href='#'>Account</a> &nbsp;|&nbsp; <a href='#'>Logout</a>
 	</div>
 
-
+-->
 <!-- MINI CART -->
-	<a id='mini_cart_link' href='#'>
+	<!--<a id='mini_cart_link' href='#'>
 		<div id='mini_cart'>
 			<span id='mini_cart_number'>0</span>
 			 &nbsp;&nbsp;&nbsp;&nbsp;items in your cart
 		</div>
 	</a>
-
+-->
 
 
 
@@ -159,7 +154,7 @@
 
 <!-- HIDDEN -->
 
-<div style="display:none;">
+<!--<div style="display:none;">
 
 <div id="bg">
 </div>
@@ -213,5 +208,4 @@
 <img src="images/menu_bar_right.gif" id="menu_bar_right" alt="" />
 
 
-</div>
->>>>>>> f9c54e22615cb7baf8ef6e794bfa3b53f3f07e11
+</div>-->

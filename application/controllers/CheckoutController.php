@@ -276,7 +276,7 @@
 			
 			$danceRialto = new DatabaseObject_User($this->db);
 			//that is the id of DanceRialto Admin
-			$danceRialto->load(8);
+			$danceRialto->load(1);
 			$danceRialtoAccountProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $danceRialto);
 			
 			//DanceRialto load;
@@ -302,7 +302,7 @@
 			if($confirmedOrder->save()){
 				//upate reward points for buyer
 				if($confirmedOrder->reward_points_used>0){
-					$buyerBalanceAccountProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_DEDUCTION', $confirmedOrder->reward_points_used, 'from_order_id', $confirmedOrder->getId(), 'Reward points used for the purchase of order id: '.$confirmedOrder->order_unique_id);
+					$buyerBalanceAccountProcessor->updatePendingRewardPointsAndBalanceForUser('REWARD_DEDUCTION', $confirmedOrder->reward_points_used, 'from_order_id', $confirmedOrder->order_unique_id, 'Reward points used for the purchase of order id: '.$confirmedOrder->order_unique_id);
 				}
 			}
 			

@@ -57,8 +57,16 @@
 		{
 			/*testing accountBalanceProcessor*/
 				
-		
 			$user = new DatabaseObject_User($this->db);
+			$user->load(2);
+			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $user);
+			Zend_Debug::dump($userAccountBalanceAndRewardPointProcessor->checkCartCompletion('kzsWuEtDlnxsupya'));
+			
+			Zend_Debug::dump(DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, 2, 'from_order_id', 'kzsWuEtDlnxsupya'));
+		//	DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadPendingTrackingForBuyerToVerifyCartCompletion('yVRBSUAAlPBprvqA');
+				
+		
+			/*$user = new DatabaseObject_User($this->db);
 			$user->load(17);
 			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $user);
 			
@@ -67,7 +75,7 @@
 			
 			Zend_Debug::dump($rewardPointsAndBalanceRecords);
 			$this->view->rewardPointsAndBalanceRecords = $rewardPointsAndBalanceRecords;
-			
+			*/
 			
 			//Zend_Debug::dump($userAccountBalanceAndRewardPointProcessor);
 			
