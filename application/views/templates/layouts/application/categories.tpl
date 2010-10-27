@@ -7,7 +7,7 @@
 	<div id='categories-bg-b'></div>
 	
 		
-<ul id='categories-list'>
+<ul class='folding-list' id='categories-list'>
   <li>WOMEN
     <ul>
       <li>Shoes
