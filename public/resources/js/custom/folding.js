@@ -4,7 +4,7 @@ $j(function() {
     // style them accordingly.  Also, turn them
     // into links that can expand/collapse the
     // tree leaf.
-    $j('ul.folding-list li > ul').each(function(i) {
+    $j('ul.folding-list > li > ul').each(function(i) {
         // Find this list's parent list item.
         var parent_li = $j(this).parent('li');
 
