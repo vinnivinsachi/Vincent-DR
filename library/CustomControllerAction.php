@@ -138,9 +138,13 @@
 			
 			
 			// Show Debug Stuff At Bottom Of Page
+<<<<<<< HEAD
 			//print '<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><div>';
 			//Zend_Debug::dump($this->getRequest());
 			//print '</div>';
+=======
+			Zend_Debug::dump($this->getRequest());
+>>>>>>> 337557072d26d6b4743054988cf538aa21d43388
 		}
 		
 		public function postDispatch(){

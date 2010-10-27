@@ -28,7 +28,7 @@
 	
 		/*index***********
 		******************/
-		public function indexAction(){
+		public function indexAction(){			
 			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $this->userObject);
 			
 			$rewardPointsAndBalanceRecords = $userAccountBalanceAndRewardPointProcessor->loadRewardPointsAndBalanceForUser();
