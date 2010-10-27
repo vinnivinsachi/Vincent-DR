@@ -44,7 +44,7 @@
 		
 		
 		<!-- LOGO -->
-			<div id='logo'><img src='{$imagesDir}/layout/logo_title.jpg'/></div>
+			<div id='logo'><a href='{$siteRoot}'><img src='{$imagesDir}/layout/logo_title.jpg'/></a></div>
 		
 		
 		<!-- ACCOUNT MENU -->
