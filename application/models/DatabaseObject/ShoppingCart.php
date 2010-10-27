@@ -6,7 +6,7 @@
 		public $products = array();
 		public function __construct($db){
 			parent::__construct($db, 'shopping_cart', 'cart_id');
-			$this->add('order_unique_id', Text_Password::create(16, 'unpronounceable','alphabetical'));
+			$this->add('order_unique_id', Text_Password::create(1, 'unpronounceable','alphabetical').Text_Password::create(8, 'unpronounceable','numeric'));
 			$this->add('order_shipping_id');
 			$this->add('buyer_username');
 			$this->add('buyer_id');

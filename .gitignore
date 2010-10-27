@@ -16,6 +16,6 @@ public/resources/userdata/uploaded-files/
 public/resources/userdata/uploaded-files/*
 public/resources/userdata/uploaded-files/*/*
 application/controllers/IndexController.php
-application/views/templates/layouts/application/header.tpl
+application/views/templates/*
 library/CustomControllerAction.php
 application/views/templates/layouts/*

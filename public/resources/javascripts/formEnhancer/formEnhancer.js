@@ -65,7 +65,28 @@ FormEnhancer.prototype={
 };
 
 var loginFormEnhancer = Class.create(FormEnhancer,{
-	
+	onFormSuccess: function(transport){
+		alert('on form success');
+		//hideloadingImage();
+
+		var json = transport.responseText.evalJSON(true);
+		var errors = $H(json.errors);
+		//alert('error size is: '+errors.size());
+		if(errors.size()>0 && errors.size()!=38  &&errors.size()!=43 ){ //38 characters is very strange here because when there is no error, the size of errors is 38... hm..
+			alert('here at form error');
+			
+			this.form.down('.error').show();
+			errors.each(function(pair)
+								 {
+									// alert(pair.key);
+									// alert(pair.value);
+									 this.showError(pair.key, pair.value);
+								 }.bind(this));
+		}else{
+			//alert('here at form is going to submit');
+			this.form.submit();
+		}
+	}
 }
 );
 
