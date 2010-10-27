@@ -34,7 +34,6 @@
 		*displays everything there is that is in the session variable
 		******************/
 		public function indexAction(){
-			
 		}
 		
 		public function messagesAction(){
@@ -380,7 +379,7 @@
 				//determin the page the user was originally trying t request
 			$redirect = $request->getPost('redirect');
 			if(strlen($redirect)==0){
-				$redirect= $request->getServer('REQUEST_URI');
+				//$redirect= $request->getServer('REQUEST_URI');
 			}
 			if(strlen($redirect)==0){
 				$redirect = '/index';
