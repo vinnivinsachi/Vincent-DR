@@ -1,4 +1,6 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
+
 <div id="leftContainer" style="width:210px; float:left;">
 
 {include file='adminorders/_orderStatusControls/_orderTabs.tpl'}
@@ -21,6 +23,7 @@
         <td>Latest delivery date:</td>
         
      </tr>
+     
 {foreach from=$orderProfilesType item=orderProfile}
 	<tr>
     	<td><div class='tooltipControl' >{$orderProfile.order_profile_id}</div>

@@ -1,4 +1,6 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
+
 	<div id="leftContainer" style="width:100%;">
     	<div class='titleBarBig'>{$fp->product_tag} details {if $fp->product_id!='' && $fp->product_id!=0}
        	<span style='float:right; font-weight:normal;'><a href="{geturl controller='manageattribute' action='editproductattribute'}?id={$fp->product_id}" style='margin-right:20px;'>Edit product attribute ></a>

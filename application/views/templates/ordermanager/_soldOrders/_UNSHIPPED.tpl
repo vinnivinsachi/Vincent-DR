@@ -26,10 +26,9 @@
 		                           
 		                        </div> 
 		                        <div class='box orderProductSecondHeader'> 
-		                        <span style="font-weight:bold; color:#F90; font-size:12px; ">{removeunderscore phrase=$product.order_status}</span> 
-		                        
-		                        | 
-		                        <span style=''><a>Cancel this order</a></span> 
+		                        <span style="font-weight:bold; color:#F90; font-size:12px; ">{removeunderscore phrase=$product.order_status}</span>
+		                        |
+		                        <span style=""><a href="{geturl controller='ordermanager' action='cancelorder'}?profileId={$product.order_profile_id}&by=seller">Cancel this order</a></span> 
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>
 		                        

@@ -53,8 +53,6 @@
 		
 		//this is only available to sellers
 		public function soldordersAction(){
-			
-			
 			$params=array();
 			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
 			$this->view->user=$this->signedInUserSessionInfoHolder;
@@ -244,7 +242,6 @@
 							//now processing status tracking
 							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'ORDER_COMPLETED');
 							
-							
 							//now processing reviews for a returned product.
 							$rating = $request->getParam('buyerExperienceRating');			
 							$productReview = $request->getParam('returnReason');
@@ -262,7 +259,6 @@
 							$product_user->review_average_score = $product_user->review_total_score/($product_user->review_count+1);
 							$product_user->save();
 							$review->save();
-							
 						}
 						
 						//$product->save();
@@ -277,8 +273,152 @@
 						'We are sorry, your order is late for delivery. and the Buyer has issued a refund. you may confirm the returned items inorder for the buyer to be refunded after you have received the returned items. Thank you very much.');
 						$this->_redirect($_SERVER['HTTP_REFERER']);
 					}
-					
 				}
+		}
+		
+		public function cancelorderAction(){
+			$request = $this->getRequest();
+			$this->productId = $request->getParam('profileId');
+			$this->cancelledBy = $request->getParam('by');
+			//$this->productTrackingInfo=$request->getParam('returnProductTracking');
+			//$this->productTrackingCarrier = $request->getParam('returnProductCarrier');
+			if($this->productId=='' ||!is_numeric($this->productId)){
+				$this->messenger->addMessage('We are very sorry, there is an error with this request.');
+				$this->_redirect($_SERVER['HTTP_REFERER']);
+			}
+			
+			$product = new DatabaseObject_OrderProfile($this->db);
+			if($product->load($this->productId)){
+				//strtotime ($product->product_latest_delivery_date)>time() this is how you check for time difference.
+				if($product->orderStatus->order_status=='UNSHIPPED'){
+					echo 'here at time good';
+					echo 'product loaded<br />';
+					//echo 'product loaded ID: '.$product->product_UserId;
+					echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
+					echo "<br/>".$product->orderStatus->product_latest_delivery_date;
+					echo '<br/>'.time();
+					if($this->cancelledBy=='buyer' && $product->buyer_id == $this->signedInUserSessionInfoHolder->generalInfo->userID && ($product->orderStatus->product_latest_delivery_date < time())){
+					//update tracking info
+					//echo 'user session is:'. $this->signedInUserSessionInfoHolder->generalInfo->userID;
+					//$product->
+					echo 'tracking saved to product<br />';
+					echo 'carrier registered<br />';
+					echo 'product status need to be changed';
+
+					$product->orderStatus->order_status = 'CANCELLED_BY_BUYER';
+					$product->orderStatus->product_cancelled_date = date('Y-m-d G:i:s');
+					//$product->orderStatus->product_returned=1;
+						if($product->orderStatus->save()){
+							//now processing status tracking
+							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'CANCELLED_BY_BUYER');
+							
+							$product->cancelled_by_buyer=true;
+							$product->cancelled_by_buyer_date=date('Y-m-d G:i:s');
+							$product->save();
+							$this->messenger->addMessage('thank you, this order is now cancelled by the buyer');
+							$this->_redirect($_SERVER['HTTP_REFERER']);
+							//now processing reviews for a returned product.
+						}
+					
+					
+					}elseif($this->cancelledBy=='seller' && $product->uploader_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
+						$product->orderStatus->order_status = 'CANCELLED_BY_SELLER';
+						$product->orderStatus->product_cancelled_date = date('Y-m-d G:i:s');		
+						//$product->orderStatus->product_returned=1;
+						if($product->orderStatus->save()){
+							//now processing status tracking
+							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'CANCELLED_BY_SELLER');
+							
+							$product->cancelled_by_seller=true;
+							$product->cancelled_by_seller_date=date('Y-m-d G:i:s');
+							$product->save();
+							//now processing reviews for a returned product.
+							$this->messenger->addMessage( 'Seller has cancelled this order.');
+							$this->_redirect($_SERVER['HTTP_REFERER']);
+						}
+						
+						
+					}else{
+						$this->messenger->addMessage( 'you do not have permission to edit this product');
+						$this->_redirect($_SERVER['HTTP_REFERER']);
+					}
+				}else{
+					$this->messenger->addMessage( 'This product can not be cancelled right now');
+					$this->_redirect($_SERVER['HTTP_REFERER']);
+				}
+				
+			}
+			
+		}
+		
+		public function filingaclaimAction(){
+			$request=$this->getRequest();
+			$this->productId = $request->getParam('profileId');
+			$this->filedByType = $request->getParam('filedByType');
+			if($this->productId=='' ||!is_numeric($this->productId)){
+				$this->messenger->addMessage('We are very sorry, there is an error with this request.');
+				$this->_redirect($_SERVER['HTTP_REFERER']);
+			}
+			
+			$product = new DatabaseObject_OrderProfile($this->db);
+			if($product->load($this->productId)){
+				//when it is delivered and when return is allowed and the buyer belongs to the profile.
+				if($product->orderStatus->order_status=='DELIVERED' && $product->return_allowed==0 && $product->buyer_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
+					$product->orderStatus->order_status ='HELD_BY_BUYER_FOR_ARBITRATION';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'HELD_BY_BUYER_FOR_ARBITRATION');
+						
+						$product->buyer_return_claim_filed=true;
+						$product->buyer_return_claim_filed_date = date('Y-m-d G:i:s');
+						$product->save();
+						
+						$claim = new DatabaseObject_OrderProfileClaims($this->db);
+						
+						$claim->order_profile_id = $this->productId;
+						$claim->filed_by_type = $this->filedByType;
+						$claim->filer_name = $product->buyer_name;
+						$claim->filing_reason= $request->getParam('orderClaimReason');
+						$claim->description = $request->getParam('description');
+						$claim->status = 'UNREVIEWED';
+						$claim->save();
+						
+						$this->messenger->addMessage( 'Claim successfully filed. Dancerialto will contact you inregards to your claim.');
+						//$this->_redirect($_SERVER['HTTP_REFERER']);
+					}
+					
+				}elseif($product->orderStatus->order_status=='RETURN_DELIVERED' && $product->uploader_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
+					$product->orderStatus->order_status ='HELD_BY_SELLER_FOR_ARBITRATION';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'HELD_BY_SELLER_FOR_ARBITRATION');
+						
+						$product->seller_claim_filed=true;
+						$product->seller_claim_filed_date = date('Y-m-d G:i:s');
+						$product->save();
+						
+						$claim = new DatabaseObject_OrderProfileClaims($this->db);
+						
+						$claim->order_profile_id = $this->productId;
+						$claim->filed_by_type = $this->filedByType;
+						$claim->filer_name = $product->buyer_name;
+						$claim->filing_reason= $request->getParam('orderClaimReason');
+						$claim->description = $request->getParam('description');
+						$claim->status = 'UNREVIEWED';
+						$claim->save();
+						
+						$this->messenger->addMessage( 'Claim successfully filed. Dancerialto will contact you inregards to your claim.');
+						//$this->_redirect($_SERVER['HTTP_REFERER']);
+					}
+					
+				}else{
+					
+					$this->messenger->addMessage( 'You can not file a claim at this moment');
+					//$this->_redirect($_SERVER['HTTP_REFERER']);
+				}
+			}else{
+					$this->messenger->addMessage( 'An error had occured.');
+					//$this->_redirect($_SERVER['HTTP_REFERER']);
+				
+			}
 			
 		}
 		

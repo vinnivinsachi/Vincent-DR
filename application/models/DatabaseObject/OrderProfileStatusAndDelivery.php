@@ -21,6 +21,7 @@
 			$this->add('product_return_delivered_date');
 			$this->add('product_return_completion_date');//
 			$this->add('product_fund_allocation_date');
+			$this->add('product_cancelled_date');
 		}
 		
 		protected function preInsert(){

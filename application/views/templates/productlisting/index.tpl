@@ -1,4 +1,5 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
 
     <!--{geturl controller="productlisting" action="index"}-->
     	<fieldset>

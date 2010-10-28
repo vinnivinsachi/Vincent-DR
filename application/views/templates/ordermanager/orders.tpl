@@ -1,4 +1,5 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
 
 <div id="leftContainer" style="width:22%; float:left;">	
 <ul id="qm0" class="qmmc" style="width:100%;">

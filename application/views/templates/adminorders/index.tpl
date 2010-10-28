@@ -1,4 +1,5 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
 
 
 <div id="leftContainer" style="width:210px; float:left;">

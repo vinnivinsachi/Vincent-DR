@@ -44,7 +44,7 @@
  
 			                        <div class='orderStatus bigFont box' style='padding:5px 0px 5px 0px; background-color:#B1FF91;'>
 			                        <div class="productSellerInfo" style="float:left; padding-left:10px; width:40%;">
-This order is now return complete, and balance will be refunded to you.			                            </div>
+This order is now return complete, and balance has been refunded to the buyer.			                            </div>
 			                            <div class='box' style='width:25%;'>
 			                            Status: {removeunderscore phrase=$product.order_status} on {$product.product_shipping_date|date_format}
 			                            </div>
@@ -74,7 +74,7 @@ This order is now return complete, and balance will be refunded to you.			      
                         
                         <div class="trackingInfo" style="width:100%; float:left; padding:5px 0px 5px 0px;">
 								    <div class="trackingInfoDetails box" style=" color:#F90;" >
-								    Waiting for return delivery and seller confirmation. 
+
 								    </div>
 									<div class="trackingActions" style="width:50%; float:right;">
 								    </div>

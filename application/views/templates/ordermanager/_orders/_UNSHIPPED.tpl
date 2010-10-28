@@ -31,7 +31,7 @@
 		                        {if ($product.product_latest_delivery_date|date_format:"%Y-%m-%d")<($smarty.now|date_format:"%Y-%m-%d")}
 		                        
 		                        | 
-		                        <span style=''><a>Cancel this order</a></span>
+		                        <span style=''><a href="{geturl controller='ordermanager' action='cancelorder'}?profileId={$product.order_profile_id}&by=buyer">Cancel this order</a></span>
 		                        {/if} 
 		                        | Ordered on: {$product.ts_created|date_format:"%D"}
 		                        </div>

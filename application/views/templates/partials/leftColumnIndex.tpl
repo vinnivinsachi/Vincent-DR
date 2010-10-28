@@ -1,36 +1,4 @@
-	<!--<fieldset id="rewardLeftColumn" style="width:90%;">
-	<legend>Earn reward points!</legend>
-    	<span style="font-size:14px; font-weight:bold;">4 reward points = $1</span>
-        <ul>
-        {if !$authenticated}
-        <li><a href="{geturl controller='registration' action='newmember'}"><span style="font-size:16px;">Register</span></a> and earn 16 reward points!</li>{/if}
-        <li>
-        	<a href="{geturl controller='account' action='uploadmeasurement'}">update your measurements</a> and speed up your future purchase! + 24 reward points!
-        </li>
-        <li><a href="#">Tell us about your dancing!</a> + 12 reward points</li>
 
-        <li>
-        	<a href="#">Write a review on a completed order</a>, + 8 reward point!</li>
-
-        <li>
-        	<a href="#">Recommend a dancer</a>, + 4 reward point from registered friends!</li>
-
-        <li>
-        	Earn reward points from every purchase!</li>
-        <li><a href="#">Purchase reward points</a> at discounts!</li>
-	</ul>
-    </fieldset>
-    <fieldset style="width:90%;">
-	<legend>Finders and discussion</legend>
-        <ul>
-       		<li><a href="#" title="Don't know your size? Find a shoe size to try on near you!">Size finder</a></li>
-            <li><a href="#" title="Find a local dance instructor!">Instructor finder</a></li>
-            <li><a href="#" title="Find a local dance studio to join!">Studio finder</a></li>
-            <li><a href="#" title="Find a dance partner! List yourself if you are looking!">Partner finder</a></li>
-            <li><a href="#" title="Discuss about your passion for dance to your hearts content!">Forum and discussion</a></li>
-		</ul>
-    </fieldset>
-    -->
     <div class='box' style="width:95%;">
     	<div class='titleBarBig marginTop20'>Categories</div>
         <ul id="qm0" class="qmmc" style="float:left;">

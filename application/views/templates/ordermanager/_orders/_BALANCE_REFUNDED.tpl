@@ -74,7 +74,6 @@ This order is now return complete, and balance will be refunded to you.			      
                         
                         <div class="trackingInfo" style="width:100%; float:left; padding:5px 0px 5px 0px;">
 								    <div class="trackingInfoDetails box" style=" color:#F90;" >
-								    Waiting for return delivery and seller confirmation. 
 								    </div>
 									<div class="trackingActions" style="width:50%; float:right;">
 								    </div>

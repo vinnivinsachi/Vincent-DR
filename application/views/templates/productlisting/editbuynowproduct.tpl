@@ -1,4 +1,6 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
+{include file="layouts/vinceTemp/header.tpl"}
+
 	<div id="leftContainer" style="width:100%;">
     	
     	<div class='titleBarBig'>Step 1: &nbsp;&nbsp;&nbsp;List a product - {$fp->product_tag}  {if $fp->product_id!='' && $fp->product_id!=0}

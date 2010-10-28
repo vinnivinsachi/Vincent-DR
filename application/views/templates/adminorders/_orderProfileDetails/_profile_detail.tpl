@@ -183,7 +183,7 @@
 <input type="hidden" name="id" value="{$product.0.order_profile_id}" />
 <input type="submit" value="Mark Balance Updated" />
 </form>
-{elseif $product.0.order_status == 'RETURN_COMPLETED'}
+{elseif $product.0.order_status == 'RETURN_COMPLETED' || $product.0.order_status == 'CANCELLED_BY_SELLER' || $product.0.order_status == 'CANCELLED_BY_BUYER'}
 <form action="{geturl controller='orderadministration' action='markorderasupdatedorcancelled'}" method="post">
 <input type="hidden" name="id" value="{$product.0.order_profile_id}" />
 <input type="submit" value="Mark Balance Refunded" />

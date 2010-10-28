@@ -55,6 +55,18 @@
 			
 		public function testAction()
 		{
+			/*testing orderprofileclaims*/
+			
+			$claim = new DatabaseObject_OrderProfileClaims($this->db);
+			$claim->order_profile_id = 1;
+			$claim->filed_by_type = 'buyer';
+			$claim->filer_name = 'bob';
+			$claim->filing_reason= 'bad shoes';
+			$claim->description = 'description is bad';
+			$claim->status = 'status is good';
+			$claim->save();
+			
+			
 			
 			
 			/*testing accountBalanceProcessor*/
@@ -71,7 +83,6 @@
 			/*$user = new DatabaseObject_User($this->db);
 			$user->load(17);
 			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $user);
-			
 			
 			$rewardPointsAndBalanceRecords = $userAccountBalanceAndRewardPointProcessor->loadRewardPointsAndBalanceForUser();
 			
@@ -108,8 +119,8 @@
 			//$userAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser(25);
 					
 			
-			Zend_Debug::dump($user->accountBalance);
-			$this->view->accountBalance = $user->accountBalance;
+			//Zend_Debug::dump($user->accountBalance);
+			//$this->view->accountBalance = $user->accountBalance;
 
 			/*need to work on REWARD_DEDUCTION*/
 			/*need to work on BALANCE_DEDUCTION*/			

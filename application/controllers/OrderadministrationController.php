@@ -201,7 +201,7 @@
 					unset($this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId]);
 					$this->messenger->addMessage('Balance transfered');
 
-				}else if($product->orderStatus->order_status=='RETURN_COMPLETED'){
+				}else if($product->orderStatus->order_status=='RETURN_COMPLETED' || $product->orderStatus->order_status=='CANCELLED_BY_SELLER' || $product->orderStatus->order_status=='CANCELLED_BY_BUYER'){
 					$product->orderStatus->order_status='BALANCE_REFUNDED';
 					
 					$this->messenger->addMessage($product->late_return_delivery_confirmation_date);
@@ -250,14 +250,16 @@
 					if($cartCompletion['processed']==true){
 						echo 'here';
 						$buyerCartPendingTrackingIdArray= DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking::loadTrackingIdByColumnId($this->db, $product->buyer_id, 'from_order_id', $product->order_unique_id);
-						Zend_Debug::dump($buyerCartPendingTrackingIdArray);
-						if($cartCompletion['allCancelled']==true){
-						echo 'cancel the cart pending info<br />';
-					  	$buyerAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
-					  	
-						}elseif($cartCompletion['allCancelled']==false){
-						echo 'post the cart pending info<br />';
-						$buyerAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
+						if(count($buyerCartPendingTrackingIdArray)>0){
+							Zend_Debug::dump($buyerCartPendingTrackingIdArray);
+							if($cartCompletion['allCancelled']==true){
+							echo 'cancel the cart pending info<br />';
+						  	$buyerAccountBalanceAndRewardPointProcessor->cancelPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
+						  	
+							}elseif($cartCompletion['allCancelled']==false){
+							echo 'post the cart pending info<br />';
+							$buyerAccountBalanceAndRewardPointProcessor->postPendingRewardPointsAndBalanceForUser($buyerCartPendingTrackingIdArray[0]['user_pending_reward_point_and_balance_tracking_id']);
+							}
 						}
 					}
 			}else{

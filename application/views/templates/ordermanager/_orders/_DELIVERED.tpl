@@ -122,9 +122,9 @@
 								<div class="returnTrackingForm {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDreturnTrackingForm-{$order->order_unique_id}_{$product.order_profile_id}" style="width:100%; float:left; display:none;">
                                     You may not return this item because this item is not returnable specified by the seller during listing. <br/>
                                     If the item shipped is not the right item, you may <strong>file a claim</strong>. We will then investigate this order and approve your return request. After the return is approved, you may submit a return tracking information be full refunded for the item.
-                                    <form>
+                                    <form action="{geturl controller='ordermanager' action='filingaclaim'}" method='post'>
                                     	
-                                        <label style="width:50%;">Reason for claim:</label>
+                                        <label style="width:50%;">Claim type:</label>
                                         <select name="orderClaimReason">
                                             <option value="Wrong item">Wrong item</option>
                                             <option value="Severely damaged">Severely damanged</option>
@@ -132,9 +132,10 @@
                                             <option value="Do not like it">Do not like it</option>
                                             <option value="Other">Other</option>
                                         </select><br/>
-                                        <label style="width:50%;">Phone number:</label>
-                                        <input type="text" name='claimBuyerPhoneNumber' />
-                                        <input type="hidden" name="" value="{$product.order_profile_id}" />
+                                        <label style="width:50%;">Description of claim:</label>
+                                        <textarea rows="5" cols="10" name='description'></textarea>
+                                        <input type="hidden" name="profileId" value="{$product.order_profile_id}" />
+                                        <input type="hidden" name="filedByType" value="buyer" />
                                         <input type="submit" value="File this claim" />
                                     </form>
                                 </div>

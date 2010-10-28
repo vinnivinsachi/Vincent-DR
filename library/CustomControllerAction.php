@@ -138,7 +138,7 @@
 			
 			
 
-			Zend_Debug::dump($this->getRequest());
+			//Zend_Debug::dump($this->getRequest());
 		}
 		
 		public function postDispatch(){

@@ -85,9 +85,9 @@
 			$this->acl->allow('generalSeller', 'checkout');
 			$this->acl->allow('storeSeller', 'checkout');
 			$this->acl->allow('admin', 'checkout');
-			$this->acl->allow('member', 'ordermanager', array('index','orders', 'completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview'));
-			$this->acl->allow('generalSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct'));
-			$this->acl->allow('storeSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct'));
+			$this->acl->allow('member', 'ordermanager', array('index','orders', 'completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'cancelorder', 'writereview','filingaclaim'));
+			$this->acl->allow('generalSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct', 'cancelorder','filingaclaim'));
+			$this->acl->allow('storeSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct', 'cancelorder','filingaclaim'));
 			$this->acl->allow('admin', 'ordermanager');
 			$this->acl->allow('guest', 'communication');
 			$this->acl->allow('member', 'communication');
