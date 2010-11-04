@@ -10,7 +10,7 @@
 		****************/
 		public function init(){
 			parent::init();
-			$this->breadcrumbs->addStep('Ordermanager', $this->getUrl(null, 'account'));
+			$this->breadcrumbs->addStep('Orderadministration', $this->getUrl(null, 'account'));
 		}
 		
 		/*init*********
@@ -64,7 +64,7 @@
 			$product = new DatabaseObject_OrderProfile($this->db);
 			//when the product_completion_date < now
 			if($product->load($orderItemId)){
-				if($product->orderStatus->order_status == 'DELIVERED' && strtotime($product->orderStatus->product_completion_date)<time()){
+				if($product->orderStatus->order_status == 'DELIVERED' && strtotime($product->orderStatus->product_completion_date)<time() && ($this->signedInUserSessionInfoHolder->generalInfo->userID == $product->buyer_id || $this->signedInUserSessionInfoHolder->generalInfo->user_type =='admin')){
 					$product->orderStatus->order_status ='ORDER_COMPLETED';	
 					$this->messenger->addMessage($product->late_delivery_confirmation_date);
 					$this->messenger->addMessage('order profile completed');
@@ -75,7 +75,7 @@
 					$this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId]=$this->adminOrders->orderProfiles->deliveredOrders[$orderItemId];
 					unset($this->adminOrders->orderProfiles->deliveredOrders[$orderItemId]);
 					}
-				}else if($product->orderStatus->order_status=='RETURN_DELIVERED'){
+				}else if($product->orderStatus->order_status=='RETURN_DELIVERED' && ($this->signedInUserSessionInfoHolder->generalInfo->userID == $product->uploader_id || $this->signedInUserSessionInfoHolder->generalInfo->user_type =='admin')){
 					$product->orderStatus->order_status='RETURN_COMPLETED';
 					$this->messenger->addMessage($product->late_return_delivery_confirmation_date);
 					$this->messenger->addMessage('order profile return completed');
@@ -166,7 +166,7 @@
 				$buyer->load($product->buyer_id);
 				$buyerAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $buyer);
 			
-				if($product->orderStatus->order_status == 'ORDER_COMPLETED'){
+				if($product->orderStatus->order_status == 'ORDER_COMPLETED' || $product->orderStatus->order_status =='HELD_BY_SELLER_FOR_ARBITRATION_APPROVED'){
 					$product->orderStatus->order_status ='BALANCE_UPDATED';	
 					//$product->orderStatus->product_delivered_date=date('Y-m-d',mktime(0,0,0,date("m"),date("d"),date("Y")));
 					
@@ -201,7 +201,7 @@
 					unset($this->adminOrders->orderProfiles->orderCompletedOrders[$orderItemId]);
 					$this->messenger->addMessage('Balance transfered');
 
-				}else if($product->orderStatus->order_status=='RETURN_COMPLETED' || $product->orderStatus->order_status=='CANCELLED_BY_SELLER' || $product->orderStatus->order_status=='CANCELLED_BY_BUYER'){
+				}else if($product->orderStatus->order_status=='RETURN_COMPLETED' || $product->orderStatus->order_status=='CANCELLED_BY_SELLER' || $product->orderStatus->order_status=='CANCELLED_BY_BUYER' || $product->orderStatus->order_status=='HELD_BY_SELLER_FOR_ARBITRATION_DENIED'){
 					$product->orderStatus->order_status='BALANCE_REFUNDED';
 					
 					$this->messenger->addMessage($product->late_return_delivery_confirmation_date);
@@ -270,39 +270,120 @@
 	
 	
 	
+	public function markbuyerarbitrationstatusAction(){
+		$request=$this->getRequest();
 		
-	public function completeorderAction(){
-			$request=$this->getRequest();
-			$this->productId = $request->getParam('orderProductId');
-			if($this->productId!=''&&is_numeric($this->productId) && isset($this->productId)){
+		$this->adminOrders = new Zend_Session_Namespace('adminOrders');
+		$orderItemId = $this->getRequest()->getParam('id');
+		$decision = $this->getRequest()->getParam('decision');
+		
+		if($orderItemId!=''&&is_numeric($orderItemId) && isset($orderItemId)){
 			$product = new DatabaseObject_OrderProfile($this->db);
-				if($product->load($this->productId)){
-					if(($product->buyer_UserID==$this->signedInUserSessionInfoHolder->generalInfo->userID && $product->product_order_status=='shipped')||($product->product_UserId==$this->signedInUserSessionInfoHolder->generalInfo->userID)&&($product->product_order_status=='return shipped')){						
-						//edict shipping info here
-						//make sure this is in either shipped or return_shipped status.
-						if($product->buyer_UserID==$this->signedInUserSessionInfoHolder->generalInfo->userID && $product->product_order_status=='shipped'){
-							//adding respective reward points from buying that product
-							DatabaseObject_Helper_UserManager::addRewardPointToUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id, $product->reward_points, 'purchase of product: '.$product->product_name.'from order: '.$product->order_unique_id, $_SERVER['REMOTE_ADDR'], $this->signedInUserSessionInfoHolder->generalInfo->username, $this->signedInUserSessionInfoHolder->generalInfo->userID, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
-							//echo 'here at adding rewardpoints';
-							$product->product_order_status='completed';
-							$product->save();
+			if($product->load($orderItemId)){
+				if($decision=='APPROVED'){
+					$product->return_allowed =true;
+					$product->orderStatusbuyer_return_claim_approved=true;
+					$product->orderStatus->order_status='HELD_BY_BUYER_FOR_ARBITRATION_APPROVED';
+					$product->orderStatus->buyer_return_claim_approval_date=date('Y-m-d G:i:s');
+					$product->orderStatus->buyer_return_claim_approved_by = 'DanceRialto';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_BUYER_FOR_ARBITRATION_APPROVED');	
+					}
+					$product->save();
+				}elseif($decision=='DENIED'){
+					$product->return_allowed= false;
+					$product->orderStatus->buyer_return_claim_approved=false;
+					$product->orderStatus->order_status='HELD_BY_BUYER_FOR_ARBITRATION_DENIED';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_BUYER_FOR_ARBITRATION_DENIED');	
+					}
+					$product->save();
+				}
+			}else{
+				//logg error
+			}
+		}else{
+			//logg error		
+		}
+	}
+	
+	public function markbuyerarbitrationstatusbysellerAction(){
+		$request=$this->getRequest();
+		
+		$this->adminOrders = new Zend_Session_Namespace('adminOrders');
+		$orderItemId = $this->getRequest()->getParam('id');
+		$decision = $this->getRequest()->getParam('decision');
+		
+		if($orderItemId!=''&&is_numeric($orderItemId) && isset($orderItemId)){
+			$product = new DatabaseObject_OrderProfile($this->db);
+			//must check to see if the person is seller. because a seller can approve them selves as buyers if they are not the seller. 
+			if($product->load($orderItemId) && $this->signedInUserSessionInfoHolder->generalInfo->userID == $product->uploader_id){
+				if($decision=='APPROVED'){
+					$product->return_allowed =true;
+					$product->orderStatus->buyer_return_claim_approved=true;
+					$product->orderStatus->order_status='HELD_BY_BUYER_FOR_ARBITRATION_APPROVED';
+					$product->orderStatus->buyer_return_claim_approval_date=date('Y-m-d G:i:s');
+					$product->orderStatus->buyer_return_claim_approved_by = 'SELLER';
+					$product->orderStatus->buyer_return_claim_approved_warning_shipping_date = date('Y-m-d',mktime(0,0,0,date("m"),date("d")+2,date("Y")));
+					$product->orderStatus->buyer_return_claim_approved_latest_shipping_date = date('Y-m-d',mktime(0,0,0,date("m"),date("d")+4,date("Y")));
+					
+					if($product->orderStatus->save()){
+					DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_BUYER_FOR_ARBITRATION_APPROVED');	
+					}
+					$product->save();
+				}elseif($decision=='DENIED'){
+					//$product->return_allowed= false;
+					//$product->buyer_return_claim_approved=false;
+					$product->orderStatus->order_status='HELD_BY_BUYER_FOR_ARBITRATION_DENIED_BY_SELLER';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_BUYER_FOR_ARBITRATION_DENIED_BY_SELLER');	
 
-						}elseif(($product->product_UserId==$this->signedInUserSessionInfoHolder->generalInfo->userID)&&($product->product_order_status=='return shipped')){
-							$product->product_order_status='order return completed';
-							$product->save();
-						}
-						
-						$this->messenger->addMessage('Thank you for completing this order. Payments/refunds will be transfered to the correct party during the next business day.');
-						//$this->messenger->addMessage('Thank you, order status has been updated.');
-						$this->_redirect($_SERVER['HTTP_REFERER']);
-					}else{
-						$this->messenger->addMessage('we are sorry, but you do not have permission to this page');
-						$this->_redirect($_SERVER['HTTP_REFERER']);
+					}
+					//$product->save();
+				}
+			}else{
+				//logg error
+			}
+		}else{
+			//logg error		
+		}
+	}
+	
+	public function marksellerarbitrationstatusAction(){
+		$request=$this->getRequest();
+		
+		$this->adminOrders = new Zend_Session_Namespace('adminOrders');
+		$orderItemId = $this->getRequest()->getParam('id');
+		$decision = $this->getRequest()->getParam('decision');
+		
+		if($orderItemId!=''&&is_numeric($orderItemId) && isset($orderItemId)){
+			$product = new DatabaseObject_OrderProfile($this->db);
+			//must check to see if the person is seller. because a seller can approve them selves as buyers if they are not the seller. 
+			if($product->load($orderItemId)){
+				if($decision=='APPROVED'){
+					$product->orderStatus->seller_claim_approved=true;
+					$product->orderStatus->order_status='HELD_BY_SELLER_FOR_ARBITRATION_APPROVED';
+					$product->orderStatus->seller_claim_approved_date=date('Y-m-d G:i:s');
+					
+					if($product->orderStatus->save()){
+					DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_SELLER_FOR_ARBITRATION_APPROVED');	
+					}
+				}elseif($decision=='DENIED'){
+					
+					$product->orderStatus->seller_claim_approved=true;
+					$product->orderStatus->order_status='HELD_BY_SELLER_FOR_ARBITRATION_DENIED';
+					if($product->orderStatus->save()){
+						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $orderItemId, 'HELD_BY_SELLER_FOR_ARBITRATION_DENIED');	
 					}
 				}
+			}else{
+				//logg error
 			}
+		}else{
+			//logg error		
 		}
-		
-		
+	}
+	
+	
 	}
 ?>

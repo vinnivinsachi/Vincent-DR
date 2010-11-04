@@ -13,10 +13,16 @@
 											'CANCELLED_BY_SELLER'=>'This order is now cancelled by the seller. The amount of this order will be refunded to the buyer.',
 											'CANCELLED_BY_BUYER'=>'This order is now cancelled by the buyer. The amount of this order will be refunded to the buyer.',
 											'HELD_BY_BUYER_FOR_ARBITRATION'=>'This order is now held for arbitration by the buyer and awaits DanceRialto approval.',
-											'HELP_BY_SELLER_FOR_ARBITRATION'=>'This order is now held for arbitration by the seller and awaits DanceRialto approval.',
+											'HELD_BY_BUYER_FOR_ARBITRATION_APPROVED'=>'This order is now approved, and the order is now able to be returned to the seller for full refund.',
+											'HELD_BY_BUYER_FOR_ARBITRATION_SELLER_DENIED'=>'This order is temporarily denied by the seller. DR will now contact both parties to make sure that this decision is benificial for both parties',
+											'HELD_BY_BUYER_FOR_ARBITRATION_DENIED'=>'This order has not been approved and the order will be considered complete and awaits for balance transfer.',
+											'HELD_BY_SELLER_FOR_ARBITRATION'=>'This order is now held for arbitration by the seller and awaits DanceRialto approval.',
+											'HELD_BY_SELLER_FOR_ARBITRATION_APPROVED'=>'This order is now approved and the order will be marked as complete.',
+											'HELD_BY_SELLER_FOR_ARBITRATION_DENIED'=>'The seller claim had been denied, and the order will be marked as return complete.',
 											'SELLER_CLAIM_APPROVED_UNSHIPPED'=>'DanceRialto had approved the sellers claim and the returned item from the buyer will now be able to be shipped back to the buyer.',
 											'SELLER_CLAIM_APPROVED_RESHIPPED'=>'Seller had now shipped the returned item back to the buyer.',
 											'SELLER_CLAIM_APPROVED_DELIVERED'=>'This item is now delivered back to the buyer and awaits for order completion.');
+		
 		public static function loadAllOrderProfiles($db, $type=null, $date=null){
 			$select=$db->select();
 			$select->from(array('s'=>'order_profile_status_and_delivery'),'*');
@@ -81,6 +87,13 @@
 				->order('ts_created DESC');
 				//echo $MessageSelect.'<br />';
 				$orderProfiles['sender_message'] = $db->fetchAll($MessageSelect);
+				
+				//getting claim messages
+				$claimSelect = $db->select();
+				$claimSelect->from('order_profile_claims', '*')
+				->where('order_profile_id = ?', $orderProfiles[0]['order_profile_id'])
+				->order('ts_created DESC');
+				$orderProfiles['claims']=$db->fetchAll($claimSelect);
 				
 				//getting seller information
 				$orderProfiles['uploader_info'] = new DatabaseObject_user($db);

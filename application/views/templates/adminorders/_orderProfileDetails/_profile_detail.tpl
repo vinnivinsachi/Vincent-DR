@@ -47,7 +47,6 @@
 		<div style="font-weight:bold; width:500px; float:left;">
                     {$product.0.product_name}
                     </div>
-		                    		
                         <table width="100%;" style='border:none;'>
                         <tr>
                         <td width="200px;"><img src='/public/resources/userdata/tmp/thumbnails/{$product.0.uploader_username}/{$product.0.product_tag}/{$product.0.product_image_id}.W150_homeFrontFour.jpg'/></td>
@@ -89,6 +88,30 @@
 	<td>{$tracking.status_changed_date}</td>
 	<td>{$tracking.status}</td>
 	<td>{$tracking.message}</td>
+</tr>
+{/foreach}
+</table>
+</div>
+
+<div class="productClaimTracking box" style="padding-bottom:15px;">
+<div class='titleBarBig'>Claims tracking</div>
+<table>
+<tr>
+	<td>Date</td>
+	<td>Filed by</td>
+	<td>Filer name</td>
+    <td>Contact phone</td>
+    <td>Reason</td>
+    <td>Description</td>
+</tr>
+{foreach from=$product.claims item=claim}
+<tr>
+	<td>{$claim.ts_created}</td>
+	<td>{$claim.filed_by_type}</td>
+	<td>{$claim.filer_name}</td>
+    <td>{$claim.filer_phone_number}</td>
+    <td>{$claim.filing_reason}</td>
+    <td>{$claim.description}</td>
 </tr>
 {/foreach}
 </table>
@@ -178,15 +201,38 @@
 <div id="adminOrderActions box" >
 <div class='titleBarBig'>Adminitration actions</div>
 
-{if $product.0.order_status == 'ORDER_COMPLETED'}
+{if $product.0.order_status == 'ORDER_COMPLETED' || $product.0.order_status == 'HELD_BY_SELLER_FOR_ARBITRATION_APPROVED'}
 <form action="{geturl controller='orderadministration' action='markorderasupdatedorcancelled'}" method="post">
 <input type="hidden" name="id" value="{$product.0.order_profile_id}" />
 <input type="submit" value="Mark Balance Updated" />
 </form>
-{elseif $product.0.order_status == 'RETURN_COMPLETED' || $product.0.order_status == 'CANCELLED_BY_SELLER' || $product.0.order_status == 'CANCELLED_BY_BUYER'}
+{elseif $product.0.order_status == 'RETURN_COMPLETED' || $product.0.order_status == 'CANCELLED_BY_SELLER' || $product.0.order_status == 'CANCELLED_BY_BUYER' || $product.0.order_status=='HELD_BY_SELLER_FOR_ARBITRATION_DENIED'}
 <form action="{geturl controller='orderadministration' action='markorderasupdatedorcancelled'}" method="post">
 <input type="hidden" name="id" value="{$product.0.order_profile_id}" />
 <input type="submit" value="Mark Balance Refunded" />
 </form>
+{elseif $product.0.order_status == 'HELD_BY_BUYER_FOR_ARBITRATION'}
+<form action="{geturl controller='orderadministration' action='markbuyerarbitrationstatus'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="hidden" name="decision" value="APPROVED" />
+<input type="submit" value="APPROVE RETURN" />
+</form>
+<form action="{geturl controller='orderadministration' action='markbuyerarbitrationstatus'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="hidden" name="decision" value="DENIED" />
+<input type="submit" value="RETURN DENIED" />
+</form>
+{elseif $product.0.order_status == 'HELD_BY_SELLER_FOR_ARBITRATION'}
+<form action="{geturl controller='orderadministration' action='marksellerarbitrationstatus'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="hidden" name="decision" value="APPROVED" />
+<input type="submit" value="APPROVE SELLER CLAIM" />
+</form>
+<form action="{geturl controller='orderadministration' action='marksellerarbitrationstatus'}" method="post">
+<input type="hidden" name="id" value="{$product.0.order_profile_id}" />
+<input type="hidden" name="decision" value="DENIED" />
+<input type="submit" value="DENY SELLER CLAIM" />
+</form>
+
 {/if}
 </div>

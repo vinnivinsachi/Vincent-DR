@@ -3,7 +3,8 @@
              <div class='box' style='width:100%; margin-bottom:15px;'>
 
 <div style="font-weight:bold; width:500px; float:left;">
-                    {$profile.product_name}
+                    {$profile.product_name}<br/>
+                    Status: ***{$profile.order_status}***
                     </div>
 		                    		
 									<table width="100%;" style='border:none;'>

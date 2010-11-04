@@ -145,7 +145,7 @@
 				$product = new DatabaseObject_OrderProfile($this->db);
 				if($product->load($this->productId)){
 					//strtotime ($product->product_latest_delivery_date)>time() this is how you check for time difference.
-					if($product->orderStatus->order_status=='DELIVERED'){
+					if($product->orderStatus->order_status=='DELIVERED' || $product->orderStatus->order_status=='HELD_BY_BUYER_FOR_ARBITRATION_APPROVED' ){
 						echo 'here at time good';
 						echo 'product loaded<br />';
 						//echo 'product loaded ID: '.$product->product_UserId;
@@ -187,6 +187,7 @@
 							$product_user->save();
 							$review->save();
 							
+							$product->product_returned=true;
 						}
 						
 						//$product->save();
@@ -307,14 +308,13 @@
 
 					$product->orderStatus->order_status = 'CANCELLED_BY_BUYER';
 					$product->orderStatus->product_cancelled_date = date('Y-m-d G:i:s');
+					$product->orderStatus->cancelled_by_buyer=true;
+					$product->orderStatus->cancelled_by_buyer_date=date('Y-m-d G:i:s');
 					//$product->orderStatus->product_returned=1;
 						if($product->orderStatus->save()){
 							//now processing status tracking
 							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'CANCELLED_BY_BUYER');
 							
-							$product->cancelled_by_buyer=true;
-							$product->cancelled_by_buyer_date=date('Y-m-d G:i:s');
-							$product->save();
 							$this->messenger->addMessage('thank you, this order is now cancelled by the buyer');
 							$this->_redirect($_SERVER['HTTP_REFERER']);
 							//now processing reviews for a returned product.
@@ -324,14 +324,12 @@
 					}elseif($this->cancelledBy=='seller' && $product->uploader_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
 						$product->orderStatus->order_status = 'CANCELLED_BY_SELLER';
 						$product->orderStatus->product_cancelled_date = date('Y-m-d G:i:s');		
-						//$product->orderStatus->product_returned=1;
+						$product->orderStatus->cancelled_by_seller=true;
+						$product->orderStatus->cancelled_by_seller_date=date('Y-m-d G:i:s');
 						if($product->orderStatus->save()){
 							//now processing status tracking
 							DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'CANCELLED_BY_SELLER');
 							
-							$product->cancelled_by_seller=true;
-							$product->cancelled_by_seller_date=date('Y-m-d G:i:s');
-							$product->save();
 							//now processing reviews for a returned product.
 							$this->messenger->addMessage( 'Seller has cancelled this order.');
 							$this->_redirect($_SERVER['HTTP_REFERER']);
@@ -351,6 +349,7 @@
 			
 		}
 		
+		//make sure that they enter a phone number. error check.
 		public function filingaclaimAction(){
 			$request=$this->getRequest();
 			$this->productId = $request->getParam('profileId');
@@ -365,12 +364,12 @@
 				//when it is delivered and when return is allowed and the buyer belongs to the profile.
 				if($product->orderStatus->order_status=='DELIVERED' && $product->return_allowed==0 && $product->buyer_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
 					$product->orderStatus->order_status ='HELD_BY_BUYER_FOR_ARBITRATION';
+					$product->orderStatus->buyer_return_claim_filed=true;
+					$product->orderStatus->buyer_return_claim_filed_date = date('Y-m-d G:i:s');
+					//seller has 3 days to approve or DR will step in and figure out the problem. 
+					$product->orderStatus->buyer_return_claim_approved_by_seller_latest_date = date('Y-m-d',mktime(0,0,0,date("m"),date("d")+3,date("Y")));
 					if($product->orderStatus->save()){
 						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'HELD_BY_BUYER_FOR_ARBITRATION');
-						
-						$product->buyer_return_claim_filed=true;
-						$product->buyer_return_claim_filed_date = date('Y-m-d G:i:s');
-						$product->save();
 						
 						$claim = new DatabaseObject_OrderProfileClaims($this->db);
 						
@@ -378,6 +377,7 @@
 						$claim->filed_by_type = $this->filedByType;
 						$claim->filer_name = $product->buyer_name;
 						$claim->filing_reason= $request->getParam('orderClaimReason');
+						$claim->filer_phone_number = $request->getParam('filerPhoneNumber');
 						$claim->description = $request->getParam('description');
 						$claim->status = 'UNREVIEWED';
 						$claim->save();
@@ -388,12 +388,12 @@
 					
 				}elseif($product->orderStatus->order_status=='RETURN_DELIVERED' && $product->uploader_id == $this->signedInUserSessionInfoHolder->generalInfo->userID){
 					$product->orderStatus->order_status ='HELD_BY_SELLER_FOR_ARBITRATION';
+					$product->orderStatus->seller_claim_filed=true;
+					$product->orderStatus->seller_claim_filed_date = date('Y-m-d G:i:s');
+					
 					if($product->orderStatus->save()){
 						DatabaseObject_Helper_Admin_OrderManager::updateStatusTracking($this->db, $this->productId, 'HELD_BY_SELLER_FOR_ARBITRATION');
 						
-						$product->seller_claim_filed=true;
-						$product->seller_claim_filed_date = date('Y-m-d G:i:s');
-						$product->save();
 						
 						$claim = new DatabaseObject_OrderProfileClaims($this->db);
 						
@@ -402,6 +402,7 @@
 						$claim->filer_name = $product->buyer_name;
 						$claim->filing_reason= $request->getParam('orderClaimReason');
 						$claim->description = $request->getParam('description');
+						$claim->filer_phone_number = $request->getParam('filerPhoneNumber');
 						$claim->status = 'UNREVIEWED';
 						$claim->save();
 						

@@ -70,8 +70,19 @@
 							case 'HELD_BY_BUYER_FOR_ARBITRATION':
 								$this->adminOrders->orderProfiles->heldByBuyerForArbitrationOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 								break;
+							case 'HELD_BY_BUYER_FOR_ARBITRATION_DENIED':
+								$this->adminOrders->orderProfiles->heldByBuyerForArbitrationDeniedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'HELD_BY_BUYER_FOR_ARBITRATION_APPROVED':$this->adminOrders->orderProfiles->heldByBuyerForArbitrationApprovedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+							case 'HELD_BY_BUYER_FOR_ARBITRATION_DENIED_BY_SELLER':
+								$this->adminOrders->orderProfiles->heldByBuyerForArbitrationDeniedBySellerOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 							case 'HELP_BY_SELLER_FOR_ARBITRATION':
 								$this->adminOrders->orderProfiles->heldBySellerForArbitrationOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'HELD_BY_SELLER_FOR_ARBITRATION_APPROVED':
+								$this->adminOrders->orderProfiles->heldBySellerForArbitrationApprovedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
+								break;
+							case 'HELD_BY_SELLER_FOR_ARBITRATION_DENIED';
+								$this->adminOrders->orderProfiles->heldBySellerForArbitrationDeniedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
 								break;
 							case 'SELLER_CLAIM_APPROVED_UNSHIPPED':
 								$this->adminOrders->orderProfiles->sellerClaimApprovedUnshippedOrders[$orderProfiles[$k]['order_profile_id']]=$orderProfiles[$k];
@@ -136,6 +147,7 @@
 
 			Zend_Debug::dump($order);
 		}
+		
 		
 	}
 ?>

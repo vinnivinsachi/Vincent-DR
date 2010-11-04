@@ -7,6 +7,7 @@
                 <a href="{geturl controller='account' action='logout'}">[Logout]</a>
                 <a href="{geturl controller='account' action='login'}">[Login]</a><br />
                 <a href="{geturl controller='account' action='index'}">[Account index]</a>
+                <a href="{geturl controller='accountbalance' action='index'}">[Account balance]</a>
                 <a href="{geturl controller='account' action='messages'}">[Messages]</a>
                 <a href="{geturl controller='ordermanager' action='orders}">[Bought orders]</a>
                {if $signedInUser->generalInfo->user_type=='storeSeller' || $signedInUser->generalInfo->user_type=='generalSeller'}

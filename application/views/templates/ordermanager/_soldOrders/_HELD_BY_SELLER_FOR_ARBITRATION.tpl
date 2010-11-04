@@ -74,8 +74,7 @@ Waiting for delivery confirmation			                            </div>
                         
                         <div class="trackingInfo" style="width:100%; float:left; padding:5px 0px 5px 0px;">
 								    <div class="trackingInfoDetails box" style=" color:#F90;" >
-								    Waiting for return delivery and seller confirmation. 
-								    </div>
+This item is held for arbitration. DanceRialto will contact you inregards to this order.								    </div>
 									<div class="trackingActions" style="width:50%; float:right;">
 								    </div>
 								</div>
@@ -98,8 +97,7 @@ Waiting for delivery confirmation			                            </div>
 								<a class="anchorTrackingStatus" id="anchorID-DivIDtrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Tracking status</a> |
                             <a class="anchorReturnTrackingStatus" id="anchorID-DivIDreturnTrackingStatusInfo-{$order->order_unique_id}_{$product.order_profile_id}" title="{$product.product_tracking}">Return tracking status</a>
 								<div style="float:right;">
-                                <a class="anchorFileAClaim" id='anchorID-DivIDfileAClaim-{$order->order_unique_id}_{$product.order_profile_id}'>File a claim</a> |
-                                <a class="anchorCompleteReturnOrder" id="anchorID-DivIDfileAClaim-{$order->order_unique_id}_{$product.order_profile_id}" href="{geturl controller='orderadministration' action='markorderascomplete'}?id={$product.order_profile_id}">Complete return</a><!-- this is a link to return complete an order. -->
+                               <!-- this is a link to return complete an order. -->
                                 </div>
 
 								{include file='ordermanager/_soldOrders/_message.tpl'}
@@ -112,26 +110,4 @@ Waiting for delivery confirmation			                            </div>
                               
                                 </div>
                                 
-                                <div class="FileAClaim {$order->order_unique_id}_{$product.order_profile_id}" id="DivIDfileAClaim-{$order->order_unique_id}_{$product.order_profile_id}" style="display:none;">
-                                    	<p>Filing this claim will put this order on hold. After investigation and upon DR approval, you will be able to provide a reshipment tracking back to the buyer. After the delivery of that shipment your balance will be updated.</p>
-                                       
-                                    
-                                    <form action="{geturl controller='ordermanager' action='filingaclaim'}" method='post'>
-                                        <label style="width:50%;">Claim type:</label>
-                                        <select name="orderClaimReason">
-                                            <option value="Wrong item">Wrong item</option>
-                                            <option value="Severely damaged">Severely damanged</option>
-                                            <option value="Manufacturing defect">Manufacturing defect</option>
-                                            <option value="Do not like it">Do not like it</option>
-                                            <option value="Other">Other</option>
-                                        </select><br/>
-                                        <label style="width:50%;">Contact phone #</label>
-                                        <input type='text' name='filerPhoneNumber'></input>
-                                        <label style="width:50%;">Description of claim:</label>
-                                        <textarea rows="5" cols="10" name='description'></textarea>
-                                        <input type="hidden" name="profileId" value="{$product.order_profile_id}" />
-                                        <input type="hidden" name="filedByType" value="seller" />
-                                        <input type="submit" value="File this claim" />
-                                    </form>                              
-                                    </div>
-                                </div>
+                                

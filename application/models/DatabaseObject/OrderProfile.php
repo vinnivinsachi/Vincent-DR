@@ -30,8 +30,11 @@
 			$this->add('current_shipping_rate'); //need
 			$this->add('product_type_added_to_shopping_cart'); //need
 			$this->add('order_shipping_id');
+			
+			//
 			$this->add('return_allowed');
-			$this->add('product_returned', 0);
+			$this->add('dr_return_allowed', 0);
+		
 			//$this->add('authorized_return_allowed');
 			$this->add('seller_receivable');//for seller
 			$this->add('dr_receivable');
@@ -40,14 +43,8 @@
 			$this->add('buyer_username');
 			$this->add('buyer_email');
 			$this->add('buyer_country');//buyer_network;
-			$this->add('buyer_return_claim_filed', 0); //NULL allowed, filing for a forced return on a none returnable item.
-			$this->add('buyer_return_claim_filed_date'); //NULL allowed
-			$this->add('buyer_return_claim_approved', 0); //NULL allowed
-			$this->add('seller_claim_filed', 0); //NULL allowed, filling for a problem on a returned item.
-			$this->add('seller_claim_filed_date'); //NULL allowed
-			$this->add('seller_claim_approved', 0); //NULL allowed
-			$this->add('cancelled_by_buyer', 0);
-			$this->add('cancelled_by_seller', 0);
+			$this->add('product_returned', 0);
+			
 			
 			$this->add('ts_created', time(), self::TYPE_TIMESTAMP);
 			

@@ -11,6 +11,7 @@
 			$this->add('filing_reason');
 			$this->add('description');
 			$this->add('status');
+			$this->add('filer_phone_number');
 			$this->add('ts_created',time(), self::TYPE_TIMESTAMP);
 			$this->add('ts_updated', date('Y-m-d G:i:s'));
 		}

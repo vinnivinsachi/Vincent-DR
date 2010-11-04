@@ -83,4 +83,4 @@
         <div id="productUploadTagImage" class="">
         </div>
     </div>
-<script src="/htdocs/javascripts/productTagSelection.js" type="text/javascript"></script>
+<script src="/public/resources/javascripts/productTagSelection.js" type="text/javascript"></script>

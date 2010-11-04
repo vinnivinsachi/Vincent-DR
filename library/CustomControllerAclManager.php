@@ -39,6 +39,7 @@
 			$this->acl->add(new Zend_Acl_Resource('communication'));
 			$this->acl->add(new Zend_Acl_Resource('adminuserrequest'));
 			$this->acl->add(new Zend_Acl_Resource('adminorders'));
+			$this->acl->add(new Zend_Acl_Resource('orderadministration'));
 			
 			//allow access to everything for all users by default
 			$this->acl->allow();
@@ -58,6 +59,8 @@
 			$this->acl->deny(null, 'checkout');
 			$this->acl->deny(null, 'ordermanager');
 			$this->acl->deny(null, 'communication');
+			$this->acl->deny(null, 'orderadministration');
+			
 			$this->acl->deny('guest', 'comparechart', array('savecomparelist'));
 			//rewrite specific user management controls
 			$this->acl->allow('guest', 'account', array('login', 'fetchpassword' ,'logout', 'verifyselleraccount'));
@@ -88,6 +91,11 @@
 			$this->acl->allow('member', 'ordermanager', array('index','orders', 'completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'cancelorder', 'writereview','filingaclaim'));
 			$this->acl->allow('generalSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct', 'cancelorder','filingaclaim'));
 			$this->acl->allow('storeSeller', 'ordermanager', array('index','orders', 'soldorders','completeorder', 'addtrackingtoreturnproduct', 'ordercancellationbybuyer', 'writereview','addtrackingtoproduct', 'cancelorder','filingaclaim'));
+			
+			$this->acl->allow('admin', 'orderadministration');
+			$this->acl->allow('generalSeller', 'orderadministration', array('markbuyerarbitrationstatusbyseller', 'markorderascomplete'));
+			$this->acl->allow('storeSeller', 'orderadministration', array('markbuyerarbitrationstatusbyseller', 'markorderascomplete'));
+			
 			$this->acl->allow('admin', 'ordermanager');
 			$this->acl->allow('guest', 'communication');
 			$this->acl->allow('member', 'communication');
