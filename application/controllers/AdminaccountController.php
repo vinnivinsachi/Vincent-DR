@@ -29,7 +29,7 @@
 		*displays everything there is that is in the session variable
 		******************/
 		public function indexAction(){
-			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
+			//$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
 		}
 		
 		public function allusersAction(){

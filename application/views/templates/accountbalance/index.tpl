@@ -3,7 +3,8 @@
 
 <div id="leftContainer" style="width:210px; float:left;">
 <div class="titleBarBig">Reward and Balance Actions</div>
-<a>Withdraw from availble balance</a>
+<a href="{geturl controller='accountbalance' action='balancewithdraw'}">Withdraw from available balance</a>
+<a href="{geturl controller='accountbalance' action='balancetransfer'}">Transfer from available balance</a>
 </div>
 
 <div id="rightContainer" style='width:780px; float:right;'>

@@ -388,6 +388,20 @@
 			return $this->_load($query);
 		}
 		
+		public function loadByEmail($email){
+			$email=trim($email);
+			if(strlen($email)==0)
+			{
+				return false;
+			}
+			
+			$query = sprintf('select %s from %s where email = ?', join(', ', $this->getSelectFields()), $this->_table);
+			$query=$this->_db->quoteInto($query, $email); 
+			
+			return $this->_load($query);
+		}
+
+		
 		public function loadByUserId($ID)
 		{
 			//echo "you are here at load by user id";

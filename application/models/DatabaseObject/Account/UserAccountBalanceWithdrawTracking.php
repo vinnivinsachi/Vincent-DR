@@ -9,7 +9,8 @@
 			
 			$this->add('user_id');
 			$this->add('balance_withdraw_amount');
-			$this->add('status');
+			$this->add('status', 'PENDING');
+			$this->add('pending_tracking_id');
 			$this->add('date_of_request', time(), self::TYPE_TIMESTAMP);
 			$this->add('date_processed');
 		}
