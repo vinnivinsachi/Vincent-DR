@@ -3,8 +3,9 @@
 
 <div id="leftContainer" style="width:210px; float:left;">
 <div class="titleBarBig">Reward and Balance Actions</div>
-<a href="{geturl controller='accountbalance' action='balancewithdraw'}">Withdraw from available balance</a>
-<a href="{geturl controller='accountbalance' action='balancetransfer'}">Transfer from available balance</a>
+<a href="{geturl controller='accountbalance' action='index'}">Account balance and reward point summary</a><br />
+<a href="{geturl controller='accountbalance' action='balancewithdraw'}">Withdraw from available balance</a><br />
+<a href="{geturl controller='accountbalance' action='balancetransfer'}">Transfer from available balance</a><br />
 </div>
 
 <div id="rightContainer" style='width:780px; float:right;'>
@@ -38,6 +39,27 @@ Funds will be transfered to you in the forms of a check. Checks are shipped with
 <label>Amount</label><input type='text' name="widthdrawAmount" /> USD
 <input type="submit" value="Submit withdraw"/>
 </form>
+</div>
+
+<div class='box'>
+<div class='titleBarBig'>Current existing withdraws</div>
+<table>
+<tr>
+	<td>Date:</td>
+    <td>Unique id: </td>
+    <td>Balance:</td>
+    <td>Status:</td>
+</tr>
+{foreach from=$currentWithdraws item=withdraw}
+<tr>
+	<td>{$withdraw.date_of_request}</td>
+    <td>{$withdraw.balance_withdraw_unique_id}</td>
+    <td>{$withdraw.balance_withdraw_amount}</td>
+    <td>{$withdraw.status}</td>
+   
+</tr>
+{/foreach}
+</table>
 </div>
 </div>
 {include file="layouts/$layout/footer.tpl"}

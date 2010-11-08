@@ -88,5 +88,30 @@
 		public static function saveUserShoesAttribute($db, $userID, $measurments=array()){
 			
 		}
+		
+		public static function loadUserWithdraws($db, $userID, $option=array()){
+			$select = $db->select();
+			$select->from('user_account_balance_withdraw_tracking', '*')
+			->where('user_id = ?', $userID)
+			->order('date_of_request ASC');
+			return $db->fetchAll($select);
+		}
+		
+		public static function loadUserTransferes($db, $userID, $options=array()){
+			$transfers=array();
+			
+			$select = $db->select();
+			$select->from('user_account_balance_transfer_tracking', '*')
+			->where('from_user_id = ?', $userID)
+			->order('date_of_request ASC');
+			$transfers['outgoing'] = $db->fetchAll($select);
+			
+			$select2 = $db->select();
+			$select2->from('user_account_balance_transfer_tracking', '*')
+			->where('to_user_id = ?', $userID)
+			->order('date_of_request ASC');
+			$transfers['incoming']=$db->fetchAll($select2);
+			return $transfers;
+		}
 	}
 ?>

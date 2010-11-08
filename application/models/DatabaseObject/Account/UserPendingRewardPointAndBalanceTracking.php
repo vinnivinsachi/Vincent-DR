@@ -6,7 +6,7 @@
 		{
 			
 			parent::__construct($db, 'user_pending_reward_point_and_balance_tracking', 'user_pending_reward_point_and_balance_tracking_id');
-			
+			$this->add('pending_tracking_unique_id',Text_Password::create(1, 'unpronounceable','alphabetical').Text_Password::create(8, 'unpronounceable','numeric'));
 			$this->add('user_id');
 			$this->add('tracking_type');
 			$this->add('caused_by_type');

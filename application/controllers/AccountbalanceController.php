@@ -57,6 +57,8 @@
 				//not posted
 			}
 			
+			$currentWithdraws = DatabaseObject_Helper_UserManager::loadUserWithdraws($this->db, $this->userObject->getId());
+			$this->view->currentWithdraws = $currentWithdraws;
 			$this->view->accountBalance = $this->userObject->accountBalanceSummary;
 
 		}
@@ -90,6 +92,10 @@
 			}
 			
 			$this->view->accountBalance = $this->userObject->accountBalanceSummary;
+			$transfers = DatabaseObject_Helper_UserManager::loadUserTransferes($this->db, $this->userObject->getId());
+			Zend_Debug::dump($transfers);
+			$this->view->transfers = $transfers;
+			
 		}
 		
 	}

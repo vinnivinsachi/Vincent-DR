@@ -6,7 +6,7 @@
 		{
 			
 			parent::__construct($db, 'user_account_balance_withdraw_tracking', 'user_account_balance_withdraw_tracking_id');
-			
+			$this->add('balance_withdraw_unique_id',Text_Password::create(1, 'unpronounceable','alphabetical').Text_Password::create(8, 'unpronounceable','numeric'));
 			$this->add('user_id');
 			$this->add('balance_withdraw_amount');
 			$this->add('status', 'PENDING');

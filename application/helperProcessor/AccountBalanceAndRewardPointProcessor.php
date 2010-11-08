@@ -172,15 +172,13 @@
 
 			$this->accountBalanceWithdrawTracking->user_id=$this->user->getId();
 			$this->accountBalanceWithdrawTracking->balance_withdraw_amount = $amount;
-				$userPendingTracking = $this->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', $amount, 'caused_by_user_id', $this->user->getId(), 'Withdraw of $'.$amount.' USD from user DanceRialto account balance');
-				$this->accountBalanceWithdrawTracking->pending_tracking_id = $userPendingTracking;
-				if($this->accountBalanceWithdrawTracking->save()){
-					echo 'withdraw successful';
-				}else{
-					echo 'not working';
-				}
-					
-				
+			$userPendingTracking = $this->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', $amount, 'caused_by_user_id', $this->user->getId(), 'Withdraw of $'.$amount.' USD from user DanceRialto account balance');
+			$this->accountBalanceWithdrawTracking->pending_tracking_id = $userPendingTracking;
+			if($this->accountBalanceWithdrawTracking->save()){
+				echo 'withdraw successful';
+			}else{
+				echo 'not working';
+			}
 		}
 		
 		public function transferBalance($amount, $targetUserEmail, $message=''){
@@ -195,41 +193,32 @@
 			if($targetUser->loadByEmail($targetUserEmail)){
 				
 				$this->accountBalanceTransferTracking->to_user_id=$targetUser->getId();
-				
-			
-				$sender_pending_tracking_id = $this->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', $amount, 'caused_by_user_id', $this->user->getId(), 'Transfer of $'.$amount.' USD to user '.$targetUser->first_name.' '.$targetUser->last_name.' with the email of '.$targetUserEmail);
-				
+				$this->accountBalanceTransferTracking->to_username=$targetUser->username;
+						
+				$sender_pending_tracking_id = $this->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', $amount, 'caused_by_user_id', $this->user->getId(), 'Transfer of $'.$amount.' USD to username '.$targetUser->username);
 				$targetUserBalanceProcessor=new AccountBalanceAndRewardPointProcessor($this->db, $targetUser);
-					
-				$receiver_pending_tracking_id=$targetUserBalanceProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', $amount, 'caused_by_user_id', $this->user->getId(), $this->user->first_name.' '.$this->user->last_name.' transfered $'.$amount.' USD to you');
+				$receiver_pending_tracking_id=$targetUserBalanceProcessor->updatePendingRewardPointsAndBalanceForUser('BALANCE_ADDITION', $amount, 'caused_by_user_id', $this->user->getId(), $this->user->username.'transfered $'.$amount.' USD to you');
 						
 				$this->accountBalanceTransferTracking->sender_pending_tracking_id= $sender_pending_tracking_id;
 				$this->accountBalanceTransferTracking->receiver_pending_tracking_id = $receiver_pending_tracking_id;
 				$this->accountBalanceTransferTracking->to_user_id = $targetUser->getId();
 				
-				
 				if($this->accountBalanceTransferTracking->save()){
-					
 					return true;
 				}else{
 					echo 'save failed';
 					//need to log this VERY IMPORTANT!
 					return false;
 				}
-				
-				
 			}else{
-				
 				echo 'email not found in system';
 				return false;
 			}
-			
 		}
 		
 		public function checkCartCompletion($orderUniqueId)
 		{
 			return $this->user->accountBalanceSummary->areEverySingleItemInCartProcessedInPendingAccountAndBalanceTrackingForOrderId($orderUniqueId);
 		}
-		
 	}
 ?>

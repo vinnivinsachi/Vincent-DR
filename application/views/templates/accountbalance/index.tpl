@@ -3,8 +3,9 @@
 
 <div id="leftContainer" style="width:210px; float:left;">
 <div class="titleBarBig">Reward and Balance Actions</div>
-<a href="{geturl controller='accountbalance' action='balancewithdraw'}">Withdraw from available balance</a>
-<a href="{geturl controller='accountbalance' action='balancetransfer'}">Transfer from available balance</a>
+<a href="{geturl controller='accountbalance' action='index'}">Account balance and reward point summary</a><br />
+<a href="{geturl controller='accountbalance' action='balancewithdraw'}">Withdraw from available balance</a><br />
+<a href="{geturl controller='accountbalance' action='balancetransfer'}">Transfer from available balance</a><br />
 </div>
 
 <div id="rightContainer" style='width:780px; float:right;'>
