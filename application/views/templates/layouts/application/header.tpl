@@ -6,14 +6,14 @@
 
 <!-- CSS -->
 	<!-- BLUEPRINT -->
-		<link rel="stylesheet" href="{$siteRoot}/public/resources/css/blueprint/screen.css" type="text/css" media="screen, projection"/>
-		<link rel="stylesheet" href="{$siteRoot}/public/resources/css/blueprint/print.css" type="text/css" media="print"/>
+		<link rel="stylesheet" href="{$cssDir}/blueprint/screen.css" type="text/css" media="screen, projection"/>
+		<link rel="stylesheet" href="{$cssDir}/blueprint/print.css" type="text/css" media="print"/>
 		<!--[if lt IE 8]>
-		  <link rel="stylesheet" href="{$siteRoot}/public/resources/css/blueprint/ie.css" type="text/css" media="screen, projection"/>
+		  <link rel="stylesheet" href="{$cssDir}/blueprint/ie.css" type="text/css" media="screen, projection"/>
 		<![endif]-->
 		
 	<!-- CUSTOM -->
-		<link rel="stylesheet" href="{$siteRoot}/public/resources/css/main.css" type="text/css" media="screen"/>
+		<link rel="stylesheet" href="{$cssDir}/main.css" type="text/css" media="screen"/>
 		
 <!-- JAVASCRIPT -->
 	<!-- JQUERY -->
