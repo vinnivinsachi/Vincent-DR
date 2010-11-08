@@ -1,0 +1,131 @@
+/*!!!!!!!!!!! QuickMenu Core CSS [Do Not Modify!] !!!!!!!!!!!!!*/
+/*[START-QCC]*/.qmmc .qmdivider{display:block;font-size:1px;border-width:0px;border-style:solid;position:relative;z-index:1;}.qmmc .qmdividery{float:left;width:0px;}.qmmc .qmtitle{display:block;cursor:default;white-space:nowrap;position:relative;z-index:1;}.qmclear {font-size:1px;height:0px;width:0px;clear:left;line-height:0px;display:block;float:none !important;}.qmmc {position:relative;zoom:1;z-index:10;}.qmmc a, .qmmc li {float:left;display:block;white-space:nowrap;position:relative;z-index:1;}.qmmc div a, .qmmc ul a, .qmmc ul li {float:none;}.qmsh div a {float:left;}.qmmc div{visibility:hidden;position:absolute;}.qmmc .qmcbox{cursor:default;display:inline-block;position:relative;z-index:1;}.qmmc .qmcbox a{display:inline;}.qmmc .qmcbox div{float:none;position:static;visibility:inherit;left:auto;}.qmmc li {z-index:auto;}.qmmc ul {left:-10000px;position:absolute;z-index:10;}.qmmc, .qmmc ul {list-style:none;padding:0px;margin:0px;}.qmmc li a {float:none;}.qmmc li:hover>ul{left:auto;}/*[END-QCC]*//*[START-QCC0]*/#qm0 li, #qm0 a {float:none;}#qm0 li:hover>ul{top:0px;left:100%;}/*[END-QCC0]*/
+
+
+/*!!!!!!!!!!! QuickMenu Styles [Please Modify!] !!!!!!!!!!!*/
+
+
+	/* QuickMenu 0 */
+
+	/*"""""""" (MAIN) Container""""""""*/	
+	#qm0	
+	{	
+		width:148px;
+		height:250px;
+		padding:5px;
+		margin:0px;
+		background-color:#988D74;
+	}
+
+
+	/*"""""""" (MAIN) Items""""""""*/	
+	#qm0 a	
+	{	
+		width:24px;
+		color:#FFFFFF;
+		font-size:10px;
+		text-decoration:none;
+		text-align:left;
+	}
+
+
+	/*"""""""" (SUB) Container""""""""*/	
+	#qm0 div, #qm0 ul	
+	{	
+		width:117px;
+		padding:3px;
+		margin:5px 0px 0px;
+		background-color:transparent;
+	}
+
+
+	/*"""""""" (SUB) Items""""""""*/	
+	#qm0 div a, #qm0 ul a	
+	{	
+		padding:0px;
+		margin:0px 0px 5px;
+		background-color:transparent;
+		color:#302925;
+		font-size:10px;
+		text-decoration:none;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" (SUB) Hover State""""""""*/	
+	#qm0 div a:hover	
+	{	
+		color:#FFFFFF;
+		text-decoration:none;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" (SUB) Hover State - (duplicated for pure CSS)""""""""*/	
+	#qm0 ul li:hover>a	
+	{	
+		color:#FFFFFF;
+		text-decoration:none;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" (SUB) Parent Items""""""""*/	
+	#qm0 div .qmparent, #qm0 ul .qmparent	
+	{	
+		background-image:url(file:///Users/markswanson/Resources/Javascript/QuickMenu/Visual%20QuickMenu7/qmimages/arrow_1.gif);
+		background-repeat:no-repeat;
+		background-position:97% 50%;
+	}
+
+
+	/*"""""""" (SUB) Active State""""""""*/	
+	body #qm0 div .qmactive, body #qm0 div .qmactive:hover	
+	{	
+		background-color:#FFFFFF;
+		background-image:url(file:///Users/markswanson/Resources/Javascript/QuickMenu/Visual%20QuickMenu7/qmimages/arrow_0.gif);
+		color:#000000;
+		text-decoration:none;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" Individual Titles""""""""*/	
+	#qm0 .qmtitle	
+	{	
+		margin:2px 0px 5px;
+		color:#222222;
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" Individual Horizontal Dividers""""""""*/	
+	#qm0 .qmdividerx	
+	{	
+		border-top-width:1px;
+		margin:4px 0px;
+		border-color:#999999;
+	}
+
+
+	/*"""""""" Custom Rule""""""""*/	
+	ul#qm0 ul li:hover > a.qmparent	
+	{	
+		background-color:#FFFFFF;
+		background-image:url(file:///Users/markswanson/Resources/Javascript/QuickMenu/Visual%20QuickMenu7/qmimages/arrow_0.gif);
+		color:#000000;
+		text-decoration:underline;
+	}
+
+
+	/*"""""""" Custom Rule""""""""*/	
+	ul#qm0 a img	
+	{	
+		display:block;
+		border-style:none;
+	}
+	/*[END-QS0]*/
+
+

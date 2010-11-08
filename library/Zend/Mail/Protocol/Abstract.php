@@ -18,7 +18,7 @@
  * @subpackage Protocol
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @version    $Id: Abstract.php 22602 2010-07-16 22:37:31Z freak $
  */
 
 
@@ -44,7 +44,7 @@ require_once 'Zend/Validate/Hostname.php';
  * @subpackage Protocol
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @version    $Id: Abstract.php 22602 2010-07-16 22:37:31Z freak $
  * @todo Implement proxy settings
  */
 abstract class Zend_Mail_Protocol_Abstract
@@ -62,8 +62,9 @@ abstract class Zend_Mail_Protocol_Abstract
 
     /**
      * Maximum of the transaction log
+     * @var integer
      */
-    const MAXIMUM_LOG = 64;
+    protected $_maximumLog = 64;
 
 
     /**
@@ -111,6 +112,7 @@ abstract class Zend_Mail_Protocol_Abstract
     /**
      * String template for parsing server responses using sscanf (default: 3 digit code and response string)
      * @var resource
+     * @deprecated Since 1.10.3
      */
     protected $_template = '%d%s';
 
@@ -158,6 +160,28 @@ abstract class Zend_Mail_Protocol_Abstract
         $this->_disconnect();
     }
 
+    /**
+     * Set the maximum log size 
+     * 
+     * @param integer $maximumLog Maximum log size
+     * @return void
+     */
+    public function setMaximumLog($maximumLog)
+    {
+        $this->_maximumLog = (int) $maximumLog;
+    }
+    
+    
+    /**
+     * Get the maximum log size 
+     * 
+     * @return int the maximum log size
+     */
+    public function getMaximumLog()
+    {
+        return $this->_maximumLog;
+    }
+    
 
     /**
      * Create a connection to the remote host
@@ -218,7 +242,7 @@ abstract class Zend_Mail_Protocol_Abstract
      */
     protected function _addLog($value)
     {
-        if (count($this->_log) >= self::MAXIMUM_LOG) {
+        if ($this->_maximumLog >= 0 && count($this->_log) >= $this->_maximumLog) {
             array_shift($this->_log);
         }
 
@@ -378,8 +402,9 @@ abstract class Zend_Mail_Protocol_Abstract
     protected function _expect($code, $timeout = null)
     {
         $this->_response = array();
-        $cmd = '';
-        $msg = '';
+        $cmd  = '';
+        $more = '';
+        $msg  = '';
         $errMsg = '';
 
         if (!is_array($code)) {
@@ -388,15 +413,15 @@ abstract class Zend_Mail_Protocol_Abstract
 
         do {
             $this->_response[] = $result = $this->_receive($timeout);
-            sscanf($result, $this->_template, $cmd, $msg);
+            list($cmd, $more, $msg) = preg_split('/([\s-]+)/', $result, 2, PREG_SPLIT_DELIM_CAPTURE);
 
             if ($errMsg !== '') {
-                $errMsg .= $msg;
+                $errMsg .= ' ' . $msg;
             } elseif ($cmd === null || !in_array($cmd, $code)) {
                 $errMsg =  $msg;
             }
 
-        } while (strpos($msg, '-') === 0); // The '-' message prefix indicates an information string instead of a response string.
+        } while (strpos($more, '-') === 0); // The '-' message prefix indicates an information string instead of a response string.
 
         if ($errMsg !== '') {
             /**

@@ -1,0 +1,1 @@
+$j('img.rollover').rolloverImage();

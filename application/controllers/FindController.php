@@ -1,15 +1,13 @@
 <?php
 
-class FindController extends Zend_Controller_Action
+class FindController extends Custom_Zend_Controller_Action
 {
 
-    public function init()
-    {
-        /* Initialize action controller here */
+    public function init() {
+        parent::init();  // Because this is a custom controller class
     }
 
-    public function indexAction()
-    {
+    public function indexAction() {
         // action body
     }
 

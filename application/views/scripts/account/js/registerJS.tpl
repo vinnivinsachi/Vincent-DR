@@ -2,7 +2,7 @@
 {literal}
 <script type='text/javascript'>
 
-	$j('#register-form').validate({submitHandler: function(form){if(nameAvail)showLoadingAndSubmit();}}); // form validation
+	$j('#register-form').validate({submitHandler: function(form){showLoadingAndSubmit();}}); // form validation
 
 	
 	// --------------------------------------- CHECK USERNAME ----------------------------

@@ -1,8 +1,16 @@
+application/configs/local_settings.ini
+tmp
+tmp/
+tmp/*
+tmp/*/*
+library/Zend
+library/Zend/
+library/Zend/*
+library/Zend/*/*
 data/tmp
 data/tmp/
 data/tmp/*
 data/tmp/*/*
-application/configs/local_settings.ini
 data/logs
 data/logs/
 data/logs/*

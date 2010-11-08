@@ -18,7 +18,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
     realpath(APPLICATION_PATH . '/models'),
     realpath(APPLICATION_PATH . '/helperProcessor'),
-    get_include_path()
+    get_include_path(),
 )));
 
 // define additional paths

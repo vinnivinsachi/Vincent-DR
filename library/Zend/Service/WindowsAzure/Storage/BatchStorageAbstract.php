@@ -17,7 +17,7 @@
  * @subpackage Storage
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Storage.php 21617 2009-06-12 10:46:31Z unknown $
+ * @version    $Id: BatchStorageAbstract.php 23167 2010-10-19 17:53:31Z mabe $
  */
 
 /**
@@ -75,7 +75,7 @@ abstract class Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
      */
     public function setCurrentBatch(Zend_Service_WindowsAzure_Storage_Batch $batch = null)
     {
-        if (!is_null($batch) && $this->isInBatch()) {
+        if ($batch !== null && $this->isInBatch()) {
             throw new Zend_Service_WindowsAzure_Exception('Only one batch can be active at a time.');
         }
         $this->_currentBatch = $batch;
@@ -98,7 +98,7 @@ abstract class Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
      */
     public function isInBatch()
     {
-        return !is_null($this->_currentBatch);
+        return $this->_currentBatch !== null;
     }
     
     /**
@@ -133,6 +133,10 @@ abstract class Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
 	    
 		// Add version header
 		$headers['x-ms-version'] = $this->_apiVersion;
+		
+		// Add dataservice headers
+		$headers['DataServiceVersion'] = '1.0;NetFx';
+		$headers['MaxDataServiceVersion'] = '1.0;NetFx';
 		
 		// Add content-type header
 		$headers['Content-Type'] = 'multipart/mixed; boundary=' . $batchBoundary;

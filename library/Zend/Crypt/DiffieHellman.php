@@ -17,7 +17,7 @@
  * @subpackage DiffieHellman
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: DiffieHellman.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @version    $Id: DiffieHellman.php 22662 2010-07-24 17:37:36Z mabe $
  */
 
 /**
@@ -108,7 +108,7 @@ class Zend_Crypt_DiffieHellman
     {
         $this->setPrime($prime);
         $this->setGenerator($generator);
-        if (!is_null($privateKey)) {
+        if ($privateKey !== null) {
             $this->setPrivateKey($privateKey, $privateKeyType);
         }
         $this->setBigIntegerMath();
@@ -170,7 +170,7 @@ class Zend_Crypt_DiffieHellman
      */
     public function getPublicKey($type = self::NUMBER)
     {
-        if (is_null($this->_publicKey)) {
+        if ($this->_publicKey === null) {
             require_once 'Zend/Crypt/DiffieHellman/Exception.php';
             throw new Zend_Crypt_DiffieHellman_Exception('A public key has not yet been generated using a prior call to generateKeys()');
         }
@@ -324,7 +324,7 @@ class Zend_Crypt_DiffieHellman
     public function getPrivateKey($type = self::NUMBER)
     {
         if (!$this->hasPrivateKey()) {
-            $this->setPrivateKey($this->_generatePrivateKey());
+            $this->setPrivateKey($this->_generatePrivateKey(), self::BINARY);
         }
         if ($type == self::BINARY) {
             return $this->_math->toBinary($this->_privateKey);
