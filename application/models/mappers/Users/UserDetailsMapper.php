@@ -1,76 +1,51 @@
 <?php
 
-class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper
+class Application_Model_Mapper_Users_UserDetailsMapper extends Custom_Model_Mapper_Abstract
 {
+	protected $_dbTableClass = 'Application_Model_DbTable_Users_UserDetails';
 	
-	public function save(Application_Model_Users_User $user) {
+	public function save(Application_Model_Users_UserDetails $details) {
 		$data = array(
-			'username'	=> $user->username,
-			'dateCreated'	=> date('Y-m-d H:i:s'),
+			'userID'		=> $details->userID,
+			'referralID'	=> $details->referralID,
+			'refereeID'	=> $details->refereeID,
+			'email'	=> $details->email,
+			'sex'	=> $details->sex,
+			'measurement'	=> $details->measurement,
+			'firstName'	=> $details->firstName,
+			'lastName'	=> $details->lastName,
+			'isInstructor'	=> $details->isInstructor,
+			'findingPartner'	=> $details->findingPartner,
+			'status'	=> $details->status,
+			'rewardPoints'	=> $details->rewardPoints,
+			'verification'	=> $details->verification,
+			'typeID'	=> $details->typeID,
+			'reviewCount'	=> $details->reviewCount,
+			'reviewAverageScore'	=> $details->reviewAverageScore,
+			'reviewTotalScore'	=> $details->reviewTotalScore,
 		);
 		
-		// Generate password crypt and salt IF password provided
-		if($user->getPassword()) {
-			$data['salt'] = $this->generateSalt();
-			$data['password'] = $this->saltHashPassword($user->password, $data['salt']);
-		}
-		
-		// Add a new user, or update and existing user
-		if(($id = $user->id) === null) $this->getDbTable()->insert($data);
-		else $this->getDbTable()->update($data, array('id = ?' => $id));
+		// update details
+		$this->getDbTable()->update($data, array('userID = ?' => $details->userID));
 	}
 	
-	public function find($id) {
-		$result = $this->getDbTable()->find($id);
-		if(count($result) == 0) return null; // return null if nothing found
-		$row = $result->current();
-		$userData = $row->toArray();
-		unset($userData['password']);
-		$user = new Application_Model_Users_User($userData);
-		return $user;
-	}
-	
-	public function findByUsername($username) {
+	public function getDetailsForUser(Application_Model_Users_User $user) {
 		$select = $this->getDbTable()->select();
-		$select->where('username = ?', $username);
+		$select->where('userID = ?', $user->id);
 		$result = $this->getDbTable()->fetchAll($select);
 		if(count($result) == 0) return null;
-		if(count($result) > 1) exit('More than one user with the same username: '.$username);
+		if(count($result) > 1) exit('More than one details for a single user, userID: '.$user->id);
 		$row = $result->current();
-		$userData = $row->toArray();
-		unset($userData['password']);
-		$user = new Application_Model_Users_User($userData);
-		return $user;
+		$detailsData = $row->toArray();
+		$details = new Application_Model_Users_UserDetails($detailsData);
+		$user->details = $details;
+		return $details;
 	}
 	
-	public function fetchAll() {
-		$resultSet = $this->getDbTable()->fetchAll();
-		$users = array();
-		foreach($resultSet as $row) {
-			$userData = $row->toArray();
-			unset($userData['password']);
-			$user = new Application_Model_Users_User($userData);
-			$users[] = $user;
-		}
-		return $users;
-	}
-	
-	public function usernameAvailable($username) {
-		$select = $this->getDbTable()->select();
-		$select->where('username = ?', $username);
-		$result = $this->getDbTable()->fetchAll($select);
-		if(count($result) == 0) return true;
-		else return false;
+	public function newDetailsForUserID($userID) {
+		$data = array('userID'	=> $userID);
+		$this->getDbTable()->insert($data);
 	}
 
-	
-	// ---------------------------------- HELPER FUNCTIONS ------------------------------------
-	private function generateSalt() {
-		return sha1(time());
-	}
-	
-	private function saltHashPassword($password, $salt) {
-		return sha1($password.$salt);
-	}
 }
 

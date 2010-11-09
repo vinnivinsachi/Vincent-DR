@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Users_User extends Custom_Model
+class Application_Model_Users_User extends Custom_Model_Abstract
 {
 	public $id;
 	public $username;
@@ -9,7 +9,7 @@ class Application_Model_Users_User extends Custom_Model
 	public $dateCreated;
 	public $lastLogin;
 	
-	public $details;
+	public $details; // Application_Model_Users_UserDetails
 	
 	
 //	public function setId($id) {

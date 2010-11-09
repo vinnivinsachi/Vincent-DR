@@ -1,6 +1,6 @@
 <?php
 
-class Custom_Model
+abstract class Custom_Model_Abstract
 {
 
 	

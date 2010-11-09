@@ -1,7 +1,8 @@
 <?php
 
-class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper
+class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abstract
 {
+	protected $_dbTableClass = 'Application_Model_DbTable_Users_Users';
 	
 	public function save(Application_Model_Users_User $user) {
 		$data = array(
@@ -19,7 +20,10 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper
 		// Add a new user, or update and existing user
 		if(($id = $user->id) === null) {
 			$data['dateCreated'] = date('Y-m-d H:i:s');
-			$this->getDbTable()->insert($data);
+			$userID = $this->getDbTable()->insert($data);
+			// also add new user details if it is a new user
+				$detailsMapper = new Application_Model_Mapper_Users_UserDetailsMapper;
+				$detailsMapper->newDetailsForUserID($userID);
 		}
 		else $this->getDbTable()->update($data, array('id = ?' => $id));
 	}
