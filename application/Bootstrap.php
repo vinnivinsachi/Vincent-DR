@@ -2,16 +2,16 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-
-	// let Zend handle the sessions for all requests
-	public function _initSession() {
-		Zend_Session::start();
-	}
 	
 	// initialize autoloading
 	public function _initAutoload() {
 		$autoloader = Zend_Loader_Autoloader::getInstance();
 		$autoloader->setFallbackAutoloader(true);
+	}
+	
+	// let Zend handle the sessions for all requests
+	public function _initSession() {
+		Zend_Session::start();
 	}
 	
 	// An external library for connecting Smarty to Zend
