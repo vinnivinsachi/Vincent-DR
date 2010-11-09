@@ -5,18 +5,22 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper
 	
 	public function save(Application_Model_Users_User $user) {
 		$data = array(
-			'username'	=> $user->username,
-			'dateCreated'	=> date('Y-m-d H:i:s'),
+			'username'		=> $user->username,
+			'role'			=> isset($user->role) ? $user->role : 'buyer',
+			'lastLogin'		=> isset($user->lastLogin) ? $user->lastLogin : '0000-00-00 00:00:00',
 		);
 		
 		// Generate password crypt and salt IF password provided
-		if($user->getPassword()) {
+		if($user->password) {
 			$data['salt'] = $this->generateSalt();
 			$data['password'] = $this->saltHashPassword($user->password, $data['salt']);
 		}
 		
 		// Add a new user, or update and existing user
-		if(($id = $user->id) === null) $this->getDbTable()->insert($data);
+		if(($id = $user->id) === null) {
+			$data['dateCreated'] = date('Y-m-d H:i:s');
+			$this->getDbTable()->insert($data);
+		}
 		else $this->getDbTable()->update($data, array('id = ?' => $id));
 	}
 	
@@ -61,6 +65,12 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper
 		$result = $this->getDbTable()->fetchAll($select);
 		if(count($result) == 0) return true;
 		else return false;
+	}
+	
+	public function updateLastLogin($user) {
+		$user->lastLogin = date('Y-m-d H:i:s');
+		$this->save($user);
+		return $user;
 	}
 
 	
