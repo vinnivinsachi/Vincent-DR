@@ -1,8 +1,9 @@
 <?php
 
-class Custom_Zend_Model
+class Custom_Model
 {
 
+	
 //	public function __set($name, $value)
 //        {
 //		
@@ -31,23 +32,27 @@ class Custom_Zend_Model
 		if(is_array($options)) $this->setOptions($options);
 	}
 	
-	public function __set($name, $value) {
-		$method = 'set'.ucfirst($name);
-		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
-		$this->$method($value);
-	}
-	
-	public function __get($name) {
-		$method = 'get'.ucfirst($name);
-		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
-		return $this->$method();
-	}
+//	public function __set($name, $value) {
+//		$method = 'set'.ucfirst($name);
+//		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
+//		$this->$method($value);
+//	}
+//	
+//	public function __get($name) {
+//		$method = 'get'.ucfirst($name);
+//		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
+//		return $this->$method();
+//	}
 	
 	public function setOptions(array $options) {
-		$methods = get_class_methods($this);
-		foreach($options as $key => $value) {
-			$method = 'set'.ucfirst($key);
-			if(in_array($method, $methods)) $this->$method($value);
+//		$methods = get_class_methods($this);
+//		foreach($options as $key => $value) {
+//			$method = 'set'.ucfirst($key);
+//			if(in_array($method, $methods)) $this->$method($value);
+//		}
+
+		foreach($options as $property => $value) {
+			if(property_exists($this, $property)) $this->$property = $value;
 		}
 		return $this;
 	}
