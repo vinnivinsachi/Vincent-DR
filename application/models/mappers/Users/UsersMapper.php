@@ -5,33 +5,6 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	protected $_dbTableClass = 'Application_Model_DbTable_Users_Users';
 	protected $_modelClass = 'Application_Model_Users_User';
 	
-	protected $_columns = array(
-		'username'				=> null,
-		'password'				=> null,
-		'salt'					=> null,
-		'role'					=> null,
-		'lastLogin'				=> null,
-		'dateCreated'			=> null,
-	
-		'userID'				=> null,
-		'referralID'			=> null,
-		'uniqueID'				=> null,
-		'email'					=> null,
-		'sex'					=> null,
-		'measurement'			=> null,
-		'firstName'				=> null,
-		'lastName'				=> null,
-		'isInstructor'			=> null,
-		'findingPartner'		=> null,
-		'status'				=> null,
-		'rewardPoints'			=> null,
-		'verification'			=> null,
-		'typeID'				=> null,
-		'reviewCount'			=> null,
-		'reviewAverageScore'	=> null,
-		'reviewTotalScore'		=> null,
-	);
-	
 	public function save(Application_Model_Users_User $user) {
 		// Generate password crypt and salt IF password provided
 		if($user->password) {
@@ -55,39 +28,23 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 		return $uniqueID;
 	}
 	
-	public function findByUniqueID($uniqueID) {
-		$select = $this->getDbTable()->select();
-		$select->where('uniqueID = ?', $uniqueID);
-		$result = $this->getDbTable()->fetchAll($select);
-		if(count($result) == 0) return null;
-		if(count($result) > 1) exit('More than one user with the same uniqueID: '.$uniqueID);
-		$row = $result->current();
-		$userData = $row->toArray();
-		$user = new Application_Model_Users_User($userData);
-		return $user;
+	public function findByUniqueID($uniqueID, array $options = null) {
+		$users = $this->findByColumn('uniqueID', $uniqueID, $options);
+		if(count($users) == 0) return null;
+		if(count($users) > 1) throw new Exception('More than one user with the uniqueID: '.$uniqueID);
+		return $users[0];
 	}
 	
 	public function findByUsername($username, array $options = null) {
-		$columns = $this->getColumns($options);
-		
-		$select = $this->getDbTable()->select();
-		$select->from($this->getDbTable(), $columns)
-			   ->where('username = ?', $username);
-		$result = $this->getDbTable()->fetchAll($select);
-		if(count($result) == 0) return null;
-		if(count($result) > 1) exit('More than one user with the same username: '.$username);
-		$row = $result->current();
-		$userData = $row->toArray();
-		$user = new Application_Model_Users_User($userData);
-		return $user;
+		$users = $this->findByColumn('username', $username, $options);
+		if(count($users) == 0) return null;
+		if(count($users) > 1) throw new Exception('More than one user with the username: '.$username);
+		return $users[0];
 	}
 	
 	public function usernameAvailable($username) {
-		$select = $this->getDbTable()->select();
-		$select->where('username = ?', $username);
-		$result = $this->getDbTable()->fetchAll($select);
-		if(count($result) == 0) return true;
-		else return false;
+		if($this->findByUsername($username, array('include', array('username')))) return false;
+		else return true;
 	}
 	
 	public function updateLastLogin($user) {

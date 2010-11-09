@@ -3,11 +3,15 @@
 abstract class Custom_Model_Mapper_Abstract
 {
 
-	protected $_dbTable;
-	// protected $_dbTableClass; Should be set in child class
-	// protected $_modelClass; Should be set in child class
-	// protected $_columns = array(); Should be set in child class
+	//abstract protected $_dbTableClass = array(); NEED TO DEFINE IN CHILD CLASS
+	//abstract protected $_modelClass; NEED TO DEFINE IN CHILD CLASS
 	
+	protected $_dbTable;
+	protected $_columns;
+	
+	public function __construct() {
+		$this->_columns = get_object_vars(new $this->_modelClass);
+	}
 	
 	protected function setDbTable($dbTable) {
 		if(is_string($dbTable)) $dbTable = new $dbTable();
@@ -68,6 +72,23 @@ abstract class Custom_Model_Mapper_Abstract
 		return $object;
 	}
 	
+	public function findByColumn($column, $search, array $options = null) {
+		$columns = $this->getColumns($options);
+		
+		$select = $this->getDbTable()->select();
+		$select->from($this->getDbTable(), $columns)
+			   ->where("$column = ?", $search);
+		
+		$resultSet = $this->getDbTable()->fetchAll($select);
+		$objects = array();
+		foreach($resultSet as $row) {
+			$rowData = $row->toArray();
+			$object = new $this->_modelClass($rowData);
+			$objects[] = $object;
+		}
+		return $objects;
+	}
+	
 	public function fetchAll(array $options = null) {
 		$columns = $this->getColumns($options);
 		
@@ -78,7 +99,7 @@ abstract class Custom_Model_Mapper_Abstract
 		$objects = array();
 		foreach($resultSet as $row) {
 			$rowData = $row->toArray();
-			$object = new Application_Model_Users_User($rowData);
+			$object = new $this->_modelClass($rowData);
 			$objects[] = $object;
 		}
 		return $objects;
