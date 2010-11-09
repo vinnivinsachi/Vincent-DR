@@ -43,29 +43,29 @@ class AccountController extends Custom_Zend_Controller_Action
     }
     
 	public function detailsAction(){				
-			//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
-			$this->view->user=$this->signedInUserSessionInfoHolder;
-			$this->view->userRewardPoint=$this->userObject->reward_point;
-			
-			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
-				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
-			}
-			else{
-				echo "there is no default shipping key set in session variable";
-			}
-			$rewardTracking = DatabaseObject_Helper_UserManager::loadRewardPointTracking($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
-			$this->view->rewardPointTracking = $rewardTracking;
-			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-			if($this->signedInUserSessionInfoHolder->generalInfo->user_type=='generalSeller'||$this->signedInUserSessionInfoHolder->generalInfo->user_type=='storeSeller'){
-				$userReviews = DatabaseObject_Helper_UserManager::loadUserReviews($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-				//Zend_Debug::dump($userReviews);
-				$this->view->userReviews = $userReviews;
-				$this->view->numberOfReview = $this->userObject->review_count;
-				$this->view->averageRating = $this->userObject->review_average_score;
-			}
-			$ip=$_SERVER['REMOTE_ADDR'];
-			echo "ip is: ".$ip;
-		}
+//		//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
+//		$this->view->user=$this->signedInUserSessionInfoHolder;
+//		$this->view->userRewardPoint=$this->userObject->reward_point;
+//		
+//		if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
+//			$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
+//		}
+//		else{
+//			echo "there is no default shipping key set in session variable";
+//		}
+//		$rewardTracking = DatabaseObject_Helper_UserManager::loadRewardPointTracking($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
+//		$this->view->rewardPointTracking = $rewardTracking;
+//		$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//		if($this->signedInUserSessionInfoHolder->generalInfo->user_type=='generalSeller'||$this->signedInUserSessionInfoHolder->generalInfo->user_type=='storeSeller'){
+//			$userReviews = DatabaseObject_Helper_UserManager::loadUserReviews($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
+//			//Zend_Debug::dump($userReviews);
+//			$this->view->userReviews = $userReviews;
+//			$this->view->numberOfReview = $this->userObject->review_count;
+//			$this->view->averageRating = $this->userObject->review_average_score;
+//		}
+//		$ip=$_SERVER['REMOTE_ADDR'];
+//		echo "ip is: ".$ip;
+	}
 
 
 }

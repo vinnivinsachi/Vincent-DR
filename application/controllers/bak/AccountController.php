@@ -4,36 +4,7 @@
 	*/
 	class AccountController extends CustomControllerAction
 	{	
-		/*init**********
-		*initializes all the variables necessary for this control
-		*heavily rely on $this->userObject instantiated and loaded in CustomController
-		*uses $this->signedInUserSessionInfoHolder instantiated and loaded in customController
-		*sets up breadcrumbs for all the actions
-		****************/
-		public function init(){
-			parent::init();
-		}
-		
-		/*init*********
-		*checks to see if the user is logged in
-		*loads all the shipping information of a user into a session variables
-		***************/
-//		public function preDispatch(){					
-//			parent::preDispatch();	
-//			if($this->auth->hasIdentity()){
-//				if(!isset($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress)){
-//					$this->userObject->createShippingAddressInfoSessionObject($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress);
-//				}
-//				$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
-//			} 
-//			//Zend_Debug::dump($_SERVER);
-//		}
-	
-		/*index***********
-		*displays everything there is that is in the session variable
-		******************/
-		public function indexAction(){
-		}
+
 		
 //		public function messagesAction(){
 //			
@@ -46,7 +17,7 @@
 //			else{
 //				//echo "there is no default shipping key set in session variable";
 //			}
-//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//
 //			$ip=$_SERVER['REMOTE_ADDR'];
 //			echo "ip is: ".$ip;
 //			
@@ -61,33 +32,8 @@
 //		}
 		
 		
-		/*details*
-		*if there is a default address, then it sets default address
-		*/
-//		public function detailsAction(){				
-//			//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
-//			$this->view->user=$this->signedInUserSessionInfoHolder;
-//			$this->view->userRewardPoint=$this->userObject->reward_point;
-//			
-//			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
-//				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
-//			}
-//			else{
-//				echo "there is no default shipping key set in session variable";
-//			}
-//			$rewardTracking = DatabaseObject_Helper_UserManager::loadRewardPointTracking($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
-//			$this->view->rewardPointTracking = $rewardTracking;
-//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-//			if($this->signedInUserSessionInfoHolder->generalInfo->user_type=='generalSeller'||$this->signedInUserSessionInfoHolder->generalInfo->user_type=='storeSeller'){
-//				$userReviews = DatabaseObject_Helper_UserManager::loadUserReviews($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-//				//Zend_Debug::dump($userReviews);
-//				$this->view->userReviews = $userReviews;
-//				$this->view->numberOfReview = $this->userObject->review_count;
-//				$this->view->averageRating = $this->userObject->review_average_score;
-//			}
-//			$ip=$_SERVER['REMOTE_ADDR'];
-//			echo "ip is: ".$ip;
-//		}
+
+		
 		
 		//not used anymore
 		public function rewardpointsAction(){
