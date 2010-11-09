@@ -12,23 +12,22 @@
 		****************/
 		public function init(){
 			parent::init();
-			$this->breadcrumbs->addStep('Account', $this->getUrl(null, 'account'));
 		}
 		
 		/*init*********
 		*checks to see if the user is logged in
 		*loads all the shipping information of a user into a session variables
 		***************/
-		public function preDispatch(){					
-			parent::preDispatch();	
-			if($this->auth->hasIdentity()){
-				if(!isset($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress)){
-					$this->userObject->createShippingAddressInfoSessionObject($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress);
-				}
-				$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
-			} 
-			//Zend_Debug::dump($_SERVER);
-		}
+//		public function preDispatch(){					
+//			parent::preDispatch();	
+//			if($this->auth->hasIdentity()){
+//				if(!isset($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress)){
+//					$this->userObject->createShippingAddressInfoSessionObject($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress);
+//				}
+//				$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
+//			} 
+//			//Zend_Debug::dump($_SERVER);
+//		}
 	
 		/*index***********
 		*displays everything there is that is in the session variable
@@ -36,59 +35,59 @@
 		public function indexAction(){
 		}
 		
-		public function messagesAction(){
-			
-			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
-			$this->view->user=$this->signedInUserSessionInfoHolder;
-			$this->view->userRewardPoint=$this->userObject->reward_point;
-			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
-				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
-			}
-			else{
-				//echo "there is no default shipping key set in session variable";
-			}
-			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-			$ip=$_SERVER['REMOTE_ADDR'];
-			echo "ip is: ".$ip;
-			
-			$allShoutBoxMessages = DatabaseObject_Helper_Communication::retrieveShoutOutMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-			$this->view->allShoutBoxMessages = $allShoutBoxMessages;
-			
-			$inboxMessages = DatabaseObject_Helper_Communication::retrieveMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->email, 'inbox');
-			$this->view->inboxMessages = $inboxMessages;
-			
-			$outboxMessages = DatabaseObject_Helper_Communication::retrieveMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->email, 'outbox');
-			$this->view->outboxMessages = $outboxMessages;
-		}
+//		public function messagesAction(){
+//			
+//			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
+//			$this->view->user=$this->signedInUserSessionInfoHolder;
+//			$this->view->userRewardPoint=$this->userObject->reward_point;
+//			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
+//				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
+//			}
+//			else{
+//				//echo "there is no default shipping key set in session variable";
+//			}
+//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//			$ip=$_SERVER['REMOTE_ADDR'];
+//			echo "ip is: ".$ip;
+//			
+//			$allShoutBoxMessages = DatabaseObject_Helper_Communication::retrieveShoutOutMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
+//			$this->view->allShoutBoxMessages = $allShoutBoxMessages;
+//			
+//			$inboxMessages = DatabaseObject_Helper_Communication::retrieveMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->email, 'inbox');
+//			$this->view->inboxMessages = $inboxMessages;
+//			
+//			$outboxMessages = DatabaseObject_Helper_Communication::retrieveMessagesForUser($this->db, $this->signedInUserSessionInfoHolder->generalInfo->email, 'outbox');
+//			$this->view->outboxMessages = $outboxMessages;
+//		}
 		
 		
 		/*details*
 		*if there is a default address, then it sets default address
 		*/
-		public function detailsAction(){				
-			//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
-			$this->view->user=$this->signedInUserSessionInfoHolder;
-			$this->view->userRewardPoint=$this->userObject->reward_point;
-			
-			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
-				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
-			}
-			else{
-				echo "there is no default shipping key set in session variable";
-			}
-			$rewardTracking = DatabaseObject_Helper_UserManager::loadRewardPointTracking($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
-			$this->view->rewardPointTracking = $rewardTracking;
-			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-			if($this->signedInUserSessionInfoHolder->generalInfo->user_type=='generalSeller'||$this->signedInUserSessionInfoHolder->generalInfo->user_type=='storeSeller'){
-				$userReviews = DatabaseObject_Helper_UserManager::loadUserReviews($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-				//Zend_Debug::dump($userReviews);
-				$this->view->userReviews = $userReviews;
-				$this->view->numberOfReview = $this->userObject->review_count;
-				$this->view->averageRating = $this->userObject->review_average_score;
-			}
-			$ip=$_SERVER['REMOTE_ADDR'];
-			echo "ip is: ".$ip;
-		}
+//		public function detailsAction(){				
+//			//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
+//			$this->view->user=$this->signedInUserSessionInfoHolder;
+//			$this->view->userRewardPoint=$this->userObject->reward_point;
+//			
+//			if(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id)){
+//				$this->view->defaultShippingKey = $this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
+//			}
+//			else{
+//				echo "there is no default shipping key set in session variable";
+//			}
+//			$rewardTracking = DatabaseObject_Helper_UserManager::loadRewardPointTracking($this->db, $this->signedInUserSessionInfoHolder->generalInfo->referee_id);
+//			$this->view->rewardPointTracking = $rewardTracking;
+//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//			if($this->signedInUserSessionInfoHolder->generalInfo->user_type=='generalSeller'||$this->signedInUserSessionInfoHolder->generalInfo->user_type=='storeSeller'){
+//				$userReviews = DatabaseObject_Helper_UserManager::loadUserReviews($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
+//				//Zend_Debug::dump($userReviews);
+//				$this->view->userReviews = $userReviews;
+//				$this->view->numberOfReview = $this->userObject->review_count;
+//				$this->view->averageRating = $this->userObject->review_average_score;
+//			}
+//			$ip=$_SERVER['REMOTE_ADDR'];
+//			echo "ip is: ".$ip;
+//		}
 		
 		//not used anymore
 		public function rewardpointsAction(){
@@ -363,80 +362,80 @@
 			$this->view->user=$this->userObject;
 		}
 		
-		public function loginAction()
-		{
-			//if a user's already logged in, send them to their account home page
-			$auth = Zend_Auth::getInstance();
-			if($auth->hasIdentity()){
-				$this->_redirect('/account/index');
-			}
-	
-			$request=$this->getRequest();
-			
-			if($request->getPost('register')){
-				$this->_redirect($this->geturl('newmember', 'registration'));
-			}
-			
-				//determin the page the user was originally trying t request
-			$redirect = $request->getPost('redirect');
-			if(strlen($redirect)==0){
-				//$redirect= $request->getServer('REQUEST_URI');
-			}
-			if(strlen($redirect)==0){
-				$redirect = '/index';
-			}
-			//initialize errors
-			$errors=array(); 
-			if($request->isPost()){
-				$username= DatabaseObject_StaticUtility::cleanHtml($request->getPost('username'));
-				$password= DatabaseObject_StaticUtility::cleanHtml($request->getPost('password'));
-				if(strlen($username)==0){
-					$errors['username']='Required field must not be blank';
-				}
-				if(strlen($password)==0){
-					$errors['password']='Required field must not be blank';
-				}
-				if(count($errors)==0){
-					//setup teh authentication adapter
-					//Zend_auth_adapter_dbtable takes($database, $table, $identity, $password, $passwordtreatment
-					$adapter = new Zend_Auth_Adapter_DbTable($this->db, 'users', 'username', 'password', 'md5(?)');
-					$adapter->setIdentity($username);
-					$adapter->setCredential($password);
-					//try and authenticate the user
-					$result = $auth->authenticate($adapter);
-					if($result->isValid()){
-						$user=new DatabaseObject_User($this->db);
-						$user->load($adapter->getResultRowObject()->userID);
-						//record login attemp
-						$user->loginSuccess(); //in user.php
-						//create identity data and write it to session
-						$signedInUser = $user->createAuthIdentity(); //in user.php
-						$auth->getStorage()->write($signedInUser); //writing more stuff in the signedInUser data stored in session. rewrite the new signedInUser created in users into our ZendAuth_Session_write stuff. //anypage can ues this information.
-						//send user to page they originally request
-						$this->_redirect($redirect);
-					}
-					//record failed login attempt
-					DatabaseObject_User::LoginFailure($username,$result->getCode()); //in user.php
-					
-					$errors['username'] = 'Your login details were invalid';
-				}
-			}
-			$this->breadcrumbs->addStep('Login');
-			$this->view->errors=$errors; 
-			$this->view->redirect=$redirect;
-			$fp=new FormProcessor_Account_UsermemberRegistration($this->db);
-			$this->view->fp = $fp;
-		}
-		
-		public function logoutAction(){
-			//destorys auth identity
-			Zend_Auth::getInstance()->clearIdentity();
-			//destroys all session
-			Zend_Session::destroy(false);
-			//clears the shoppingcart
-			
-			//return $this->_redirect($this->geturl('index', 'index'));	
-		}
+//		public function loginAction()
+//		{
+//			//if a user's already logged in, send them to their account home page
+//			$auth = Zend_Auth::getInstance();
+//			if($auth->hasIdentity()){
+//				$this->_redirect('/account/index');
+//			}
+//	
+//			$request=$this->getRequest();
+//			
+//			if($request->getPost('register')){
+//				$this->_redirect($this->geturl('newmember', 'registration'));
+//			}
+//			
+//				//determin the page the user was originally trying t request
+//			$redirect = $request->getPost('redirect');
+//			if(strlen($redirect)==0){
+//				//$redirect= $request->getServer('REQUEST_URI');
+//			}
+//			if(strlen($redirect)==0){
+//				$redirect = '/index';
+//			}
+//			//initialize errors
+//			$errors=array(); 
+//			if($request->isPost()){
+//				$username= DatabaseObject_StaticUtility::cleanHtml($request->getPost('username'));
+//				$password= DatabaseObject_StaticUtility::cleanHtml($request->getPost('password'));
+//				if(strlen($username)==0){
+//					$errors['username']='Required field must not be blank';
+//				}
+//				if(strlen($password)==0){
+//					$errors['password']='Required field must not be blank';
+//				}
+//				if(count($errors)==0){
+//					//setup teh authentication adapter
+//					//Zend_auth_adapter_dbtable takes($database, $table, $identity, $password, $passwordtreatment
+//					$adapter = new Zend_Auth_Adapter_DbTable($this->db, 'users', 'username', 'password', 'md5(?)');
+//					$adapter->setIdentity($username);
+//					$adapter->setCredential($password);
+//					//try and authenticate the user
+//					$result = $auth->authenticate($adapter);
+//					if($result->isValid()){
+//						$user=new DatabaseObject_User($this->db);
+//						$user->load($adapter->getResultRowObject()->userID);
+//						//record login attemp
+//						$user->loginSuccess(); //in user.php
+//						//create identity data and write it to session
+//						$signedInUser = $user->createAuthIdentity(); //in user.php
+//						$auth->getStorage()->write($signedInUser); //writing more stuff in the signedInUser data stored in session. rewrite the new signedInUser created in users into our ZendAuth_Session_write stuff. //anypage can ues this information.
+//						//send user to page they originally request
+//						$this->_redirect($redirect);
+//					}
+//					//record failed login attempt
+//					DatabaseObject_User::LoginFailure($username,$result->getCode()); //in user.php
+//					
+//					$errors['username'] = 'Your login details were invalid';
+//				}
+//			}
+//			$this->breadcrumbs->addStep('Login');
+//			$this->view->errors=$errors; 
+//			$this->view->redirect=$redirect;
+//			$fp=new FormProcessor_Account_UsermemberRegistration($this->db);
+//			$this->view->fp = $fp;
+//		}
+//		
+//		public function logoutAction(){
+//			//destorys auth identity
+//			Zend_Auth::getInstance()->clearIdentity();
+//			//destroys all session
+//			Zend_Session::destroy(false);
+//			//clears the shoppingcart
+//			
+//			//return $this->_redirect($this->geturl('index', 'index'));	
+//		}
 		
 		public function fetchpasswordAction(){
 			//if a user's already loged in, send them to the thier account home page

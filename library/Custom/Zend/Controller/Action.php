@@ -7,6 +7,8 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 	public function init() {
 		// Enable context switching for JSON
 		$this->_ajaxContext = $this->_helper->getHelper('AjaxContext');
+		
+		//$this->breadcrumbs->addStep('Account', $this->getUrl(null, 'account'));
 	}
 	
 	public function preDispatch() {

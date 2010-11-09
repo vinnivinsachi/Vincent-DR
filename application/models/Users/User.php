@@ -8,6 +8,31 @@ class Application_Model_Users_User
 	protected $_role;
 	protected $_dateCreated;
 
+	
+//	public function __set($name, $value)
+//        {
+//		
+//            if (array_key_exists($name, $this->_properties)) {
+//                $this->_properties[$name]['value'] = $value;
+//                $this->_properties[$name]['updated'] = true;
+//                return true;
+//            }
+//
+//            return false;
+//        }
+//
+//        public function __get($name)
+//        {
+//            return array_key_exists($name, $this->_properties) ? $this->_properties[$name]['value'] : null;
+//        }
+//
+//        protected function add($field, $default = null, $type = null)
+//        {
+//            $this->_properties[$field] = array('value'   => $default,
+//                                               'type'    => in_array($type, self::$types) ? $type : null,
+//                                               'updated' => false);
+//        }
+	
 	public function __construct(array $options = null) {
 		if(is_array($options)) $this->setOptions($options);
 	}
