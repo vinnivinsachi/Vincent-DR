@@ -2,8 +2,6 @@
 
 abstract class Custom_Model_Abstract
 {
-
-	
 //	public function __set($name, $value)
 //        {
 //		
@@ -59,3 +57,4 @@ abstract class Custom_Model_Abstract
 
 }
 
+?>

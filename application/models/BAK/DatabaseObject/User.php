@@ -1,6 +1,4 @@
 <?php
-
-	
 	class DatabaseObject_User extends DatabaseObject
 	{
 		static $userTypes= array('member' 	    => 'member',
