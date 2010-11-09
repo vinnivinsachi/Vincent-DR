@@ -1,9 +1,7 @@
 <?php
 
-class Custom_Model
+abstract class Custom_Model
 {
-
-	
 //	public function __set($name, $value)
 //        {
 //		
@@ -59,3 +57,4 @@ class Custom_Model
 
 }
 
+?>

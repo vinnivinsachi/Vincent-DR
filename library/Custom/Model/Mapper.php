@@ -1,6 +1,6 @@
 <?php
 
-class Custom_Model_Mapper
+abstract class Custom_Model_Mapper
 {
 
 	protected $_dbTable;
@@ -19,3 +19,4 @@ class Custom_Model_Mapper
 
 }
 
+?>
