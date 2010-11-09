@@ -34,7 +34,4 @@ class Application_Form_Account_Register extends Zend_Form
 			 ->addElement($password)
 			 ->addElement($passwordConfirm);
     }
-
-
 }
-
