@@ -45,28 +45,6 @@
 		}
 		
 		public function preDispatch(){
-//			$this->auth=Zend_Auth::getInstance();
-//			//check signed in?
-//			if($this->auth->hasIdentity()){
-//				$this->view->authenticated = true;
-//				//load information about signed in user.
-//				if($this->userObject->load($this->auth->getIdentity()->userID)){
-//					//check to see if basic user info is in sessoin
-//					if(!isset($this->signedInUserSessionInfoHolder->generalInfo)){
-//						$this->signedInUserSessionInfoHolder->generalInfo=$this->userObject->createGeneralInfoSessionObject();
-//					}
-//					if($this->userObject->user_type=='generalSeller' || $this->userObject->user_type=='storeSeller' ||$this->userObject->user_type=='admin'){
-//						if(!isset($this->signedInUserSessionInfoHolder->sellerInfo)){
-//							$this->signedInUserSessionInfoHolder->sellerInfo=$this->userObject->createSellerInfoSessionObject();
-//						}
-//					}	
-//					$this->view->userObject=$this->userObject;
-//					//Zend_Debug::dump($this->userObject);
-//				}
-//			}
-//			else{
-//				$this->view->authenticated = false;
-//			}
 //			
 //			$referral=$this->getRequest()->getParam('referral');
 //			if($referral!=''){
@@ -105,7 +83,6 @@
 //				$this->shoppingCartInfoSession->cartInfo->checkoutOk = false;
 //			}
 //			
-//			//Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
 //			
 ////			$this->view->shoppingCartProducts = $this->shoppingCartInfoSession->productInfo;
 ////			$this->view->shoppingCartInfo = $this->shoppingCartInfoSession->cartInfo;
@@ -119,21 +96,8 @@
 //				//Zend_Debug::dump($this->referral);
 //			}
 //			
-//			//setting default layouts
-//			if($this->getRequest()->isXmlHttpRequest()){
-//				$this->view->layout = 'applicationAJAX';
-//			}else{
-//				$this->view->layout = 'application';
-//			}
-//			
-////			$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
-////			$this->shoppingCartInfoSession->setExpirationSeconds(43200);
-//			
+
 //			//$this->view->productConfig = $this->productConfig;
-//			$this->view->siteRoot = SITE_ROOT;
-//			$this->view->cssDir = CSS_DIR;
-//			$this->view->imagesDir = IMAGES_DIR;
-//			$this->view->jsDir = JS_DIR;
 //
 //			
 //			
@@ -160,12 +124,6 @@
 //		
 //		}
 //		
-//		public function sendJson($data){ //this is a wrappe to Zend_json
-//			$this->_helper->viewRenderer->setNoRender(); //no output here
-//			
-//			$this->getResponse()->setHeader('content-type','application/json');
-//			echo Zend_Json::encode($data);
-//		}
 //		
 //		 public function sanitize($value)
 //        {
