@@ -49,7 +49,15 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         $result = $auth->authenticate($adapter);
         if ($result->isValid()) {
             $usersMapper = new Application_Model_Mapper_Users_UsersMapper;
-            $user = $usersMapper->findByUsername($values['username']);
+            $options = array('include' => array(
+            	'username',
+            	'uniqueID',
+            	'role',
+            	'email',
+            	'firstName',
+            	'lastName',
+            ));
+            $user = $usersMapper->findByUsername($values['username'], $options);
             $usersMapper->updateLastLogin($user);
             $auth->getStorage()->write($user);
             return true;

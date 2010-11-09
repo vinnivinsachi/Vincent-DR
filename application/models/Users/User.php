@@ -2,15 +2,16 @@
 
 class Application_Model_Users_User extends Custom_Model_Abstract
 {
-	public $id;
+	public $userID;
 	public $username;
 	public $password;
+	public $salt;
 	public $role;
 	public $dateCreated;
 	public $lastLogin;
 	
 	public $referralID;
-	public $refereeID;
+	public $uniqueID;
 	public $email;
 	public $sex;
 	public $measurement;
