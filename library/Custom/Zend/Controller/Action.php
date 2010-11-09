@@ -20,7 +20,8 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 		$this->view->layout = 'default';
 		
 		// Logged in user
-		$this->view->loggedInUser = Zend_Auth::getInstance()->getIdentity();
+		$this->_auth = Zend_Auth::getInstance();
+		$this->view->loggedInUser = $this->_auth->getIdentity();
 	}
 	
 	public function postDispatch() {

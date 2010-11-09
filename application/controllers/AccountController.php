@@ -43,7 +43,10 @@ class AccountController extends Custom_Zend_Controller_Action
     }
     
 	public function detailsAction(){		
-	
+		if($this->_auth->hasIdentity()) {		
+			//$user = 
+		}
+		else exit('User not logged in: In account/details');
 		
 //		$this->view->user=$this->signedInUserSessionInfoHolder;
 //		$this->view->userRewardPoint=$this->userObject->reward_point;

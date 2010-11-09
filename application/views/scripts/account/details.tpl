@@ -34,10 +34,10 @@
 		
 	    <fieldset> 	
 		<legend>Account-Info</legend>
-	    First name: {$user->details->first_name}<br />
-		Last name: {$user->details->last_name}<br />
-	    username: {$user->details->username}<br />
-	    usertype:	{$user->details->user_type} <br />
+	    First name: {$user->details->firstName}<br />
+		Last name: {$user->details->lastName}<br />
+	    username: {$user->username}<br />
+	    usertype:	{$user->details->userType} <br />
 	    password: XXXXXXX<br />
 	    Email: {$user->details->email}<br />
 	    Gender: {$user->details->sex}<br />
@@ -47,7 +47,7 @@
 	    <a href='{$siteRoot}/account/editbasicinfo'>Edit</a>
 		</fieldset>  
 	    
-	    {if $user->details->user_type =='generalSeller' ||$user->details->user_type =='storeSeller'} 
+	    {if $user->details->userType =='generalSeller' ||$user->details->userType =='storeSeller'} 
 	    <fieldset>
 	    	<legend>Sellers Information</legend>
 	        Paypal Email: {$user->sellerInfo->paypal_email}<br />
