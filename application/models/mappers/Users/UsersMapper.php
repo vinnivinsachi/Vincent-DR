@@ -9,6 +9,24 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 			'username'		=> $user->username,
 			'role'			=> isset($user->role) ? $user->role : 'buyer',
 			'lastLogin'		=> isset($user->lastLogin) ? $user->lastLogin : '0000-00-00 00:00:00',
+		
+			'userID'		=> $details->userID,
+			'referralID'	=> $details->referralID,
+			'refereeID'	=> $details->refereeID,
+			'email'	=> $details->email,
+			'sex'	=> $details->sex,
+			'measurement'	=> $details->measurement,
+			'firstName'	=> $details->firstName,
+			'lastName'	=> $details->lastName,
+			'isInstructor'	=> $details->isInstructor,
+			'findingPartner'	=> $details->findingPartner,
+			'status'	=> $details->status,
+			'rewardPoints'	=> $details->rewardPoints,
+			'verification'	=> $details->verification,
+			'typeID'	=> $details->typeID,
+			'reviewCount'	=> $details->reviewCount,
+			'reviewAverageScore'	=> $details->reviewAverageScore,
+			'reviewTotalScore'	=> $details->reviewTotalScore,
 		);
 		
 		// Generate password crypt and salt IF password provided

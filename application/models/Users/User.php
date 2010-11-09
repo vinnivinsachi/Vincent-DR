@@ -9,7 +9,22 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $dateCreated;
 	public $lastLogin;
 	
-	public $details; // Application_Model_Users_UserDetails
+	public $referralID;
+	public $refereeID;
+	public $email;
+	public $sex;
+	public $measurement;
+	public $firstName;
+	public $lastName;
+	public $isInstructor;
+	public $findingPartner;
+	public $status;
+	public $rewardPoints;
+	public $verification;
+	public $typeID;
+	public $reviewCount;
+	public $reviewAverageScore;
+	public $reviewTotalScore;
 	
 	
 //	public function setId($id) {
