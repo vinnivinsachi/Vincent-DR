@@ -42,8 +42,9 @@ class AccountController extends Custom_Zend_Controller_Action
     	$this->view->available = $usersMapper->usernameAvailable($this->_request->getParam('username'));    	
     }
     
-	public function detailsAction(){				
-//		//echo "here at dump variable: ".Zend_Debug::dump($this->signedInUserSessionInfoHolder->sellerInfo);
+	public function detailsAction(){		
+	
+		
 //		$this->view->user=$this->signedInUserSessionInfoHolder;
 //		$this->view->userRewardPoint=$this->userObject->reward_point;
 //		
