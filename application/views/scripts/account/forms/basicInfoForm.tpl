@@ -29,12 +29,12 @@
 		
 		<tr>
 			<td><label for='firstName'>First Name:</label></td>
-			<td><input type='text' name='firstName' id='first-name' maxlength='30'></td>
+			<td><input type='text' name='firstName' id='first-name' maxlength='30' value='{$user->firstName}'></td>
 		</tr>
 		
 		<tr>
 			<td><label for='lastName'>Last Name:</label></td>
-			<td><input type='text' name='lastName' id='last-name' maxlength='30'></td>
+			<td><input type='text' name='lastName' id='last-name' maxlength='30' value='{$user->lastName}'></td>
 		</tr>
 		
 		<tr>
@@ -44,7 +44,7 @@
 		
 		<tr>
 			<td><label for='affiliation'>Affiliation:</label></td>
-			<td><input type='text' name='affiliation' id='affiliation' maxlength='100'></td>
+			<td><input type='text' name='affiliation' id='affiliation' maxlength='100' value='{$user->affiliation}'></td>
 		</tr>
 		
 		<tr>

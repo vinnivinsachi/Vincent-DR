@@ -60,9 +60,40 @@ class AccountController extends Custom_Zend_Controller_Action
 		// send the user to the view
 			$this->view->user = $this->user;
 			
+			
+			
+//			$form = new Application_Form_Authentication_Login;
+//	        $request = $this->getRequest();
+//	        // If form was submitted
+//	        if($request->isPost()) {
+//	        	// If form is valid
+//	            if($form->isValid($request->getPost())) {
+//	            	// redirect to home page (authentication success)
+//	                if($this->_validLogin($form->getValues())) $this->_helper->redirector('index', 'index');
+//	                // Display error (authentication failure)
+//	                else $this->_helper->flashMessenger(array('error' => 'Incorrect username / password'));
+//	            }	
+//	            // If form is NOT valid
+//	            else $this->_helper->flashMessenger(array('error' => 'There were problems with your submission, please make sure javascript is enabled, and try again'));
+//	        }
+//	        $this->view->loginForm = $form;
+			
+			
+			
 			if($this->isJsonContext()) {
-				
+				$request = $this->getRequest();
+				$form = new Application_Form_Account_BasicInfo;
+	
+				if($form->isValid($request->getPost())) {
+	               // save the user info
+	               		$this->user->setOptions($form->getValues());
+	                	$this->usersMapper->save($this->user);      
+	               // display success message
+	                	$this->view->jsFlashMessage = 'Changes have been successfully saved!';         	
+	            }
+				else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
 			}
+			
 			
 //			$request=$this->getRequest();
 //			$fp = new FormProcessor_Account_UserBasicInfo($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);

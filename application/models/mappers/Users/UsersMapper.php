@@ -7,10 +7,11 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	
 	public function save(Application_Model_Users_User $user) {
 		// Generate password crypt and salt IF password provided
-		if($user->password) {
+		if($user->password && $user->password != '') {
 			$user->salt = $this->generateSalt();
 			$user->password = $this->saltHashPassword($user->password, $user->salt);
 		}
+		else if($user->password == '') unset($user->password);
 				
 		// new user defaults
 		if(($uniqueID = $user->uniqueID) === null) {

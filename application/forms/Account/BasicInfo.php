@@ -40,7 +40,8 @@ class Application_Form_Account_BasicInfo extends Zend_Form
 				 
 		// Dance Experience
 		$experience = new Zend_Form_Element_Select('experience');
-		$experience->setRequired(false);
+		$experience->setRequired(false)
+				   ->setRegisterInArrayValidator(false);
 						
 		
 		// Add all the elements to the form
