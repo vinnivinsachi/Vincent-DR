@@ -122,4 +122,3 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 
 }
-

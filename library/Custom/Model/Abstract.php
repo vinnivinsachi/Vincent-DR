@@ -45,7 +45,7 @@ abstract class Custom_Model_Abstract
 	public function setOptions(array $options) {
 //		$methods = get_class_methods($this);
 //		foreach($options as $key => $value) {
-//			$method = 'set'.ucfirst($key);
+//			$method = 'set'.ucfirst($key);Nnz6891
 //			if(in_array($method, $methods)) $this->$method($value);
 //		}
 
