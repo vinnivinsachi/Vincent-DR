@@ -31,6 +31,7 @@ class AccountController extends Custom_Zend_Controller_Action
 			
 		// send the user to the view
 			$this->view->user = $this->user;
+			
 		
 //		$this->view->user=$this->signedInUserSessionInfoHolder;
 //		$this->view->userRewardPoint=$this->userObject->reward_point;
@@ -59,6 +60,9 @@ class AccountController extends Custom_Zend_Controller_Action
 		// send the user to the view
 			$this->view->user = $this->user;
 			
+			if($this->isJsonContext()) {
+				
+			}
 			
 //			$request=$this->getRequest();
 //			$fp = new FormProcessor_Account_UserBasicInfo($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
