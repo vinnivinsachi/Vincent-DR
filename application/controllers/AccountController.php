@@ -8,6 +8,16 @@ class AccountController extends Custom_Zend_Controller_Action
     	$this->_ajaxContext->addActionContext('checkusername', 'json')
 			 ->initContext();
     }
+    
+    public function preDispatch() {
+    	parent::preDispatch();
+    	if($this->_auth->hasIdentity()) {
+			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+			// get user info
+				$user = $usersMapper->findByUsername($this->loggedInUser->username);
+		}
+		else throw new Exception('User not logged in: In account/details');
+    }
 
     public function indexAction() {
         // action body
@@ -43,10 +53,6 @@ class AccountController extends Custom_Zend_Controller_Action
     }
     
 	public function detailsAction(){		
-		if($this->_auth->hasIdentity()) {		
-			//$user = 
-		}
-		else throw new Exception('User not logged in: In account/details');
 		
 //		$this->view->user=$this->signedInUserSessionInfoHolder;
 //		$this->view->userRewardPoint=$this->userObject->reward_point;
@@ -70,6 +76,38 @@ class AccountController extends Custom_Zend_Controller_Action
 //		$ip=$_SERVER['REMOTE_ADDR'];
 //		echo "ip is: ".$ip;
 	}
+	
+	public function editbasicinfoAction(){
+		if($this->_auth->hasIdentity()) {
+			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+			// get user info
+				$user = $usersMapper->findByUsername($this->loggedInUser->username);
+			// get user's shipping addresses
+				$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+				$user->shippingAddresses = $shippingMapper->getShippingAddressesForUser($user);
+			$this->view->user = $user;
+		}
+		else throw new Exception('User not logged in: In account/details');
+		
+//			$request=$this->getRequest();
+//			$fp = new FormProcessor_Account_UserBasicInfo($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
+//			$this->view->fp = $fp;
+//			if($request->isPost()) {
+//				//database are changed in FormProcessor_Account
+//				if($fp->process($request)){	
+//					//session is being updated after FormProcessor_Account returns true
+//					$this->signedInUserSessionInfoHolder->generalInfo->first_name=$fp->first_name;
+//					$this->signedInUserSessionInfoHolder->generalInfo->last_name=$fp->last_name;
+//					$this->signedInUserSessionInfoHolder->generalInfo->affiliation=$fp->affiliation;
+//					$this->signedInUserSessionInfoHolder->generalInfo->experience=$fp->experience;
+//					$this->_forward('details');
+//				}
+//			}
+//			
+//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//			$this->breadcrumbs->addStep('Edit basic information', $this->getUrl('editbasicinfo', 'account'));
+
+		}
 
 
 }

@@ -61,26 +61,6 @@
 			
 		}
 		
-		public function editbasicinfoAction(){
-			$request=$this->getRequest();
-			$fp = new FormProcessor_Account_UserBasicInfo($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-			$this->view->fp = $fp;
-			if($request->isPost()) {
-				//database are changed in FormProcessor_Account
-				if($fp->process($request)){	
-					//session is being updated after FormProcessor_Account returns true
-					$this->signedInUserSessionInfoHolder->generalInfo->first_name=$fp->first_name;
-					$this->signedInUserSessionInfoHolder->generalInfo->last_name=$fp->last_name;
-					$this->signedInUserSessionInfoHolder->generalInfo->affiliation=$fp->affiliation;
-					$this->signedInUserSessionInfoHolder->generalInfo->experience=$fp->experience;
-					$this->_forward('details');
-				}
-			}
-			
-			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-			$this->breadcrumbs->addStep('Edit basic information', $this->getUrl('editbasicinfo', 'account'));
-
-		}
 		/*editshipping*
 		*handles the creation and edition of an shipping address
 		*requires param editAddress

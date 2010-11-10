@@ -18,7 +18,7 @@
 	$j('#register-form #username').blur(function(){
 		if($j('#register-form').validate().element('#username')) {
 			username = $j('#register-form #username').val();
-			$j.post('{/literal}{$siteRoot}{literal}/account/checkusername/format/json?username='+username, checkUsername);
+			$j.post('{/literal}{$siteRoot}{literal}/register/checkusername/format/json?username='+username, checkUsername);
 		}
 	});
 

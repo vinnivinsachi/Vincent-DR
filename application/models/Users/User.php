@@ -26,6 +26,13 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;
+	
+	// private variables won't show un in SQL queries
+	private $_shippingAddresses;
+
+	
+	public function setShippingAddresses(array $addresses) { $this->_shippingAddresses = $addresses; }
+	public function getShippingAddresses() { return $this->_shippingAddresses; }
 
 }
 

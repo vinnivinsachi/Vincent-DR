@@ -2,6 +2,30 @@
 
 abstract class Custom_Model_Abstract
 {
+	
+	public function __construct(array $options = null) {
+		if(is_array($options)) $this->setOptions($options);
+	}
+	
+//	public function __set($property, $value) {
+//		if(!property_exists($this, $property)) throw new Exception('Invalid User property: '.$property);
+//		$this->$property = $value;
+//		//exit(var_dump($this->$property));
+//	}
+	
+//	public function __get($property) {
+//		if(!property_exists($this, $property)) throw new Exception('Invalid User property: '.$property);
+//		return $this->$property;
+//	}
+	
+	public function setOptions(array $options) {
+		foreach($options as $property => $value) {
+			if(property_exists($this, $property)) $this->$property = $value;
+		}
+		return $this;
+	}
+
+	
 //	public function __set($name, $value)
 //        {
 //		
@@ -26,35 +50,6 @@ abstract class Custom_Model_Abstract
 //                                               'updated' => false);
 //        }
 	
-	public function __construct(array $options = null) {
-		if(is_array($options)) $this->setOptions($options);
-	}
-	
-//	public function __set($name, $value) {
-//		$method = 'set'.ucfirst($name);
-//		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
-//		$this->$method($value);
-//	}
-//	
-//	public function __get($name) {
-//		$method = 'get'.ucfirst($name);
-//		if(($name == 'mapper') || !method_exists($this, $method)) throw new Exception('Invalid User property: '.$method);
-//		return $this->$method();
-//	}
-	
-	public function setOptions(array $options) {
-//		$methods = get_class_methods($this);
-//		foreach($options as $key => $value) {
-//			$method = 'set'.ucfirst($key);
-//			if(in_array($method, $methods)) $this->$method($value);
-//		}
-
-		foreach($options as $property => $value) {
-			if(property_exists($this, $property)) $this->$property = $value;
-		}
-		return $this;
-	}
-
 }
 
 ?>

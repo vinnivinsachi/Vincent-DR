@@ -34,7 +34,7 @@ abstract class Custom_Model_Mapper_Abstract
 	// return an array of column names to include in select statement
 	// $options should be an array containing a key of either 'include' or 'exclude'
 	// the values of these two keys should be an array containing column names
-	protected function getColumns(array $options = null) {
+	public function getColumns(array $options = null) {
 		// start with all columns
 		$columns = array();
 		foreach($this->_columns as $key => $value) $columns[] = $key;

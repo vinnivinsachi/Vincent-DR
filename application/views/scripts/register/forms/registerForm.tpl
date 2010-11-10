@@ -1,4 +1,4 @@
-<form id='register-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/account/register' method='post'>
+<form id='register-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/register' method='post'>
 
 	<table>
 	
