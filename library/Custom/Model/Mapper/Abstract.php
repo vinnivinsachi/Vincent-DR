@@ -65,7 +65,7 @@ abstract class Custom_Model_Mapper_Abstract
 		
 		$result = $this->getDbTable()->fetchAll($select);
 		if(count($result) == 0) return null; // return null if nothing found
-		if(count($result) > 1) exit('More than one user with the same primary key: '.$id);
+		if(count($result) > 1) throw new Exception('More than one user with the same primary key: '.$id);
 		$row = $result->current();
 		$rowData = $row->toArray();
 		$object = new $this->_modelClass($rowData);

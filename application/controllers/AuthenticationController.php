@@ -45,21 +45,16 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         $adapter->setIdentity($values['username']); // set username to check
         $adapter->setCredential($values['password']); // set password to check
 
-        $auth = Zend_Auth::getInstance();
-        $result = $auth->authenticate($adapter);
+        $result = $this->_auth->authenticate($adapter);
         if ($result->isValid()) {
-            $usersMapper = new Application_Model_Mapper_Users_UsersMapper;
-            $options = array('include' => array(
+            $this->_auth->getStorage()->write($adapter->getResultRowObject(array(
             	'username',
             	'uniqueID',
             	'role',
             	'email',
             	'firstName',
             	'lastName',
-            ));
-            $user = $usersMapper->findByUsername($values['username'], $options);
-            $usersMapper->updateLastLogin($user);
-            $auth->getStorage()->write($user);
+            )));
             return true;
         }
         return false;
@@ -71,9 +66,9 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
         
         $authAdapter->setTableName('users')
-            ->setIdentityColumn('username')
-            ->setCredentialColumn('password')
-            ->setCredentialTreatment('SHA1(CONCAT(?,salt))');
+        			->setIdentityColumn('username')
+        			->setCredentialColumn('password')
+        			->setCredentialTreatment('SHA1(CONCAT(?,salt))');
         
         return $authAdapter;
     }
