@@ -4,9 +4,9 @@ $.ajaxSetup({
 });
 
 function beforeSend(request) {
-	$j('#loading-image').fadeIn(200);
+	showLoadingImage();
 }
 
 function complete(request, status) {
-	$j('#loading-image').fadeOut(200);
+	hideLoadingImage();
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_Account_Register extends Zend_Form
+class Application_Form_Register_Register extends Zend_Form
 {
 
     public function init()

@@ -1,37 +1,54 @@
 <?php
 
-class Application_Form_Account_Register extends Zend_Form
+class Application_Form_Account_BasicInfo extends Zend_Form
 {
 
     public function init()
     {
     	// Set form options
-		$this->setName('register')
-			 ->setAction(SITE_ROOT.'/account/register')
+		$this->setName('userBasicInfo')
+			 ->setAction(SITE_ROOT.'/account/editbasicinfo')
 			 ->setMethod('post');
-		
-		// Username
-		$username = new Zend_Form_Element_Text('username');
-		$username->setRequired(true)
-				 ->addFilter('StringToLower')
-				 ->addValidator('Alnum')
-				 ->addValidator('StringLength', false, array(4, 20));
 
 		// Password
 		$password = new Zend_Form_Element_Password('password');
-		$password->setRequired(true)
+		$password->setRequired(false)
 				 ->addValidator('Alnum')
 				 ->addValidator('StringLength', false, array(6, 20));
 		
 		// Confirm Password
 		$passwordConfirm = new Zend_Form_Element_Password('passwordConfirm');
-		$passwordConfirm->setRequired(true)
+		$passwordConfirm->setRequired(false)
 						->addValidator('Identical', false, array('token' => 'password'));
+						
+		// First Name
+		$firstName = new Zend_Form_Element_Text('firstName');
+		$firstName->setRequired(false)
+				 //->addValidator('Alpha')
+				 ->addValidator('StringLength', false, array(0, 30));
+				 
+		// Last Name
+		$lastName = new Zend_Form_Element_Text('lastName');
+		$lastName->setRequired(false)
+				 //->addValidator('Alpha')
+				 ->addValidator('StringLength', false, array(0, 30));
+				 
+		// Affiliations
+		$affiliation = new Zend_Form_Element_Text('affiliation');
+		$affiliation->setRequired(false)
+				 	->addValidator('StringLength', false, array(0, 100));
+				 
+		// Dance Experience
+		$experience = new Zend_Form_Element_Select('experience');
+		$experience->setRequired(false);
 						
 		
 		// Add all the elements to the form
-		$this->addElement($username)
-			 ->addElement($password)
-			 ->addElement($passwordConfirm);
+		$this->addElement($password)
+			 ->addElement($passwordConfirm)
+			 ->addElement($firstName)
+			 ->addElement($lastName)
+			 ->addElement($affiliation)
+			 ->addElement($experience);
     }
 }

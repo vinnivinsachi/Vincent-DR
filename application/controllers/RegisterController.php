@@ -11,7 +11,7 @@ class RegisterController extends Custom_Zend_Controller_Action
   
 
     public function indexAction() {
-    	$form = new Application_Form_Account_Register;
+    	$form = new Application_Form_Register_Register;
     	$request = $this->getRequest();
     	// If form was submitted
         if($request->isPost()) {

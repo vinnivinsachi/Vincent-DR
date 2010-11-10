@@ -21,6 +21,11 @@
 		</tr>
 		
 		<tr>
+			<td>ADD HOW DID YOU HEAR ABOUT US HERE...</td>
+			<td>&nbsp;</td>
+		</tr>
+		
+		<tr>
 			<td>&nbsp;</td>
 			<td><input type='submit' value='Register'></td>
 		</tr>

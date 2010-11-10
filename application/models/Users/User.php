@@ -26,6 +26,8 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;
+	public $affiliation;
+	public $experience;
 	
 	// private variables won't show un in SQL queries
 	private $_shippingAddresses;
