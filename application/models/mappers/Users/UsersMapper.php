@@ -7,14 +7,16 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	
 	public function save(Application_Model_Users_User $user) {
 		// Generate password crypt and salt IF password provided
-		if($user->password) {
+		if($user->password && $user->password != '') {
 			$user->salt = $this->generateSalt();
 			$user->password = $this->saltHashPassword($user->password, $user->salt);
 		}
+		else if($user->password == '') unset($user->password);
 				
-		// Add date and uniqueID to new users
+		// new user defaults
 		if(($uniqueID = $user->uniqueID) === null) {
 			$user->dateCreated = date('Y-m-d H:i:s');
+			$user->role = 'buyer';
 			$user->uniqueID = $this->createUniqueID();
 		}
 		
@@ -29,6 +31,7 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	}
 	
 	public function findByUniqueID($uniqueID, array $options = null) {
+		if(!$options) $options = array('exclude' => array('password', 'salt'));
 		$users = $this->findByColumn('uniqueID', $uniqueID, $options);
 		if(count($users) == 0) return null;
 		if(count($users) > 1) throw new Exception('More than one user with the uniqueID: '.$uniqueID);
@@ -36,6 +39,7 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	}
 	
 	public function findByUsername($username, array $options = null) {
+		if(!$options) $options = array('exclude' => array('password', 'salt'));
 		$users = $this->findByColumn('username', $username, $options);
 		if(count($users) == 0) return null;
 		if(count($users) > 1) throw new Exception('More than one user with the username: '.$username);

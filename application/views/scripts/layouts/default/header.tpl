@@ -24,6 +24,7 @@
 	<!-- JQUERY PLUGINS -->
 		<script type='text/javascript' src='{$jsDir}/jquery/plugins/rolloverImage.jquery.js'></script>
 		<script type='text/javascript' src='{$jsDir}/jquery/plugins/validate.jquery.js'></script>
+		<script type='text/javascript' src='{$jsDir}/jquery/plugins/form.jquery.js'></script>
 		
 	<!-- JQUERY CUSTOM METHODS -->
 		<script type='text/javascript' src='{$jsDir}/jquery/customMethods.jquery.js'></script>
@@ -50,5 +51,7 @@
 		
 		
 		{include file="layouts/$layout/loadingImage.tpl"}<!-- LOADING IMAGE -->
+		
+		{include file="layouts/$layout/jsFlashMessage.tpl"}<!-- JS FLASH MESSAGE -->
 
 	</div>

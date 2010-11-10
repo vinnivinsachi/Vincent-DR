@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-11-08 08:14:06
+<?php /* Smarty version 2.6.26, created on 2010-11-10 00:24:47
          compiled from layouts/default/accountMenu.tpl */ ?>
 <div id='account_menu'>
 	<?php if ($this->_tpl_vars['loggedInUser']): ?>
@@ -12,6 +12,6 @@
 		<a href='<?php echo $this->_tpl_vars['siteRoot']; ?>
 /authentication/login'>Login</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 		<a href='<?php echo $this->_tpl_vars['siteRoot']; ?>
-/account/register'>Register</a>
+/register'>Register</a>
 	<?php endif; ?>
 </div>

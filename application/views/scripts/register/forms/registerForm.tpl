@@ -1,4 +1,4 @@
-<form id='register-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/account/register' method='post'>
+<form id='register-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/register' method='post'>
 
 	<table>
 	
@@ -18,6 +18,11 @@
 		<tr>
 			<td><label for='passwordConfirm' class='required'>Confirm Password:</label></td>
 			<td><input type='password' name='passwordConfirm' id='password-confirm' equalTo='#password'></td>
+		</tr>
+		
+		<tr>
+			<td>ADD HOW DID YOU HEAR ABOUT US HERE...</td>
+			<td>&nbsp;</td>
 		</tr>
 		
 		<tr>
