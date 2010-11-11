@@ -100,7 +100,7 @@
 	        {if $user->user_type =='generalSeller'}
 	        <a href='{$siteRoot}/account/upgradegeneralseller'>Edit</a><br />
 	        {elseif $user->user_type =='storeSeller'}
-	        <a href='{$siteRoot}/account/upgradestoreseller'>Edit</a><br />
+	        <a href='{$siteRoot}/account/upgradestoreseller'>Edit</a>
 	        {/if}
 	  	</fieldset>
 	    {/if}
@@ -122,7 +122,7 @@
 	    </fieldset>
 	    
 	    <fieldset>
-	     	<legend>All Shipping Addresses</legend><br />
+	     	<legend>All Shipping Addresses</legend>
 	        {foreach from=$user->shippingAddresses item=address}
 		        <div class="shippingAddressBox">
 		            {$address->addressOne}<br />

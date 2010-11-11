@@ -25,6 +25,7 @@ class AccountController extends Custom_Zend_Controller_Action
     }
     
 	public function detailsAction(){
+		
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 			$this->user->shippingAddresses = $shippingMapper->getShippingAddressesForUser($this->user);
@@ -95,32 +96,67 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function setdefaultshippingAction() {
-		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
-		// if editing an existing shipping address
-		if($addressID) {
-			$this->user->setOptions(array('defaultShippingAddressID' => $addressID));
-            $this->usersMapper->save($this->user);
-            $this->msg('New default shipping address has been saved');
-		}
-		else $this->msg(array('error' => 'No shipping address was chosen to be default'));
+		// if no id is provided
+			if(!isset($addressID) || $addressID == '') {
+				$this->msg(array('error' => 'No shipping address was chosen to set as default'));
+				$this->_helper->redirector('details');
+			}
+		
+		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+		$address = $addressMapper->find($addressID);
+		
+		// if couldn't find the address in the database
+			if(!$address) {
+				$this->msg(array('error' => 'Couldn\' find that shipping address'));
+				$this->_helper->redirector('details');
+			}
+			
+		// if the address doesn't belong to logged in user
+			if($address->userID != $this->user->userID) {
+				$this->msg(array('error' => 'You can only delete your own addresses!'));
+				$this->_helper->redirector('details');
+			}
+		
+		// if it belongs to the logged in user
+		$this->user->setOptions(array('defaultShippingAddressID' => $addressID));
+        $this->usersMapper->save($this->user);
+        $this->msg('New default shipping address has been saved');
 		
 		$this->_helper->redirector('details');
 	}
 	
-	public function deleteshippingAction() {
-		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+	public function deleteshippingAction() {		
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
-		// if editing an existing shipping address
-		if($addressID) {
-            $addressMapper->delete($addressID);
-            $this->msg('Your shipping address has been deleted');
-		}
-		else $this->msg(array('error' => 'No shipping address was chosen to delete'));
+		// if no id is provided
+			if(!isset($addressID) || $addressID == '') {
+				$this->msg(array('error' => 'No shipping address was chosen to delete'));
+				$this->_helper->redirector('details');
+			}
 		
-		$this->_helper->redirector('details');
+		// get the address mapper and the requested address
+		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+		$address = $addressMapper->find($addressID);
+		
+		// if couldn't find the address in the database
+			if(!$address) {
+				$this->msg(array('error' => 'Couldn\' find that shipping address'));
+				$this->_helper->redirector('details');
+			}
+		
+		// if the address doesn't belong to logged in user
+			if($address->userID != $this->user->userID) {
+				$this->msg(array('error' => 'You can only delete your own addresses!'));
+				$this->_helper->redirector('details');
+			}
+		
+		// if it belongs to the logged in user
+        $addressMapper->delete($addressID);
+        $this->msg('Your shipping address has been deleted');
+        
+        $this->_helper->redirector('details');
 	}
 
 
