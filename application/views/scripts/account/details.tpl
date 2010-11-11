@@ -34,17 +34,52 @@
 		
 	    <fieldset> 	
 			<legend>Account Info</legend>
-		    First name: {$user->firstName}<br />
-			Last name: {$user->lastName}<br />
-		    username: {$user->username}<br />
-		    usertype:	{$user->userType} <br />
-		    password: XXXXXXX<br />
-		    Email: {$user->email}<br />
-		    Gender: {$user->sex}<br />
-		    ---Optional info---<br />
-		    Affilitions: {$user->affiliation}<br />
-			Dance experience: {$user->experience}<br />
-		    <a href='{$siteRoot}/account/editbasicinfo'>Edit</a>
+		    <table class='right-align-table'>
+				<tr>
+					<td>Username:</td>
+					<td><b>{$user->username}</b></td>
+				</tr>
+				
+				<tr>
+					<td>User Type:</td>
+					<td><b>{$user->role}</b></td>
+				</tr>
+				
+				<tr>
+					<td>Email:</td>
+					<td><b>{$user->email}</b></td>
+				</tr>
+								
+				<tr>
+					<td>First Name:</td>
+					<td><b>{$user->firstName}</b></td>
+				</tr>
+				
+				<tr>
+					<td>Last Name:</td>
+					<td><b>{$user->lastName}</b></td>
+				</tr>
+				
+				<tr>
+					<td>Gender:</td>
+					<td><b>{$user->sex}</b></td>
+				</tr>
+				
+				<tr>
+					<td>Affiliation:</td>
+					<td><b>{$user->affiliation}</b></td>
+				</tr>
+				
+				<tr>
+					<td>Dance Experience:</td>
+					<td><b>{$user->experience}</b></td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+					<td><a href='{$siteRoot}/account/editbasicinfo'>Edit</a></td>
+				</tr>
+			</table>
 		</fieldset>  
 	    
 	    
@@ -91,22 +126,22 @@
 	    <fieldset>
 	     	<legend>All Shipping Addresses</legend><br />
 	        {foreach from=$user->shippingAddresses item=address}
-	        <div class="shippingAddressBox">
-	            {$address->addressOne}<br />
-	            {if $address->addressTwo}
-	            	Address Two: {$address->addressTwo}<br />
-	            {/if}
-	           {$address->city}, {$address->state} {$address->zip}
-	           {$address->country}<br />
-	            <a href='{$siteRoot}/account/editshipping?editAddress={$address->addressID}'>Edit</a> | 
-	            <a href='{$siteRoot}/account/deletshipping?editAddress={$address->addressID}'>Delete</a> 
-	            {if $defaultShippingKey!=$Key}
-	            | <a href='{$siteRoot}/account/makedefaultshipping?editAddress={$Key}'>Make Default</a><br />
-	            {else}
-	            <br />
-	            {/if}
-	        </div>
-	        <br />
+		        <div class="shippingAddressBox">
+		            {$address->addressOne}<br />
+		            {if $address->addressTwo}
+		            	{$address->addressTwo}<br />
+		            {/if}
+		           {$address->city}, {$address->state} {$address->zip}
+		           {$address->country}<br />
+		            <a href='{$siteRoot}/account/editshipping?shippingAddressID={$address->shippingAddressID}'>Edit</a> | 
+		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}'>Delete</a> 
+		            {if $defaultShippingKey!=$Key}
+		            | <a href='{$siteRoot}/account/makedefaultshipping?editAddress={$Key}'>Make Default</a><br />
+		            {else}
+		            <br />
+		            {/if}
+		        </div>
+		        <br />
 	        {/foreach}
 	        <div style="float:left; width:100%;"><a href='{$siteRoot}/account/editshipping'>Add a shipping address</a></div>
 	    </fieldset>
@@ -117,17 +152,17 @@
 	     <fieldset>
 	    	<legend>Account Actions</legend>
 	    		{if $user->user_type =='member'}
-	            <a href='{$siteRoot}/account/upgradegeneralseller'>Sell some of your dancewear!</a><br />
+	            	<a href='{$siteRoot}/account/upgradegeneralseller'>Sell some of your dancewear!</a><br />
 	            {/if}
 	            {if $user->is_instructor == 0}
-	            <a href="#">List yourself as a dance instructor</a><br />
+	            	<a href="#">List yourself as a dance instructor</a><br />
 	            {else}
-	            <a href="#">Remove yourself as a dance instructor</a><br />
+	            	<a href="#">Remove yourself as a dance instructor</a><br />
 	            {/if}
 	            {if $user->finding_partner == 0}
-	            <a href="#">List yourself for partner search</a><br />
+	            	<a href="#">List yourself for partner search</a><br />
 	            {else}
-	            <a href="#">Remove yourself from partner search</a><br />
+	            	<a href="#">Remove yourself from partner search</a><br />
 	            {/if}
 	         </form>
 	    </fieldset>

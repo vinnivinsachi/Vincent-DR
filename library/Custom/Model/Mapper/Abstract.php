@@ -118,12 +118,15 @@ abstract class Custom_Model_Mapper_Abstract
 		// make sure the right type of model was provided
 		if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
 		
+		$primaryKey = $this->getPrimaryKey();
+		
+		// if primary key is an empty string, make it null instead (or else ->insert() methods won't return the promary key)
+		if($object->$primaryKey == '') $object->$primaryKey = null;
+		
 		$data = array();
 		foreach($this->_columns as $key => $value) {
 			if(isset($object->$key)) $data[$key] = $object->$key;
 		}
-		
-		$primaryKey = $this->getPrimaryKey();
 		
 		// Add a new object, or update and existing one
 		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);

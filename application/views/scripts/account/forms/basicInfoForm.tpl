@@ -60,7 +60,7 @@
 		</tr>
 		
 		<tr>
-			<td>&nbsp;</td>
+			<td><a href='{$siteRoot}/account/details'>Cancel</a></td>
 			<td><input type='submit' value='Register'></td>
 		</tr>
 	

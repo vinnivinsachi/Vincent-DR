@@ -3,7 +3,7 @@
 {literal}
 <script type='text/javascript'>
 
-	$j('#login-form').validate({submitHandler: function(form){showLoadingAndSubmit();}}); // form validation
+	$j('#login-form').validate({submitHandler: function(form){showLoadingAndSubmit(form);}}); // form validation
 
 </script>
 {/literal}

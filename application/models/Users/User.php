@@ -12,6 +12,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	
 	public $referralID;
 	public $uniqueID;
+	public $defaultShippingAddressID;
 	public $email;
 	public $sex;
 	public $measurement;
