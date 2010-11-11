@@ -132,6 +132,12 @@ abstract class Custom_Model_Mapper_Abstract
 		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
 		else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
 	}
+	
+	public function delete($id) {
+		$primaryKey = $this->getPrimaryKey();
+		$where = $this->getDbTable()->getAdapter()->quoteInto($primaryKey.' = ?', $id);
+		return $this->getDbTable()->delete($where);
+	}
 
 }
 

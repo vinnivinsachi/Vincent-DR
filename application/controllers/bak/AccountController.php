@@ -143,26 +143,26 @@
 		*requires param editAddress
 		*removes defaultAddress in database and session if the one being deleted is default address
 		*/
-		public function deleteshippingAction(){
-			$request=$this->getRequest();
-			$addressID = $request->getParam('editAddress');
-			if(!isset($addressID)){
-				$addressID='';
-			}
-			if($this->userObject->deleteShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
-				if($request->isXmlHttpRequest()){
-				$json = array('deletedShippingId'=>$addressID, 'defaultShippingAddressId'=>$this->userObject->profile->defaultShippingAddress);
-				
-				$this->sendJson($json);
-				}else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-				}
-			}
-			else{
-				echo"failed to delete";
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-			}
-		}
+//		public function deleteshippingAction(){
+//			$request=$this->getRequest();
+//			$addressID = $request->getParam('editAddress');
+//			if(!isset($addressID)){
+//				$addressID='';
+//			}
+//			if($this->userObject->deleteShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
+//				if($request->isXmlHttpRequest()){
+//				$json = array('deletedShippingId'=>$addressID, 'defaultShippingAddressId'=>$this->userObject->profile->defaultShippingAddress);
+//				
+//				$this->sendJson($json);
+//				}else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//				}
+//			}
+//			else{
+//				echo"failed to delete";
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//			}
+//		}
 		
 		/*makedefaultshipping*
 		*responsible of making an address the default address

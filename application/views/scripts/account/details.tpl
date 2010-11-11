@@ -132,7 +132,7 @@
 		           {$address->city}, {$address->state} {$address->zip}
 		           {$address->country}<br />
 		            <a href='{$siteRoot}/account/editshipping?shippingAddressID={$address->shippingAddressID}'>Edit</a> | 
-		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Delete</a> | 
+		            <a href='{$siteRoot}/account/deleteshipping?shippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Delete</a> | 
 		            <a href='{$siteRoot}/account/setdefaultshipping?shippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Make Default</a><br />
 		        </div>
 		        <br />
