@@ -48,10 +48,14 @@
 		
 		
 		{include file="layouts/$layout/miniCart.tpl"}<!-- MINI CART -->
-		
-		
-		{include file="layouts/$layout/loadingImage.tpl"}<!-- LOADING IMAGE -->
-		
-		{include file="layouts/$layout/jsFlashMessage.tpl"}<!-- JS FLASH MESSAGE -->
 
 	</div>
+	
+	
+<!-- OTHER STUFF -->
+	{$this->flashMessenger()}<!-- PHP FLASH MESSENGER -->
+		
+	{include file="layouts/$layout/loadingImage.tpl"}<!-- LOADING IMAGE -->
+	
+	{include file="layouts/$layout/jsFlashMessage.tpl"}<!-- JS FLASH MESSAGE -->
+		

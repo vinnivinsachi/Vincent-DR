@@ -24,7 +24,7 @@ class AccountController extends Custom_Zend_Controller_Action
         // action body
     }
     
-	public function detailsAction(){		
+	public function detailsAction(){
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 			$this->user->shippingAddresses = $shippingMapper->getShippingAddressesForUser($this->user);
