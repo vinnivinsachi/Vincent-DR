@@ -105,20 +105,38 @@ abstract class Custom_Model_Mapper_Abstract
 		return $objects;
 	}
 	
-	protected function save($object) {
+	// can save an array, or just one object
+	public function save($objects) {
+		if(is_array($objects)) {
+			$returnValues = array();
+			foreach($objects as $object) $returnValues[] = $this->saveOne($object);
+			return $returnValues;
+		}
+		else return $this->saveOne($objects);
+	}
+	protected function saveOne($object) {
 		// make sure the right type of model was provided
 		if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
+		
+		$primaryKey = $this->getPrimaryKey();
+		
+		// if primary key is an empty string, make it null instead (or else ->insert() methods won't return the promary key)
+		if($object->$primaryKey == '') $object->$primaryKey = null;
 		
 		$data = array();
 		foreach($this->_columns as $key => $value) {
 			if(isset($object->$key)) $data[$key] = $object->$key;
 		}
 		
-		$primaryKey = $this->getPrimaryKey();
-		
 		// Add a new object, or update and existing one
-		if(($id = $object->$primaryKey) === null) $this->getDbTable()->insert($data);
-		else $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
+		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
+		else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
+	}
+	
+	public function delete($id) {
+		$primaryKey = $this->getPrimaryKey();
+		$where = $this->getDbTable()->getAdapter()->quoteInto($primaryKey.' = ?', $id);
+		return $this->getDbTable()->delete($where);
 	}
 
 }

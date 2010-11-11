@@ -66,138 +66,138 @@
 		*requires param editAddress
 		*sets the defaultAddress when a new address is created when there is none
 		*/
-		public function editshippingAction(){
-			$request=$this->getRequest();
-			$addressID=$request->getParam('editAddress');
-			
-			if(!isset($addressID)){
-				$addressID='';
-			}
-			$fp = new FormProcessor_Account_ShippingAddress($this->db, $addressID, $this->signedInUserSessionInfoHolder->generalInfo->userID);
-			$validate = $request->isXmlHttpRequest();//check to see if it is ajax request
-
-			if($request->isPost()) {
-				if($validate){
-					//echo 'here';
-					$fp->validateOnly(true); 
-					if($fp->process($request)){
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_one=$fp->address_one;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_two=$fp->address_two;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->city=$fp->city;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->state=$fp->state;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->country=$fp->country;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->zip=$fp->zip;
-						//if there is no defaultShippingAddress, then it stores it in database, and set session variable
-						if(!isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id))
-						{
-							
-							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;		
-							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
-							$this->userObject->save();
-							$fp->previousDefaultShipping=0;
-						}elseif(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id) && $fp->defaultShipping=='on'){
-						    $fp->previousDefaultShipping=$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
-							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;		
-							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
-							$this->userObject->save();
-					    }else{
-							$fp->previousDefaultShipping=0;
-						}
-						$json = array('name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,'address_one'=>$fp->address_one, 'address_two'=>$fp->address_two,'city'=>$fp->city, 'state'=>$fp->state, 'country'=>$fp->country, 'zip'=>$fp->zip, 'shippingId'=>$fp->shippingId, 'defaultShipping'=>$fp->defaultShipping, 'previousDefaultShipping'=>$fp->previousDefaultShipping, 'existingAddresses'=>count($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress));
-						$this->sendJson($json);
-					}else{
-						$json = array('errors'=> $fp->getErrors());	
-						$this->sendJson($json); 
-					}
-				}else{
-					if($fp->process($request)){
-						//sets shippingAddress information
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_one=$fp->address_one;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_two=$fp->address_two;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->city=$fp->city;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->state=$fp->state;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->country=$fp->country;
-						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->zip=$fp->zip;
-						//if there is no defaultShippingAddress, then it stores it in database, and set session variable
-						if(!isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id) ||$fp->defaultShipping=='on')
-						{
-							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;						
-							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
-							$this->userObject->save();
-						}
-					
-						$this->_redirect('/account/details');
-					}
-
-				}
-			}
-			$this->view->addressID=$addressID;
-			$this->view->fp = $fp;
-			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
-			$this->view->returnAddress = $_SERVER['HTTP_REFERER'];
-			$this->breadcrumbs->addStep('Edit shipping information', $this->getUrl('editshipping', 'account'));
-		}
+//		public function editshippingAction(){
+//			$request=$this->getRequest();
+//			$addressID=$request->getParam('editAddress');
+//			
+//			if(!isset($addressID)){
+//				$addressID='';
+//			}
+//			$fp = new FormProcessor_Account_ShippingAddress($this->db, $addressID, $this->signedInUserSessionInfoHolder->generalInfo->userID);
+//			$validate = $request->isXmlHttpRequest();//check to see if it is ajax request
+//
+//			if($request->isPost()) {
+//				if($validate){
+//					//echo 'here';
+//					$fp->validateOnly(true); 
+//					if($fp->process($request)){
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_one=$fp->address_one;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_two=$fp->address_two;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->city=$fp->city;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->state=$fp->state;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->country=$fp->country;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->zip=$fp->zip;
+//						//if there is no defaultShippingAddress, then it stores it in database, and set session variable
+//						if(!isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id))
+//						{
+//							
+//							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;		
+//							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
+//							$this->userObject->save();
+//							$fp->previousDefaultShipping=0;
+//						}elseif(isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id) && $fp->defaultShipping=='on'){
+//						    $fp->previousDefaultShipping=$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id;
+//							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;		
+//							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
+//							$this->userObject->save();
+//					    }else{
+//							$fp->previousDefaultShipping=0;
+//						}
+//						$json = array('name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,'address_one'=>$fp->address_one, 'address_two'=>$fp->address_two,'city'=>$fp->city, 'state'=>$fp->state, 'country'=>$fp->country, 'zip'=>$fp->zip, 'shippingId'=>$fp->shippingId, 'defaultShipping'=>$fp->defaultShipping, 'previousDefaultShipping'=>$fp->previousDefaultShipping, 'existingAddresses'=>count($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress));
+//						$this->sendJson($json);
+//					}else{
+//						$json = array('errors'=> $fp->getErrors());	
+//						$this->sendJson($json); 
+//					}
+//				}else{
+//					if($fp->process($request)){
+//						//sets shippingAddress information
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_one=$fp->address_one;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->address_two=$fp->address_two;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->city=$fp->city;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->state=$fp->state;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->country=$fp->country;
+//						$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$fp->shippingId]->zip=$fp->zip;
+//						//if there is no defaultShippingAddress, then it stores it in database, and set session variable
+//						if(!isset($this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id) ||$fp->defaultShipping=='on')
+//						{
+//							$this->signedInUserSessionInfoHolder->generalInfo->defaultShippingAddress->address_id=$fp->shippingId;						
+//							$this->userObject->profile->defaultShippingAddress = $fp->shippingId;
+//							$this->userObject->save();
+//						}
+//					
+//						$this->_redirect('/account/details');
+//					}
+//
+//				}
+//			}
+//			$this->view->addressID=$addressID;
+//			$this->view->fp = $fp;
+//			$this->breadcrumbs->addStep('Details', $this->getUrl('details', 'account'));
+//			$this->view->returnAddress = $_SERVER['HTTP_REFERER'];
+//			$this->breadcrumbs->addStep('Edit shipping information', $this->getUrl('editshipping', 'account'));
+//		}
 		
 		/*deleteshipping*
 		*handles the deletion of an shipping address
 		*requires param editAddress
 		*removes defaultAddress in database and session if the one being deleted is default address
 		*/
-		public function deleteshippingAction(){
-			$request=$this->getRequest();
-			$addressID = $request->getParam('editAddress');
-			if(!isset($addressID)){
-				$addressID='';
-			}
-			if($this->userObject->deleteShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
-				if($request->isXmlHttpRequest()){
-				$json = array('deletedShippingId'=>$addressID, 'defaultShippingAddressId'=>$this->userObject->profile->defaultShippingAddress);
-				
-				$this->sendJson($json);
-				}else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-				}
-			}
-			else{
-				echo"failed to delete";
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-			}
-		}
+//		public function deleteshippingAction(){
+//			$request=$this->getRequest();
+//			$addressID = $request->getParam('editAddress');
+//			if(!isset($addressID)){
+//				$addressID='';
+//			}
+//			if($this->userObject->deleteShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
+//				if($request->isXmlHttpRequest()){
+//				$json = array('deletedShippingId'=>$addressID, 'defaultShippingAddressId'=>$this->userObject->profile->defaultShippingAddress);
+//				
+//				$this->sendJson($json);
+//				}else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//				}
+//			}
+//			else{
+//				echo"failed to delete";
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//			}
+//		}
 		
 		/*makedefaultshipping*
 		*responsible of making an address the default address
 		*uses: $editAddress
 		*edits the database to the selected default address and modifies the session to represent the change
 		*/
-		public function makedefaultshippingAction(){
-			$request=$this->getRequest();
-			$addressID = $request->getParam('editAddress');
-			if(!isset($addressID)){
-				$addressID='';
-			}
-			
-			$previousDefaultShippingAddress=$this->userObject->profile->defaultShippingAddress;
-			if($this->userObject->madeDefaultShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
-				if($request->isXmlHttpRequest()){
-				$json = array('newShippingAddress'=>$addressID,
-							  'name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,
-							  'address_one' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_one,
-							  'address_two' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_two,
-							  'city'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->city,
-							  'state'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->state,
-							  'country'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->country,
-							  'zip' =>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->zip,
-							  'previousShippingAddressId'=>$previousDefaultShippingAddress);
-				
-				$this->sendJson($json);
-				}else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-				}
-			}
-			else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-			}
-		}
+//		public function makedefaultshippingAction(){
+//			$request=$this->getRequest();
+//			$addressID = $request->getParam('editAddress');
+//			if(!isset($addressID)){
+//				$addressID='';
+//			}
+//			
+//			$previousDefaultShippingAddress=$this->userObject->profile->defaultShippingAddress;
+//			if($this->userObject->madeDefaultShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
+//				if($request->isXmlHttpRequest()){
+//				$json = array('newShippingAddress'=>$addressID,
+//							  'name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,
+//							  'address_one' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_one,
+//							  'address_two' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_two,
+//							  'city'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->city,
+//							  'state'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->state,
+//							  'country'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->country,
+//							  'zip' =>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->zip,
+//							  'previousShippingAddressId'=>$previousDefaultShippingAddress);
+//				
+//				$this->sendJson($json);
+//				}else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//				}
+//			}
+//			else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//			}
+//		}
 		
 		public function upgradegeneralsellerAction(){
 			if($this->userObject->user_type=='member' || $this->userObject->user_type=='generalSeller'){

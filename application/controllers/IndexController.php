@@ -9,9 +9,6 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
         // action body
-//        $map = new Application_Model_Mapper_Users_UsersMapper;
-//        $user = $map->findByUsername('mark');
-//        print_r($user);
     }
 
 

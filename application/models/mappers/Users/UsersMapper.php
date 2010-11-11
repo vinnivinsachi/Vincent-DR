@@ -6,6 +6,9 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	protected $_modelClass = 'Application_Model_Users_User';
 	
 	public function save(Application_Model_Users_User $user) {
+		// right now users can only be saved one at a time
+		if(is_array($user)) throw new Exception('Saving an array of users in not yet supported');
+		
 		// Generate password crypt and salt IF password provided
 		if($user->password && $user->password != '') {
 			$user->salt = $this->generateSalt();

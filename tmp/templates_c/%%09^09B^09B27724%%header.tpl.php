@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-11-10 01:53:22
+<?php /* Smarty version 2.6.26, created on 2010-11-10 20:18:01
          compiled from layouts/default/header.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -76,18 +76,23 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "layouts/".($this->_tp
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?><!-- MINI CART -->
+
+	</div>
+	
+	
+<!-- OTHER STUFF -->
+	<?php echo $this->_tpl_vars['this']->flashMessenger(); ?>
+<!-- PHP FLASH MESSENGER -->
 		
-		
-		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "layouts/".($this->_tpl_vars['layout'])."/loadingImage.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?><!-- LOADING IMAGE -->
-		
-		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+	
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "layouts/".($this->_tpl_vars['layout'])."/jsFlashMessage.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?><!-- JS FLASH MESSAGE -->
-
-	</div>
+		

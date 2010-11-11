@@ -12,6 +12,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	
 	public $referralID;
 	public $uniqueID;
+	public $defaultShippingAddressID;
 	public $email;
 	public $sex;
 	public $measurement;
@@ -31,9 +32,13 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	
 	// private variables won't show un in SQL queries
 	private $_shippingAddresses;
+	private $_defaultShippingAddress;
 
 	
 	public function setShippingAddresses(array $addresses) { $this->_shippingAddresses = $addresses; }
 	public function getShippingAddresses() { return $this->_shippingAddresses; }
+	
+	public function setDefaultShippingAddress(array $address) { $this->_defaultShippingAddress = $address; }
+	public function getDefaultShippingAddress() { return $this->_defaultShippingAddress; }
 
 }

@@ -62,7 +62,7 @@ class Zend_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
      * @param  string $template Format string for message output
      * @return string Flash messages formatted for output
      */
-    public function flashMessenger($key = 'warning',
+    public function flashMessenger($key = 'notice',
                                    $template='<li>%s</li>')
     {
         $flashMessenger = $this->_getFlashMessenger();
