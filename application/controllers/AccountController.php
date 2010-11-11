@@ -64,6 +64,11 @@ class AccountController extends Custom_Zend_Controller_Action
 		// if editing an existing shipping address
 		if($this->_request->getQuery('shippingAddressID')) {
 			$address = $addressMapper->find($this->_request->getQuery('shippingAddressID'));
+			// if the address doesn't belong to logged in user
+				if($address->userID != $this->user->userID) {
+					$this->msg(array('error' => 'You can only edit your own addresses!'));
+					$this->_helper->redirector('details');
+				}
 		}
 		// if creating a new address
 		else $address = new Application_Model_Users_ShippingAddress(array('userID' => $this->user->userID));
