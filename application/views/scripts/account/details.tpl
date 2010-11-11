@@ -132,8 +132,8 @@
 		           {$address->city}, {$address->state} {$address->zip}
 		           {$address->country}<br />
 		            <a href='{$siteRoot}/account/editshipping?shippingAddressID={$address->shippingAddressID}'>Edit</a> | 
-		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}'>Delete</a> | 
-		            <a href='{$siteRoot}/account/setdefaultshipping?shippingAddressID={$address->shippingAddressID}'>Make Default</a><br />
+		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Delete</a> | 
+		            <a href='{$siteRoot}/account/setdefaultshipping?shippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Make Default</a><br />
 		        </div>
 		        <br />
 	        {/foreach}

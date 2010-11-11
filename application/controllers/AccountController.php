@@ -131,6 +131,10 @@ class AccountController extends Custom_Zend_Controller_Action
 		
 		$this->_helper->redirector('details');
 	}
+	
+	public function deleteshippingAction() {
+		
+	}
 
 
 }
