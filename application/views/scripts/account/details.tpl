@@ -108,18 +108,16 @@
 	    
 	    <!-- Addresses -->
 	    <fieldset>
-	        <legend>Current Address</legend>
-	        {if $defaultShippingKey}
-	        {$user->shippingAddress[$defaultShippingKey]->address_one}<br />
-	         {if $user->shippingAddress[$defaultShippingKey]->address_two!=''}
-	        {$user->shippingAddress[$defaultShippingKey]->address_two}<br />
-	        {/if}
-	        {$user->shippingAddress[$defaultShippingKey]->city}, {$user->shippingAddress[$defaultShippingKey]->state} {$user->shippingAddress[$defaultShippingKey]->zip} <br />
-	        {$user->shippingAddress[$defaultShippingKey]->country}<br />
-	        <a href='{$siteRoot}/account/editshipping?editAddress={$defaultShippingKey}'>Edit</a> | 
-	        <a href='{$siteRoot}/account/deletshipping?editAddress={$defaultShippingKey}'>Delete</a><br />
+	        <legend>Default Shipping Address</legend>
+	        {if $user->defaultShippingAddress}
+	        	{$user->defaultShippingAddress->addressOne}<br />
+	            {if $user->defaultShippingAddress->addressTwo}
+	            	{$user->defaultShippingAddress->addressTwo}<br />
+	            {/if}
+	        	{$user->defaultShippingAddress->city}, {$user->defaultShippingAddress->state} {$user->defaultShippingAddress->zip}
+	        	{$user->defaultShippingAddress->country}<br />
 			{else}
-	        There is no Default Shipping Address
+	        	There is no Default Shipping Address
 	        {/if}
 	    </fieldset>
 	    
@@ -134,12 +132,8 @@
 		           {$address->city}, {$address->state} {$address->zip}
 		           {$address->country}<br />
 		            <a href='{$siteRoot}/account/editshipping?shippingAddressID={$address->shippingAddressID}'>Edit</a> | 
-		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}'>Delete</a> 
-		            {if $defaultShippingKey!=$Key}
-		            | <a href='{$siteRoot}/account/makedefaultshipping?editAddress={$Key}'>Make Default</a><br />
-		            {else}
-		            <br />
-		            {/if}
+		            <a href='{$siteRoot}/account/deletshipping?shippingAddressID={$address->shippingAddressID}'>Delete</a> | 
+		            <a href='{$siteRoot}/account/setdefaultshipping?shippingAddressID={$address->shippingAddressID}'>Make Default</a><br />
 		        </div>
 		        <br />
 	        {/foreach}

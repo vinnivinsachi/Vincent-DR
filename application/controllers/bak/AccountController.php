@@ -169,35 +169,35 @@
 		*uses: $editAddress
 		*edits the database to the selected default address and modifies the session to represent the change
 		*/
-		public function makedefaultshippingAction(){
-			$request=$this->getRequest();
-			$addressID = $request->getParam('editAddress');
-			if(!isset($addressID)){
-				$addressID='';
-			}
-			
-			$previousDefaultShippingAddress=$this->userObject->profile->defaultShippingAddress;
-			if($this->userObject->madeDefaultShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
-				if($request->isXmlHttpRequest()){
-				$json = array('newShippingAddress'=>$addressID,
-							  'name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,
-							  'address_one' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_one,
-							  'address_two' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_two,
-							  'city'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->city,
-							  'state'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->state,
-							  'country'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->country,
-							  'zip' =>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->zip,
-							  'previousShippingAddressId'=>$previousDefaultShippingAddress);
-				
-				$this->sendJson($json);
-				}else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-				}
-			}
-			else{
-				$this->_redirect($_SERVER['HTTP_REFERER']);
-			}
-		}
+//		public function makedefaultshippingAction(){
+//			$request=$this->getRequest();
+//			$addressID = $request->getParam('editAddress');
+//			if(!isset($addressID)){
+//				$addressID='';
+//			}
+//			
+//			$previousDefaultShippingAddress=$this->userObject->profile->defaultShippingAddress;
+//			if($this->userObject->madeDefaultShipping($addressID, $this->signedInUserSessionInfoHolder->generalInfo)){
+//				if($request->isXmlHttpRequest()){
+//				$json = array('newShippingAddress'=>$addressID,
+//							  'name'=>$this->signedInUserSessionInfoHolder->generalInfo->first_name.' '.$this->signedInUserSessionInfoHolder->generalInfo->last_name,
+//							  'address_one' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_one,
+//							  'address_two' => $this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->address_two,
+//							  'city'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->city,
+//							  'state'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->state,
+//							  'country'=>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->country,
+//							  'zip' =>$this->signedInUserSessionInfoHolder->generalInfo->shippingAddress[$addressID]->zip,
+//							  'previousShippingAddressId'=>$previousDefaultShippingAddress);
+//				
+//				$this->sendJson($json);
+//				}else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//				}
+//			}
+//			else{
+//				$this->_redirect($_SERVER['HTTP_REFERER']);
+//			}
+//		}
 		
 		public function upgradegeneralsellerAction(){
 			if($this->userObject->user_type=='member' || $this->userObject->user_type=='generalSeller'){

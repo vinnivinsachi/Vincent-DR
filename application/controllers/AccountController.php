@@ -7,7 +7,6 @@ class AccountController extends Custom_Zend_Controller_Action
     	parent::init();  // Because this is a custom controller class
     	$this->_ajaxContext->addActionContext('checkusername', 'json')
     					   ->addActionContext('editbasicinfo', 'json')
-    					   ->addActionContext('editshipping', 'json')
 			 			   ->initContext();
     }
     
@@ -29,6 +28,10 @@ class AccountController extends Custom_Zend_Controller_Action
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 			$this->user->shippingAddresses = $shippingMapper->getShippingAddressesForUser($this->user);
+		// get the default shipping address if it exists
+			$defaultShipping = null;
+			foreach($this->user->shippingAddresses as $address) if($address->shippingAddressID == $this->user->defaultShippingAddressID) $defaultShipping = $address;
+			$this->user->defaultShippingAddress = $defaultShipping;
 			
 		// send the user to the view
 			$this->view->user = $this->user;
@@ -112,6 +115,21 @@ class AccountController extends Custom_Zend_Controller_Action
 		}
 		
 		$this->view->address = $address;
+	}
+	
+	public function setdefaultshippingAction() {
+		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+		$addressID = $this->_request->getQuery('shippingAddressID');
+		
+		// if editing an existing shipping address
+		if($addressID) {
+			$this->user->setOptions(array('defaultShippingAddressID' => $addressID));
+            $this->usersMapper->save($this->user);
+            $this->msg('New default shipping address has been saved');
+		}
+		else $this->msg(array('error' => 'No shipping address was chosen to be default'));
+		
+		$this->_helper->redirector('details');
 	}
 
 
