@@ -28,11 +28,13 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 	public function postDispatch() {
 	}
 	
-	
-	
 	protected function isJsonContext() {
 		return ($this->_ajaxContext->getCurrentContext() == 'json') ? true : false;
 	}
 
+	// flash messenger shortcut function
+	protected function msg($message) {
+		$this->_helper->flashMessenger($message);
+	}
 
 }
