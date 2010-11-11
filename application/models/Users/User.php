@@ -37,4 +37,3 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public function getShippingAddresses() { return $this->_shippingAddresses; }
 
 }
-

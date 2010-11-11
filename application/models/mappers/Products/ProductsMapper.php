@@ -25,10 +25,7 @@ class Application_Model_Mapper_Products_ProductsMapper extends Custom_Model_Mapp
 		//pre save
 		parent::save($product);
 		//post save
-	}
-	
-	
-	
+	} 
 	
 	
 }

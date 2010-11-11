@@ -37,5 +37,8 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	public $socialUsage;
 	public $competitionUsage;
 	public $lastStatusChange;
+	
+	public $images = array();
+	public $inventory = array();
+	public $attributes = array();
 }
-

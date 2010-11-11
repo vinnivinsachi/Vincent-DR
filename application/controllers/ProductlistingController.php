@@ -3,12 +3,7 @@
 	class ProductlistingController extends Custom_Zend_Controller_Action
 	{
 		
-		public function init() {
-    		parent::init();  // Because this is a custom controller class
-    	}
-
-		
-		
+		public $productConfig;
 		public $product;
 		public $productListing;
 		public $request;
@@ -16,13 +11,34 @@
 		public $product_category;
 		public $product_type;
 		public $product_tag;
+		public $testingUser;
+		
+		public function init() {
+    		parent::init();  // Because this is a custom controller class
+			//require APPLICATION_PATH .'/../library/productConfig.php';
+			$this->request=$this->getRequest();
+			//$this->productConfig= $productConfig;
+			
+			//initate testingUser;
+			$this->testingUser['role']='generalSeller';
+			
+		}
 		
 		public function preDispatch(){
-			
+			parent::preDispatch();	
 		}
 		
 		public function indexAction(){
 			
+		}
+		
+		public function uploadbuynowproductAction(){
+			$this->view->purchase_type = 'Buy_now';
+			$this->view->editproductlink='editbuynowproduct';
+		}
+		public function uploadcustomizeproductAction(){
+			$this->view->purchase_type = 'Customizable';
+			$this->view->editproductlink='editcustomproduct';
 		}
 		
 		public function editcustomproductAction(){
@@ -30,7 +46,166 @@
 		}
 		
 		public function editbuynowproductAction(){
+		
+		//if there is an id, load the basic info. 
+		
+		//edit basic info
+		
+		//load inventory 
+		
 			
+		$param['purchase_type'] = $this->request->getParam('purchase_type');
+			if(in_array($param['purchase_type'], $this->productConfig['allowedPurchaseType'][$this->testingUser['role']])){
+				$param['product_category']=$this->request->getParam('category');
+				$param['product_type']=$this->request->getParam('type');
+				$param['product_tag']=$this->request->getParam('tag');
+				$param['product_id'] = $this->request->getParam('id');
+				$param['social_usage']=$this->request->getParam('social_usage');
+				$param['competition_usage']=$this->request->getParam('competition_usage');
+				if($param['product_id']==''){
+					$param['product_id']=0;
+				}
+				
+				$config = Zend_Registry::get('config');
+				echo $config->paths->base;
+				
+				if(in_array($param['product_tag'], $this->productConfig['upload_menu_item'][$param['purchase_type']][$param['product_category']][$param['product_type']])){
+					//display the form, 
+					echo 'here at good attribute selection';
+					$param['inventory_attribute_table'] = $this->productConfig['inventory_attribute_table'][$param['product_tag']];
+					$fp = new FormProcessor_Product($this->db, $this->signedInUserSessionInfoHolder, $param);
+					//Zend_Debug::dump($fp);
+					$allowedProduct=array();	
+					
+					if($fp->inventory_attribute_table=='shoes'){
+						$measurement=array();
+						$i=0;
+						while($i<50){
+							$measurement[]=$i;
+							$i=$i+0.5;
+						}
+						$this->view->measurements=$measurement;
+					}elseif($fp->inventory_attribute_table!='jewelry' && $fp->inventory_attribute_table!='accessories'){
+						echo 'here at dancewear';
+								$inventoryDancewearAttribute=array();
+								foreach($this->productConfig['attribute_categories_details'][$fp->inventory_attribute_table] as $k=>$v){
+									$inventoryDancewearAttribute[$k]=array();
+									$inventoryDancewearAttribute[$k][]='Flexible';
+									
+									$temp=$v['min'];
+									while($temp<$v['max']){
+										$inventoryDancewearAttribute[$k][]=$temp;
+										$temp+=$v['interval'];
+									}
+								}
+								$this->view->measurements=$inventoryDancewearAttribute;
+					}
+					
+					//loading current inventory
+					$inventories= DatabaseObject_Helper_ManageInventory::retrieveInventoryForProduct($this->db, 'product_inventories', $fp->product->getId());
+							
+					if(count($inventories)!=0){
+						$tmpInventoryKey=array();
+						foreach($inventories as $k=>$v){
+							$tmpInventoryKey[]=$v['basic']['product_inventory_id'];
+						}
+						
+						Zend_Debug::dump($tmpInventoryKey);
+						$completeInventoryProfile = DatabaseObject_Helper_ManageInventory::retrieveUniqueProfileKeys($this->db, 'product_inventory_profile', $tmpInventoryKey);
+						Zend_Debug::dump($completeInventoryProfile);
+						$this->view->mostInventoryProfile=$completeInventoryProfile;
+						$this->view->inventory = $inventories[0];
+						echo 'inventory is: ';
+						Zend_Debug::dump($inventories);
+						
+					}else{
+						echo '<br/>no inventory item<br/>';
+						$this->view->mostInventoryProfile=array();
+					}
+							
+							//Zend_Debug::dump($inventories);
+					//Zend_Debug::dump($inventories);
+					$this->view->attributePartial='_'.$fp->inventory_attribute_table.'Attribute.tpl';
+					$this->view->inventoryPartial='_'.$fp->inventory_attribute_table.'Inventory.tpl';
+					$this->view->inventoryPartialTitle='_'.$fp->inventory_attribute_table.'InventoryTitle.tpl';
+					$this->view->addPartial='_add'.$fp->inventory_attribute_table.'Inventory.tpl';
+					//echo 'add partial is: '.'_add'.$fp->inventory_attribute_table.'Inventory.tpl';
+					if($this->request->isPost()){
+						if($fp->process($this->request)){
+							//Zend_Debug::dump($_FILES);
+							//echo 'product name is: '.$fp->product->name;
+							DatabaseObject_Helper_ImageUpload::uploadImage($_FILES['generalImages'], $this->db,'product_images',$param['product_tag'], $fp->product->getId(),$fp->product->name);
+							echo 'here at finish upload image <br/>';
+							//*************************here at editing listing item now (uses the inventory streamline)
+							//inventory_attribute_table is the defualt system attribute system. 
+							Zend_Debug::dump($fp);
+							//echo 'fp id is: '.$fp->product->getId();
+							$fpInventory = new FormProcessor_Inventory_AddBuyNowInventory($this->db, $this->signedInUserSessionInfoHolder->generalInfo->userID, $fp->product);
+								//actually processing the inventory
+								//echo 'here at setting up inventory';
+								//echo 'inventory id is here '.$fpInventory->product_id;
+								//first delete any existing inventory
+								if(count($inventories)==1){
+									//$inventoryId=$this->request->getParam('id');
+									$inventoryProduct = new DatabaseObject_Inventory_Product($this->db);
+									//check inventory_purchase_type
+									
+									$inventoryProduct->load($inventories[0]['basic']['product_inventory_id']);
+				
+									$inventoryProduct->delete();
+								}
+							
+							//then proceed to upload the new inventory item.
+								if($fpInventory->process($this->request)){
+									//process images
+									//echo 'post is: '.Zend_Debug::dump($this->request->getParams());
+									//Adding color to this product for front end search.
+									$colors=array();
+									$whichColor= $this->request->getParam('inventory');
+									$tempColor=$whichColor['sys_color'];
+									//echo 'which color is: '.$tempColor;
+									$colors[''.$tempColor.'']=1;
+									//insert color into digital sheep.
+									DatabaseObject_Helper_ManageAttribute::insertProductColors($this->db, 'product_colors', $fp->product->getId(), $colors);
+									//update digital sheep status.
+									if(DatabaseObject_Helper_ProductListing::updateProductStatus($this->db, 'products',$this->signedInUserSessionInfoHolder->generalInfo->userID, $fp->product->getId(), 'Listed')){
+									$this->messenger->addMessage($fp->name.' has been listed');
+									$this->_redirect('/productlisting/viewpendingproduct');
+									}else{
+										echo 'problem with settin status';
+									}
+								}
+								//echo 'here at post<br />';	
+							
+							
+							//Zend_Debug::dump($inventories[$k]['profile']);
+							
+							
+							//***********************end of the listing details. 
+							
+							//redirect to viewproductlistings.
+							
+						}
+					}
+					if($fp->product->getId()){
+						 $addPartial='_edit'.$fp->product->purchase_type.'Product.tpl';
+		   				 $this->view->addPartial=$addPartial;
+					}else{
+						 $addPartial='_edit'.$param['purchase_type'].'Product.tpl';
+		   				 $this->view->addPartial=$addPartial;
+					}
+					$this->view->fp = $fp;
+					//Zend_Debug::dump($fp->product);
+					
+					//$this->view->back= $_SERVER['HTTP_REFERER'];
+				}else{
+					$this->messenger->addMessage('you have an error in this request');
+					//$this->_redirect('index/error');
+				}
+			}else{
+				$this->_helper->flashMessenger(array('warning','you do not have permissions to add this type of product'));
+				//$this->_redirect('index/error');
+			}
 		}
 
 		/*

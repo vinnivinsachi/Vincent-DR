@@ -1,5 +1,4 @@
-{include file="layouts/$layout/header.tpl" lightbox=true}
-{include file="layouts/vinceTemp/header.tpl"}
+{include file="layouts/$layout/header.tpl"}
 
 	<div id="leftContainer" style="width:100%;">
     	
@@ -15,8 +14,7 @@
 					<div class='titleBarMid'><strong>Basic information</strong></div>
 				</div>
 		        <label>Name:</label>
-		        <input type="text" value="{$fp->name}" name="name" class='inputShiftOne'/><br>
-		    	{include file='partials/error.tpl' error=$fp->getError('name')}
+		        <input type="text" value="" name="name" class='inputShiftOne'/><br>
 				
 				<label>Brand:</label>
 		        <select name="brand" class='inputShiftOne'>
@@ -30,7 +28,6 @@
 		            <option value="Chrissane">Chrissane</option>
 		            <option value="Other">Other</option>
 		        </select><br>
-		        {include file='partials/error.tpl' error=$fp->getError('brand')}
 				
 				
 				<div>
@@ -41,20 +38,17 @@
 		
 				<div>
 		        <label>Price:</label>
-		        $<input type="text" value="{$fp->price}" name="price"><br>
-		        {include file='partials/error.tpl' error=$fp->getError('price')}
+		        $<input type="text" value="" name="price"><br>
 				</div>
 		        
 		        <div>
 		        <label>Domestic shipping:</label>
-		        $<input type="text" value="{$fp->domestic_shipping_rate}" name="domesticShippingRate" /><br />
-		        {include file='partials/error.tpl' error=$fp->getError('domesticShippingRate')}
+		        $<input type="text" value="" name="domesticShippingRate" /><br />
 		        </div>
 		        <div>
 		        <label>International shipping:</label>
-		        $<input type="text" value="{$fp->international_shipping_rate}" name="internationalShippingRate" /><br />
-		        {include file='partials/error.tpl' error=$fp->getError('internationalShippingRate')}
-		        </div>
+		        $<input type="text" value="" name="internationalShippingRate" /><br />
+			        </div>
 		        <input type='hidden' name="backorder_time" value='NA'/>
 		        
 		        <div style='margin: 5px 0px 10px 0px; width:100%;'>
@@ -64,7 +58,7 @@
 				</div>
 				
 		        <label>Youtube video (optional):</label>
-		        <input type='text' value="{$fp->video_youtube}" name="video_youtube" class='inputShiftOne'/><br />
+		        <input type='text' value="" name="video_youtube" class='inputShiftOne'/><br />
 		        <br/>
 	        </div>
         
@@ -73,11 +67,12 @@
 		        <div class='box' >
 					<div class='fullTitleBarMid'><strong>Description</strong></div>
 				</div>
-		        {wysiwyg name='description' value=$fp->description}
+                <textarea name="description"></textarea>
+		       <!-- -->
 				</div>
-		        <input type="hidden" name="id" value="{$fp->product_id}" />
-		        <input type="hidden" name="product" value="{$fp->product_type}" />
-		        <input type="hidden" name="tag" value="{$fp->product_tag}" />
+		        <input type="hidden" name="id" value="" />
+		        <input type="hidden" name="product" value="" />
+		        <input type="hidden" name="tag" value="" />
 		        
 		        <div class='box marginTop20'>
 					<div class='fullTitleBarMid'><strong>Upload sample image</strong></div>
@@ -108,7 +103,7 @@
 		
 			<div class='titleBarMid'><strong>Search criteria</strong></div>
 		
-			<input type='hidden' name="inventory[sys_name]'"value='{$fp->name}' class='inputShiftOne'/>
+			<input type='hidden' name="inventory[sys_name]'"value='' class='inputShiftOne'/>
 			
 			<div class="systemColorSelection" >
 	        	<label>Color:</label>
