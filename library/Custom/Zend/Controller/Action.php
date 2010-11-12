@@ -36,5 +36,5 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 	protected function msg($message) {
 		$this->_helper->flashMessenger($message);
 	}
-
+	
 }
