@@ -1,36 +1,7 @@
 {include file="layouts/$layout/header.tpl"}
 
 <div id='content-wide'>
-
-	<div id="leftContainer" style="width:21%; float:left;">	
-		<ul id="qm0" class="qmmc" style="width:100%;">
-		            <li><a class="qmparent" href="javascript:void(0)">Account info</a>
-		                <ul>
-		                	<li><a>Edit your account info</a></li>
-		                </ul>
-		            </li>
-		            <li><a class="qmparent" href="javascript:void(0)">Current address</a>
-		            	<ul>
-		                	<li><a>Edit your current address</a></li>
-		                </ul>
-		            </li>
-		            <li><a class="qmparent" href="javascript:void(0)">All Shipping address</a>
-		            	<ul>
-		                	<li><a>Add a shipping address</a></li>
-		                </ul>
-		            </li>
-		            <li><a class="qmparent" href="javascript:void(0)">Account actions</a>
-		            	<ul>
-		                	<li><a>Sell your dancewear</a></li>
-		                    <li><a>List yourself as a dance instructor</a></li>
-		                    <li><a>List yourself for partner search</a></li>
-		                </ul>	
-		            </li>
-		</ul>	
-	</div>
 	
-	
-	<div id="rightColumn" style="width:78%; float:right;">
 		
 	    <fieldset> 	
 			<legend>Account Info</legend>
@@ -162,7 +133,6 @@
 	    </fieldset>
 	            
 	      
-	</div>
 
 
 </div>

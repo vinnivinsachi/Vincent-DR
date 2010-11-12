@@ -8,15 +8,14 @@
 	
 	
 		<!-- NOT FIXED -->
-		<a href='{$siteRoot}/account/details'>[account details]</a>
+		<a href='{$siteRoot}/account/details'>[account details]</a><br />
 		
-		
-	                <a href='{$siteRoot}/productdisplay'>[Product display]</a>
-	                <a href='{$siteRoot}/accountblanace'>[Account balance]</a>
-	                <a href='{$siteRoot}/account/messages'>[Messages]</a>
-	                <a href='{$siteRoot}/ordermanager/orders'>[Bought orders]</a>
+	                <a href='{$siteRoot}/productdisplay'>[Product display]</a><br />
+	                <a href='{$siteRoot}/accountblanace'>[Account balance]</a><br />
+	                <a href='{$siteRoot}/account/messages'>[Messages]</a><br />
+	                <a href='{$siteRoot}/ordermanager/orders'>[Bought orders]</a><br />
 	               {if $signedInUser->generalInfo->user_type=='storeSeller' || $signedInUser->generalInfo->user_type=='generalSeller'}
-	               	<a href='{$siteRoot}/ordermanager/soldorders'>[Sold orders]</a>
+	               	<a href='{$siteRoot}/ordermanager/soldorders'>[Sold orders]</a><br />
 	               {/if}
 	
 	                
@@ -25,10 +24,10 @@
 	                <a href='{$siteRoot}/productpreview'>[view products live!]</a><br />
 	                
 	               
-	                <a href='{$siteRoot}/productlisting/uploadbuynowproduct'>[List a BUY NOW product]</a>
-	                <a href='{$siteRoot}/productlisting/uploadcustomizeproduct'>[List a customer order product]</a>
+	                <a href='{$siteRoot}/productlisting/uploadbuynowproduct'>[List a BUY NOW product]</a><br />
+	                <a href='{$siteRoot}/productlisting/uploadcustomizeproduct'>[List a customer order product]</a><br />
 	                
-	                <a href='{$siteRoot}/productlisting/viewpendingproduct'>[My listings]</a>
+	                <a href='{$siteRoot}/productlisting/viewpendingproduct'>[My listings]</a><br />
 	                {if $signedInUser->generalInfo->user_type=='admin'}
 	                <br />
 					------------------------------------------------------<br />
