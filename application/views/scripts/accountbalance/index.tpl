@@ -1,5 +1,4 @@
-{include file="layouts/$layout/header.tpl" lightbox=true}
-{include file="layouts/vinceTemp/header.tpl"}
+{include file="layouts/$layout/header.tpl"}
 
 <div id="leftContainer" style="width:210px; float:left;">
 <div class="titleBarBig">Reward and Balance Actions</div>

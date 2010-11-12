@@ -2,14 +2,20 @@
 	/**account**
 	*ALL account actions must be required to sign in!
 	*/
-	class AccountbalanceController extends CustomControllerAction
+	class AccountbalanceController extends Custom_Zend_Controller_Action
 	{	
 		/*init**********
-		
+		loading the testing user
 		****************/
 		public function init(){
 			parent::init();
-			$this->breadcrumbs->addStep('Account', $this->getUrl(null, 'account'));
+			
+			//$userMapper = new Application_Model_Mapper_Users_UsersMapper();
+			$this->user = new Application_Model_Users_User();
+			$this->user->userID = 1;
+			
+			//$this->user = $userMapper->findByUniqueID('MqIquFxXrS');
+			//$this->user->
 		}
 		
 		/*init*********
@@ -17,26 +23,25 @@
 		***************/
 		public function preDispatch(){					
 			parent::preDispatch();	
-			if($this->auth->hasIdentity()){
-				if(!isset($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress)){
-					$this->userObject->createShippingAddressInfoSessionObject($this->signedInUserSessionInfoHolder->generalInfo->shippingAddress);
-				}
-				$this->view->signedInUser=$this->signedInUserSessionInfoHolder;
-			} 
+			
 			//Zend_Debug::dump($_SERVER);
 		}
 	
 		/*index***********
 		******************/
 		public function indexAction(){			
-			$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $this->userObject);
+			
+			
+			
+			
+			/*$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $this->userObject);
 			
 			$rewardPointsAndBalanceRecords = $userAccountBalanceAndRewardPointProcessor->loadRewardPointsAndBalanceForUser();
 			
 			//echo 'user id is: '. $this->userObject->getId();
 			Zend_Debug::dump($rewardPointsAndBalanceRecords);
 			$this->view->rewardPointsAndBalanceRecords = $rewardPointsAndBalanceRecords;
-			$this->view->accountBalance = $this->userObject->accountBalanceSummary;
+			$this->view->accountBalance = $this->userObject->accountBalanceSummary;*/
 		}
 		
 		public function balancewithdrawAction(){

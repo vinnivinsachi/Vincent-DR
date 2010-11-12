@@ -53,9 +53,12 @@
 		
 		//load inventory 
 		
+		
 			
 		$param['purchase_type'] = $this->request->getParam('purchase_type');
-			if(in_array($param['purchase_type'], $this->productConfig['allowedPurchaseType'][$this->testingUser['role']])){
+		
+		
+			if(in_array($param['purchase_type'], Application_Model_SysConst_Products::$allowedPurchaseType[$this->testingUser['role']])){	
 				$param['product_category']=$this->request->getParam('category');
 				$param['product_type']=$this->request->getParam('type');
 				$param['product_tag']=$this->request->getParam('tag');
@@ -66,14 +69,16 @@
 					$param['product_id']=0;
 				}
 				
-				$config = Zend_Registry::get('config');
-				echo $config->paths->base;
+				//$config = Zend_Registry::get('config');
+				//echo $config->paths->base;
 				
-				if(in_array($param['product_tag'], $this->productConfig['upload_menu_item'][$param['purchase_type']][$param['product_category']][$param['product_type']])){
+				if(in_array($param['product_tag'], Application_Model_SysConst_Products::$uploadMenuArrays[$param['purchase_type']][$param['product_category']][$param['product_type']])){
 					//display the form, 
 					echo 'here at good attribute selection';
-					$param['inventory_attribute_table'] = $this->productConfig['inventory_attribute_table'][$param['product_tag']];
-					$fp = new FormProcessor_Product($this->db, $this->signedInUserSessionInfoHolder, $param);
+					$param['inventory_attribute_table'] = Application_Model_SysConst_Products::$attributeTables[$param['product_tag']];
+					
+					
+					/*$fp = new FormProcessor_Product($this->db, $this->signedInUserSessionInfoHolder, $param);
 					//Zend_Debug::dump($fp);
 					$allowedProduct=array();	
 					
@@ -174,7 +179,7 @@
 									}else{
 										echo 'problem with settin status';
 									}
-								}
+								}*/
 								//echo 'here at post<br />';	
 							
 							
@@ -185,7 +190,7 @@
 							
 							//redirect to viewproductlistings.
 							
-						}
+						//}
 					}
 					if($fp->product->getId()){
 						 $addPartial='_edit'.$fp->product->purchase_type.'Product.tpl';
@@ -199,13 +204,13 @@
 					
 					//$this->view->back= $_SERVER['HTTP_REFERER'];
 				}else{
-					$this->messenger->addMessage('you have an error in this request');
+					$this->msg('you have an error in this request');
 					//$this->_redirect('index/error');
 				}
-			}else{
-				$this->_helper->flashMessenger(array('warning','you do not have permissions to add this type of product'));
-				//$this->_redirect('index/error');
-			}
+			/*}else{
+				$this->msg(array('warning','you do not have permissions to add this type of product'));
+				//$this->_redirect('index/error');*/
+			
 		}
 
 		/*

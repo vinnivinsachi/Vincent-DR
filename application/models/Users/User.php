@@ -33,6 +33,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	// private variables won't show un in SQL queries
 	private $_shippingAddresses;
 	private $_defaultShippingAddress;
+	private $_accountRewardPointsAndBalanceSummary;
 
 	
 	public function setShippingAddresses(array $addresses) { $this->_shippingAddresses = $addresses; }
@@ -40,5 +41,9 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	
 	public function setDefaultShippingAddress(array $address) { $this->_defaultShippingAddress = $address; }
 	public function getDefaultShippingAddress() { return $this->_defaultShippingAddress; }
+	
+	public function setAccountRewardPointsAndBalance(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary){$this->_accountRewardPointsAndBalanceSummary = $accountRewardPointsAndBalanceSummary;}
+	
+	public function getAccountRewardPointsAndBalance(){ return $this->_accountRewardPointsAndBalanceSummary;}
 
 }

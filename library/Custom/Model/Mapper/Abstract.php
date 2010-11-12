@@ -49,7 +49,7 @@ abstract class Custom_Model_Mapper_Abstract
 		}
 		
 		// make sure the primary key column is incuded, or else saving changes won't work
-		$primaryKey = $this->getPrimaryKey();;
+		$primaryKey = $this->getPrimaryKey();
 		if(!array_search($primaryKey, $columns)) $columns[] = $primaryKey;
 		
 		return $columns;
@@ -87,6 +87,25 @@ abstract class Custom_Model_Mapper_Abstract
 			$objects[] = $object;
 		}
 		return $objects;
+	}
+	
+	public function loadByQuery($query){
+		$resultSet = $this->getDbTable()->fetchAll($query);
+		if(count($result) == 0) return null; // return null if nothing found
+		if(count($result) == 1){
+			$row = $result->current();
+			$rowData = $row->toArray();
+			$object = new $this->_modelClass($rowData);
+			return $object;
+		}elseif(count($result) > 1){
+			$objects = array();
+			foreach($resultSet as $row) {
+				$rowData = $row->toArray();
+				$object = new $this->_modelClass($rowData);
+				$objects[] = $object;
+			}
+			return $objects;
+		}
 	}
 	
 	public function fetchAll(array $options = null) {

@@ -20,7 +20,7 @@ class Application_Form_Porduct_BasicInfo extends Zend_Form
 		//name
 		$name = new Zend_Form_Element_Text('name');
 		$name->setRequired(true)
-			 ->addValidator('Alnum');
+			 ->addValidator('Alnum')
 			 ->addvalidator('StringLength', false, array(4, 150));
 	
 		//brand
