@@ -44,6 +44,5 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	
 	public function setAccountRewardPointsAndBalance(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary){$this->_accountRewardPointsAndBalanceSummary = $accountRewardPointsAndBalanceSummary;}
 	
-	public function getAccountRewardPointsAndBalance(){ return $this->_accountRewardPointsAndBalanceSummary;}
-
-}
+	public function getAccountRewardPointsAndBalanceSummary(){ return $this->_accountRewardPointsAndBalanceSummary;}
+}?>

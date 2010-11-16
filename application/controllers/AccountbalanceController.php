@@ -7,6 +7,10 @@
 		/*init**********
 		loading the testing user
 		****************/
+		
+		//private $status = array('PENDING', 'POSTED', 'CANCELLED');
+		//private $_arrayTrackingTypeColumn = array('REWARD_ADDITION' =>'addedRewardPoints', 'REWARD_DEDUCTION'=>'deductedRewardPoints', 'BALANCE_DEDUCTION'=>'deductedDollarAmount', 'BALANCE_ADDITION'=>'addedDollarAmount');
+		
 		public function init(){
 			parent::init();
 			

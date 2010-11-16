@@ -1,9 +1,9 @@
 <?php
 
-class Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking extends Custom_Model_Mapper_Abstract
+class Application_Model_Mapper_Users_UserAccountBalanceWithdrawTracking extends Custom_Model_Mapper_Abstract
 {
-	protected $_dbTableClass = 'Application_Model_DbTable_Users_UserPendingRewardPointAndBalanceTracking';
-	protected $_modelClass = 'Application_Model_Users_UserPendingRewardPointAndBalanceTracking';
+	protected $_dbTableClass = 'Application_Model_DbTable_Users_UserAccountBalanceWithdrawTracking';
+	protected $_modelClass = 'Application_Model_Users_UserAccountBalanceWithdrawTracking';
 
 	public function getPendingSummaryForUser(Application_Model_Users_User $user, array $options = null){
 		return $this->findByColumn('userID', $user->userID, $options);	
@@ -54,13 +54,14 @@ class Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking ex
 		return $result;
 	}
 	
-	public function save(Application_Model_Users_UserPendingRewardPointAndBalanceTracking $pendingTracking){
+	public function save(Application_Model_Users_UserAccountBalanceWithdrawTracking $pendingTracking){
 		//new pendingTrackingDefaults
-		if(($uniqueID = $pendingTracking->userPendingRewardPointAndBalanceTrackingUniqueID) === null) {
+		if(($uniqueID = $pendingTracking->userAccountBalanceWithdrawTrackingID) === null) {
 			$pendingTracking->dateCreated = date('Y-m-d H:i:s');
+			$pendingTracking->dateUpdated=date('Y-m-d G:i:s');
 			
 			//this requirs that the abstract method to support the createUniqueID() methods. 
-			$pendingTracking->userPendingRewardPointAndBalanceTrackingUniqueID = $this->createUniqueID();
+			$pendingTracking->userAccountBalanceWithdrawTrackingUniqueID = $this->createUniqueID();
 		}
 		
 		return parent::save($pendingTracking);
@@ -75,11 +76,10 @@ class Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking ex
 	
 	public function findByUniqueID($uniqueID, array $options = null) {
 		
-		$column = $this->findByColumn('userPendingRewardPointAndBalanceTrackingUniqueID', $uniqueID, $options);
+		$column = $this->findByColumn('userAccountBalanceWithdrawTrackingUniqueID', $uniqueID, $options);
 		if(count($column) == 0) return null;
 		if(count($column) > 1) throw new Exception('More than one user with the uniqueID: '.$uniqueID);
 		return $column[0];
 	}
-	
 }
 ?>

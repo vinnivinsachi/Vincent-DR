@@ -12,11 +12,11 @@ class Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary extend
 	public function REWARD_ADDITION(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary, $type, $amount ){
 		echo "at reward addition with $type with amount $amount<br />";
 		if($type =='PENDING'){
-			$accountRewardPointsAndBalanceSummary->ledger_reward_points +=$amount;
+			$accountRewardPointsAndBalanceSummary->ledgerRewardPoints +=$amount;
 		}elseif($type=='POSTED'){
-			$accountRewardPointsAndBalanceSummary->available_reward_points +=$amount;
+			$accountRewardPointsAndBalanceSummary->availableRewardPoints +=$amount;
 		}elseif($type=='CANCELLED'){
-			$accountRewardPointsAndBalanceSummary->ledger_reward_points -=$amount;
+			$accountRewardPointsAndBalanceSummary->ledgerRewardPoints -=$amount;
 		}
 	}
 	
@@ -25,28 +25,27 @@ class Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary extend
 
 		if($type =='PENDING'){
 		//$this->ledger_reward_points -=$amount;
-		$accountRewardPointsAndBalanceSummary->available_reward_points -=$amount;
+		$accountRewardPointsAndBalanceSummary->availableRewardPoints -=$amount;
 		}elseif($type=='POSTED'){
-		$accountRewardPointsAndBalanceSummary->ledger_reward_points -=$amount;
+		$accountRewardPointsAndBalanceSummary->ledgerRewardPoints -=$amount;
 
 		//$this->availabe_reward_points +=$amount;
 		}elseif($type=='CANCELLED'){
 		//$this->ledger_reward_points +=$amount;
-		$accountRewardPointsAndBalanceSummary->available_reward_points +=$amount;
+		$accountRewardPointsAndBalanceSummary->availableRewardPoints +=$amount;
 		}
-		
 	}
 	
 	public function BALANCE_ADDITION(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary, $type, $amount){
 		echo "at balance addition with $type<br />";
 
 		if($type =='PENDING'){
-			$accountRewardPointsAndBalanceSummary->ledger_balance +=$amount;
+			$accountRewardPointsAndBalanceSummary->ledgerBalance +=$amount;
 		}elseif($type=='POSTED'){
-			$accountRewardPointsAndBalanceSummary->available_balance +=$amount;
+			$accountRewardPointsAndBalanceSummary->availableBalance +=$amount;
 		//$this->availabe_reward_points +=$amount;
 		}elseif($type=='CANCELLED'){
-			$accountRewardPointsAndBalanceSummary->ledger_balance -=$amount;
+			$accountRewardPointsAndBalanceSummary->ledgerBalance -=$amount;
 		}
 	}
 	
@@ -54,15 +53,22 @@ class Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary extend
 		echo "at balance deduction addition with $type<br />";
 
 		if($type =='PENDING'){
-			$accountRewardPointsAndBalanceSummary->available_balance -=$amount;
+			$accountRewardPointsAndBalanceSummary->availableBalance -=$amount;
 		}elseif($type=='POSTED'){
-		$accountRewardPointsAndBalanceSummary->ledger_balance -=$amount;
+		$accountRewardPointsAndBalanceSummary->ledgerBalance -=$amount;
 		//$this->availabe_reward_points -=$amount;
 		}elseif($type=='CANCELLED'){
 			//$this->ledger_balance +=$amount;
-			$accountRewardPointsAndBalanceSummary->available_balance +=$amount;
+			$accountRewardPointsAndBalanceSummary->availableBalance +=$amount;
 		}
 	}
+	
+	public function save(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary){
+		
+		parent::save($accountRewardPointsAndBalanceSummary);
+		
+	}
+	
 
 }
 ?>

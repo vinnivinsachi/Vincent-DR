@@ -26,7 +26,7 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	// get the name of the primary key column of the associated table
-	private function getPrimaryKey() {
+	public function getPrimaryKey() {
 		$primaryKey = $this->getDbTable()->info('primary');
 		return $primaryKey[1];
 	}
@@ -91,13 +91,13 @@ abstract class Custom_Model_Mapper_Abstract
 	
 	public function loadByQuery($query){
 		$resultSet = $this->getDbTable()->fetchAll($query);
-		if(count($result) == 0) return null; // return null if nothing found
-		if(count($result) == 1){
-			$row = $result->current();
+		if(count($resultSet) == 0) return null; // return null if nothing found
+		if(count($resultSet) == 1){
+			$row = $resultSet->current();
 			$rowData = $row->toArray();
 			$object = new $this->_modelClass($rowData);
 			return $object;
-		}elseif(count($result) > 1){
+		}elseif(count($resultSet) > 1){
 			$objects = array();
 			foreach($resultSet as $row) {
 				$rowData = $row->toArray();

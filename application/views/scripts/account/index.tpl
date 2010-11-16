@@ -11,7 +11,7 @@
 		<a href='{$siteRoot}/account/details'>[account details]</a><br />
 		
 	                <a href='{$siteRoot}/productdisplay'>[Product display]</a><br />
-	                <a href='{$siteRoot}/accountblanace'>[Account balance]</a><br />
+	                <a href='{$siteRoot}/accountbalance'>[Account balance]</a><br />
 	                <a href='{$siteRoot}/account/messages'>[Messages]</a><br />
 	                <a href='{$siteRoot}/ordermanager/orders'>[Bought orders]</a><br />
 	               {if $signedInUser->generalInfo->user_type=='storeSeller' || $signedInUser->generalInfo->user_type=='generalSeller'}

@@ -8,7 +8,7 @@ class Application_Model_Users_AccountRewardPointsAndBalanceSummary extends Custo
 	public $ledgerRewardPoints;
 	public $availableBalance;
 	public $ledgerBalance;
+
 	
 }
-
 ?>

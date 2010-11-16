@@ -11,6 +11,105 @@ class IndexController extends Custom_Zend_Controller_Action
         // action body
     }
 
+	public function testAction(){
+		$userMapper = new Application_Model_Mapper_Users_UsersMapper();
+		
+		$user = $userMapper->findByUsername('test1');
+		
+		$userProcessor = new Custom_Processor_Users_AccountBalanceAndRewardPointProcessor($user);
+		$accountSummaryMapper = new Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary();
+		$accountSummaryTmp = $accountSummaryMapper->getAccountSummaryForUser($user);
+		
+		if(!$accountSummaryTmp){			
+			$accountSummary = new Application_Model_Users_AccountRewardPointsAndBalanceSummary();
+			$accountSummary->userID=$user->userID;
+			$accountSummary->availableRewardPoints=8;
+			$accountSummary->availableBalance=8;
+			$accountSummary->ledgerBalance=8;
+			$accountSummary->ledgerRewardPoints=8;
+		
+			$user->setAccountRewardPointsAndBalance($accountSummary);
+			$accountSummaryMapper->save($accountSummary);
+		}else{
+			
+			Zend_Debug::dump($accountSummaryTmp);
+			$user->setAccountRewardPointsAndBalance($accountSummaryTmp[0]);
+			
+		}
+		
+		//******Post withdraws 
+		
+		$userProcessor->widthdrawBalance(3);
+		//******END
+		
+		//******Post pending reward points 
+		
+		/*
+		
+		$userProcessor->cancelPendingRewardPointsAndBalanceForUser(2);*/
+		
+		//******END
+		
+		//******Post pending reward points for user
+		
+		/*$userMapper = new Application_Model_Mapper_Users_UsersMapper();
+		
+		$user = $userMapper->findByUsername('test1');
+		
+		$userProcessor = new Custom_Processor_Users_AccountBalanceAndRewardPointProcessor($user);
+		
+		$userProcessor->postPendingRewardPointsAndBalanceForUser(1);*/
+		
+		//*******END
+		
+		
+		//******loading all pending reward points for user
+		/*$userMapper = new Application_Model_Mapper_Users_UsersMapper();
+		
+		$user = $userMapper->findByUsername('test1');
+		
+		$userProcessor = new Custom_Processor_Users_AccountBalanceAndRewardPointProcessor($user);
+		
+		$pendingStuff = $userProcessor->loadRewardPointsAndBalanceForUser();
+		
+		Zend_Debug::dump($pendingStuff);*/
+		//****END
+		
+		
+		/***************testing updatePendingBalanceTracking*/
+		
+		/*$userMapper = new Application_Model_Mapper_Users_UsersMapper();
+		
+		//$userMapper->f
+		$user = $userMapper->findByUsername('test1');
+		
+		$userProcessor = new Custom_Processor_Users_AccountBalanceAndRewardPointProcessor($user);
+		
+		
+		
+	
+		
+		$pendingRewardAndBalanceTracking = new Application_Model_Users_UserPendingRewardPointAndBalanceTracking();
+		$pendingRewardAndBalanceTracking->trackingType='BALANCE_ADDITION';
+		$amountType = $pendingRewardAndBalanceTracking->trackingType;
 
+		$pendingRewardAndBalanceTracking->causedByType='fromOrderProfileID';
+		$causedByColumn = $pendingRewardAndBalanceTracking->causedByType;
+		$pendingRewardAndBalanceTracking->$causedByColumn=1;
+		$pendingRewardAndBalanceTracking->description='Bloody hell';
+		$pendingRewardAndBalanceTracking->status = 'PENDING';
+		$pendingRewardAndBalanceTracking->$amountType=5;
+	
+		//must fetch the accountRewardPointsAndBalanceSummary for user first. 
+		//must then apply that fetched accountRewardPoints for the processor.
+	
+		echo 'updated reward point tracking is: '.$userProcessor->updatePendingRewardPointsAndBalanceForUser($user->getAccountRewardPointsAndBalanceSummary(), $pendingRewardAndBalanceTracking);
+		
+		Zend_Debug::dump($user);
+		Zend_Debug::dump($accountSummaryMapper->getAccountSummaryForUser($user));
+		*/
+		//***********end of the testing for updatePendingBalanceTrakcing 
+	}
 }
 
+?>

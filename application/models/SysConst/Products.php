@@ -64,8 +64,6 @@ class Application_Model_SysConst_Products extends Custom_Model_Abstract
 											       'shoe_metric'=>array('US','BR','EU')
 	);
 	
-	
-	
 	static public function uploadMenuArray(){
 		$uploadMenuArray=array();
 		$uploadMenuArray['Buy_now']['Women']['Shoes']=array('Ladies latin shoes','Ladies standard shoes','Ladies practice shoes');
