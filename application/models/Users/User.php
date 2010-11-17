@@ -3,8 +3,8 @@
 class Application_Model_Users_User extends Custom_Model_Abstract
 {
 	public $userID;
-	public $referralID;
-	public $uniqueID;
+	public $referrerID;
+	public $userUniqueID;
 	public $username;
 	public $password;
 	public $email;
