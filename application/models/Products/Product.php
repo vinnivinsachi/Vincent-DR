@@ -38,7 +38,12 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	public $competitionUsage;
 	public $lastStatusChange;
 	
-	public $images = array();
-	public $inventory = array();
-	public $attributes = array();
+	protected $_images = array();
+	protected $_inventory = array();
+	protected $_custAttributes = array();
+	protected $_reviews = array();
+	protected $_sellerInfo = array();
+	protected $_
+	
+	
 }

@@ -34,12 +34,11 @@ class IndexController extends Custom_Zend_Controller_Action
 			
 			Zend_Debug::dump($accountSummaryTmp);
 			$user->setAccountRewardPointsAndBalance($accountSummaryTmp[0]);
-			
 		}
 		
 		//******Post withdraws 
 		
-		$userProcessor->widthdrawBalance(3);
+		//$userProcessor->widthdrawBalance(3);
 		//******END
 		
 		//******Post pending reward points 

@@ -160,7 +160,7 @@
 		
 		public function transferBalance($amount, $targetUserEmail, $message=''){
 			
-			$this->accountBalanceTransferTracking= new DatabaseObject_Account_UserAccountBalanceTransferTracking($this->db);
+			/*$this->accountBalanceTransferTracking= new DatabaseObject_Account_UserAccountBalanceTransferTracking($this->db);
 			$this->accountBalanceTransferTracking->from_user_id=$this->user->getId();
 			$this->accountBalanceTransferTracking->to_user_email=$targetUserEmail;
 			$this->accountBalanceTransferTracking->balance_transfer_amount = $amount;
@@ -190,7 +190,7 @@
 			}else{
 				echo 'email not found in system';
 				return false;
-			}
+			}*/
 		}
 		
 		public function checkCartCompletion($orderUniqueId)
