@@ -6,6 +6,7 @@ class Application_Model_DbTable_Users_AccountRewardPointsAndBalanceSummary exten
     protected $_name = 'accountRewardPointsAndBalanceSummary';
 	protected $_primary = 'accountRewardPointsAndBalanceSummaryID';
 
+
 }
 
 ?>

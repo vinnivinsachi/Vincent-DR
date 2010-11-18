@@ -27,14 +27,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$viewRenderer->setViewSuffix('tpl'); //make it search for .tpl files 
 		
 		Zend_Controller_Action_HelperBroker::addHelper($viewRenderer); //add it to the action helper broker
+		
+		
 	}
-	
 	
 	
 	// Vincent's stuff
 	public function _initAll() {
 		
-		
+		//setting db in the registry making it a static constant object.
 		
 		//define('PRODUCT_CONFIG',$productConfig);
 		//echo implode($productConfig['purchase_type']);

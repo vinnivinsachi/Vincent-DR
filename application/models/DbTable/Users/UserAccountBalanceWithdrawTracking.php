@@ -4,5 +4,7 @@ class Application_Model_DbTable_Users_UserAccountBalanceWithdrawTracking extends
 {
     protected $_name = 'userAccountBalanceWithdrawTracking';
 	protected $_primary = 'userAccountBalanceWithdrawTrackingID';
+	public $uniqueIDColumn = 'userAccountBalanceWithdrawTrackingUniqueID';
+
 }
 ?>

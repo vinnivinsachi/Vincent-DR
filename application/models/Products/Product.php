@@ -12,10 +12,9 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	
 	public $domesticShippingRate;
 	public $internationalShippingRate;
-	public $uploaderID;
-	public $uploaderUsername;
-	public $uploaderNetwork;
-	public $uploaderEmail;
+	public $sellerType;
+	public $sellerDisplayName;
+	public $sellerName;
 	public $url;
 	public $name;
 	public $price;
@@ -43,7 +42,7 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	protected $_custAttributes = array();
 	protected $_reviews = array();
 	protected $_sellerInfo = array();
-	protected $_
-	
-	
+	protected $_shoutOuts = array();
 }
+
+?>

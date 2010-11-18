@@ -11,6 +11,8 @@ class Application_Model_Mapper_Products_ProductsMapper extends Custom_Model_Mapp
 	
 	public function save(Application_Model_Products_Product $product) {
 		//pre save
+		//public $inventoryReference;
+		//public $uniqueIdentifierForJS; need to set unique id;
 		parent::save($product);
 		//post save
 	} 

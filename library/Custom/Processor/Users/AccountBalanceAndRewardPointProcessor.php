@@ -47,8 +47,6 @@
 			Zend_Debug::dump($currentUserAccountBalance[0]);
 			//register the pendingRewardPointModel 
 			
-			
-			
 			Zend_Debug::dump($pendingAccountBalanceTracking);
 			$pendingAccountBalanceTracking->userID = $this->user->userID;
 			return $this->pendingRPAndBalanceMapper->save($pendingAccountBalanceTracking); 
