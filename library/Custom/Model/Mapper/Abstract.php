@@ -10,6 +10,8 @@ abstract class Custom_Model_Mapper_Abstract
 	protected $_columns;
 	
 	public function __construct() {
+		if(!isset($this->_dbTableClass)) throw new Exception('You must set $_dbTableClass in your model');
+		if(!isset($this->_modelClass)) throw new Exception('You must set $_modelClass in your model');
 		$this->_columns = get_object_vars(new $this->_modelClass);
 	}
 	
@@ -92,20 +94,13 @@ abstract class Custom_Model_Mapper_Abstract
 	public function loadByQuery($query){
 		$resultSet = $this->getDbTable()->fetchAll($query);
 		if(count($resultSet) == 0) return null; // return null if nothing found
-		if(count($resultSet) == 1){
-			$row = $resultSet->current();
+		$objects = array();
+		foreach($resultSet as $row) {
 			$rowData = $row->toArray();
 			$object = new $this->_modelClass($rowData);
-			return $object;
-		}elseif(count($resultSet) > 1){
-			$objects = array();
-			foreach($resultSet as $row) {
-				$rowData = $row->toArray();
-				$object = new $this->_modelClass($rowData);
-				$objects[] = $object;
-			}
-			return $objects;
+			$objects[] = $object;
 		}
+		return $objects;
 	}
 	
 	public function fetchAll(array $options = null) {

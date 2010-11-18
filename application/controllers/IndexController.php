@@ -9,6 +9,15 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
         // action body
+        $user = new Application_Model_Users_User;
+        $user->profiles = new Application_Model_Profiles;
+        $user->profiles->color = 'blue';
+        $user->profiles->dress = null;
+        $user->userID = '64';
+        $user->profiles->size = 'small';
+        $mapper = new Application_Model_Mapper_ProfileMapper;
+        $mapper->saveForAssociatedID($user->profiles, $user->userID);
+        print var_dump($user);
     }
 
 	public function testAction(){
