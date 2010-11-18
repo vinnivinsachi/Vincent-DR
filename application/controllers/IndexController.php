@@ -8,9 +8,6 @@ class IndexController extends Custom_Zend_Controller_Action
     }
 
     public function indexAction() {
-    	//exit(Zend_Db_Table::getDefaultAdapter());
-    	
-    	
         // action body
         $user = new Application_Model_Users_User;
         $user->profiles = new Application_Model_Profiles;
@@ -18,7 +15,7 @@ class IndexController extends Custom_Zend_Controller_Action
         $user->profiles->dress = null;
         $user->userID = '64';
         $user->profiles->size = 'small';
-        $mapper = new Application_Model_Mapper_ProfileMapper;
+        $mapper = new Application_Model_Mapper_ExampleMapper;
         $mapper->saveForAssociatedID($user->profiles, $user->userID);
         print var_dump($user);
     }
