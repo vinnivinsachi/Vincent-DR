@@ -30,7 +30,7 @@ abstract class Custom_Model_Mapper_Abstract
 		$primaryKey = $this->getDbTable()->info('primary');
 		return $primaryKey[1];
 	}
-	
+		
 	// return an array of column names to include in select statement
 	// $options should be an array containing a key of either 'include' or 'exclude'
 	// the values of these two keys should be an array containing column names
@@ -156,6 +156,20 @@ abstract class Custom_Model_Mapper_Abstract
 		$primaryKey = $this->getPrimaryKey();
 		$where = $this->getDbTable()->getAdapter()->quoteInto($primaryKey.' = ?', $id);
 		return $this->getDbTable()->delete($where);
+	}
+
+	public function createUniqueID() {
+		do {
+			$uniqueID = Text_Password::create(10, 'unpronounceable');
+		} while($this->findByUniqueID($uniqueID));
+		return $uniqueID;
+	}
+
+	public function findByUniqueID($uniqueID, array $options = null) {
+		$objects = $this->findByColumn($this->getDbTable()->uniqueIDColumn, $uniqueID, $options);
+		if(count($objects) == 0) return null;
+		if(count($objects) > 1) throw new Exception('More than one object found with the uniqueID: '.$uniqueID);
+		return $objects[0];
 	}
 
 }

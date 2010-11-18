@@ -68,9 +68,9 @@
 	        {/if}
 	        {$user->sellerInfo->city}, {$user->sellerInfo->state} {$user->sellerInfo->zip}<br />
 	        {$user->sellerInfo->country}<br />
-	        {if $user->user_type =='generalSeller'}
+	        {if $user->userType =='generalSeller'}
 	        <a href='{$siteRoot}/account/upgradegeneralseller'>Edit</a><br />
-	        {elseif $user->user_type =='storeSeller'}
+	        {elseif $user->userType =='storeSeller'}
 	        <a href='{$siteRoot}/account/upgradestoreseller'>Edit</a>
 	        {/if}
 	  	</fieldset>
@@ -116,15 +116,15 @@
 	     <!-- Account actions -->
 	     <fieldset>
 	    	<legend>Account Actions</legend>
-	    		{if $user->user_type =='member'}
+	    		{if $user->userType =='member'}
 	            	<a href='{$siteRoot}/account/upgradegeneralseller'>Sell some of your dancewear!</a><br />
 	            {/if}
-	            {if $user->is_instructor == 0}
+	            {if $user->isInstructor == 0}
 	            	<a href="#">List yourself as a dance instructor</a><br />
 	            {else}
 	            	<a href="#">Remove yourself as a dance instructor</a><br />
 	            {/if}
-	            {if $user->finding_partner == 0}
+	            {if $user->findingPartner == 0}
 	            	<a href="#">List yourself for partner search</a><br />
 	            {else}
 	            	<a href="#">Remove yourself from partner search</a><br />

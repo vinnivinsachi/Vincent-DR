@@ -3,46 +3,36 @@
 class Application_Model_Users_User extends Custom_Model_Abstract
 {
 	public $userID;
+	public $referrerID;
+	public $userUniqueID;
 	public $username;
 	public $password;
-	public $salt;
-	public $role;
-	public $dateCreated;
-	public $lastLogin;
-	
-	public $referralID;
-	public $uniqueID;
-	public $defaultShippingAddressID;
 	public $email;
 	public $sex;
 	public $measurement;
 	public $firstName;
 	public $lastName;
+	public $role;
 	public $isInstructor;
 	public $findingPartner;
 	public $status;
 	public $rewardPoints;
 	public $verification;
-	public $typeID;
+	public $userType;
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;
+	public $dateCreated;
+	public $lastLogin;
+	public $salt;
 	public $affiliation;
 	public $experience;
-	
-	// private variables won't show un in SQL queries
-	private $_shippingAddresses;
-	private $_defaultShippingAddress;
-	private $_accountRewardPointsAndBalanceSummary;
+	public $defaultShippingAddressID;
 
 	
-	public function setShippingAddresses(array $addresses) { $this->_shippingAddresses = $addresses; }
-	public function getShippingAddresses() { return $this->_shippingAddresses; }
+	// private variables won't show up in SQL queries
+	protected $shippingAddresses;
+	protected $defaultShippingAddress;
+	protected $accountRewardPointsAndBalanceSummary;
 	
-	public function setDefaultShippingAddress(array $address) { $this->_defaultShippingAddress = $address; }
-	public function getDefaultShippingAddress() { return $this->_defaultShippingAddress; }
-	
-	public function setAccountRewardPointsAndBalance(Application_Model_Users_AccountRewardPointsAndBalanceSummary $accountRewardPointsAndBalanceSummary){$this->_accountRewardPointsAndBalanceSummary = $accountRewardPointsAndBalanceSummary;}
-	
-	public function getAccountRewardPointsAndBalanceSummary(){ return $this->_accountRewardPointsAndBalanceSummary;}
 }?>

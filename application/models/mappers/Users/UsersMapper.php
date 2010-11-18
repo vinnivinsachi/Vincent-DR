@@ -17,28 +17,13 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 		else if($user->password == '') unset($user->password);
 				
 		// new user defaults
-		if(($uniqueID = $user->uniqueID) === null) {
+		if(($uniqueID = $user->userUniqueID) === null) {
 			$user->dateCreated = date('Y-m-d H:i:s');
 			$user->role = 'buyer';
-			$user->uniqueID = $this->createUniqueID();
+			$user->userUniqueID = $this->createUniqueID();
 		}
 		
 		parent::save($user);
-	}
-	
-	public function createUniqueID() {
-		do {
-			$uniqueID = Text_Password::create(10, 'unpronounceable');
-		} while($this->findByUniqueID($uniqueID));
-		return $uniqueID;
-	}
-	
-	public function findByUniqueID($uniqueID, array $options = null) {
-		if(!$options) $options = array('exclude' => array('password', 'salt'));
-		$users = $this->findByColumn('uniqueID', $uniqueID, $options);
-		if(count($users) == 0) return null;
-		if(count($users) > 1) throw new Exception('More than one user with the uniqueID: '.$uniqueID);
-		return $users[0];
 	}
 	
 	public function findByUsername($username, array $options = null) {
@@ -52,6 +37,11 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	public function usernameAvailable($username) {
 		if($this->findByUsername($username, array('include', array('username')))) return false;
 		else return true;
+	}
+	
+	public function findByUniqueID($uniqueID, array $options = null) {
+		if(!$options) $options = array('exclude' => array('password', 'salt'));
+		return parent::findByUniqueID($uniqueID, $options);
 	}
 	
 	public function updateLastLogin($user) {

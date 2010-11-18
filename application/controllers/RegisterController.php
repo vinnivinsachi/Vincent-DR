@@ -22,10 +22,11 @@ class RegisterController extends Custom_Zend_Controller_Action
             	if(!$usersMapper->usernameAvailable($user->username)) $this->_helper->flashMessenger(array('error' => 'That username is not available, please choose a new one'));
             	else {
             		$usersMapper->save($user);
+            		$this->msg('Thank you for registering!');
 	            	// Forward to authentication/login
-	            	$request->setControllerName('authentication')
-					        ->setActionName('login')
-					        ->setDispatched(false);
+		            	$request->setControllerName('authentication')
+						        ->setActionName('login')
+						        ->setDispatched(false);
             	}
             }
             // If form is NOT valid display errors
