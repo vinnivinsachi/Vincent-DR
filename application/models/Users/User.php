@@ -2,6 +2,7 @@
 
 class Application_Model_Users_User extends Custom_Model_Abstract
 {
+	
 	public $userID;
 	public $referrerID;
 	public $userUniqueID;
@@ -34,5 +35,6 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	protected $shippingAddresses;
 	protected $defaultShippingAddress;
 	protected $accountRewardPointsAndBalanceSummary;
+	protected $profiles;
 	
 }?>
