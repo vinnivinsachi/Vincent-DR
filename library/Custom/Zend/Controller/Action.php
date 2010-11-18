@@ -3,8 +3,12 @@
 class Custom_Zend_Controller_Action extends Zend_Controller_Action
 {
 	protected $_ajaxContext = null;
+	protected $_db;
 	
 	public function init() {
+		// setup db adapter
+		$this->_db = Zend_Db_Table::getDefaultAdapter();
+		
 		// Enable context switching for JSON
 		$this->_ajaxContext = $this->_helper->getHelper('AjaxContext');
 	}

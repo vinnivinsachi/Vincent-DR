@@ -8,6 +8,9 @@ class IndexController extends Custom_Zend_Controller_Action
     }
 
     public function indexAction() {
+    	//exit(Zend_Db_Table::getDefaultAdapter());
+    	
+    	
         // action body
         $user = new Application_Model_Users_User;
         $user->profiles = new Application_Model_Profiles;
