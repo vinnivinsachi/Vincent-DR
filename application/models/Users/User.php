@@ -13,7 +13,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $measurement;
 	public $firstName;
 	public $lastName;
-	public $role;
+	public $role = 'member';
 	public $isInstructor;
 	public $findingPartner;
 	public $status;
@@ -37,4 +37,9 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	protected $accountRewardPointsAndBalanceSummary;
 	protected $profiles;
 	
-}?>
+	public function __construct(array $options = null) {
+		parent::__construct($options);
+		$this->dateCreated = date('Y-m-d H:i:s');
+	}
+	
+}

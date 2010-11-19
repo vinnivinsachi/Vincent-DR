@@ -7,12 +7,12 @@ abstract class Custom_Model_Abstract
 		if(is_array($options)) $this->setOptions($options);
 	}
 	
-	protected function __set($property, $value) {
+	public function __set($property, $value) {
 		if(!property_exists($this, $property)) throw new Exception('Trying to set invalid User property: '.$property);
 		$this->$property = $value;
 	}
 	
-	protected function __get($property) {
+	public function __get($property) {
 		if(!property_exists($this, $property)) throw new Exception('Trying to get invalid User property: '.$property);
 		return $this->$property;
 	}

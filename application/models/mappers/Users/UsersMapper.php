@@ -18,8 +18,6 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 				
 		// new user defaults
 		if(($uniqueID = $user->userUniqueID) === null) {
-			$user->dateCreated = date('Y-m-d H:i:s');
-			$user->role = 'buyer';
 			$user->userUniqueID = $this->createUniqueID();
 		}
 		
