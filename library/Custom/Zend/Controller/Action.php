@@ -55,4 +55,11 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 		$this->_helper->flashMessenger($message);
 	}
 	
+	// set an error message and redirect
+	protected function errorAndRedirect($message, $action, $controller = null) {
+		if($controller == null) $controller = 'account';
+		$this->msg(array('error' => $message));
+		$this->_helper->redirector($action, $controller);
+	}
+	
 }

@@ -25,22 +25,30 @@ class Application_Model_Acl extends Zend_Acl
 	    	$this->allow('member', 'account', 'editshipping');
 	    	$this->allow('member', 'account', 'setdefaultshipping');
 	    	$this->allow('member', 'account', 'deleteshipping');
-	    	$this->allow('admin', 'account');
+	    	
 	    	$this->allow('guest', 'authentication', 'login');
 	    	$this->allow('member', 'authentication', 'logout');
-	    	$this->allow('admin', 'authentication');
+	    	
 	    	$this->allow('guest', 'error', 'error');
-	    	$this->allow('admin', 'error');
+	    	
 	    	$this->allow('guest', 'index', 'index');
-	    	$this->allow('admin', 'index');
+	    	
 	    	$this->allow('guest', 'register', 'index');
 	    	$this->allow('guest', 'register', 'checkusername');
-	    	$this->allow('admin', 'register');
 	    	    	
+	    	
     	// Model Resources
-    		//$this->addResource('userShippingAddress');
+    		$this->addResource('userShippingAddress');
     		
-    		//$this->allow('guest', 'userShippingAddress', 'view');
+    		$this->allow('member', 'userShippingAddress', 'create');
+    		$this->allow('member', 'userShippingAddress', 'view', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddress', 'update', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddress', 'delete', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddress', 'setAsDefault', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		
+    		
+    	// Allow admin to do anything
+    		$this->allow('admin');
     		
 	    	
 	    	
