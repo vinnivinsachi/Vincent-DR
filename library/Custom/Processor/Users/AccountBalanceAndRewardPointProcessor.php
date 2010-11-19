@@ -8,12 +8,14 @@
 		private $accountBalanceWithdrawTrackingMapper;
 		private $accountBalanceSummary;
 		public $user;
+		private $db;
 		private $status = array('PENDING', 'POSTED', 'CANCELLED');
 		
-		public function __construct(Application_Model_Users_User $user){
+		public function __construct(Zend_Db_Adapter_Abstract $db, Application_Model_Users_User $user){
 			
 			
 			$this->user= $user;
+			$this->db =$db;
 			$this->pendingRPAndBalanceMapper= new Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking();
 			$this->userAccountBalanceSummaryMapper= new Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary();
 			
@@ -49,7 +51,12 @@
 			
 			Zend_Debug::dump($pendingAccountBalanceTracking);
 			$pendingAccountBalanceTracking->userID = $this->user->userID;
-			return $this->pendingRPAndBalanceMapper->save($pendingAccountBalanceTracking); 
+			
+			$id = $this->pendingRPAndBalanceMapper->save($pendingAccountBalanceTracking);
+			
+			return $id;
+
+			
 		}
 		
 		
@@ -76,7 +83,6 @@
 				echo 'processing here';
 				
 				//fetch the account summary here, and edit them. 
-				
 			}
 		}
 		
@@ -106,6 +112,9 @@
 		//
 		
 		public function widthdrawBalance($amount){
+			$this->db->beginTransaction();
+			
+			try{
 			
 			$this->accountBalanceWithdrawTrackingMapper = new Application_Model_Mapper_Users_UserAccountBalanceWithdrawTracking();
 			
@@ -125,8 +134,9 @@
 			$pendingRewardAndBalanceTracking->description='Withdraw of $'.$amount.' USD from user DanceRialto account balance';
 			$pendingRewardAndBalanceTracking->status = 'PENDING';
 			$pendingRewardAndBalanceTracking->$amountType=$amount;
-			$pendingRewardAndBalanceTrackingID=$this->pendingRPAndBalanceMapper->save($pendingRewardAndBalanceTracking);
 			
+			$pendingRewardAndBalanceTrackingID=$this->pendingRPAndBalanceMapper->save($pendingRewardAndBalanceTracking);
+			$pendingRewardAndBalanceTracking->userPendingRewardPointAndBalanceTrackingID=$pendingRewardAndBalanceTrackingID;
 			Zend_Debug::dump($pendingRewardAndBalanceTracking);
 			
 			$accountBalanceWithdrawTracking->pendingTrackingID=$pendingRewardAndBalanceTrackingID;
@@ -141,19 +151,11 @@
 			$accountSummaryTmp = $accountSummaryMapper->getAccountSummaryForUser($this->user);
 			$this->updatePendingRewardPointsAndBalanceForUser($accountSummaryTmp, $pendingRewardAndBalanceTracking);
 			
-			/*
-			$this->accountBalanceWithdrawTracking = new DatabaseObject_Account_UserAccountBalanceWithdrawTracking($this->db);
-
-			$this->accountBalanceWithdrawTracking->user_id=$this->user->getId();
-			$this->accountBalanceWithdrawTracking->balance_withdraw_amount = $amount;
-			$userPendingTracking = $this->updatePendingRewardPointsAndBalanceForUser('BALANCE_DEDUCTION', $amount, 'caused_by_user_id', $this->user->getId(), 'Withdraw of $'.$amount.' USD from user DanceRialto account balance');
-			$this->accountBalanceWithdrawTracking->pending_tracking_id = $userPendingTracking;
-			if($this->accountBalanceWithdrawTracking->save()){
-				echo 'withdraw successful';
-			}else{
-				echo 'not working';
+			$this->db->commit();
+			}catch(Exception $e){
+				$this->db->rollback();
+				echo $e->getMessage();
 			}
-			*/
 		}
 		
 		public function transferBalance($amount, $targetUserEmail, $message=''){

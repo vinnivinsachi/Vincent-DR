@@ -23,11 +23,13 @@ abstract class Custom_Model_Mapper_Profile_Abstract extends Custom_Model_Mapper_
 		
 		$resultSet = $this->getDbTable()->fetchAll($select);
 		$profiles = new $this->_modelClass();
+		
 		foreach($resultSet as $row) {
 			$rowData = $row->toArray();
 			$key = $row->profileKey;
 			$profiles->$key = $row->profileValue;
 		}
+		
 		return $profiles;
 	}
 	

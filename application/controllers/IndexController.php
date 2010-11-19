@@ -40,7 +40,6 @@ class IndexController extends Custom_Zend_Controller_Action
 			$user->setAccountRewardPointsAndBalance($accountSummary);
 			$accountSummaryMapper->save($accountSummary);
 		}else{
-			
 			Zend_Debug::dump($accountSummaryTmp);
 			$user->setAccountRewardPointsAndBalance($accountSummaryTmp[0]);
 		}

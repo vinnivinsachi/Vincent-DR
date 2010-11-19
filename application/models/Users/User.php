@@ -19,7 +19,6 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $status;
 	public $rewardPoints;
 	public $verification;
-	public $userType;
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;

@@ -67,7 +67,6 @@
 			$currentWithdraws = DatabaseObject_Helper_UserManager::loadUserWithdraws($this->db, $this->userObject->getId());
 			$this->view->currentWithdraws = $currentWithdraws;
 			$this->view->accountBalance = $this->userObject->accountBalanceSummary;
-
 		}
 		
 		public function balancetransferAction(){
