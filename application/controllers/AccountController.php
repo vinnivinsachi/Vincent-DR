@@ -9,13 +9,16 @@ class AccountController extends Custom_Zend_Controller_Action
 			 			   ->initContext();
     }
     
+    // checks for a logged in user and
+    // sets $this->userMapper and fetches the user from the database and
+    // sets $this->user
     private function getLoggedInUser() {
     	if($this->_auth->hasIdentity()) {
 			$this->usersMapper = new Application_Model_Mapper_Users_UsersMapper;
 			// get user info
 				$this->user = $this->usersMapper->findByUsername($this->loggedInUser->username);
 		}
-		else return null;
+		else throw new Exception ('No user is logged in');
     }
 
     public function indexAction() {
