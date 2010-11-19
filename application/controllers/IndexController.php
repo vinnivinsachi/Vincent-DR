@@ -10,6 +10,13 @@ class IndexController extends Custom_Zend_Controller_Action
     public function indexAction() {
         // action body
         
+    	// ACL
+//    	$user = new Application_Model_Users_User;
+//    	$address = new Application_Model_Users_ShippingAddress;
+//    	
+//    	if($acl->isAllowed($user, $address, 'edit')) print 'YES';
+//    	else print 'NO';
+    	
     	// STORES
 //    	$store = new Application_Model_Stores_Store;
 //    	$store->storeDisplayName = 'Dance Wear-Ann Arbor';
@@ -19,6 +26,7 @@ class IndexController extends Custom_Zend_Controller_Action
     	
     	// USERS
 //        $user = new Application_Model_Users_User;
+//        Zend_Debug::dump($user);
 //        $user->profiles = new Application_Model_Profiles;
 //        $user->profiles->color = 'blue';
 //        $user->profiles->dress = null;

@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Users_User extends Custom_Model_Abstract
+class Application_Model_Users_User extends Custom_Model_Abstract implements Zend_Acl_Role_Interface
 {
 	
 	public $userID;
@@ -36,5 +36,10 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	protected $defaultShippingAddress;
 	protected $accountRewardPointsAndBalanceSummary;
 	protected $profiles;
+	
+	
+	public function getRoleId() {
+		return $this->role;
+	}
 	
 }
