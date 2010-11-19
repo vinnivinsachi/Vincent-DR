@@ -17,7 +17,7 @@ class AccountController extends Custom_Zend_Controller_Action
 			// get user info
 				$this->user = $this->usersMapper->findByUsername($this->loggedInUser->username);
 		}
-		else throw new Exception('User not logged in: In account/details');
+		else throw new Exception('User not logged in: In Account controller');
     }
 
     public function indexAction() {

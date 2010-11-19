@@ -19,7 +19,6 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $status;
 	public $rewardPoints;
 	public $verification;
-	public $userType;
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;
@@ -29,6 +28,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $affiliation;
 	public $experience;
 	public $defaultShippingAddressID;
+	public $dateUpdated;
 
 	
 	// private variables won't show up in SQL queries
@@ -36,10 +36,5 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	protected $defaultShippingAddress;
 	protected $accountRewardPointsAndBalanceSummary;
 	protected $profiles;
-	
-	public function __construct(array $options = null) {
-		parent::__construct($options);
-		$this->dateCreated = date('Y-m-d H:i:s');
-	}
 	
 }
