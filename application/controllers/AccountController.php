@@ -5,29 +5,27 @@ class AccountController extends Custom_Zend_Controller_Action
 
     public function init() {
     	parent::init();  // Because this is a custom controller class
-    	$this->_ajaxContext->addActionContext('checkusername', 'json')
-    					   ->addActionContext('editbasicinfo', 'json')
+    	$this->_ajaxContext->addActionContext('editbasicinfo', 'json')
 			 			   ->initContext();
     }
     
-    private function requireLoggedIn() {
+    private function getLoggedInUser() {
     	if($this->_auth->hasIdentity()) {
 			$this->usersMapper = new Application_Model_Mapper_Users_UsersMapper;
 			// get user info
 				$this->user = $this->usersMapper->findByUsername($this->loggedInUser->username);
 		}
-		else {
-			$this->msg('Please login to view this page');
-			$this->_helper->redirector('login', 'authentication');
-		}
+		else return null;
     }
 
     public function indexAction() {
-        $this->requireLoggedIn();
+    	// index action
     }
     
 	public function detailsAction(){
-		$this->requireLoggedIn();
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 		
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
@@ -42,7 +40,9 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editbasicinfoAction(){
-		$this->requireLoggedIn();
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 		
 		// send the user to the view
 			$this->view->user = $this->user;
@@ -64,7 +64,9 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editshippingAction() {
-		$this->requireLoggedIn();
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 		
 		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 		
@@ -108,7 +110,9 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function setdefaultshippingAction() {
-		$this->requireLoggedIn();
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 		
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
@@ -142,7 +146,9 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function deleteshippingAction() {
-		$this->requireLoggedIn();
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 			
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		

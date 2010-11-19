@@ -9,13 +9,6 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
         // action body
-        
-    	// ACL
-//    	$user = new Application_Model_Users_User;
-//    	$address = new Application_Model_Users_ShippingAddress;
-//    	
-//    	if($acl->isAllowed($user, $address, 'edit')) print 'YES';
-//    	else print 'NO';
     	
     	// STORES
 //    	$store = new Application_Model_Stores_Store;
