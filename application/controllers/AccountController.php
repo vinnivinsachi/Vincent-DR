@@ -10,21 +10,24 @@ class AccountController extends Custom_Zend_Controller_Action
 			 			   ->initContext();
     }
     
-    public function preDispatch() {
-    	parent::preDispatch();
+    private function requireLoggedIn() {
     	if($this->_auth->hasIdentity()) {
 			$this->usersMapper = new Application_Model_Mapper_Users_UsersMapper;
 			// get user info
 				$this->user = $this->usersMapper->findByUsername($this->loggedInUser->username);
 		}
-		else throw new Exception('User not logged in: In Account controller');
+		else {
+			$this->msg('Please login to view this page');
+			$this->_helper->redirector('login', 'authentication');
+		}
     }
 
     public function indexAction() {
-        // action body
+        $this->requireLoggedIn();
     }
     
 	public function detailsAction(){
+		$this->requireLoggedIn();
 		
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
@@ -39,6 +42,8 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editbasicinfoAction(){
+		$this->requireLoggedIn();
+		
 		// send the user to the view
 			$this->view->user = $this->user;
 			
@@ -59,6 +64,8 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editshippingAction() {
+		$this->requireLoggedIn();
+		
 		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 		
 		// if editing an existing shipping address
@@ -101,6 +108,8 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function setdefaultshippingAction() {
+		$this->requireLoggedIn();
+		
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
 		// if no id is provided
@@ -132,7 +141,9 @@ class AccountController extends Custom_Zend_Controller_Action
 		$this->_helper->redirector('details');
 	}
 	
-	public function deleteshippingAction() {		
+	public function deleteshippingAction() {
+		$this->requireLoggedIn();
+			
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
 		// if no id is provided
@@ -162,6 +173,28 @@ class AccountController extends Custom_Zend_Controller_Action
         $this->msg('Your shipping address has been deleted');
         
         $this->_helper->redirector('details');
+	}
+	
+	public function profileAction() {
+		$username = $this->_request->getQuery('username');
+		
+		// if no username is provided
+			if(!isset($username) || $username == '') {
+				$this->msg(array('error' => 'No username provided to view'));
+				$this->_helper->redirector('index', 'index');
+			}
+		
+		// get user info
+			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+			$user = $usersMapper->findByUsername($username);
+			
+		// check that user exists
+			if(!$user) {
+				$this->msg(array('error' => 'There is no user with that username'));
+				$this->_helper->redirector('index', 'index');
+			}
+			
+		$this->view->user = $user;
 	}
 
 
