@@ -23,7 +23,7 @@ class StoreController extends Custom_Zend_Controller_Action
     }
 
     public function indexAction() {
-       
+       // need to check if user owns this store
     }
     
     
