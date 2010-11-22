@@ -10,6 +10,9 @@ class Application_Model_Stores_Store extends Custom_Model_Abstract implements Ze
 	public $dateCreated;
 	public $defaultShippingAddressID;
 	public $dateUpdated;
+	public $storePhone;
+	public $storeFax;
+	public $storeEmail;
 
 	
 	// private variables won't show up in SQL queries

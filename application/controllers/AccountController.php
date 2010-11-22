@@ -57,8 +57,10 @@ class AccountController extends Custom_Zend_Controller_Action
 		// get list of stores for this user
 			$linkMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
 			$storeIDs = $linkMapper->getStoresForUser($this->user->userID, array('format' => 'storeIDArray'));
-			$storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
-			$userStores = $storesMapper->findByColumn('storeID', $storeIDs, array('include' => array('storeName', 'storeDisplayName')));
+			if($storeIDs) {
+				$storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
+				$userStores = $storesMapper->findByColumn('storeID', $storeIDs, array('include' => array('storeName', 'storeDisplayName')));
+			}
 			
 		// attach the stores to the user
 			$this->user->stores = $userStores;

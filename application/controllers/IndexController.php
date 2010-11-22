@@ -9,7 +9,7 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
         // action body
-    	
+
     	// LINK TABLES
 //    	$mapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
 //    	$exists = $mapper->linkExists(3, 64);
@@ -34,3 +34,4 @@ class IndexController extends Custom_Zend_Controller_Action
 //        $mapper->saveForAssociatedID($user->profiles, $user->userID);
 //        print var_dump($user);
     }
+}
