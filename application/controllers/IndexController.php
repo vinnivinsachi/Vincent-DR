@@ -10,6 +10,9 @@ class IndexController extends Custom_Zend_Controller_Action
     public function indexAction() {
         // action body
     	
+    	// LINK TABLES
+    	
+    	
     	// STORES
 //    	$store = new Application_Model_Stores_Store;
 //    	$store->storeDisplayName = 'Dance Wear-Ann Arbor';

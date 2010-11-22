@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Stores_Store extends Custom_Model_Abstract
+class Application_Model_Stores_Store extends Custom_Model_Abstract implements Zend_Acl_Resource_Interface
 {
 	
 	public $storeID;
@@ -16,4 +16,7 @@ class Application_Model_Stores_Store extends Custom_Model_Abstract
 	protected $shippingAddresses;
 	protected $defaultShippingAddress;
 	
+	public function getResourceId() {
+		return 'storeModel';
+	}
 }

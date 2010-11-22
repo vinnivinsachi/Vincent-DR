@@ -13,7 +13,7 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 			$this->_ajaxContext = $this->_helper->getHelper('AjaxContext');
 		
 		// Enable ACL
-			$this->_acl = new Application_Model_Acl;
+			$this->_acl = new Application_Model_Acl_Acl;
 	}
 	
 	public function preDispatch() {

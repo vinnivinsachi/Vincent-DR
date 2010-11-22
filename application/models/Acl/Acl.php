@@ -1,5 +1,5 @@
 <?php
-class Application_Model_Acl extends Zend_Acl
+class Application_Model_Acl_Acl extends Zend_Acl
 {
 	public function __construct() { 
 		
@@ -17,14 +17,17 @@ class Application_Model_Acl extends Zend_Acl
     		$this->addResource('error');
 	    	$this->addResource('index');
 	    	$this->addResource('register');
+	    	$this->addResource('store');
+
 	    	
 	    	$this->allow('guest', 'account', 'profile');
-	    	$this->allow('member', 'account', 'index');
 	    	$this->allow('member', 'account', 'details');
+	    	$this->allow('member', 'account', 'deleteshipping');
 	    	$this->allow('member', 'account', 'editbasicinfo');
 	    	$this->allow('member', 'account', 'editshipping');
+	    	$this->allow('member', 'account', 'index');
 	    	$this->allow('member', 'account', 'setdefaultshipping');
-	    	$this->allow('member', 'account', 'deleteshipping');
+	    	
 	    	
 	    	$this->allow('guest', 'authentication', 'login');
 	    	$this->allow('member', 'authentication', 'logout');
@@ -33,18 +36,26 @@ class Application_Model_Acl extends Zend_Acl
 	    	
 	    	$this->allow('guest', 'index', 'index');
 	    	
-	    	$this->allow('guest', 'register', 'index');
 	    	$this->allow('guest', 'register', 'checkusername');
+	    	$this->allow('guest', 'register', 'index');
+	    	
+	    	$this->allow('guest', 'store', 'index');
+	    	$this->allow('guest', 'store', 'profile');
+	    	$this->allow('member', 'store', 'details');
 	    	    	
 	    	
     	// Model Resources
-    		$this->addResource('userShippingAddress');
+    		$this->addResource('storeModel');
+    		$this->addResource('userShippingAddressModel');
     		
-    		$this->allow('member', 'userShippingAddress', 'create');
-    		$this->allow('member', 'userShippingAddress', 'view', new Application_Model_Acl_Users_ShippingAddressAssertion);
-    		$this->allow('member', 'userShippingAddress', 'update', new Application_Model_Acl_Users_ShippingAddressAssertion);
-    		$this->allow('member', 'userShippingAddress', 'delete', new Application_Model_Acl_Users_ShippingAddressAssertion);
-    		$this->allow('member', 'userShippingAddress', 'setAsDefault', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'store', 'view', new Application_Model_Acl_Stores_UserAssertion);
+    		
+    		$this->allow('member', 'userShippingAddressModel', 'create');
+    		$this->allow('member', 'userShippingAddressModel', 'view', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddressModel', 'update', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddressModel', 'delete', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		$this->allow('member', 'userShippingAddressModel', 'setAsDefault', new Application_Model_Acl_Users_ShippingAddressAssertion);
+    		
     		
     		
     	// Allow admin to do anything

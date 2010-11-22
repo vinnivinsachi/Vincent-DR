@@ -25,6 +25,22 @@ class AccountController extends Custom_Zend_Controller_Action
     	// index action
     }
     
+	public function profileAction() {
+		$username = $this->_request->getQuery('username');
+		
+		// if no username is provided
+			if(!isset($username) || $username == '') $this->errorAndRedirect('No username provided to view', 'index', 'index');
+		
+		// get user info
+			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+			$user = $usersMapper->findByUsername($username);
+			
+		// check that user exists
+			if(!$user) $this->errorAndRedirect('There is no user with that username', 'index', 'index');
+			
+		$this->view->user = $user;
+	}
+    
 	public function detailsAction(){
 		// set up the usersMapper and
 		// get the logged in user's info from the database
@@ -169,22 +185,6 @@ class AccountController extends Custom_Zend_Controller_Action
 	        $this->msg('Your shipping address has been deleted');
         
         $this->_helper->redirector('details');
-	}
-	
-	public function profileAction() {
-		$username = $this->_request->getQuery('username');
-		
-		// if no username is provided
-			if(!isset($username) || $username == '') $this->errorAndRedirect('No username provided to view', 'index', 'index');
-		
-		// get user info
-			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
-			$user = $usersMapper->findByUsername($username);
-			
-		// check that user exists
-			if(!$user) $this->errorAndRedirect('There is no user with that username', 'index', 'index');
-			
-		$this->view->user = $user;
 	}
 
 }

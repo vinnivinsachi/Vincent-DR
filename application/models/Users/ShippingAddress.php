@@ -15,7 +15,7 @@ class Application_Model_Users_ShippingAddress extends Custom_Model_Abstract impl
 
 	
 	public function getResourceId() {
-		return 'userShippingAddress';
+		return 'userShippingAddressModel';
 	}
 }
 
