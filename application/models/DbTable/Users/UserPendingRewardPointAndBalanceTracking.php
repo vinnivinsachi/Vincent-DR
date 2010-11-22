@@ -4,5 +4,7 @@ class Application_Model_DbTable_Users_UserPendingRewardPointAndBalanceTracking e
 {
     protected $_name = 'userPendingRewardPointAndBalanceTracking';
 	protected $_primary = 'userPendingRewardPointAndBalanceTrackingID';
+	public $uniqueIDColumn = 'userPendingRewardPointAndBalanceTrackingUniqueID';
+
 }
 ?>

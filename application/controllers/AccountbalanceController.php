@@ -36,8 +36,6 @@
 		public function indexAction(){			
 			
 			
-			
-			
 			/*$userAccountBalanceAndRewardPointProcessor = new AccountBalanceAndRewardPointProcessor($this->db, $this->userObject);
 			
 			$rewardPointsAndBalanceRecords = $userAccountBalanceAndRewardPointProcessor->loadRewardPointsAndBalanceForUser();
@@ -69,7 +67,6 @@
 			$currentWithdraws = DatabaseObject_Helper_UserManager::loadUserWithdraws($this->db, $this->userObject->getId());
 			$this->view->currentWithdraws = $currentWithdraws;
 			$this->view->accountBalance = $this->userObject->accountBalanceSummary;
-
 		}
 		
 		public function balancetransferAction(){

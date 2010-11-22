@@ -67,19 +67,6 @@ class Application_Model_Mapper_Users_UserAccountBalanceWithdrawTracking extends 
 		return parent::save($pendingTracking);
 	}
 	
-	public function createUniqueID() {
-		do {
-			$uniqueID = Text_Password::create(10, 'unpronounceable');
-		} while($this->findByUniqueID($uniqueID));
-		return $uniqueID;
-	}
 	
-	public function findByUniqueID($uniqueID, array $options = null) {
-		
-		$column = $this->findByColumn('userAccountBalanceWithdrawTrackingUniqueID', $uniqueID, $options);
-		if(count($column) == 0) return null;
-		if(count($column) > 1) throw new Exception('More than one user with the uniqueID: '.$uniqueID);
-		return $column[0];
-	}
 }
 ?>

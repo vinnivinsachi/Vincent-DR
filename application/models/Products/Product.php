@@ -6,31 +6,27 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	public $purchaseType;
 	public $productCategory;
 	public $inventoryAttributeTable;
-	public $productType;
 	public $productTag;
 	public $productPriceRange;
 	
 	public $domesticShippingRate;
 	public $internationalShippingRate;
-	public $uploaderID;
-	public $uploaderUsername;
-	public $uploaderNetwork;
-	public $uploaderEmail;
+	public $sellerType;
+	public $sellerDisplayName;
+	public $sellerName;
 	public $url;
 	public $name;
 	public $price;
 	public $onSale;
 	public $salesPrice;
 	public $brand;
-	public $inventoryReference;
-	public $uniqueIdentifierForJS;
+
 	public $returnAllowed;
 	public $flagged;
 	
 	public $dateCreated;
 	public $status;
 	public $listingType;
-	public $new;
 	public $videoYoutube;
 	public $rewardPoint;
 	public $backorderTime;
@@ -38,7 +34,12 @@ class Application_Model_Products_Product extends Custom_Model_Abstract
 	public $competitionUsage;
 	public $lastStatusChange;
 	
-	public $images = array();
-	public $inventory = array();
-	public $attributes = array();
+	protected $_images = array();
+	protected $_inventory = array();
+	protected $_custAttributes = array();
+	protected $_reviews = array();
+	protected $_sellerInfo = array();
+	protected $_shoutOuts = array();
 }
+
+?>
