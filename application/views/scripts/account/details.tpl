@@ -55,7 +55,7 @@
 	    
 	    
 	    <!-- If user is a general seller -->
-	    {if $user->userType =='generalSeller' ||$user->userType =='storeSeller'} 
+	    {if $user->role =='generalSeller' ||$user->role =='storeSeller'} 
 	    <fieldset>
 	    	<legend>Sellers Information</legend>
 	        Paypal Email: {$user->sellerInfo->paypal_email}<br />
@@ -68,9 +68,9 @@
 	        {/if}
 	        {$user->sellerInfo->city}, {$user->sellerInfo->state} {$user->sellerInfo->zip}<br />
 	        {$user->sellerInfo->country}<br />
-	        {if $user->userType =='generalSeller'}
+	        {if $user->role =='generalSeller'}
 	        <a href='{$siteRoot}/account/upgradegeneralseller'>Edit</a><br />
-	        {elseif $user->userType =='storeSeller'}
+	        {elseif $user->role =='storeSeller'}
 	        <a href='{$siteRoot}/account/upgradestoreseller'>Edit</a>
 	        {/if}
 	  	</fieldset>
@@ -116,7 +116,7 @@
 	     <!-- Account actions -->
 	     <fieldset>
 	    	<legend>Account Actions</legend>
-	    		{if $user->userType =='member'}
+	    		{if $user->role =='member'}
 	            	<a href='{$siteRoot}/account/upgradegeneralseller'>Sell some of your dancewear!</a><br />
 	            {/if}
 	            {if $user->isInstructor == 0}

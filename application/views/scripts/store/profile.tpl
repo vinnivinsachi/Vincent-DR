@@ -1,10 +1,12 @@
 {include file="layouts/$layout/header.tpl"}
 
 <div id='content-wide'>
-
-	{include file='authentication/forms/loginForm.tpl'}
 	
-	{include file='authentication/js/loginJS.tpl'}
+		
+	    <fieldset> 	
+			<legend>{$store->storeDisplayName}</legend>
+		    	STUFF ABOUT STORE HERE
+		</fieldset>  
 
 </div>
 

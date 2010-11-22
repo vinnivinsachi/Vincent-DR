@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Users_User extends Custom_Model_Abstract
+class Application_Model_Users_User extends Custom_Model_Abstract implements Zend_Acl_Role_Interface
 {
 	
 	public $userID;
@@ -13,7 +13,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $measurement;
 	public $firstName;
 	public $lastName;
-	public $role;
+	public $role = 'member';
 	public $isInstructor;
 	public $findingPartner;
 	public $status;
@@ -28,6 +28,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	public $affiliation;
 	public $experience;
 	public $defaultShippingAddressID;
+	public $dateUpdated;
 
 	
 	// private variables won't show up in SQL queries
@@ -36,4 +37,9 @@ class Application_Model_Users_User extends Custom_Model_Abstract
 	protected $accountRewardPointsAndBalanceSummary;
 	protected $profiles;
 	
-}?>
+	
+	public function getRoleId() {
+		return $this->role;
+	}
+	
+}

@@ -5,26 +5,30 @@ class AccountController extends Custom_Zend_Controller_Action
 
     public function init() {
     	parent::init();  // Because this is a custom controller class
-    	$this->_ajaxContext->addActionContext('checkusername', 'json')
-    					   ->addActionContext('editbasicinfo', 'json')
+    	$this->_ajaxContext->addActionContext('editbasicinfo', 'json')
 			 			   ->initContext();
     }
     
-    public function preDispatch() {
-    	parent::preDispatch();
+    // checks for a logged in user and
+    // sets $this->userMapper and fetches the user from the database and
+    // sets $this->user
+    private function getLoggedInUser() {
     	if($this->_auth->hasIdentity()) {
 			$this->usersMapper = new Application_Model_Mapper_Users_UsersMapper;
 			// get user info
 				$this->user = $this->usersMapper->findByUsername($this->loggedInUser->username);
 		}
-		else throw new Exception('User not logged in: In account/details');
+		else throw new Exception ('No user is logged in');
     }
 
     public function indexAction() {
-        // action body
+    	// index action
     }
     
 	public function detailsAction(){
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
 		
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
@@ -39,6 +43,10 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editbasicinfoAction(){
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
+		
 		// send the user to the view
 			$this->view->user = $this->user;
 			
@@ -59,19 +67,23 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function editshippingAction() {
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
+		
 		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 		
 		// if editing an existing shipping address
 		if($this->_request->getQuery('shippingAddressID')) {
 			$address = $addressMapper->find($this->_request->getQuery('shippingAddressID'));
 			// if the address doesn't belong to logged in user
-				if($address->userID != $this->user->userID) {
-					$this->msg(array('error' => 'You can only edit your own addresses!'));
-					$this->_helper->redirector('details');
-				}
+				if(!$this->_acl->isAllowed($this->user, $address, 'update')) $this->errorAndRedirect('You can only edit your own addresses!', 'details');
 		}
 		// if creating a new address
-		else $address = new Application_Model_Users_ShippingAddress(array('userID' => $this->user->userID));
+		else {
+			$address = new Application_Model_Users_ShippingAddress(array('userID' => $this->user->userID));
+			if(!$this->_acl->isAllowed($this->user, $address, 'create')) $this->errorAndRedirect('You cannot create new addresses', 'details');
+		}
 		
 		// process the form if it was submitted
 		if($this->_request->isPost()) {
@@ -101,69 +113,79 @@ class AccountController extends Custom_Zend_Controller_Action
 	}
 	
 	public function setdefaultshippingAction() {
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
+		
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
 		// if no id is provided
-			if(!isset($addressID) || $addressID == '') {
-				$this->msg(array('error' => 'No shipping address was chosen to set as default'));
-				$this->_helper->redirector('details');
-			}
+			if(!isset($addressID) || $addressID == '') $this->errorAndRedirect('No shipping address was chosen to set as the default address', 'details');
 		
-		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
-		$address = $addressMapper->find($addressID);
+		// get the address from the database
+			$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+			$address = $addressMapper->find($addressID);
 		
 		// if couldn't find the address in the database
-			if(!$address) {
-				$this->msg(array('error' => 'Couldn\' find that shipping address'));
-				$this->_helper->redirector('details');
-			}
+			if(!$address) $this->errorAndRedirect('Coun\'t find that shipping address', 'details');
 			
-		// if the address doesn't belong to logged in user
-			if($address->userID != $this->user->userID) {
-				$this->msg(array('error' => 'You can only delete your own addresses!'));
-				$this->_helper->redirector('details');
-			}
+		// make sure the user has priveleges to set this address as default
+			if(!$this->_acl->isAllowed($this->user, $address, 'setAsDefault')) $this->errorAndRedirect('You do not have priveleges to set this address as your default', 'details');
 		
-		// if it belongs to the logged in user
-		$this->user->setOptions(array('defaultShippingAddressID' => $addressID));
-        $this->usersMapper->save($this->user);
-        $this->msg('New default shipping address has been saved');
+		// update the user table
+			$this->user->setOptions(array('defaultShippingAddressID' => $addressID));
+	        $this->usersMapper->save($this->user);
+        
+	  	// success message
+	    	$this->msg('New default shipping address has been saved');
 		
 		$this->_helper->redirector('details');
 	}
 	
-	public function deleteshippingAction() {		
+	public function deleteshippingAction() {
+		// set up the usersMapper and
+		// get the logged in user's info from the database
+			$this->getLoggedInUser();
+			
 		$addressID = $this->_request->getQuery('shippingAddressID');
 		
 		// if no id is provided
-			if(!isset($addressID) || $addressID == '') {
-				$this->msg(array('error' => 'No shipping address was chosen to delete'));
-				$this->_helper->redirector('details');
-			}
+			if(!isset($addressID) || $addressID == '') $this->errorAndRedirect('No shipping address was chosen to delete', 'details');
 		
 		// get the address mapper and the requested address
-		$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
-		$address = $addressMapper->find($addressID);
+			$addressMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
+			$address = $addressMapper->find($addressID);
 		
 		// if couldn't find the address in the database
-			if(!$address) {
-				$this->msg(array('error' => 'Couldn\' find that shipping address'));
-				$this->_helper->redirector('details');
-			}
+			if(!$address) $this->errorAndRedirect('Couldn\'t find that shipping address', 'details');
 		
-		// if the address doesn't belong to logged in user
-			if($address->userID != $this->user->userID) {
-				$this->msg(array('error' => 'You can only delete your own addresses!'));
-				$this->_helper->redirector('details');
-			}
+		// make sure the user has priveleges to delete this address
+			if(!$this->_acl->isAllowed($this->user, $address, 'delete')) $this->errorAndRedirect('You do not have priveleges to delete this address', 'details');
 		
-		// if it belongs to the logged in user
-        $addressMapper->delete($addressID);
-        $this->msg('Your shipping address has been deleted');
+		// delete the address
+	        $addressMapper->delete($addressID);
+	        
+	    // success message
+	        $this->msg('Your shipping address has been deleted');
         
         $this->_helper->redirector('details');
 	}
-
+	
+	public function profileAction() {
+		$username = $this->_request->getQuery('username');
+		
+		// if no username is provided
+			if(!isset($username) || $username == '') $this->errorAndRedirect('No username provided to view', 'index', 'index');
+		
+		// get user info
+			$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+			$user = $usersMapper->findByUsername($username);
+			
+		// check that user exists
+			if(!$user) $this->errorAndRedirect('There is no user with that username', 'index', 'index');
+			
+		$this->view->user = $user;
+	}
 
 }
 

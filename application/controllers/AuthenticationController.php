@@ -12,6 +12,9 @@ class AuthenticationController extends Custom_Zend_Controller_Action
     }
     
     public function loginAction() {
+    	// logout the current user if logged in
+    		$this->logoutUser();
+    	
     	$form = new Application_Form_Authentication_Login;
         $request = $this->getRequest();
         // If form was submitted
@@ -19,7 +22,7 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         	// If form is valid
             if($form->isValid($request->getPost())) {
             	// redirect to home page (authentication success)
-                if($this->_validLogin($form->getValues())) $this->_helper->redirector('index', 'index');
+                if($this->_validLogin($form->getValues())) $this->_helper->redirector('index', 'account');
                 // Display error (authentication failure)
                 else $this->_helper->flashMessenger(array('error' => 'Incorrect username / password'));
             }
@@ -30,13 +33,17 @@ class AuthenticationController extends Custom_Zend_Controller_Action
     }
     
 	public function logoutAction() {
-        Zend_Auth::getInstance()->clearIdentity();
+        $this->logoutUser();
         $this->_helper->redirector('login', 'authentication'); // back to login page
     }
     
     
-    
     // ---------------------------------- HELPER METHODS ------------------------------------
+    
+    // logout the current user
+	private function logoutUser() {
+    	Zend_Auth::getInstance()->clearIdentity();
+    }
     
     // Are login credentials valid?
     private function _validLogin($values) {
