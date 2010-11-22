@@ -58,7 +58,6 @@ class Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking ex
 		//new pendingTrackingDefaults
 		if(($uniqueID = $pendingTracking->userPendingRewardPointAndBalanceTrackingUniqueID) === null) {
 			$pendingTracking->dateCreated = date('Y-m-d H:i:s');
-			
 			//this requirs that the abstract method to support the createUniqueID() methods. 
 			$pendingTracking->userPendingRewardPointAndBalanceTrackingUniqueID = $this->createUniqueID();
 		}

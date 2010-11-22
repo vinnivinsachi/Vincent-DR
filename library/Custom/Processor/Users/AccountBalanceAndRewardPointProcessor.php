@@ -11,14 +11,14 @@
 		private $db;
 		private $status = array('PENDING', 'POSTED', 'CANCELLED');
 		
-		public function __construct(Zend_Db_Adapter_Abstract $db, Application_Model_Users_User $user){
+		public function __construct(Application_Model_Users_User $user){
 			
 			
-			$this->user= $user;
-			$this->db =$db;
+			$this->user= $user;			
 			$this->pendingRPAndBalanceMapper= new Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking();
 			$this->userAccountBalanceSummaryMapper= new Application_Model_Mapper_Users_AccountRewardPointsAndBalanceSummary();
 			
+			//print var_dump($db);
 		}
 		
 		public function loadRewardPointsAndBalanceForUser($params = array()){
@@ -29,10 +29,6 @@
 		public function updatePendingRewardPointsAndBalanceForUser($trackingType, Application_Model_Users_UserPendingRewardPointAndBalanceTracking $pendingAccountBalanceTracking)
 		{
 			echo 'here';
-			
-			//$pendingRewardPointModel = new Application_Model_Users_UserPendingRewardPointAndBalanceTracking();
-			//$this->pendingRewardPointAndBalanceTracking= new DatabaseObject_Account_UserPendingRewardPointAndBalanceTracking($this->db);
-			//echo 'user id is: '.$this->user->getId();
 
 			$currentUserAccountBalance = $this->userAccountBalanceSummaryMapper->getAccountSummaryForUser($this->user);
 			
@@ -52,11 +48,9 @@
 			Zend_Debug::dump($pendingAccountBalanceTracking);
 			$pendingAccountBalanceTracking->userID = $this->user->userID;
 			
-			$id = $this->pendingRPAndBalanceMapper->save($pendingAccountBalanceTracking);
 			
-			return $id;
-
 			
+			return $this->pendingRPAndBalanceMapper->save($pendingAccountBalanceTracking);
 		}
 		
 		
@@ -112,10 +106,7 @@
 		//
 		
 		public function widthdrawBalance($amount){
-			$this->db->beginTransaction();
-			
-			try{
-			
+		
 			$this->accountBalanceWithdrawTrackingMapper = new Application_Model_Mapper_Users_UserAccountBalanceWithdrawTracking();
 			
 			$accountBalanceWithdrawTracking = new Application_Model_Users_UserAccountBalanceWithdrawTracking();
@@ -141,6 +132,8 @@
 			
 			$accountBalanceWithdrawTracking->pendingTrackingID=$pendingRewardAndBalanceTrackingID;
 			$accountBalanceWithdrawTracking->status='PENDING';
+			
+			
 			Zend_Debug::dump($accountBalanceWithdrawTracking);
 			
 			$this->accountBalanceWithdrawTrackingMapper->save($accountBalanceWithdrawTracking);
@@ -151,11 +144,7 @@
 			$accountSummaryTmp = $accountSummaryMapper->getAccountSummaryForUser($this->user);
 			$this->updatePendingRewardPointsAndBalanceForUser($accountSummaryTmp, $pendingRewardAndBalanceTracking);
 			
-			$this->db->commit();
-			}catch(Exception $e){
-				$this->db->rollback();
-				echo $e->getMessage();
-			}
+			
 		}
 		
 		public function transferBalance($amount, $targetUserEmail, $message=''){
