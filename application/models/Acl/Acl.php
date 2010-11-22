@@ -42,13 +42,15 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('guest', 'store', 'index');
 	    	$this->allow('guest', 'store', 'profile');
 	    	$this->allow('member', 'store', 'details');
+	    	$this->allow('member', 'store', 'editbasicinfo');
 	    	    	
 	    	
     	// Model Resources
     		$this->addResource('storeModel');
     		$this->addResource('userShippingAddressModel');
     		
-    		$this->allow('member', 'store', 'view', new Application_Model_Acl_Stores_UserAssertion);
+    		$this->allow('member', 'storeModel', 'view', new Application_Model_Acl_Stores_UserAssertion);
+    		$this->allow('member', 'storeModel', 'manage', new Application_Model_Acl_Stores_UserAssertion);
     		
     		$this->allow('member', 'userShippingAddressModel', 'create');
     		$this->allow('member', 'userShippingAddressModel', 'view', new Application_Model_Acl_Users_ShippingAddressAssertion);

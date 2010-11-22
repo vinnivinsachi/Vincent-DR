@@ -24,8 +24,9 @@ class StoreController extends Custom_Zend_Controller_Action
 				if(!isset($storeName)) $this->errorAndRedirect('No store was provided to the store controller');
 				$this->storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
 				$this->store = $this->storesMapper->findByStoreName($storeName);
+				if(!$this->store) $this->errorAndRedirect('Cannot find a store by that name');
 		}
-		else throw new Exception ('No user is logged in');
+		else $this->errorAndRedirect('You must login to view this page', 'login', 'authentication');
     }
 
     public function indexAction() {
@@ -59,7 +60,18 @@ class StoreController extends Custom_Zend_Controller_Action
 		// get user and store info from database
 			$this->getStoreAndUser();
 			
-		// send to the view
+		// check priveleges
+			if(!$this->_acl->isAllowed($this->user, $this->store, 'manage')) $this->errorAndRedirect('You do not have priveleges to manage that store', 'index', 'index');
+			
+		// get list of users for that store
+			$linkMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
+			$storeMemberIDs = $linkMapper->getUsersForStore($this->store->storeID, array('format' => 'userIDArray'));
+			$storeUsers = $this->usersMapper->findByColumn('userID', $storeMemberIDs, array('include' => array('username', 'userUniqueID')));
+			
+		// attach the users to the store
+			$this->store->members = $storeUsers;
+			
+		// send store to the view
 			$this->view->store = $this->store;
 	}
 

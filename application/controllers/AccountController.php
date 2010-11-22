@@ -54,6 +54,15 @@ class AccountController extends Custom_Zend_Controller_Action
 			foreach($this->user->shippingAddresses as $address) if($address->shippingAddressID == $this->user->defaultShippingAddressID) $defaultShipping = $address;
 			$this->user->defaultShippingAddress = $defaultShipping;
 			
+		// get list of stores for this user
+			$linkMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
+			$storeIDs = $linkMapper->getStoresForUser($this->user->userID, array('format' => 'storeIDArray'));
+			$storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
+			$userStores = $storesMapper->findByColumn('storeID', $storeIDs, array('include' => array('storeName', 'storeDisplayName')));
+			
+		// attach the stores to the user
+			$this->user->stores = $userStores;
+			
 		// send the user to the view
 			$this->view->user = $this->user;
 	}

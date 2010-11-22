@@ -78,8 +78,12 @@ abstract class Custom_Model_Mapper_Abstract
 		$columns = $this->getColumns($options);
 		
 		$select = $this->getDbTable()->select();
-		$select->from($this->getDbTable(), $columns)
-			   ->where("$column = ?", $search);
+		$select->from($this->getDbTable(), $columns);
+		
+		// if $search is an array
+			if(is_array($search)) $select->where("$column IN (?)", $search);
+		// else	
+			else  $select->where("$column = ?", $search);
 		
 		$resultSet = $this->getDbTable()->fetchAll($select);
 		$objects = array();

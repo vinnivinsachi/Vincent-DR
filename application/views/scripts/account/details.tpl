@@ -131,10 +131,27 @@
 	            {/if}
 	         </form>
 	    </fieldset>
+	    
+	    
+	    <!-- Associated Stores -->
+		<fieldset> 	
+			<legend>Stores</legend>
+		    <table>
+				<tr>
+					<th>Store Name</th>
+					<th>Role</th>
+				</tr>
+				
+				{foreach from=$user->stores item=store}
+					<tr>
+						<td style='text-align:center'><a href='{$siteRoot}/store/details?storeName={$store->storeName}'>{$store->storeDisplayName}</a></td>
+						<td style='text-align:center'>&nbsp;</td>
+					</tr>
+				{/foreach}
+				
+			</table>
+		</fieldset>  
 	            
-	      
-
-
 </div>
 
 {include file="layouts/$layout/footer.tpl"}

@@ -7,8 +7,12 @@ class Application_Model_Acl_Stores_UserAssertion implements Zend_Acl_Assert_Inte
 						   $privelege = null)
 	{
 		
-		// can only do anything if the user owns the address
-//		if($user->userID == $store->userID) return true;
-//		else return false;
+		// check for a link in the link table
+			$linksMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
+			$link = $linksMapper->findLink($store->storeID, $user->userID);
+			if(!$link) return false;
+		
+		// check for certain priveleges based on linkRole
+			return true;
 	}
 }

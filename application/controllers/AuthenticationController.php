@@ -12,9 +12,6 @@ class AuthenticationController extends Custom_Zend_Controller_Action
     }
     
     public function loginAction() {
-    	// logout the current user if logged in
-    		$this->logoutUser();
-    	
     	$form = new Application_Form_Authentication_Login;
         $request = $this->getRequest();
         // If form was submitted
@@ -47,6 +44,9 @@ class AuthenticationController extends Custom_Zend_Controller_Action
     
     // Are login credentials valid?
     private function _validLogin($values) {
+    	// logout the current user if logged in
+    		$this->logoutUser();
+    		
     	// Get our authentication adapter and check credentials
         $adapter = self::_getAuthAdapter();
         $adapter->setIdentity($values['username']); // set username to check
