@@ -22,7 +22,7 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         	// If form is valid
             if($form->isValid($request->getPost())) {
             	// redirect to home page (authentication success)
-                if($this->_validLogin($form->getValues())) $this->_helper->redirector('account', 'index');
+                if($this->_validLogin($form->getValues())) $this->_helper->redirector('index', 'account');
                 // Display error (authentication failure)
                 else $this->_helper->flashMessenger(array('error' => 'Incorrect username / password'));
             }
