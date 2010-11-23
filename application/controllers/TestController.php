@@ -14,6 +14,16 @@ class TestController extends Custom_Zend_Controller_Action
 	}
 
     public function indexAction() {
+		
+		$image = new Application_Model_Products_ProductImage();
+		$image->sourceName = 'products';
+		$image->sourceTypeTitle = 'productTag';
+		$image->sourceTypeName = 'mens standard dance shoes';
+		$image->sourceID = '3';
+		$image->filename = 'blah.jpg';
+		
+		$imageMapper = new Application_Model_Mapper_Products_ProductImagesMapper();
+		$imageMapper->save($image);
         // action body
 		echo 'stuff';
 		//Zend_Debug::dump(Zend_Registry::get('config'));
@@ -124,6 +134,20 @@ class TestController extends Custom_Zend_Controller_Action
 		//***********end of the testing for updatePendingBalanceTrakcing 
     	$this->render('index');
     }
+	
+	public function imagetestAction(){
+		
+		//takes in image files and then process them by thumbnail them and display them. 
+		
+		
+		Zend_Debug::dump($_FILES['generalImages']);
+		Custom_Processor_Images_ImageProcessor::uploadImage($this->_db, $_FILES['generalImages'], 'productImages', 'product', 'productTag', '3');
+		//DatabaseObject_Helper_ImageUpload::uploadImage($_FILES['generalImages'], $this->db,'product_images',$param['product_tag'], $fp->product->getId(),$fp->product->name);
+		
+		$this->render('index');
+		
+		
+	}
 	
 	//productListing testing section
 	public function productsavetestingAction(){

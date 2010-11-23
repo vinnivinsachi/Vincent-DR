@@ -34,3 +34,4 @@ class IndexController extends Custom_Zend_Controller_Action
 //        $mapper->saveForAssociatedID($user->profiles, $user->userID);
 //        print var_dump($user);
     }
+}

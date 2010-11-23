@@ -96,6 +96,7 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	public function loadByQuery($query){
+		//echo 'here';
 		$resultSet = $this->getDbTable()->fetchAll($query);
 		if(count($resultSet) == 0) return null; // return null if nothing found
 		$objects = array();
@@ -106,6 +107,7 @@ abstract class Custom_Model_Mapper_Abstract
 		}
 		return $objects;
 	}
+	
 	
 	public function fetchAll(array $options = null) {
 		$columns = $this->getColumns($options);

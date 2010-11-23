@@ -18,6 +18,8 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->addResource('index');
 	    	$this->addResource('register');
 	    	$this->addResource('store');
+		//v	
+			$this->addResource('test');
 
 	    	
 	    	$this->allow('guest', 'account', 'profile');
@@ -44,7 +46,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'store', 'details');
 	    	$this->allow('member', 'store', 'editbasicinfo');
 	    	    	
-	    	
+	    	$this->allow('guest', 'test');
     	// Model Resources
     		$this->addResource('storeModel');
     		$this->addResource('userShippingAddressModel');
