@@ -52,6 +52,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
     		$this->addResource('userShippingAddressModel');
     		
     		$this->allow('member', 'storeModel', 'view', new Application_Model_Acl_Stores_UserAssertion);
+    		$this->allow('member', 'storeModel', 'update', new Application_Model_Acl_Stores_UserAssertion);
     		$this->allow('member', 'storeModel', 'manage', new Application_Model_Acl_Stores_UserAssertion);
     		
     		$this->allow('member', 'userShippingAddressModel', 'create');

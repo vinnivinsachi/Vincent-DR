@@ -13,6 +13,8 @@ class Application_Model_Acl_Stores_UserAssertion implements Zend_Acl_Assert_Inte
 			if(!$link) return false;
 		
 		// check for certain priveleges based on linkRole
-			return true;
+			if($privelege == 'update') if($link->linkRole != 'admin') return false;
+						
+		return true;
 	}
 }

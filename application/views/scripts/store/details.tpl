@@ -10,6 +10,18 @@
 					<td>Store URL Name:</td>
 					<td><b>{$store->storeName}</b></td>
 				</tr>
+				<tr>
+					<td>Store Email:</td>
+					<td><b>{$store->storeEmail}</b></td>
+				</tr>
+				<tr>
+					<td>Store Phone:</td>
+					<td><b>{$store->storePhone}</b></td>
+				</tr>
+				<tr>
+					<td>Store Fax:</td>
+					<td><b>{$store->storeFax}</b></td>
+				</tr>
 				
 				<tr>
 					<td>&nbsp;</td>
