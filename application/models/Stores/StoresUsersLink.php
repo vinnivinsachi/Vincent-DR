@@ -2,6 +2,11 @@
 
 class Application_Model_Stores_StoresUsersLink extends Custom_Model_Abstract
 {
+	// setup
+	protected $_primaryIDColumn = 'linkID';
+	protected $_mapperClass = 'Application_Model_Mapper_Stores_StoresUsersLinksMapper';
+	
+	// columns
 	public $linkID;
 	public $storeID;
 	public $userID;
