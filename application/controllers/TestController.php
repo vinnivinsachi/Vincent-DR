@@ -15,17 +15,19 @@ class TestController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
 		
-		$image = new Application_Model_Products_ProductImage();
+		/*$image = new Application_Model_Products_ProductImage();
 		$image->sourceName = 'products';
 		$image->sourceTypeTitle = 'productTag';
 		$image->sourceTypeName = 'mens standard dance shoes';
 		$image->sourceID = '3';
 		$image->filename = 'blah.jpg';
 		
-		$imageMapper = new Application_Model_Mapper_Products_ProductImagesMapper();
-		$imageMapper->save($image);
+		$imageMapper = new Application_Model_Mapper_Products_ProductImagesMapper();*/
+		//$imageMapper->save($image);
         // action body
 		echo 'stuff';
+		
+		
 		//Zend_Debug::dump(Zend_Registry::get('config'));
 		
 		
@@ -141,7 +143,18 @@ class TestController extends Custom_Zend_Controller_Action
 		
 		
 		Zend_Debug::dump($_FILES['generalImages']);
-		Custom_Processor_Images_ImageProcessor::uploadImage($this->_db, $_FILES['generalImages'], 'productImages', 'product', 'productTag', '3');
+		
+		$image =new Application_Model_Products_ProductImage();
+		$imageMapper = new $image->mapperClass;
+		$imageProcessor = new Custom_Processor_Images_ImageProcessor($imageMapper);
+		
+		$imageProcessor->uploadImage($_FILES['generalImages'], 'productImages', 'product', 'productTag', 'mens standard shoes', '3');
+		
+		
+		//Custom_Processor_Images_ImageProcessor::uploadImage('Application_Model_Products_ProductImage', $_FILES['generalImages'], 'productImages', 'product', 'productTag', 'mens standard shoes', '3');
+		
+		//$config = Zend_Registry::get('config');
+		
 		//DatabaseObject_Helper_ImageUpload::uploadImage($_FILES['generalImages'], $this->db,'product_images',$param['product_tag'], $fp->product->getId(),$fp->product->name);
 		
 		$this->render('index');

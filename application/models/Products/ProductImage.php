@@ -9,13 +9,10 @@ class Application_Model_Products_ProductImage extends Custom_Model_Abstract
 	public $sourceID;
 	public $filename;
 	public $imageOrder;
-	public $flagged;
+	public $flagged = 0;
 	public $dateCreated;
 	
-	public function __construct(){
-		$this->flagged = '0';
-		$this->dateCreated = date('Y-m-d H:i:s');
-	}
+	protected $mapperClass = 'Application_Model_Mapper_Products_ProductImagesMapper';
 }
 
 ?>

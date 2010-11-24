@@ -14,6 +14,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Session::start();
 	}
 	
+	protected function _initConfig()
+	{
+		$config = new Zend_Config($this->getOptions(), true);
+		Zend_Registry::set('config', $config);
+		//return $config;
+	}
+	
 	// An external library for connecting Smarty to Zend
 	public function _initNaneau() {
 		/** Naneau_View_Smarty */
