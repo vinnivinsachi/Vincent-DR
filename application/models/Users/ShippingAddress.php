@@ -2,6 +2,11 @@
 
 class Application_Model_Users_ShippingAddress extends Custom_Model_Abstract implements Zend_Acl_Resource_Interface
 {
+	// setup
+	protected $_primaryIDColumn = 'shippingAddressID';
+	protected $_mapperClass = 'Application_Model_Mapper_Users_ShippingAddressesMapper';
+	
+	// columns
 	public $shippingAddressID;
 	public $userID;
 	public $addressOne;
@@ -13,7 +18,7 @@ class Application_Model_Users_ShippingAddress extends Custom_Model_Abstract impl
 	public $dateUpdated;
 	public $dateCreated;
 
-	
+	// used for ACL
 	public function getResourceId() {
 		return 'userShippingAddressModel';
 	}

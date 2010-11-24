@@ -2,8 +2,18 @@
 
 abstract class Custom_Model_Abstract
 {
+	// protected $_mapperClass = '[Path_To_Mapper]'; // must be set in the child model
+	// protected $_primaryIDColumn = 'primaryID'; // must be set in the child model
+	
+	protected $_primaryID;
 	
 	public function __construct(array $options = null) {
+		// require an associated mapper class
+			if(!isset($this->_mapperClass)) throw new Exception('The model must have an associated mapper class: '.get_class($this));
+		// require and set the primaryKey accessor property
+			if(!isset($this->_primaryIDColumn)) throw new Exception('The model must have a _primaryIDColumn: '.get_class($this));
+			$primaryIDColumn = $this->_primaryIDColumn;
+			$this->_primaryID =& $this->$primaryIDColumn;
 		// set default properties that require a function
 			if(property_exists($this, 'dateCreated')) $this->dateCreated = date('Y-m-d H:i:s');
 			if(property_exists($this, 'dateUpdated')) $this->dateUpdated = date('Y-m-d H:i:s');

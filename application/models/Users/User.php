@@ -2,7 +2,11 @@
 
 class Application_Model_Users_User extends Custom_Model_Abstract implements Zend_Acl_Role_Interface
 {
+	// setup
+	protected $_primaryIDColumn = 'userID';
+	protected $_mapperClass = 'Application_Model_Mapper_Users_UsersMapper';
 	
+	// columns
 	public $userID;
 	public $referrerID;
 	public $userUniqueID;
@@ -38,7 +42,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	protected $profiles;
 	protected $stores;
 	
-	
+	// used for ACL
 	public function getRoleId() {
 		return $this->role;
 	}

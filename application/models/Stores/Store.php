@@ -2,7 +2,12 @@
 
 class Application_Model_Stores_Store extends Custom_Model_Abstract implements Zend_Acl_Resource_Interface
 {
+	// setup
+	protected $_primaryIDColumn = 'storeID';
+	protected $_mapperClass = 'Application_Model_Mapper_Stores_StoresMapper';
 	
+	
+	// columns
 	public $storeID;
 	public $storeUniqueID;
 	public $storeName;
@@ -20,6 +25,7 @@ class Application_Model_Stores_Store extends Custom_Model_Abstract implements Ze
 	protected $defaultShippingAddress;
 	protected $members;
 	
+	// used in ACL
 	public function getResourceId() {
 		return 'storeModel';
 	}
