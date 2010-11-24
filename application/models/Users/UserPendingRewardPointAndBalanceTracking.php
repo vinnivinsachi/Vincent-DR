@@ -2,6 +2,9 @@
 
 class Application_Model_Users_UserPendingRewardPointAndBalanceTracking extends Custom_Model_Abstract
 {
+	protected $_primaryIDColumn = 'userPendingRewardPointAndBalanceTrackingID';
+	protected $_mapperClass = 'Application_Model_Mapper_Users_UserPendingRewardPointAndBalanceTracking';
+	
 	public $userPendingRewardPointAndBalanceTrackingID;
 	public $userPendingRewardPointAndBalanceTrackingUniqueID;
 	public $userID;

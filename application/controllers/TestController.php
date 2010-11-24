@@ -145,7 +145,7 @@ class TestController extends Custom_Zend_Controller_Action
 		Zend_Debug::dump($_FILES['generalImages']);
 		
 		$image =new Application_Model_Products_ProductImage();
-		$imageMapper = new $image->mapperClass;
+		$imageMapper = new $image->_mapperClass;
 		$imageProcessor = new Custom_Processor_Images_ImageProcessor($imageMapper);
 		
 		$imageProcessor->uploadImage($_FILES['generalImages'], 'productImages', 'product', 'productTag', 'mens standard shoes', '3');

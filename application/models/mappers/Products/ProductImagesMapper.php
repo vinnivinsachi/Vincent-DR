@@ -16,7 +16,7 @@ class Application_Model_Mapper_Products_ProductImagesMapper extends Custom_Model
 		
 		
 		Zend_Debug::dump($image);
-		parent::save($image);
+		return parent::save($image);
 	} 
 	
 	
@@ -31,8 +31,6 @@ class Application_Model_Mapper_Products_ProductImagesMapper extends Custom_Model
 			echo $select;
 			$result= $this->getDbTable()->fetchAll($select);
 			return $result[0]['imageOrder'];
-	}
-	
-	
+	}	
 }
 ?>

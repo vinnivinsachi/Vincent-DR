@@ -4,6 +4,7 @@
 	{
 		//imageModel is the name of the imageModel
 		public $imageMapper;
+		public $_uploadedFile;
 	
 		//polymorth image model
 		public function __construct($imageMapper){
@@ -102,11 +103,42 @@
 							$image->sourceTypeTitle = $sourceTypeTitle;
 							$image->sourceTypeName = $sourceTypeName;
 							$image->sourceID = $sourceID;
-							$image->filename = $file['name'];			
+							$image->filename = $file['name'];	
+
+							//PRESAVE
+							$path = self::GetUploadPath($image);
 							
-							Zend_Debug::dump($image);
-							$primaryKey = $this->imageMapper->getPrimaryKey();
-							$image->$primaryKey = $this->imageMapper->save($image);
+							if(!file_exists($path) || !is_dir($path))
+							{
+								mkdir($path, 0777, true);
+								echo "path made";
+							}else{
+								
+								echo 'path not made';
+							}
+							$id = $this->imageMapper->save($image);
+							$image->_primaryID = $id;
+							echo 'id is: '.$id;
+							//POST SAVE
+							$this->uploadFile($file['tmp_name']);
+							if(strlen($this->_uploadedFile)>0)
+							{
+								move_uploaded_file($this->_uploadedFile, $this->getFullPath($image));
+								//$this->_uploadedFile = '';
+								Zend_Debug::dump($image);
+								
+								echo 'primaryID is: '.$image->_primaryID;
+								echo $this->getFullPath($image);
+								//refreshing uploaded files;
+								$this->_uploadedFile='';
+							
+							}													
+						
+														
+														
+														
+						echo $path;
+						
 							/*$newImage = new DatabaseObject_Image($db, $table, $product_tag);
 							//$newImage->setUsername(Zend_Auth::getInstance()->getIdentity()->username);
 							$newImage->Product_id = $product_id;
@@ -259,10 +291,27 @@
 			return $thumbPath; //this returns the paths.*/
 		}
 		
+		public function uploadFile($path)
+		{
+			if(!file_exists($path)||!is_file($path))
+			{
+				//echo $path;
+				throw new Exception('unable to find uploaded file');
+			}
+			
+			if(!is_readable($path))
+			{	
+				//echo $path;
+				throw new Exception('unable to read uploaded file');
+			}
+			
+			$this->_uploadedFile = $path;
+		}
+		
 		//this is the path of the uploaded file.
 		public function getFullPath($image){
 			$primaryKey = $this->imageMapper->getPrimaryKey();
-			return sprintf('%s/%d.jpg', self::GetUploadPath($image), $image->$primaryKey);
+			return sprintf('%s/%d.jpg', self::GetUploadPath($image), $image->_primaryID);
 		}
 		
 		public static function GetUploadPath($image)

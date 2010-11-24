@@ -2,6 +2,9 @@
 
 class Application_Model_Products_Product extends Custom_Model_Abstract
 {
+	protected $_primaryIDColumn = 'productID';
+	protected $_mapperClass = 'Application_Model_Mapper_Products_ProductsMapper';
+	
 	public $productID;
 	public $purchaseType;
 	public $productCategory;
