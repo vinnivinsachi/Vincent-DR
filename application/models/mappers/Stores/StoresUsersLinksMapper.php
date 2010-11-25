@@ -39,4 +39,23 @@ class Application_Model_Mapper_Stores_StoresUsersLinksMapper extends Custom_Mode
 			
 		return $links;
 	}
+	
+	// fetch all stores and rolls for a user
+	public function fetchStoresForUserID($userID, array $options = null) {
+		// get store columns
+			$storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
+			$storeColumns = $storesMapper->getColumns($options);
+		
+		// link columns to fetch
+			$columns = $this->getColumns($options);
+		
+		$select = $this->getDbTable()->select();
+		$select->from($this->getDbTable(), $columns)
+			   ->where('userID = ?', $userID)
+			   ->join($storesMapper->getDbTable(), 'storesUsersLinks.storeID = stores.storeID', $storeColumns);
+			   
+		Zend_Debug::dump($select);
+		
+		return $this->loadByQuery($select);
+	}
 }

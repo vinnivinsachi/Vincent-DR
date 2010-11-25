@@ -44,6 +44,5 @@ class Application_Model_Mapper_Stores_StoresMapper extends Custom_Model_Mapper_A
 		
 		return $displayName;
 	}
-
 }
 

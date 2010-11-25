@@ -28,9 +28,9 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	// get the name of the primary key column of the associated table
-	public function getPrimaryKey() {
-		$primaryKey = $this->getDbTable()->info('primary');
-		return $primaryKey[1];
+	protected function getPrimaryKeyColumn() {
+		$primaryKeyColumn = $this->getDbTable()->info('primary');
+		return $primaryKeyColumn[1];
 	}
 		
 	// return an array of column names to include in select statement
@@ -38,8 +38,8 @@ abstract class Custom_Model_Mapper_Abstract
 	// the values of these two keys should be an array containing column names
 	public function getColumns(array $options = null) {
 		// start with all columns
-		$columns = array();
-		foreach($this->_columns as $key => $value) $columns[] = $key;
+			$columns = array();
+			foreach($this->_columns as $key => $value) $columns[] = $key;
 		
 		if(is_array($options)) {
 			if(isset($options['include']) && is_array($options['include'])) $columns = $options['include'];
@@ -51,8 +51,8 @@ abstract class Custom_Model_Mapper_Abstract
 		}
 		
 		// make sure the primary key column is incuded, or else saving changes won't work
-		$primaryKey = $this->getPrimaryKey();
-		if(!array_search($primaryKey, $columns)) $columns[] = $primaryKey;
+			$primaryKeyColumn = $this->getPrimaryKeyColumn();
+			if(!array_search($primaryKeyColumn, $columns)) $columns[] = $primaryKeyColumn;
 		
 		return $columns;
 	}
