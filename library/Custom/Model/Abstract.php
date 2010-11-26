@@ -22,12 +22,12 @@ abstract class Custom_Model_Abstract
 	}
 	
 	public function __set($property, $value) {
-		if(!property_exists($this, $property)) throw new Exception('Trying to set invalid User property: '.$property);
+		if(!property_exists($this, $property)) throw new Exception('Trying to set invalid '.get_class($this).' property: '.$property);
 		$this->$property = $value;
 	}
 	
 	public function __get($property) {
-		if(!property_exists($this, $property)) throw new Exception('Trying to get invalid User property: '.$property);
+		if(!property_exists($this, $property)) throw new Exception('Trying to get invalid '.get_class($this).' property: '.$property);
 		return $this->$property;
 	}
 	

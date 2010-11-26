@@ -10,8 +10,8 @@ abstract class Custom_Model_Mapper_Abstract
 	protected $_columns;
 	
 	public function __construct() {
-		if(!isset($this->_dbTableClass)) throw new Exception('You must set $_dbTableClass in your model');
-		if(!isset($this->_modelClass)) throw new Exception('You must set $_modelClass in your model');
+		if(!isset($this->_dbTableClass)) throw new Exception('You must set $_dbTableClass in your model: '.get_class($this));
+		if(!isset($this->_modelClass)) throw new Exception('You must set $_modelClass in your model: '.get_class($this));
 		$this->_columns = get_object_vars(new $this->_modelClass);
 	}
 	
@@ -40,19 +40,26 @@ abstract class Custom_Model_Mapper_Abstract
 		// start with all columns
 			$columns = array();
 			foreach($this->_columns as $key => $value) $columns[] = $key;
+			$availableColumns = $columns; // all the columns that could be included
 		
 		if(is_array($options)) {
-			if(isset($options['include']) && is_array($options['include'])) $columns = $options['include'];
+			if(isset($options['include']) && is_array($options['include'])) {
+				$columns = array(); // start with no columns
+				$object = new $this->_modelClass; // create an object to check properties against
+				foreach($options['include'] as $key => $col) {
+					if(array_search($col, $availableColumns)) $columns[] = $col;
+				}
+			}
 			if(isset($options['exclude']) && is_array($options['exclude'])) {
 				foreach($options['exclude'] as $col) {
 					if($index = array_search($col, $columns)) unset($columns[$index]);
 				}
 			}
 		}
-		
+				
 		// make sure the primary key column is incuded, or else saving changes won't work
 			$primaryKeyColumn = $this->getPrimaryKeyColumn();
-			if(!array_search($primaryKeyColumn, $columns)) $columns[] = $primaryKeyColumn;
+			if(array_search($primaryKeyColumn, $columns) === false) $columns[] = $primaryKeyColumn;
 		
 		return $columns;
 	}

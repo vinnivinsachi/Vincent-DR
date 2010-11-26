@@ -62,13 +62,10 @@ class StoreController extends Custom_Zend_Controller_Action
 		// check priveleges
 			if(!$this->_acl->isAllowed($this->user, $this->store, 'manage')) $this->errorAndRedirect('You do not have priveleges to manage that store');
 			
-		// get list of users for that store
-			$linkMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
-			$storeMemberIDs = $linkMapper->getUsersForStore($this->store->storeID, array('format' => 'userIDArray'));
-			$storeUsers = $this->usersMapper->findByColumn('userID', $storeMemberIDs, array('include' => array('username', 'userUniqueID')));
-			
-		// attach the users to the store
-			$this->store->members = $storeUsers;
+		// get list of users for this store
+			$linksMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
+			$options = array('include' => array('linkRole', 'username'));
+			$this->store->userLinks = $linksMapper->fetchUserLinksForStoreID($this->store->storeID, $options);
 			
 		// send store to the view
 			$this->view->store = $this->store;

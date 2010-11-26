@@ -9,12 +9,6 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function indexAction() {
         // action body
-        
-//    	$user = new Application_Model_Users_User;
-//    	$user->userID = 64;
-//    	$linksMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper();
-//    	$stores = $linksMapper->fetchStoresForUserID($user->userID);
-//    	Zend_Debug::dump($stores);
     	
     	// LINK TABLES
 //    	$mapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;

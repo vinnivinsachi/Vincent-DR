@@ -40,7 +40,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	protected $defaultShippingAddress;
 	protected $accountRewardPointsAndBalanceSummary;
 	protected $profiles;
-	protected $stores;
+	protected $storeLinks;
 	
 	// used for ACL
 	public function getRoleId() {

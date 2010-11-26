@@ -142,10 +142,10 @@
 					<th>Role</th>
 				</tr>
 				
-				{foreach from=$user->stores item=store}
+				{foreach from=$user->storeLinks item=link}
 					<tr>
-						<td style='text-align:center'><a href='{$siteRoot}/store/details?storeName={$store->storeName}'>{$store->storeDisplayName}</a></td>
-						<td style='text-align:center'>&nbsp;</td>
+						<td style='text-align:center'><a href='{$siteRoot}/store/details?storeName={$link->storeName}'>{$link->storeDisplayName}</a></td>
+						<td style='text-align:center'>{$link->linkRole}</td>
 					</tr>
 				{/foreach}
 				
