@@ -32,8 +32,8 @@
 				
 				<div>
 		        	<label style="height:30px;">Product use:</label>
-		        	<input type="checkbox" name="social_usage" {if $fp->social_usage=='on'}checked=checked{/if} class='inputShiftOne'/>Social/practice<br/>
-		        	<input type="checkbox" name="competition_usage" {if $fp->competition_usage=='on'}checked=checked{/if} class='inputShiftOne'/>Competition<br/>
+		        	<input type="checkbox" name="socialUsage" {if $fp->social_usage=='on'}checked=checked{/if} class='inputShiftOne'/>Social/practice<br/>
+		        	<input type="checkbox" name="competitionUsage" {if $fp->competition_usage=='on'}checked=checked{/if} class='inputShiftOne'/>Competition<br/>
 				</div>
 		
 				<div>
@@ -53,12 +53,12 @@
 		        
 		        <div style='margin: 5px 0px 10px 0px; width:100%;'>
 				<label>Returnable:</label>
-				<input type="radio" name='return' value='1' checked="checked" class='inputShiftOne'/>yes
-				<input type="radio" name='return' value='0' {if $fp->return_allowed=='0'}checked="checked"{/if}/>no
+				<input type="radio" name='returnAllowed' value='1' checked="checked" class='inputShiftOne'/>yes
+				<input type="radio" name='returnAllowed' value='0' />no
 				</div>
 				
 		        <label>Youtube video (optional):</label>
-		        <input type='text' value="" name="video_youtube" class='inputShiftOne'/><br />
+		        <input type='text' value="" name="videoYoutube" class='inputShiftOne'/><br />
 		        <br/>
 	        </div>
         
