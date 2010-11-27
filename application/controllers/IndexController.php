@@ -24,6 +24,9 @@ class IndexController extends Custom_Zend_Controller_Action
     	
     	// USERS
 //        $user = new Application_Model_Users_User;
+//        $mapper = new $user->_mapperClass;
+//        $user = $mapper->find(64);
+//        
 //        Zend_Debug::dump($user);
 //        $user->profiles = new Application_Model_Profiles;
 //        $user->profiles->color = 'blue';

@@ -65,20 +65,53 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	public function find($id, array $options = null) {
-		$columns = $this->getColumns($options);
+		// get columns to pull
+			$columns = $this->getColumns($options);
+				
+		// what's the primary ID column?
+			$idColumn = $this->getPrimaryKeyColumn();
+			
+		// build select statement
+			$select = $this->getDbTable()->select();
+			$select->from($this->getDbTable(), $columns)
+				   ->where("$idColumn = ?", $id);
 		
-		$idColumn = $this->getPrimaryKey();
-		$select = $this->getDbTable()->select();
-		$select->from($this->getDbTable(), $columns)
-			   ->where("$idColumn = ?", $id);
+		// fetch
+			$result = $this->getDbTable()->fetchAll($select);
+			
+		// should never be more than one user for a single ID
+			if(count($result) > 1) throw new Exception('More than one user with the same primary key: '.$id);
+			
+		// return null if nothing found
+			if(count($result) == 0) return null; // return null if nothing found
+			
+		// get row
+			$row = $result->current();
+			
+			
+		// get dependant data if specified
+//$options['dependentTables'][] = array(
+//	'table'		=> new Application_Model_DbTable_Users_ShippingAddresses,
+//	'relationship'	=> 'User',
+//	'columns'	=> array('addressOne', 'addressTwo'),
+//);
+//			
+//			if(isset($options['dependentTables'])) {
+//				foreach($options['dependentTables'] as $dependent) {
+//					$otherTable = $dependent['table'];
+//					$select = $otherTable->select()->from($otherTable, $dependent['columns']);
+//					$rowset = $row->findDependentRowset($otherTable, $dependent['relationship'], $select);
+//					Zend_Debug::dump($rowset->toArray());
+//				}
+//			}
+
 		
-		$result = $this->getDbTable()->fetchAll($select);
-		if(count($result) == 0) return null; // return null if nothing found
-		if(count($result) > 1) throw new Exception('More than one user with the same primary key: '.$id);
-		$row = $result->current();
-		$rowData = $row->toArray();
-		$object = new $this->_modelClass($rowData);
-		return $object;
+		// inset data into model
+			$rowData = $row->toArray();
+			$object = new $this->_modelClass($rowData);
+			
+		// return results
+			return $object;
 	}
 	
 	public function findByColumn($column, $search, array $options = null) {
@@ -145,7 +178,7 @@ abstract class Custom_Model_Mapper_Abstract
 		// make sure the right type of model was provided
 		if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
 		
-		$primaryKey = $this->getPrimaryKey();
+		$primaryKey = $this->getPrimaryKeyColumn();
 		
 		// if primary key is an empty string, make it null instead (or else ->insert() methods won't return the promary key)
 		if($object->$primaryKey == '') $object->$primaryKey = null;
@@ -161,7 +194,7 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	public function delete($id) {
-		$primaryKey = $this->getPrimaryKey();
+		$primaryKey = $this->getPrimaryKeyColumn();
 		$where = $this->getDbTable()->getAdapter()->quoteInto($primaryKey.' = ?', $id);
 		return $this->getDbTable()->delete($where);
 	}
