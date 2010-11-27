@@ -55,7 +55,7 @@
 	    
 	    
 	    <!-- If user is a general seller -->
-	    {if $user->role =='generalSeller' ||$user->role =='storeSeller'} 
+<!-- 	    {if $user->role =='generalSeller' ||$user->role =='storeSeller'} 
 	    <fieldset>
 	    	<legend>Sellers Information</legend>
 	        Paypal Email: {$user->sellerInfo->paypal_email}<br />
@@ -75,6 +75,7 @@
 	        {/if}
 	  	</fieldset>
 	    {/if}
+-->
 	    
 	    
 	    <!-- Addresses -->

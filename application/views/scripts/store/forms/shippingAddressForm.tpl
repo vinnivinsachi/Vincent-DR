@@ -2,7 +2,7 @@
 	{if isset($address->shippingAddressID) && $address->shippingAddressID != ''}<legend>Edit Shipping Address</legend>
 	{else}<legend>Add new shipping Address</legend>{/if}
 	
-	<form id='shipping-address-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/account/editshipping' method='post'>
+	<form id='store-shipping-address-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/store/editshipping?storeName={$store->storeName}' method='post'>
 	{if isset($address->shippingAddressID)}<input type='hidden' name='shippingAddressID' value='{$address->shippingAddressID}' />{/if}
 	
 		<table>
@@ -43,7 +43,7 @@
 			</tr>
 			
 			<tr>
-				<td><a href='{$siteRoot}/account/details'>Cancel</a></td>
+				<td><a href='{$siteRoot}/store/details?storeName={$store->storeName}'>Cancel</a></td>
 				<td><input type='submit' value='Save Address' /></td>
 			</tr>
 		

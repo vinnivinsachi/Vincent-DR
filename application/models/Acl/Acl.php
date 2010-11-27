@@ -15,11 +15,11 @@ class Application_Model_Acl_Acl extends Zend_Acl
     		$this->addResource('account');
     		$this->addResource('authentication');
     		$this->addResource('error');
+    		$this->addResource('find'); //m
 	    	$this->addResource('index');
 	    	$this->addResource('register');
 	    	$this->addResource('store');
-		//v	
-			$this->addResource('test');
+			$this->addResource('test'); //v
 
 	    	
 	    	$this->allow('guest', 'account', 'profile');
@@ -36,8 +36,10 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	
 	    	$this->allow('guest', 'error', 'error');
 	    	
-	    	$this->allow('guest', 'index', 'index');
+	    	$this->allow('guest', 'find', 'index'); //m
 	    	
+	    	$this->allow('guest', 'index', 'index');
+	    		    	
 	    	$this->allow('guest', 'register', 'checkusername');
 	    	$this->allow('guest', 'register', 'index');
 	    	
@@ -45,9 +47,14 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('guest', 'store', 'profile');
 	    	$this->allow('member', 'store', 'details');
 	    	$this->allow('member', 'store', 'editbasicinfo');
+	    	$this->allow('member', 'store', 'editshipping');
+	    	$this->allow('member', 'store', 'setdefaultshipping');
+	    	$this->allow('member', 'store', 'deleteshipping');
 	    	    	
-	    	$this->allow('guest', 'test');
-    	// Model Resources
+	    	$this->allow('guest', 'test'); //v
+    	
+	    	
+	    // Model Resources
     		$this->addResource('storeModel');
     		$this->addResource('userShippingAddressModel');
     		

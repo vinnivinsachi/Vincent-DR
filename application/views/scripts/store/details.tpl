@@ -30,6 +30,40 @@
 			</table>
 		</fieldset>
 		
+		 <!-- Addresses -->
+	    <fieldset>
+	        <legend>Default Shipping Address</legend>
+	        {if $store->defaultShippingAddress}
+	        	{$store->defaultShippingAddress->addressOne}<br />
+	            {if $store->defaultShippingAddress->addressTwo}
+	            	{$store->defaultShippingAddress->addressTwo}<br />
+	            {/if}
+	        	{$store->defaultShippingAddress->city}, {$store->defaultShippingAddress->state} {$store->defaultShippingAddress->zip}
+	        	{$store->defaultShippingAddress->country}<br />
+			{else}
+	        	There is no Default Shipping Address
+	        {/if}
+	    </fieldset>
+	    
+	    <fieldset>
+	     	<legend>All Shipping Addresses</legend>
+	        {foreach from=$store->shippingAddresses item=address}
+		        <div class="shippingAddressBox">
+		            {$address->addressOne}<br />
+		            {if $address->addressTwo}
+		            	{$address->addressTwo}<br />
+		            {/if}
+		           {$address->city}, {$address->state} {$address->zip}
+		           {$address->country}<br />
+		            <a href='{$siteRoot}/store/editshipping?storeName={$store->storeName}&storeShippingAddressID={$address->shippingAddressID}'>Edit</a> | 
+		            <a href='{$siteRoot}/store/deleteshipping?storeName={$store->storeName}&storeShippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Delete</a> | 
+		            <a href='{$siteRoot}/store/setdefaultshipping?storeName={$store->storeName}&storeShippingAddressID={$address->shippingAddressID}' class='loading-image-link'>Make Default</a><br />
+		        </div>
+		        <br />
+	        {/foreach}
+	        <div style="float:left; width:100%;"><a href='{$siteRoot}/store/editshipping?storeName={$store->storeName}&'>Add a shipping address</a></div>
+	    </fieldset>
+		
 		
 		<!-- Associated Users -->
 		<fieldset> 	
