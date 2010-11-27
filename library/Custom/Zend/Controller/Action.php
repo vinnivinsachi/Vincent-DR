@@ -57,9 +57,18 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 	
 	// set an error message and redirect
 	protected function errorAndRedirect($message, $action = null, $controller = null, array $params = null) {
-		if($action == null) $action = 'index';
-		if($controller == null) $controller = 'index';
 		$this->msg(array('error' => $message));
+		$this->redirect($action, $controller, $params);
+	}
+	
+	// redirect
+	protected function redirect($action = null, $controller = null, array $params = null) {
+		if($action == null && $controller == null) {
+			$action = 'index';
+			$controller = 'index';
+		}
+		if($controller == null) $controller = $this->_request->getControllerName();
+		if($params == null) $params = array();
 		$this->_helper->redirector($action, $controller, null, $params);
 	}
 	

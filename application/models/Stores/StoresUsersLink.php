@@ -26,4 +26,9 @@ class Application_Model_Stores_StoresUsersLink extends Custom_Model_Abstract
 		$this->userID = $id;
 	}
 	
+	// other info
+	protected $storeName;
+	protected $storeDisplayName;
+	protected $username;
+	
 }

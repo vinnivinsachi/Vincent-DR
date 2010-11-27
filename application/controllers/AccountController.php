@@ -49,21 +49,16 @@ class AccountController extends Custom_Zend_Controller_Action
 		// get user's shipping addresses
 			$shippingMapper = new Application_Model_Mapper_Users_ShippingAddressesMapper;
 			$this->user->shippingAddresses = $shippingMapper->getShippingAddressesForUser($this->user);
+			
 		// get the default shipping address if it exists
 			$defaultShipping = null;
 			foreach($this->user->shippingAddresses as $address) if($address->shippingAddressID == $this->user->defaultShippingAddressID) $defaultShipping = $address;
 			$this->user->defaultShippingAddress = $defaultShipping;
 			
 		// get list of stores for this user
-			$linkMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
-			$storeIDs = $linkMapper->getStoresForUser($this->user->userID, array('format' => 'storeIDArray'));
-			if($storeIDs) {
-				$storesMapper = new Application_Model_Mapper_Stores_StoresMapper;
-				$userStores = $storesMapper->findByColumn('storeID', $storeIDs, array('include' => array('storeName', 'storeDisplayName')));
-			}
-			
-		// attach the stores to the user
-			$this->user->stores = $userStores;
+			$linksMapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
+			$options = array('include' => array('linkRole', 'storeName', 'storeDisplayName'));
+			$this->user->storeLinks = $linksMapper->fetchStoreLinksForUserID($this->user->userID, $options);
 			
 		// send the user to the view
 			$this->view->user = $this->user;

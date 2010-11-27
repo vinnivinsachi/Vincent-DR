@@ -4,6 +4,8 @@ class Application_Model_Mapper_Stores_StoresUsersLinksMapper extends Custom_Mode
 {
 	protected $_dbTableClass = 'Application_Model_DbTable_Stores_StoresUsersLinks';
 	protected $_modelClass = 'Application_Model_Stores_StoresUsersLink';
+	protected $_firstMapperClass = 'Application_Model_Mapper_Stores_StoresMapper';
+	protected $_secondMapperClass = 'Application_Model_Mapper_Users_UsersMapper';
 	
 	
 	// overwrite the function so we can have variable names that make sense
@@ -26,17 +28,24 @@ class Application_Model_Mapper_Stores_StoresUsersLinksMapper extends Custom_Mode
 		return $links;
 	}
 	
-	public function getStoresForUser($userID, array $options = null) {
-		// get links
-			$links = $this->getLinksForSecondID($userID, $options);
-		
-		// if storeIDArray format
-			if($options['format'] == 'storeIDArray') {
-				$storeIDs = array();
-				foreach($links as $link) $storeIDs[] = $link->storeID;
-				return $storeIDs;
-			}
-			
-		return $links;
+	
+	// fetch all stores and rolls for a user
+	public function fetchStoreLinksForUserID($userID, array $options = null) {
+		// get columns for link table and stores table
+			$linkColumns = $this->getColumns($options);
+			$storesMapper = new $this->_firstMapperClass;			
+			$storeColumns = $storesMapper->getColumns($options);
+
+		return $this->fetchAllFirstsForSecondID($userID, $linkColumns, $storeColumns);
+	}
+	
+	// fetch all users for a store
+	public function fetchUserLinksForStoreID($storeID, array $options = null) {
+		// get columns for link table and users table
+			$linkColumns = $this->getColumns($options);
+			$usersMapper = new $this->_secondMapperClass;
+			$userColumns = $usersMapper->getColumns($options);
+
+		return $this->fetchAllSecondsForFirstID($storeID, $linkColumns, $userColumns);
 	}
 }

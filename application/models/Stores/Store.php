@@ -20,10 +20,10 @@ class Application_Model_Stores_Store extends Custom_Model_Abstract implements Ze
 	public $storeEmail;
 
 	
-	// private variables won't show up in SQL queries
+	// protected variables won't show up in SQL queries
 	protected $shippingAddresses;
 	protected $defaultShippingAddress;
-	protected $members;
+	protected $userLinks; // for listing users associated with a store
 	
 	// used in ACL
 	public function getResourceId() {
