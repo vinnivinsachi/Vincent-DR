@@ -1,25 +1,26 @@
 <?php
-
+	//can process an array of images file uploads.
 	class Custom_Processor_Images_ImageProcessor
 	{
 		//imageModel is the name of the imageModel
 		public $imageMapper;
 		public $_uploadedFile;
 	
-		//polymorth image model
+		//requires the imageMapper polymorth image model
 		public function __construct($imageMapper){
 			$this->imageMapper = $imageMapper;
 		}
-	
-		public function uploadImage($uploadedImages, $table, $sourceName, $sourceTypeTitle, $sourceTypeName, $sourceID, $options=array()){
+		
+		//example ($_File, 'usersProfileImage', 'username', 'vinzha', '3')
+		//example ($_File, 'storeProfileImage', 'storeUniqueName', 'blahblah', '3')
+		//example ($_File, 'productImages', 'productTag', 'mens standard shoes', '3')
+		public function uploadImage($uploadedImages, $sourceName, $sourceTypeTitle, $sourceTypeName, $sourceID, $options=array()){
 			$imageKeys=array();
 			
 			foreach($uploadedImages['name'] as $k=>$v){
 				
 				$imageKeys[]=$k;
 			}
-			
-		
 			
 			foreach($imageKeys as $k=>$v){
 					$hasImageError = false;	
@@ -96,9 +97,7 @@
 							echo 'here at good image process';
 							
 							$image = new $this->imageMapper->_modelClass;
-							//$image = new $this->imageMapper->_modelClass;
 							
-							//$image = new $imageModel();
 							$image->sourceName = $sourceName;
 							$image->sourceTypeTitle = $sourceTypeTitle;
 							$image->sourceTypeName = $sourceTypeName;
@@ -133,50 +132,29 @@
 								$this->_uploadedFile='';
 							
 							}													
-						
-														
-														
-														
-						echo $path;
-						
-							/*$newImage = new DatabaseObject_Image($db, $table, $product_tag);
-							//$newImage->setUsername(Zend_Auth::getInstance()->getIdentity()->username);
-							$newImage->Product_id = $product_id;
-							$newImage->name=$name;
-							$newImage->uploadFile($file['tmp_name']);
-							$newImage->filename = basename($file['name']);
-							$newImage->save();
-							//this is the place to create all the neccessary thumbnails for the website.
-								echo 'here at creating the thumbnails -0<br />';
-							$newImage->createThumbnail(150, 200, 'homeFrontFour');
-								echo 'here at creating the thumbnails -1<br />';
-							$newImage->createThumbnail(191, 200, 'productFirstImage');
-								echo 'here at creating the thumbnails -2<br />';
-							$newImage->createThumbnail(300, 350, 'productDetailImage');
-								echo 'here at creating the thumbnails -3<br />';
-							$newImage->createThumbnail(50, 50, 'productSmallPreview');
-								echo 'here at creating the thumbnails -4<br />';*/
-						}else{
-							
+										
+							//HERE AT CREATING THUMNAILS							
+							echo $path;
+							$this->createThumbnails($image, 150, 200, 'homeFrontFour');
+
+						}else{	
 							echo 'here at error 107';
 							//$this->msg(array('error' => 'There is an error with this upload.'));
 	
 						}
 						
 					}
-						
-						
 			}
 		}
 		
-		public function createThumbnails($maxW, $maxH, $thumbType='')
+		public function createThumbnails($image, $maxW, $maxH, $thumbType='')
 		{
 			
 			
-			/*$fullpath=$this->getFullPath();
+			$fullpath=$this->getFullPath($image);
 			
 			
-			$filename = sprintf('%d.W%d_%s', $this->getId(), $maxW, $thumbType);
+			$filename = sprintf('%d.W%d_H%d_%s', $image->_primaryID, $maxW, $maxH, $thumbType);
 			$ts=(int)filemtime($fullpath);
 
 			$info=getImageSize($fullpath);
@@ -251,7 +229,7 @@
 			
 			// create a unique filename based on the specified optins 
 			//autocreate the directory for storing thumbnails
-			$path =self::GetThumbnailPath($this->username, $this->product_tag);
+			$path =self::GetThumbnailPath($image);
 			if(!file_exists($path)){
 				echo "here at make path";
 				mkdir($path, 0777, true);

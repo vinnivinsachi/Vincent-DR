@@ -27,15 +27,17 @@ class TestController extends Custom_Zend_Controller_Action
         // action body
 		echo 'stuff';
 		
-		
 		//Zend_Debug::dump(Zend_Registry::get('config'));
-		
 		
 		//$this->db = Zend_Registry::get('db');
 		//Zend_Debug::dump($this->db);
 		//$select = $this->db->select();
     }
-    
+	
+	public function productlistingAction(){
+		
+		
+	}
     
     public function accountbalancetestingAction(){
     	$userMapper = new Application_Model_Mapper_Users_UsersMapper();
@@ -141,7 +143,6 @@ class TestController extends Custom_Zend_Controller_Action
 		
 		//takes in image files and then process them by thumbnail them and display them. 
 		
-		
 		Zend_Debug::dump($_FILES['generalImages']);
 		
 		$image =new Application_Model_Products_ProductImage();
@@ -150,16 +151,25 @@ class TestController extends Custom_Zend_Controller_Action
 		
 		$imageProcessor->uploadImage($_FILES['generalImages'], 'productImages', 'product', 'productTag', 'mens standard shoes', '3');
 		
-		
-		//Custom_Processor_Images_ImageProcessor::uploadImage('Application_Model_Products_ProductImage', $_FILES['generalImages'], 'productImages', 'product', 'productTag', 'mens standard shoes', '3');
-		
-		//$config = Zend_Registry::get('config');
-		
-		//DatabaseObject_Helper_ImageUpload::uploadImage($_FILES['generalImages'], $this->db,'product_images',$param['product_tag'], $fp->product->getId(),$fp->product->name);
-		
 		$this->render('index');
 		
+	}
+	
+	public function saveinventoryprofileAction(){
+		$inventory = new Application_Model_Products_ProductInventory();
 		
+		$inventory->productID = 6;
+		$inventory->sys_name = 'new inventory product name';
+		$inventory->sys_price = 20.35;
+		$inventory->sys_quantity = 3;
+		$inventory->sys_metric_type = 'US';
+		$inventory->sys_shoe_size = '5';
+		$inventory->sys_shoe_heel = '3 inch';
+		$inventory->sys_conditions = 'BRAND NEW';
+		$inventory->sys_color = 'BLUE';
+		$inventoryMapper = new $inventory->_mapperClass;
+		$inventoryMapper->save($inventory);
+		$this->render('index');
 	}
 	
 	//productListing testing section
@@ -201,7 +211,9 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->socialUsage=true;
 			$product->lastStatusChange=date('Y-m-d G:i:s');
 			$productMapper = new Application_Model_Mapper_Products_ProductsMapper();
-			$productMapper->save($product);
+			$product->_primaryID = $productMapper->save($product);
+			//$product->image = new Application
+			
 			
 			//$this->_db->rollback();
 			
@@ -212,6 +224,10 @@ class TestController extends Custom_Zend_Controller_Action
 	 	//}
 	 	$this->render('index');
 			
+	}
+	
+	public function productinventoryAction(){
+		
 	}
 	
 	public function pruductimagesAction(){
