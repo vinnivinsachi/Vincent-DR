@@ -200,6 +200,10 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 
 	public function createUniqueID() {
+		// make sure the associated model has a uniqueID property
+			$model = new $this->_modelClass;
+			if(property_exists($model, $this->getDbTable()->uniqueIDColumn)) throw new Exception('The model '.$this->_modelClass.' must have the property: '.$this->getDbTable()->uniqueIDColumn.' to create a uniqueID');
+		
 		do {
 			$uniqueID = Text_Password::create(10, 'unpronounceable');
 		} while($this->findByUniqueID($uniqueID));
