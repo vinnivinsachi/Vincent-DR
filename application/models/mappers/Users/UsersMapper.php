@@ -7,21 +7,22 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 	
 	public function save(Application_Model_Users_User $user) {
 		// right now users can only be saved one at a time
-		if(is_array($user)) throw new Exception('Saving an array of users in not yet supported');
+			if(is_array($user)) throw new Exception('Saving an array of users in not yet supported');
 		
 		// Generate password crypt and salt IF password provided
-		if($user->password && $user->password != '') {
-			$user->salt = $this->generateSalt();
-			$user->password = $this->saltHashPassword($user->password, $user->salt);
-		}
-		else if($user->password == '') unset($user->password);
+			if($user->password && $user->password != '') {
+				$user->salt = $this->generateSalt();
+				$user->password = $this->saltHashPassword($user->password, $user->salt);
+			}
+			else if($user->password == '') unset($user->password);
 				
 		// new user defaults
-		if(($uniqueID = $user->userUniqueID) === null) {
-			$user->userUniqueID = $this->createUniqueID();
-		}
+			if(($uniqueID = $user->userUniqueID) === null) {
+				$user->userUniqueID = $this->createUniqueID();
+			}
 		
-		parent::save($user);
+		// call parent function
+			parent::save($user);
 	}
 	
 	public function findByUsername($username, array $options = null) {
@@ -30,7 +31,13 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 		if(count($users) == 0) return null;
 		if(count($users) > 1) throw new Exception('More than one user with the username: '.$username);
 		return $users[0];
-	}
+	} // END findByUsername()
+	
+	public function findByEmail($email, array $options = null) {
+		// find
+			$users = $this->findByColumn('email', $email, $options);
+			return $users[0];
+	} // END findByEmail()
 	
 	public function usernameAvailable($username) {
 		if($this->findByUsername($username, array('include', array('username')))) return false;

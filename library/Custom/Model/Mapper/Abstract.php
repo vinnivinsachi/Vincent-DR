@@ -136,7 +136,6 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	public function loadByQuery($query){
-		//echo 'here';
 		$resultSet = $this->getDbTable()->fetchAll($query);
 		if(count($resultSet) == 0) return null; // return null if nothing found
 		$objects = array();
@@ -176,21 +175,23 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	protected function saveOne($object) {
 		// make sure the right type of model was provided
-		if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
+			if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
 		
-		$primaryKey = $this->getPrimaryKeyColumn();
+		// get primary key column name
+			$primaryKey = $this->getPrimaryKeyColumn();
 		
 		// if primary key is an empty string, make it null instead (or else ->insert() methods won't return the promary key)
-		if($object->$primaryKey == '') $object->$primaryKey = null;
+			if($object->$primaryKey == '') $object->$primaryKey = null;
 		
-		$data = array();
-		foreach($this->_columns as $key => $value) {
-			if(isset($object->$key)) $data[$key] = $object->$key;
-		}
+		// put the object data in an array
+			$data = array();
+			foreach($this->_columns as $key => $value) {
+				if(isset($object->$key)) $data[$key] = $object->$key;
+			}
 		
 		// Add a new object, or update and existing one
-		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
-		else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
+			if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
+			else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
 	}
 	
 	public function delete($id) {
@@ -200,9 +201,10 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 
 	public function createUniqueID() {
-		// make sure the associated model has a uniqueID property
+		// make sure the associated model and dbtable have a uniqueID property
 			$model = new $this->_modelClass;
-			if(property_exists($model, $this->getDbTable()->uniqueIDColumn)) throw new Exception('The model '.$this->_modelClass.' must have the property: '.$this->getDbTable()->uniqueIDColumn.' to create a uniqueID');
+			if(!property_exists($this->getDbTable(), 'uniqueIDColumn')) throw new Exception('The DbTable '.get_class($this->getDbTable()).' must have a uniqueIDColumn to create a uniqueID');
+			if(!property_exists($model, $this->getDbTable()->uniqueIDColumn)) throw new Exception('The model '.$this->_modelClass.' must have the property: '.$this->getDbTable()->uniqueIDColumn.' to create a uniqueID');
 		
 		do {
 			$uniqueID = Text_Password::create(10, 'unpronounceable');
