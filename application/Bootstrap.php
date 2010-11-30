@@ -17,8 +17,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	protected function _initConfig()
 	{
 		$config = new Zend_Config($this->getOptions(), true);
+		//Zend_Debug::dump($config);
 		Zend_Registry::set('config', $config);
 		//return $config;
+//		$config = Zend_Registry::get('config');
+//		$config->paths->userdata
 	}
 	
 	// An external library for connecting Smarty to Zend

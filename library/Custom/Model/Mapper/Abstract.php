@@ -115,24 +115,44 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	
 	public function findByColumn($column, $search, array $options = null) {
-		$columns = $this->getColumns($options);
+		// filter columns
+			$columns = $this->getColumns($options);
 		
-		$select = $this->getDbTable()->select();
-		$select->from($this->getDbTable(), $columns);
+		// build select statement
+			$select = $this->getDbTable()->select();
+			$select->from($this->getDbTable(), $columns)
+				   ->where("$column = ?", $search);
 		
-		// if $search is an array
-			if(is_array($search)) $select->where("$column IN (?)", $search);
-		// else	
-			else  $select->where("$column = ?", $search);
+//		// if $search is an array
+//			if(is_array($search)) $select->where("$column IN (?)", $search);
+//		// else	
+//			else  $select->where("$column = ?", $search);
 		
-		$resultSet = $this->getDbTable()->fetchAll($select);
-		$objects = array();
-		foreach($resultSet as $row) {
-			$rowData = $row->toArray();
-			$object = new $this->_modelClass($rowData);
-			$objects[] = $object;
-		}
-		return $objects;
+		// query from database
+			$rowSet = $this->getDbTable()->fetchAll($select);
+			
+		// get all results in an array
+			$rowArray = $rowSet->toArray();
+		
+		// return null if nothing found
+			if(count($rowArray) == 0) return null;
+		
+		// only one object should be found / returned by this method
+			if(count($rowArray) > 1) throw new Exception('More than result found in table: '.$this->getDbTable()->info('name')." where $column = $search");
+		
+		// get the info and construct an object
+			$object = new $this->_modelClass($rowArray[0]);
+			
+		// return the single object
+			return $object;
+		
+//		$objects = array();
+//		foreach($resultSet as $row) {
+//			$rowData = $row->toArray();
+//			$object = new $this->_modelClass($rowData);
+//			$objects[] = $object;
+//		}
+		//return $objects;
 	}
 	
 	public function loadByQuery($query){
