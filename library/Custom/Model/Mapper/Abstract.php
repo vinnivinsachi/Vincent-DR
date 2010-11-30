@@ -114,6 +114,10 @@ abstract class Custom_Model_Mapper_Abstract
 			return $object;
 	}
 	
+	// search for a single entry depending on the given columna and value
+	// throws an exception is more than on entry is found
+	// *should be used for finding things by a unique index
+	// returns null or the appropriate Model
 	public function findByColumn($column, $search, array $options = null) {
 		// filter columns
 			$columns = $this->getColumns($options);
@@ -128,7 +132,7 @@ abstract class Custom_Model_Mapper_Abstract
 //		// else	
 //			else  $select->where("$column = ?", $search);
 		
-		// query from database
+		// query the database
 			$rowSet = $this->getDbTable()->fetchAll($select);
 			
 		// get all results in an array
@@ -153,7 +157,42 @@ abstract class Custom_Model_Mapper_Abstract
 //			$objects[] = $object;
 //		}
 		//return $objects;
-	}
+	} // END fundByColumn()
+	
+	// search for multiple entries inthe tables depending on the given column and value
+	// OK to find one or more entries
+	// returns null or an array of the appropriate Model
+	public function fetchByColumn($column, $search, array $options = null) {
+		// filter columns
+			$columns = $this->getColumns($options);
+		
+		// build select statement
+			$select = $this->getDbTable()->select();
+			$select->from($this->getDbTable(), $columns);
+		
+		// if $search is an array
+			if(is_array($search)) $select->where("$column IN (?)", $search);
+		// else	
+			else  $select->where("$column = ?", $search);
+		
+		// query the database
+			$resultSet = $this->getDbTable()->fetchAll($select);
+		
+		// construct an array of appropriate Models
+			$objects = array();
+			foreach($resultSet as $row) {
+				$rowData = $row->toArray();
+				$object = new $this->_modelClass($rowData);
+				$objects[] = $object;
+			}
+			
+		// return null if nothing was found
+			if(count($objects) == 0) return null;
+			
+		// return an array of Models
+			return $objects;
+			
+	} // END fetchByColumn()
 	
 	public function loadByQuery($query){
 		$resultSet = $this->getDbTable()->fetchAll($query);

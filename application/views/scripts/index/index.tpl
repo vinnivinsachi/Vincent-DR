@@ -1,5 +1,6 @@
 {include file="layouts/$layout/header.tpl"}
 
-INDEX
+<p>INDEX</p>
+
 
 {include file="layouts/$layout/footer.tpl"}
