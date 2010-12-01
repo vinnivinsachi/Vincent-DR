@@ -1,9 +1,5 @@
 <?php
 
-// setup
-	$siteURL = 'http://173.203.121.190';
-
-
 // show php errors
 error_reporting(E_ALL);  
 ini_set('display_startup_errors', 1);  
@@ -24,14 +20,6 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/helperProcessor'),
     get_include_path(),
 )));
-
-// define additional paths
-define('SITE_URL', $siteURL);
-define('SITE_ROOT', substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/index.php')));
-define('CSS_DIR', SITE_ROOT.'/css');
-define('IMAGES_DIR', SITE_ROOT.'/images');
-define('JS_DIR', SITE_ROOT.'/js');
-
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
