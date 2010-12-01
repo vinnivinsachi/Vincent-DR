@@ -8,7 +8,7 @@ class Application_Model_Products_ProductColor extends Custom_Model_Abstract
 	public $productColorID;
 	public $productID;
 	public $Black;
-	public $Pin_strip;
+	public $Pin_stripe;
 	public $Light_tan;
 	public $Dark_tan;
 	public $Brown;

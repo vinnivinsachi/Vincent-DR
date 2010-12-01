@@ -179,14 +179,26 @@ class TestController extends Custom_Zend_Controller_Action
 		
 		$productColor->productID = 2;
 		if($productColor->productID !=''){
-			$productColor->_primaryID = $productColorMapper->	
+			$productColor = $productColorMapper->findByColumn('productID', $productColor->productID);
 		}
-		$productColor->Black = 1;
+		$productColor->Pin_stripe = 1;
+		$productColor->Black = 0;
 		$productColor->Yellow = 1;
 		$productColorMapper->save($productColor);
 		
 		$this->render('index');
 	
+	}
+	
+	public function testingvariablesAction(){
+		$product = new Application_Model_Products_Product();
+		$productMapper=new $product->_mapperClass;
+		$product=$productMapper->find(24);
+		$product->_colors = 'blah';
+		$product->_images=array('blah');
+		echo $product->_colors;
+		Zend_Debug::Dump($product);
+		
 	}
 	
 	//productListing testing section
@@ -267,6 +279,9 @@ class TestController extends Custom_Zend_Controller_Action
 	}
 	
 	public function productinventorytestAction(){
+		
+		$this->_db->beginTransaction();
+		try{
 			$product = new Application_Model_Products_Product();
 			//$product->productID=6;
 			$product->purchaseType='BUY_NOW';
@@ -295,24 +310,42 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->lastStatusChange=date('Y-m-d G:i:s');
 			$productMapper = new $product->_mapperClass;
 			$product->_primaryID = $productMapper->save($product);	
-			Zend_Debug::dump($product);
+			
+			//attribute setter
+			 //= new Application_Model_Products_ProductColor();
+			$product->_colors = new Application_Model_Products_ProductColor();
+			$productColorMapper = new $product->_colors->_mapperClass;
+			$product->_colors->productID = $product->_primaryID;
+			if($product->_colors->productID !=''){
+				$productColorTmp = $productColorMapper->findByColumn('productID', $product->_colors->productID);	
+				if(count($productColorTmp)>0){
+					$product->_colors = $productColorTmp;
+				}
+			}
+			$product->_colors->Pin_stripe = 1;
+			$product->_colors->Black = 0;
+			$product->_colors->Yellow = 1;
+			$product->_colors->_primaryID=$productColorMapper->save($product->_colors);
+			//$product->setColors($productColor);
+			
 	
+			//productInventory
 			$productInventory = new Application_Model_Products_ProductInventory();
 			$productInventory->productID = $product->_primaryID;
 			$productInventory->sys_name = 'product';
-			$productInventory->sys_shoe_metric = 'US';
+			$productInventory->sys_metric_type = 'US';
 			$productInventory->sys_shoe_size = '6.5';
 			$productInventory->sys_shoe_heel = '2.5 inch';
 			$productInventory->sys_price = '30.95';
 			$productInventory->sys_quantity = 1;
 			$productInventory->sys_conditions = 'New';
 			$productInventory->sys_color = 'Brown';
+			
 			$productInventory->profile = new Application_Model_Products_ProductInventoryProfiles();
 			$productInventory->profile->love = 'vincent and daisy';
 			$productInventory->profile->passion = 'dancing';
 			$productInventory->profile->sadness = 'without daisy';
 			$productInventoryMapper = new $productInventory->_mapperClass;
-			
 			$productInventory->_primaryID = $productInventoryMapper->save($productInventory);
 			
 			Zend_Debug::dump($productInventory);
@@ -320,6 +353,7 @@ class TestController extends Custom_Zend_Controller_Action
 			$productInventoryProfileMapper = new $mapperClass();
 			$productInventoryProfileMapper->saveForAssociatedID($productInventory->profile, $productInventory->_primaryID);
 			
+			$product->_inventory[$productInventory->_primaryID]=$productInventory;
 			
 			if(isset($_FILES['generalImages'])){
 			Zend_Debug::dump($_FILES['generalImages']);
@@ -329,7 +363,14 @@ class TestController extends Custom_Zend_Controller_Action
 			$imageProcessor = new Custom_Processor_Images_ImageProcessor($imageMapper);
 			$imageProcessor->uploadImage($_FILES['generalImages'], 'productImages', 'product', 'productTag', $product->productTag, $product->_primaryID);
 			}
-			//$productInventoryMapper = new $productInventory->_mapperClass;
+			
+			Zend_Debug::dump($product);
+			$this->_db->commit();
+		}catch(Execption $e){
+			echo $e->getMessage();
+			$this->_db->rollback();
+		}
+
 			$this->render('index');
 	}
 	
@@ -352,5 +393,4 @@ class TestController extends Custom_Zend_Controller_Action
 			$this->render('index');
 	}
 }
-
 ?>

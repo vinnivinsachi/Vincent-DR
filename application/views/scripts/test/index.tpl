@@ -1,7 +1,7 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
 
 INDEX
-
+<a href="/public/test/productinventorytest">productinventorytest</a> | 
 <form enctype="multipart/form-data" method="post" action="/public/test/productinventorytest">
 
 		<div class='formRightDivision'>
