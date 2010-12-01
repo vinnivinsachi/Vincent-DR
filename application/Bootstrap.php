@@ -14,14 +14,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Session::start();
 	}
 	
-	protected function _initConfig()
-	{
-		$config = new Zend_Config($this->getOptions(), true);
-		//Zend_Debug::dump($config);
-		Zend_Registry::set('config', $config);
-		//return $config;
-//		$config = Zend_Registry::get('config');
-//		$config->paths->userdata
+	protected function _initPaths()
+	{	
+		// get stuff from .ini files
+			$config = new Zend_Config($this->getOptions());
+			
+		// define global constants
+			define('SITE_ROOT', substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/index.php')));
+			
+			define('SITE_URL', $config->paths->siteURL);
+			define('CSS_DIR', SITE_ROOT.$config->paths->public->cssDir);
+			define('IMAGES_DIR', SITE_ROOT.$config->paths->public->imagesDir);
+			define('JS_DIR', SITE_ROOT.$config->paths->public->jsDir);
+			define('USERDATA_DIR', SITE_ROOT.$config->paths->public->userdataDir);
 	}
 	
 	// An external library for connecting Smarty to Zend
