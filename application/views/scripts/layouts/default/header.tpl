@@ -23,6 +23,7 @@
 		
 	<!-- JQUERY PLUGINS -->
 		<script type='text/javascript' src='{$jsDir}/jquery/plugins/rolloverImage.jquery.js'></script>
+		<script type='text/javascript' src='{$jsDir}/jquery/plugins/preload.jquery.js'></script>
 		<script type='text/javascript' src='{$jsDir}/jquery/plugins/validate.jquery.js'></script>
 		<script type='text/javascript' src='{$jsDir}/jquery/plugins/form.jquery.js'></script>
 		
