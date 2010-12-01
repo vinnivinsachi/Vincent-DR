@@ -6,7 +6,8 @@ class RegisterController extends Custom_Zend_Controller_Action
     public function init() {
     	parent::init();  // Because this is a custom controller class
     	$this->_ajaxContext->addActionContext('checkusername', 'json')
-			 ->initContext();
+    					   ->addActionContext('checkemail', 'json')
+			 			   ->initContext();
     } // END init()
   
 
@@ -37,8 +38,13 @@ class RegisterController extends Custom_Zend_Controller_Action
     
     public function checkusernameAction() {
     	$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
-    	$this->view->available = $usersMapper->usernameAvailable($this->_request->getParam('username'));    	
+    	$this->view->usernameAvailable = $usersMapper->usernameAvailable($this->_request->getParam('username'));    	
     } // END checkusernameAction()
+    
+    public function checkemailAction() {
+    	$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+    	$this->view->emailAvailable = $usersMapper->emailAvailable($this->_request->getParam('email'));    	
+    } // END checkemailAction()
     
     public function resetpasswordAction() {
     	// IF a form was submitted

@@ -126,12 +126,7 @@ abstract class Custom_Model_Mapper_Abstract
 			$select = $this->getDbTable()->select();
 			$select->from($this->getDbTable(), $columns)
 				   ->where("$column = ?", $search);
-		
-//		// if $search is an array
-//			if(is_array($search)) $select->where("$column IN (?)", $search);
-//		// else	
-//			else  $select->where("$column = ?", $search);
-		
+
 		// query the database
 			$rowSet = $this->getDbTable()->fetchAll($select);
 			
@@ -149,14 +144,7 @@ abstract class Custom_Model_Mapper_Abstract
 			
 		// return the single object
 			return $object;
-		
-//		$objects = array();
-//		foreach($resultSet as $row) {
-//			$rowData = $row->toArray();
-//			$object = new $this->_modelClass($rowData);
-//			$objects[] = $object;
-//		}
-		//return $objects;
+
 	} // END fundByColumn()
 	
 	// search for multiple entries inthe tables depending on the given column and value

@@ -13,9 +13,13 @@ class Application_Form_Register_Register extends Zend_Form
 		// Username
 		$username = new Zend_Form_Element_Text('username');
 		$username->setRequired(true)
-				 ->addFilter('StringToLower')
 				 ->addValidator('Alnum')
 				 ->addValidator('StringLength', false, array(4, 20));
+				 
+		// Email
+		$email = new Zend_Form_Element_Text('email');
+		$email->setRequired(true)
+			  ->addValidator('EmailAddress');
 
 		// Password
 		$password = new Zend_Form_Element_Password('password');
@@ -31,6 +35,7 @@ class Application_Form_Register_Register extends Zend_Form
 		
 		// Add all the elements to the form
 		$this->addElement($username)
+			 ->addElement($email)
 			 ->addElement($password)
 			 ->addElement($passwordConfirm);
     }

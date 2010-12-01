@@ -11,6 +11,14 @@
 		</tr>
 		
 		<tr>
+			<td><label for='email' class='required'>Email:</label></td>
+			<td>
+				<input type='text' name='email' id='email' class='required email' /> 
+				<span id='email-check'></span>
+			</td>
+		</tr>
+		
+		<tr>
 			<td><label for='password' class='required'>Password:</label></td>
 			<td><input type='password' name='password' id='password' class='required' minlength='6' maxlength='20'></td>
 		</tr>

@@ -34,8 +34,17 @@ class Application_Model_Mapper_Users_UsersMapper extends Custom_Model_Mapper_Abs
 		return $this->findByColumn('email', $email, $options);
 	} // END findByEmail()
 	
+	// is the given username available?
+	// returns true / false
 	public function usernameAvailable($username) {
 		if($this->findByUsername($username, array('include', array('username')))) return false;
+		else return true;
+	}
+	
+	// is the given email available?
+	// return true / false
+	public function emailAvailable($email) {
+		if($this->findByEmail($email, array('include', array('email')))) return false;
 		else return true;
 	}
 	

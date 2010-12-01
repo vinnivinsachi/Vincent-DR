@@ -7,8 +7,8 @@ class Application_Form_Store_BasicInfo extends Zend_Form
     {
 		// Store email
 		$storeEmail = new Zend_Form_Element_Text('storeEmail');
-		$storeEmail->setRequired(false);
-				   //->addValidator('EmailAddress');
+		$storeEmail->setRequired(false)
+				   ->addValidator('EmailAddress');
 				 
 		// Store Phone
 		$storePhone = new Zend_Form_Element_Text('storePhone');
