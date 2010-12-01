@@ -6,7 +6,7 @@ class Application_Model_Mapper_Users_ShippingAddressesMapper extends Custom_Mode
 	protected $_modelClass = 'Application_Model_Users_ShippingAddress';
 
 	public function getShippingAddressesForUser(Application_Model_Users_User $user, array $options = null) {
-		return $this->findByColumn('userID', $user->userID, $options);
+		return $this->fetchByColumn('userID', $user->userID, $options);
 	}
 	
 }

@@ -231,6 +231,7 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->_primaryID = $productMapper->save($product);
 			
 			Zend_Debug::dump($product);
+
 			//$product->image = new Application
 			
 			

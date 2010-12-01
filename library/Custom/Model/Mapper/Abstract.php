@@ -114,29 +114,75 @@ abstract class Custom_Model_Mapper_Abstract
 			return $object;
 	}
 	
+	// search for a single entry depending on the given columna and value
+	// throws an exception is more than on entry is found
+	// *should be used for finding things by a unique index
+	// returns null or the appropriate Model
 	public function findByColumn($column, $search, array $options = null) {
-		$columns = $this->getColumns($options);
+		// filter columns
+			$columns = $this->getColumns($options);
 		
-		$select = $this->getDbTable()->select();
-		$select->from($this->getDbTable(), $columns);
+		// build select statement
+			$select = $this->getDbTable()->select();
+			$select->from($this->getDbTable(), $columns)
+				   ->where("$column = ?", $search);
+
+		// query the database
+			$rowSet = $this->getDbTable()->fetchAll($select);
+			
+		// get all results in an array
+			$rowArray = $rowSet->toArray();
+		
+		// return null if nothing found
+			if(count($rowArray) == 0) return null;
+		
+		// only one object should be found / returned by this method
+			if(count($rowArray) > 1) throw new Exception('More than result found in table: '.$this->getDbTable()->info('name')." where $column = $search");
+		
+		// get the info and construct an object
+			$object = new $this->_modelClass($rowArray[0]);
+			
+		// return the single object
+			return $object;
+
+	} // END fundByColumn()
+	
+	// search for multiple entries inthe tables depending on the given column and value
+	// OK to find one or more entries
+	// returns null or an array of the appropriate Model
+	public function fetchByColumn($column, $search, array $options = null) {
+		// filter columns
+			$columns = $this->getColumns($options);
+		
+		// build select statement
+			$select = $this->getDbTable()->select();
+			$select->from($this->getDbTable(), $columns);
 		
 		// if $search is an array
 			if(is_array($search)) $select->where("$column IN (?)", $search);
 		// else	
 			else  $select->where("$column = ?", $search);
 		
-		$resultSet = $this->getDbTable()->fetchAll($select);
-		$objects = array();
-		foreach($resultSet as $row) {
-			$rowData = $row->toArray();
-			$object = new $this->_modelClass($rowData);
-			$objects[] = $object;
-		}
-		return $objects;
-	}
+		// query the database
+			$resultSet = $this->getDbTable()->fetchAll($select);
+		
+		// construct an array of appropriate Models
+			$objects = array();
+			foreach($resultSet as $row) {
+				$rowData = $row->toArray();
+				$object = new $this->_modelClass($rowData);
+				$objects[] = $object;
+			}
+			
+		// return null if nothing was found
+			if(count($objects) == 0) return null;
+			
+		// return an array of Models
+			return $objects;
+			
+	} // END fetchByColumn()
 	
 	public function loadByQuery($query){
-		//echo 'here';
 		$resultSet = $this->getDbTable()->fetchAll($query);
 		if(count($resultSet) == 0) return null; // return null if nothing found
 		$objects = array();
@@ -176,22 +222,24 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 	protected function saveOne($object) {
 		// make sure the right type of model was provided
-		if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
+			if(get_class($object) != $this->_modelClass) throw new Exception('Incorrect type of object provided');
 		
-		$primaryKey = $this->getPrimaryKeyColumn();
+		// get primary key column name
+			$primaryKey = $this->getPrimaryKeyColumn();
 		
 		// if primary key is an empty string, make it null instead (or else ->insert() methods won't return the promary key)
-		if($object->$primaryKey == '') $object->$primaryKey = null;
+			if($object->$primaryKey == '') $object->$primaryKey = null;
 		
-		$data = array();
-		foreach($this->_columns as $key => $value) {
-			if(isset($object->$key)) $data[$key] = $object->$key;
-		}
+		// put the object data in an array
+			$data = array();
+			foreach($this->_columns as $key => $value) {
+				if(isset($object->$key)) $data[$key] = $object->$key;
+			}
 		
 		// Add a new object, or update and existing one
-		
-		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
-		else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
+
+			if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
+			else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
 	}
 	
 	public function delete($id) {
@@ -201,6 +249,11 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 
 	public function createUniqueID() {
+		// make sure the associated model and dbtable have a uniqueID property
+			$model = new $this->_modelClass;
+			if(!property_exists($this->getDbTable(), 'uniqueIDColumn')) throw new Exception('The DbTable '.get_class($this->getDbTable()).' must have a uniqueIDColumn to create a uniqueID');
+			if(!property_exists($model, $this->getDbTable()->uniqueIDColumn)) throw new Exception('The model '.$this->_modelClass.' must have the property: '.$this->getDbTable()->uniqueIDColumn.' to create a uniqueID');
+		
 		do {
 			$uniqueID = Text_Password::create(10, 'unpronounceable');
 		} while($this->findByUniqueID($uniqueID));

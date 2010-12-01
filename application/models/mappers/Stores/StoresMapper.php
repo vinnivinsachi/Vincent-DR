@@ -28,10 +28,7 @@ class Application_Model_Mapper_Stores_StoresMapper extends Custom_Model_Mapper_A
 	
 	// find a store by it's dashed storeName
 	public function findByStoreName($storeName, array $options = null) {
-		$stores = $this->findByColumn('storeName', $storeName, $options);
-		if(count($stores) == 0) return null;
-		if(count($stores) > 1) throw new Exception('More than one store found with the storeName: '.$storeName);
-		return $stores[0];
+		return $this->findByColumn('storeName', $storeName, $options);
 	}
 	
 	// turn a nice display name into a url friendly and database indexible name
