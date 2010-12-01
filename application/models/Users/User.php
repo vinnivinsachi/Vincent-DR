@@ -5,6 +5,8 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	// setup
 	protected $_primaryIDColumn = 'userID';
 	protected $_mapperClass = 'Application_Model_Mapper_Users_UsersMapper';
+	private $dateCreated;
+	private $dateUpdated;
 	
 	// columns
 	public $userID;
@@ -26,14 +28,11 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	public $reviewCount;
 	public $reviewAverageScore;
 	public $reviewTotalScore;
-	public $dateCreated;
 	public $lastLogin;
 	public $salt;
 	public $affiliation;
 	public $experience;
 	public $defaultShippingAddressID;
-	public $dateUpdated;
-
 	
 	// private variables won't show up in SQL queries
 	protected $shippingAddresses;

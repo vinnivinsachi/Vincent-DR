@@ -26,7 +26,7 @@ abstract class Custom_Model_Abstract
 		$this->$property = $value;
 	}
 	
-	public function __get($property) {
+	public function &__get($property) {
 		if(!property_exists($this, $property)) throw new Exception('Trying to get invalid '.get_class($this).' property: '.$property);
 		return $this->$property;
 	}
