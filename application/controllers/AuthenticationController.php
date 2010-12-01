@@ -32,10 +32,17 @@ class AuthenticationController extends Custom_Zend_Controller_Action
         if($request->isPost()) {
         	// If form is valid
             if($form->isValid($request->getPost())) {
-            	// redirect to home page (authentication success)
-                if($this->_validLogin($form->getValues())) $this->_helper->redirector('index', 'account');
+            	// jsFlashMessage and redirect to home page (authentication success)
+                	if($this->_validLogin($form->getValues())) {
+                		$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+                		$user = $usersMapper->findByUsername($this->_auth->getIdentity()->username);
+                		$user->lastLogin = date('Y-m-d H:i:s');
+                		$usersMapper->save($user);
+                		$this->_helper->redirector('index', 'account');
+                	}
+                
                 // Display error (authentication failure)
-                else $this->_helper->flashMessenger(array('error' => 'Incorrect username / password'));
+                	else $this->_helper->flashMessenger(array('error' => 'Incorrect username / password'));
             }
             // If form is NOT valid
             else $this->_helper->flashMessenger(array('error' => 'There were problems with your submission, please make sure javascript is enabled, and try again'));
