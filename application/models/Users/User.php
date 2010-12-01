@@ -5,7 +5,6 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	// setup
 	protected $_primaryIDColumn = 'userID';
 	protected $_mapperClass = 'Application_Model_Mapper_Users_UsersMapper';
-	private $dateCreated;
 	private $dateUpdated;
 	
 	// columns
@@ -33,6 +32,7 @@ class Application_Model_Users_User extends Custom_Model_Abstract implements Zend
 	public $affiliation;
 	public $experience;
 	public $defaultShippingAddressID;
+	public $dateCreated;
 	
 	// private variables won't show up in SQL queries
 	protected $shippingAddresses;
