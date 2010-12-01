@@ -73,19 +73,19 @@ class AccountController extends Custom_Zend_Controller_Action
 			$this->view->user = $this->user;
 			
 		// process the form if it was submitted
-		if($this->isJsonContext()) {
-			$request = $this->getRequest();
-			$form = new Application_Form_Account_BasicInfo;
-
-			if($form->isValid($request->getPost())) {
-               // save the user info
-               		$this->user->setOptions($form->getValues());
-                	$this->usersMapper->save($this->user);      
-               // display success message
-                	$this->view->jsFlashMessage = 'Changes have been successfully saved!';         	
-            }
-			else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
-		}
+			if($this->isJsonContext()) {
+				$request = $this->getRequest();
+				$form = new Application_Form_Account_BasicInfo;
+	
+				if($form->isValid($request->getPost())) {
+	               // save the user info
+	               		$this->user->setOptions($form->getValues());
+	                	$this->usersMapper->save($this->user);      
+	               // display success message
+	                	$this->view->jsFlashMessage = 'Changes have been successfully saved!';         	
+	            }
+				else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
+			}
 	}
 	
 	public function editshippingAction() {

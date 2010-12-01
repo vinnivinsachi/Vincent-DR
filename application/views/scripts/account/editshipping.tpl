@@ -2,9 +2,7 @@
 
 <div id='content-wide'>
 	
-	{include file='account/forms/shippingAddressForm.tpl'}	
-	
-	{include file='account/js/editshippingJS.tpl'}        
+	{include file='account/forms/shippingAddressForm.tpl'}      
 
 </div>
 

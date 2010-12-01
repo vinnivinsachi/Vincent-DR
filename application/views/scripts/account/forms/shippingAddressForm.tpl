@@ -51,3 +51,5 @@
 	
 	</form>
 </fieldset>
+
+{include file='account/js/shippingAddressFormJS.tpl'}  
