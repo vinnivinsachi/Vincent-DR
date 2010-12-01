@@ -13,8 +13,9 @@ class Application_Model_Mapper_Products_ProductInventoriesMapper extends Custom_
 		//public $inventoryReference;
 		//public $uniqueIdentifierForJS; need to set unique id;
 		echo 'presave';
-		parent::save($productInventory);
-		echo 'postsave';
+		$productInventory->productInventoryUniqueID = $this->createUniqueID();
+		return parent::save($productInventory);
+		//echo 'postsave';
 		//post save
 	}
 }

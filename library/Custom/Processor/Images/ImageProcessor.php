@@ -288,7 +288,7 @@
 		
 		//this is the path of the uploaded file.
 		public function getFullPath($image){
-			$primaryKey = $this->imageMapper->getPrimaryKey();
+			//$primaryKey = $this->imageMapper->getPrimaryKey();
 			return sprintf('%s/%d.jpg', self::GetUploadPath($image), $image->_primaryID);
 		}
 		

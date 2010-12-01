@@ -15,8 +15,6 @@ class Application_Model_Products_ProductImage extends Custom_Model_Abstract
 	public $imageOrder;
 	public $flagged = 0;
 	public $dateCreated;
-	
-	
 }
 
 ?>

@@ -1,12 +1,24 @@
 <?php
-class Custom_Model_Profiles
+abstract class Custom_Model_ProfilesAbstract
 {
+	// protected $_mapperClass = '[Path_To_Mapper]'; // must be set in the child model
 	
 	private $properties = array();
 	
 	public function __construct(array $properties = null) {
 		if(is_array($properties)) $this->setProperties($properties);
+		
+		if(!isset($this->_mapperClass)) throw new Exception('The model must have an associated mapper class: '.get_class($this));
+		// require and set the primaryKey accessor property
+			
+			//$this->_primaryID =& $this->$primaryIDColumnValue;
 	}
+	
+	public function getMapperClass(){
+		return $this->_mapperClass;	
+	}
+	
+	
 	
 	public function __set($property, $value) {
 		$this->properties[$property] = $value;
@@ -30,4 +42,4 @@ class Custom_Model_Profiles
 		return $this->properties;
 	}
 
-}
+}?>

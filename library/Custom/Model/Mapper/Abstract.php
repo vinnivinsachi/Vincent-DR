@@ -189,6 +189,7 @@ abstract class Custom_Model_Mapper_Abstract
 		}
 		
 		// Add a new object, or update and existing one
+		
 		if(($id = $object->$primaryKey) === null) return $this->getDbTable()->insert($data);
 		else return $this->getDbTable()->update($data, array("$primaryKey = ?" => $id));
 	}

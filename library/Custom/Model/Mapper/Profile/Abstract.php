@@ -3,7 +3,7 @@
 abstract class Custom_Model_Mapper_Profile_Abstract extends Custom_Model_Mapper_Abstract
 {
 	//abstract protected $_dbTableClass; NEED TO DEFINE IN CHILD CLASS
-	protected $_modelClass = 'Custom_Model_Profiles';
+	protected $_modelClass;
 	
 	public function __construct() {
 		parent::__construct();

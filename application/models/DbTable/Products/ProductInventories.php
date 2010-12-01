@@ -4,5 +4,7 @@ class Application_Model_DbTable_Products_ProductInventories extends Zend_Db_Tabl
 {
     protected $_name = 'productInventories';
 	protected $_primary = 'productInventoryID';
+	public $uniqueIDColumn = 'productInventoryUniqueID';
+
 }
 

@@ -7,6 +7,7 @@ class Application_Model_Products_ProductInventory extends Custom_Model_Abstract
 	protected $_mapperClass = 'Application_Model_Mapper_Products_ProductInventoriesMapper';
 	
 	public $productInventoryID;
+	public $productInventoryUniqueID;
 	public $productID;
 	public $sys_name;
 	public $sys_metric_type;
@@ -23,5 +24,7 @@ class Application_Model_Products_ProductInventory extends Custom_Model_Abstract
 	public $sys_color;
 	public $dateCreated;
 	public $dateUpdated;
+	
+	protected $profile;
 }
 ?>

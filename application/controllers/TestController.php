@@ -168,8 +168,25 @@ class TestController extends Custom_Zend_Controller_Action
 		$inventory->sys_conditions = 'BRAND NEW';
 		$inventory->sys_color = 'BLUE';
 		$inventoryMapper = new $inventory->_mapperClass;
-		$inventoryMapper->save($inventory);
+		$inventory->_primaryID=$inventoryMapper->save($inventory);
+		Zend_Debug::dump($inventory);
 		$this->render('index');
+	}
+	
+	public function saveproductcolorAction(){
+		$productColor = new Application_Model_Products_ProductColor();
+		$productColorMapper = new $productColor->_mapperClass;
+		
+		$productColor->productID = 2;
+		if($productColor->productID !=''){
+			$productColor->_primaryID = $productColorMapper->	
+		}
+		$productColor->Black = 1;
+		$productColor->Yellow = 1;
+		$productColorMapper->save($productColor);
+		
+		$this->render('index');
+	
 	}
 	
 	//productListing testing section
@@ -186,11 +203,76 @@ class TestController extends Custom_Zend_Controller_Action
 
 	 		$product = new Application_Model_Products_Product();
 			//$product->productID=6;
-			$product->purchaseType='CUSTIMIZE';
+			$product->purchaseType='CUSTOMIZE';
 			$product->productCategory='WOMEN';
 			$product->inventoryAttributeTable='shoes';
 			$product->productTag='Ladies latin shoes';
 			$product->productPriceRange = 'productPrice1';
+			$product->domesticShippingRate=8.95;
+			$product->internationalShippingRate=12.95;
+			$product->sellerType='asdfe';
+			$product->sellerDisplayName='professional ballroom shoes - Ann Arbor';
+			$product->sellerName='professional-ballroom-shoes-ann-arbor';
+			$product->url = 'asdfe';
+			$product->name='asdfe';
+			$product->price=65.95;
+			$product->onSale=false;
+			$product->brand='DanceNaturals';
+			$product->returnAllowed=true;
+			$product->flagged=false;
+			//$product->dateCreated=date('Y-m-d G:i:s');
+			$product->status='UNLISTED';
+			$product->rewardPoint=4;
+			$product->backorderTime='5 weeks';
+			$product->competitionUsage=true;
+			$product->socialUsage=true;
+			$product->lastStatusChange=date('Y-m-d G:i:s');
+			$productMapper = new $product->_mapperClass;
+			$product->_primaryID = $productMapper->save($product);
+			
+			Zend_Debug::dump($product);
+			//$product->image = new Application
+			
+			
+			//$this->_db->rollback();
+			
+		//	$this->_db->commit();
+	 	//}catch(Exception $e){
+	 		//$this->_db->rollback();
+	 	//	echo $e->getMessage();
+	 	//}
+	 	$this->render('index');
+			
+	}
+	
+	public function productinventoryprofiletestingAction(){
+			$productInventory = new Application_Model_Products_ProductInventory();
+			$productInventory->productID = 4;
+			$productInventory->profile = new Application_Model_Products_ProductInventoryProfiles();
+			$productInventory->profile->love = 'vincent and daisy';
+			$productInventory->profile->passion = 'dancing';
+			$productInventory->profile->sadness = 'without daisy';
+			$productInventoryMapper = new $productInventory->_mapperClass;
+			$productInventory->_primaryID = $productInventoryMapper->save($productInventory);
+			
+			Zend_Debug::dump($productInventory);
+			$mapperClass= $productInventory->profile->getMapperClass();
+			$productInventoryProfileMapper = new $mapperClass();
+			$productInventoryProfileMapper->saveForAssociatedID($productInventory->profile, $productInventory->_primaryID);
+			
+			//$productInventoryMapper = new $productInventory->_mapperClass;
+			
+			$this->render('index');
+	}
+	
+	public function productinventorytestAction(){
+			$product = new Application_Model_Products_Product();
+			//$product->productID=6;
+			$product->purchaseType='BUY_NOW';
+			$product->productCategory='WOMEN';
+			$product->inventoryAttributeTable='shoes';
+			$product->productTag='Ladies latin shoes';
+			$product->productPriceRange = 'product_price_1';
 			$product->domesticShippingRate=8.95;
 			$product->internationalShippingRate=12.95;
 			$product->sellerType='asdfe';
@@ -210,29 +292,63 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->competitionUsage=true;
 			$product->socialUsage=true;
 			$product->lastStatusChange=date('Y-m-d G:i:s');
-			$productMapper = new Application_Model_Mapper_Products_ProductsMapper();
-			$product->_primaryID = $productMapper->save($product);
-			//$product->image = new Application
+			$productMapper = new $product->_mapperClass;
+			$product->_primaryID = $productMapper->save($product);	
+			Zend_Debug::dump($product);
+	
+			$productInventory = new Application_Model_Products_ProductInventory();
+			$productInventory->productID = $product->_primaryID;
+			$productInventory->sys_name = 'product';
+			$productInventory->sys_shoe_metric = 'US';
+			$productInventory->sys_shoe_size = '6.5';
+			$productInventory->sys_shoe_heel = '2.5 inch';
+			$productInventory->sys_price = '30.95';
+			$productInventory->sys_quantity = 1;
+			$productInventory->sys_conditions = 'New';
+			$productInventory->sys_color = 'Brown';
+			$productInventory->profile = new Application_Model_Products_ProductInventoryProfiles();
+			$productInventory->profile->love = 'vincent and daisy';
+			$productInventory->profile->passion = 'dancing';
+			$productInventory->profile->sadness = 'without daisy';
+			$productInventoryMapper = new $productInventory->_mapperClass;
+			
+			$productInventory->_primaryID = $productInventoryMapper->save($productInventory);
+			
+			Zend_Debug::dump($productInventory);
+			$mapperClass= $productInventory->profile->getMapperClass();
+			$productInventoryProfileMapper = new $mapperClass();
+			$productInventoryProfileMapper->saveForAssociatedID($productInventory->profile, $productInventory->_primaryID);
 			
 			
-			//$this->_db->rollback();
+			if(isset($_FILES['generalImages'])){
+			Zend_Debug::dump($_FILES['generalImages']);
 			
-		//	$this->_db->commit();
-	 	//}catch(Exception $e){
-	 		//$this->_db->rollback();
-	 	//	echo $e->getMessage();
-	 	//}
-	 	$this->render('index');
-			
+			$image =new Application_Model_Products_ProductImage();
+			$imageMapper = new $image->_mapperClass;
+			$imageProcessor = new Custom_Processor_Images_ImageProcessor($imageMapper);
+			$imageProcessor->uploadImage($_FILES['generalImages'], 'productImages', 'product', 'productTag', $product->productTag, $product->_primaryID);
+			}
+			//$productInventoryMapper = new $productInventory->_mapperClass;
+			$this->render('index');
 	}
 	
-	public function productinventoryAction(){
+	public function loadproducttestingAction(){
+		$this->view->searchCriteria = '_shoesCriteria.tpl';
 		
-	}
-	
-	public function pruductimagesAction(){
-		
-	
+			$this->searchOptions=array();
+			foreach($this->getRequest()->getParams() as $k=>$v){
+				if ($k!='controller' && $k!='action' && $k!='module'){
+					$this->searchOptions[$k]=$v;
+					echo 'key is: '.$k;
+					//echo 'value is: '.$v;
+					$this->view->$k=$v;
+					Zend_Debug::dump($v);
+				}
+			}
+			
+			$products = Application_Model_Mapper_Products_ProductsMapper::retrieveProductsForDisplay($this->_db, $this->searchOptions);
+			Zend_Debug::dump($products);
+			$this->render('index');
 	}
 }
 
