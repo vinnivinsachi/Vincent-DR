@@ -91,6 +91,11 @@ class RegisterController extends Custom_Zend_Controller_Action
     				}
     			// ELSE IF an email form was submitted
     				else if($this->_request->getParam('email')) {
+    					// make sure a user exists with that email
+    						$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+    						$user = $usersMapper->findByEmail($this->_request->getParam('email'));
+    						if($user == null) $this->errorAndRedirect('We can\' find a user with that email, please make sure you\'ve entered it correctly', 'resetpassword');
+    					
     					// create a new entry in the resetPasswordTable
 		    				$reset = new Application_Model_Users_PasswordReset;
 		    				$reset->userEmail = $this->_request->getParam('email');
