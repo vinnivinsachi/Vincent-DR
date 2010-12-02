@@ -78,7 +78,12 @@ class RegisterController extends Custom_Zend_Controller_Action
     						$resetMapper->delete($reset->resetID);
     					
     					// send a confirmation email
-    					print 'SEND CONFIRMATION EMAIL HERE...';
+    						$mail = new Zend_Mail();
+							$mail->setBodyText('<p>Your password has been changed.</p><p>If you did not authorize this change, please contact us.</p>');
+							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
+							$mail->addTo($user->email);
+							$mail->setSubject('Dance Rialto - Password Reset Notice');
+							$mail->send();
     					
     					// set the view
     						$this->view->newPasswordSet = true;
@@ -91,10 +96,17 @@ class RegisterController extends Custom_Zend_Controller_Action
 		    				$resetMapper = new $reset->_mapperClass;
 		    				$resetID = $resetMapper->save($reset);
 		    			
-		    			// send an email with the link to reset password
+		    			// get reset password link
 		    				$reset = $resetMapper->find($resetID);
 		    				$resetLink = SITE_URL.SITE_ROOT.'/register/resetpassword?resetID='.$reset->resetUniqueID;
-		    				print 'SEND MAIL HERE...';
+		    				
+		    			// send an email with the link to reset password
+		    				$mail = new Zend_Mail();
+							$mail->setBodyText('please click the link below to reset your password:<br /><br />'.$resetLink);
+							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
+							$mail->addTo($this->_request->getParam('email'));
+							$mail->setSubject('Dance Rialto - Reset Password Request');
+							$mail->send();
 		    			
 		    			// set the view
     						$this->view->resetEmailSent = true;
