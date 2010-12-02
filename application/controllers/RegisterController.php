@@ -98,11 +98,11 @@ class RegisterController extends Custom_Zend_Controller_Action
 		    			
 		    			// get reset password link
 		    				$reset = $resetMapper->find($resetID);
-		    				$resetLink = SITE_URL.SITE_ROOT.'/register/resetpassword?resetID='.$reset->resetUniqueID;
+		    				$resetLink = SITE_URL.SITE_ROOT.'/register/resetpassword?resetUniqueID='.$reset->resetUniqueID;
 		    				
 		    			// send an email with the link to reset password
 		    				$mail = new Zend_Mail();
-							$mail->setBodyText('please click the link below to reset your password:<br /><br />'.$resetLink);
+							$mail->setBodyHtml('<p>please click the link below to reset your password:</p><p>'.$resetLink.'</p>');
 							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
 							$mail->addTo($this->_request->getParam('email'));
 							$mail->setSubject('Dance Rialto - Reset Password Request');
