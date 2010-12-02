@@ -109,6 +109,7 @@ class RegisterController extends Custom_Zend_Controller_Action
 							$mail->send();
 		    			
 		    			// set the view
+		    				$this->view->resetEmail = $this->_request->getParam('email');
     						$this->view->resetEmailSent = true;
     				} 				
     		}
