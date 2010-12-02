@@ -260,10 +260,8 @@ abstract class Custom_Model_Mapper_Abstract
 	}
 
 	public function findByUniqueID($uniqueID, array $options = null) {
-		$objects = $this->findByColumn($this->getDbTable()->uniqueIDColumn, $uniqueID, $options);
-		if(count($objects) == 0) return null;
-		if(count($objects) > 1) throw new Exception('More than one object found with the uniqueID: '.$uniqueID);
-		return $objects[0];
+		$object = $this->findByColumn($this->getDbTable()->uniqueIDColumn, $uniqueID, $options);
+		return $object;
 	}
 
 }
