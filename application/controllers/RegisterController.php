@@ -68,6 +68,7 @@ class RegisterController extends Custom_Zend_Controller_Action
     					// get the user from the database
     						$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
     						$user = $usersMapper->findByEmail($this->_request->getParam('email'));
+    						
     						if($user == null) throw new Exception('Trying to reset a password for a user that doesn\'t exist');
 
     					// set the password and save the user
