@@ -6,7 +6,8 @@ class Application_Model_Acl_Acl extends Zend_Acl
 		// rolls
 	    	$this->addRole('guest');
 	    	$this->addRole('member', 'guest');
-	    	$this->addRole('admin', 'member');
+	    	$this->addRole('seller', 'member');
+	    	$this->addRole('admin');
     	
     	// deny all
     		$this->deny();
