@@ -80,7 +80,7 @@ class RegisterController extends Custom_Zend_Controller_Action
     					
     					// send a confirmation email
     						$mail = new Zend_Mail();
-							$mail->setBodyText('<p>Your password has been changed.</p><p>If you did not authorize this change, please contact us.</p>');
+							$mail->setBodyHtml('<p>Your password has been changed.</p><p>If you did not authorize this change, please contact us.</p>');
 							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
 							$mail->addTo($user->email);
 							$mail->setSubject('Dance Rialto - Password Reset Notice');
