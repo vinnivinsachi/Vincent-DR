@@ -68,6 +68,7 @@ class RegisterController extends Custom_Zend_Controller_Action
     					// get the user from the database
     						$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
     						$user = $usersMapper->findByEmail($this->_request->getParam('email'));
+    						
     						if($user == null) throw new Exception('Trying to reset a password for a user that doesn\'t exist');
 
     					// set the password and save the user
@@ -78,25 +79,43 @@ class RegisterController extends Custom_Zend_Controller_Action
     						$resetMapper->delete($reset->resetID);
     					
     					// send a confirmation email
-    					print 'SEND CONFIRMATION EMAIL HERE...';
+    						$mail = new Zend_Mail();
+							$mail->setBodyHtml('<p>Your password has been changed.</p><p>If you did not authorize this change, please contact us.</p>');
+							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
+							$mail->addTo($user->email);
+							$mail->setSubject('Dance Rialto - Password Reset Notice');
+							$mail->send();
     					
     					// set the view
     						$this->view->newPasswordSet = true;
     				}
     			// ELSE IF an email form was submitted
     				else if($this->_request->getParam('email')) {
+    					// make sure a user exists with that email
+    						$usersMapper = new Application_Model_Mapper_Users_UsersMapper;
+    						$user = $usersMapper->findByEmail($this->_request->getParam('email'));
+    						if($user == null) $this->errorAndRedirect('We can\' find a user with that email, please make sure you\'ve entered it correctly', 'resetpassword');
+    					
     					// create a new entry in the resetPasswordTable
 		    				$reset = new Application_Model_Users_PasswordReset;
 		    				$reset->userEmail = $this->_request->getParam('email');
 		    				$resetMapper = new $reset->_mapperClass;
 		    				$resetID = $resetMapper->save($reset);
 		    			
-		    			// send an email with the link to reset password
+		    			// get reset password link
 		    				$reset = $resetMapper->find($resetID);
-		    				$resetLink = SITE_URL.SITE_ROOT.'/register/resetpassword?resetID='.$reset->resetUniqueID;
-		    				print 'SEND MAIL HERE...';
+		    				$resetLink = SITE_URL.SITE_ROOT.'/register/resetpassword?resetUniqueID='.$reset->resetUniqueID;
+		    				
+		    			// send an email with the link to reset password
+		    				$mail = new Zend_Mail();
+							$mail->setBodyHtml('<p>please click the link below to reset your password:</p><p>'.$resetLink.'</p>');
+							$mail->setFrom('admin@dancerialto.com', 'Dance Rialto');
+							$mail->addTo($this->_request->getParam('email'));
+							$mail->setSubject('Dance Rialto - Reset Password Request');
+							$mail->send();
 		    			
 		    			// set the view
+		    				$this->view->resetEmail = $this->_request->getParam('email');
     						$this->view->resetEmailSent = true;
     				} 				
     		}

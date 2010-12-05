@@ -16,7 +16,6 @@ abstract class Custom_Model_Abstract
 			$this->_primaryID =& $this->$primaryIDColumn;
 		// set default properties that require a function
 			if(property_exists($this, 'dateCreated')) $this->dateCreated = date('Y-m-d H:i:s');
-			if(property_exists($this, 'dateUpdated')) $this->dateUpdated = date('Y-m-d H:i:s');
 		// set any options that were passed
 			if(is_array($options)) $this->setOptions($options);
 	}

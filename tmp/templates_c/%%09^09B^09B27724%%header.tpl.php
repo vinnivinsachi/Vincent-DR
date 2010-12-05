@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-11-10 20:18:01
+<?php /* Smarty version 2.6.26, created on 2010-11-30 22:59:24
          compiled from layouts/default/header.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -32,6 +32,8 @@
 	<!-- JQUERY PLUGINS -->
 		<script type='text/javascript' src='<?php echo $this->_tpl_vars['jsDir']; ?>
 /jquery/plugins/rolloverImage.jquery.js'></script>
+		<script type='text/javascript' src='<?php echo $this->_tpl_vars['jsDir']; ?>
+/jquery/plugins/preload.jquery.js'></script>
 		<script type='text/javascript' src='<?php echo $this->_tpl_vars['jsDir']; ?>
 /jquery/plugins/validate.jquery.js'></script>
 		<script type='text/javascript' src='<?php echo $this->_tpl_vars['jsDir']; ?>

@@ -3,6 +3,10 @@
 	<table>
 	
 		<tr>
+			<td colspan='2'>Enter your email to reset your password</td>
+		</tr>
+	
+		<tr>
 			<td><label for='email' class='required'>Email:</label></td>
 			<td><input type='text' name='email' class='required email' /></td>
 		</tr>

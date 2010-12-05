@@ -4,15 +4,19 @@
 	
 	<fieldset>
     	<legend>Basic Info</legend>
-    	
-    	{include file='account/forms/basicInfoForm.tpl'}
+
+    	<!-- DETAILS FORM -->
+    		{include file='account/forms/basicInfoForm.tpl'}
+        
+        <!-- CHANGE YOUR PASSWORD -->
+	        <fieldset>
+	        	<legend>Change Your Password</legend>
+	        	{include file='account/forms/changePasswordForm.tpl'}
+	        </fieldset>
         
     </fieldset>
-    
-    {include file='account/js/editbasicinfoJS.tpl'}
 
 </div>
-
 
 
 {include file="layouts/$layout/footer.tpl"}

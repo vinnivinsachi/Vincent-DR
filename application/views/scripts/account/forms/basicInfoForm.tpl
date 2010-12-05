@@ -18,16 +18,6 @@
 		</tr>
 		
 		<tr>
-			<td><label for='password'>Password:</label></td>
-			<td><input type='password' name='password' id='password' minlength='6' maxlength='20'></td>
-		</tr>
-		
-		<tr>
-			<td><label for='passwordConfirm' class='required'>Confirm Password:</label></td>
-			<td><input type='password' name='passwordConfirm' id='password-confirm' equalTo='#password'></td>
-		</tr>
-		
-		<tr>
 			<td><label for='firstName'>First Name:</label></td>
 			<td><input type='text' name='firstName' id='first-name' maxlength='30' value='{$user->firstName}'></td>
 		</tr>
@@ -67,3 +57,5 @@
 	</table>
 
 </form>
+
+{include file='account/js/basicInfoFormJS.tpl'}

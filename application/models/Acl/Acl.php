@@ -6,7 +6,8 @@ class Application_Model_Acl_Acl extends Zend_Acl
 		// rolls
 	    	$this->addRole('guest');
 	    	$this->addRole('member', 'guest');
-	    	$this->addRole('admin', 'member');
+	    	$this->addRole('seller', 'member');
+	    	$this->addRole('admin');
     	
     	// deny all
     		$this->deny();
@@ -31,7 +32,9 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'account', 'index');
 	    	$this->allow('member', 'account', 'setdefaultshipping');
 	    		    	
+
 	    	$this->allow('guest', 'authentication', 'login');
+	    	$this->allow('member', 'authentication', 'changepassword');
 	    	$this->allow('member', 'authentication', 'logout');
 	    	
 	    	$this->allow('guest', 'error', 'error');
