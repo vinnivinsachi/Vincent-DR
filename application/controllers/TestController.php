@@ -2,15 +2,26 @@
 
 class TestController extends Custom_Zend_Controller_Action
 {
-	protected $db;
+	//protected $db;
     public function init() {
 		parent::init();  // Because this is a custom controller class
     }
 	
 	public function preDispatch(){
+		$this->_db->getProfiler()->setEnabled(true);
 		
 		parent::preDispatch();
 		
+	}
+	
+	public function postDispatch(){
+		$profiler = $this->_db->getProfiler();
+		
+		$query = $profiler->getLastQueryProfile();
+ 
+		//echo 'last query is: '. $query->getQuery();
+		Zend_Debug::dump($query);
+	
 	}
 
     public function indexAction() {
@@ -159,6 +170,7 @@ class TestController extends Custom_Zend_Controller_Action
 		$inventory = new Application_Model_Products_ProductInventory();
 		
 		$inventory->productID = 6;
+		
 		$inventory->sys_name = 'new inventory product name';
 		$inventory->sys_price = 20.35;
 		$inventory->sys_quantity = 3;
@@ -186,6 +198,7 @@ class TestController extends Custom_Zend_Controller_Action
 		$productColor->Yellow = 1;
 		$productColorMapper->save($productColor);
 		
+		Zend_Debug::dump($productColor);
 		$this->render('index');
 	
 	}
@@ -222,11 +235,11 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->productPriceRange = 'productPrice1';
 			$product->domesticShippingRate=8.95;
 			$product->internationalShippingRate=12.95;
-			$product->sellerType='asdfe';
+			$product->sellerType='MEMBER';
 			$product->sellerDisplayName='professional ballroom shoes - Ann Arbor';
-			$product->sellerName='professional-ballroom-shoes-ann-arbor';
-			$product->url = 'asdfe';
-			$product->name='asdfe';
+			$product->sellerName='vinzha';
+			$product->url = 'fancy-pants';
+			$product->name='fancy pants';
 			$product->price=65.95;
 			$product->onSale=false;
 			$product->brand='DanceNaturals';
@@ -283,7 +296,21 @@ class TestController extends Custom_Zend_Controller_Action
 		$this->_db->beginTransaction();
 		try{
 			$product = new Application_Model_Products_Product();
-			//$product->productID=6;
+			$productMapper = new $product->_mapperClass;
+			
+			//$product->_primaryID=2;
+			if(isset($product->_primaryID) || $product->_primaryID!=''){
+				echo 'finding product';
+				$productTmp=$productMapper->findByColumn('productID', $product->_primaryID);
+				if(count($productTmp)>0){
+					echo 'productFound';
+					$product = $productTmp;
+					echo '<br/>Product tmp is: <br/>';
+					//Zend_Debug::dump($productTmp);
+				}
+			}else{
+				echo '<br/>primary not set<br/>';
+			}
 			$product->purchaseType='BUY_NOW';
 			$product->productCategory='WOMEN';
 			$product->inventoryAttributeTable='shoes';
@@ -291,43 +318,48 @@ class TestController extends Custom_Zend_Controller_Action
 			$product->productPriceRange = 'product_price_1';
 			$product->domesticShippingRate=8.95;
 			$product->internationalShippingRate=12.95;
-			$product->sellerType='asdfe';
+			$product->sellerType='MEMBER';
 			$product->sellerDisplayName='professional ballroom shoes - Ann Arbor';
-			$product->sellerName='professional-ballroom-shoes-ann-arbor';
-			$product->url = 'asdfe';
-			$product->name='asdfe';
+			$product->sellerName='vinzha';
+			$product->url = 'vincent-pants';
+			$product->name='vincent pants';
 			$product->price=65.95;
 			$product->onSale=false;
-			$product->brand='DanceNaturals';
+			$product->brand='VEdance';
 			$product->returnAllowed=true;
 			$product->flagged=false;
-			$product->dateCreated=date('Y-m-d G:i:s');
-			$product->status='UNLISTED';
+			//$product->dateCreated=date('Y-m-d G:i:s');
+			$product->status='LISTED';
 			$product->rewardPoint=4;
 			$product->backorderTime='5 weeks';
 			$product->competitionUsage=true;
 			$product->socialUsage=true;
 			$product->lastStatusChange=date('Y-m-d G:i:s');
-			$productMapper = new $product->_mapperClass;
-			$product->_primaryID = $productMapper->save($product);	
+			$product->_primaryID = $productMapper->save($product);
 			
+			//Zend_Debug::dump($product);
 			//attribute setter
 			 //= new Application_Model_Products_ProductColor();
 			$product->_colors = new Application_Model_Products_ProductColor();
 			$productColorMapper = new $product->_colors->_mapperClass;
 			$product->_colors->productID = $product->_primaryID;
 			if($product->_colors->productID !=''){
+				echo 'here at checking';
 				$productColorTmp = $productColorMapper->findByColumn('productID', $product->_colors->productID);	
+				
 				if(count($productColorTmp)>0){
+					echo 'here at found';
 					$product->_colors = $productColorTmp;
 				}
+				echo 'here at productColor found: <br/>';
+				//Zend_Debug::dump($product->_colors);
 			}
 			$product->_colors->Pin_stripe = 1;
 			$product->_colors->Black = 0;
 			$product->_colors->Yellow = 1;
+			echo 'after change: ';
+			Zend_Debug::dump($product->_colors);			
 			$product->_colors->_primaryID=$productColorMapper->save($product->_colors);
-			//$product->setColors($productColor);
-			
 	
 			//productInventory
 			$productInventory = new Application_Model_Products_ProductInventory();
@@ -340,7 +372,7 @@ class TestController extends Custom_Zend_Controller_Action
 			$productInventory->sys_quantity = 1;
 			$productInventory->sys_conditions = 'New';
 			$productInventory->sys_color = 'Brown';
-			
+			//setting profile
 			$productInventory->profile = new Application_Model_Products_ProductInventoryProfiles();
 			$productInventory->profile->love = 'vincent and daisy';
 			$productInventory->profile->passion = 'dancing';
@@ -353,6 +385,7 @@ class TestController extends Custom_Zend_Controller_Action
 			$productInventoryProfileMapper = new $mapperClass();
 			$productInventoryProfileMapper->saveForAssociatedID($productInventory->profile, $productInventory->_primaryID);
 			
+		
 			$product->_inventory[$productInventory->_primaryID]=$productInventory;
 			
 			if(isset($_FILES['generalImages'])){
@@ -366,12 +399,13 @@ class TestController extends Custom_Zend_Controller_Action
 			
 			Zend_Debug::dump($product);
 			$this->_db->commit();
-		}catch(Execption $e){
+			
+		}catch(Exception $e){
 			echo $e->getMessage();
 			$this->_db->rollback();
 		}
 
-			$this->render('index');
+			//$this->render('index');
 	}
 	
 	public function loadproducttestingAction(){

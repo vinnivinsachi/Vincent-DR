@@ -1,0 +1,1 @@
+	<td>{$inventory.basic.sys_fullbody_size}</td>

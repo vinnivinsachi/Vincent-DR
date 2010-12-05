@@ -294,16 +294,14 @@
 		
 		public static function GetUploadPath($image)
 		{
-			$config = Zend_Registry::get('config');
 		
-			return sprintf('%s/uploaded-files/%s/%s/%s/%s', $config->paths->userdata, $image->sourceName, $image->sourceTypeTitle, $image->sourceTypeName, $image->sourceID); 
+			return sprintf('%s/uploaded-files/%s/%s/%s/%s', USERDATA_DIR, $image->sourceName, $image->sourceTypeTitle, $image->sourceTypeName, $image->sourceID); 
 		}
 		
 		public static function GetThumbnailPath($image)
 		{
-			$config = Zend_Registry::get('config');
 			
-			return sprintf('%s/tmp/thumbnails/%s/%s/%s/%s', $config->paths->userdata, $image->sourceName, $image->sourceTypeTitle, $image->sourceTypeName, $image->sourceID);
+			return sprintf('%s/tmp/thumbnails/%s/%s/%s/%s', USERDATA_DIR, $image->sourceName, $image->sourceTypeTitle, $image->sourceTypeName, $image->sourceID);
 		}
 		
 		

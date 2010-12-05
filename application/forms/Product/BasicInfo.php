@@ -1,13 +1,26 @@
 <?php
 
-class Application_Form_Porduct_BasicInfo extends Zend_Form
+class Application_Form_Product_BasicInfo extends Zend_Form
 {
-	public $param;
+	//public $param;
 	public $postAction;
+	public $productCategory;
+	public $productType;
+	public $productTag;
+	public $productID;
+	public $product; 
+	public $productMapper;
+	public $attributeTable;
+	public $sellerInfo;
 	
-	public function __construct($postAction, $param){ 
-		$this->postAction=$postAction;
-		$this->param = $param;
+	public function __construct($param, $sellerInfo){ 
+		$this->productCategory = $param['productTag'];
+		$this->productType = $param['productType'];
+		$this->productTag = $param['productTag'];
+		$this->productID = $param['productID'];
+		$this->product = new Application_Model_Products_Product;
+		$this->productMapper = new $this->product->_mapperClass;
+		$this->attributeTable = Application_Model_SysConst_Products::$attributeTable[$param['productTag']];
 	}
 
     public function init()
@@ -55,9 +68,7 @@ class Application_Form_Porduct_BasicInfo extends Zend_Form
 
 		$return->setLabel('Return:')
 			->addMultiOptions(array(
-		
 					'returnable' => 'Returnable',
-		
 					'Unreturnable' => 'Not returnable'))
 			->setSeparator(" ")
 			->setAttrib("checked","checked");

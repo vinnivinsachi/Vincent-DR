@@ -20,8 +20,9 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->addResource('register');
 	    	$this->addResource('store');
 			$this->addResource('test'); //v
+			$this->addResource('productlisting');//v
 
-	    	
+	    	//accounts
 	    	$this->allow('guest', 'account', 'profile');
 	    	$this->allow('member', 'account', 'details');
 	    	$this->allow('member', 'account', 'deleteshipping');
@@ -29,8 +30,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'account', 'editshipping');
 	    	$this->allow('member', 'account', 'index');
 	    	$this->allow('member', 'account', 'setdefaultshipping');
-	    	
-	    	
+	    		    	
 	    	$this->allow('guest', 'authentication', 'login');
 	    	$this->allow('member', 'authentication', 'logout');
 	    	
@@ -54,12 +54,14 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'store', 'deleteshipping');
 	    	    	
 	    	$this->allow('guest', 'test'); //v
+	    	$this->allow('member','productlisting');//v
     	
 	    	
 	    // Model Resources
     		$this->addResource('storeModel');
     		$this->addResource('userShippingAddressModel');
     		
+    		//role, controller or arbitrary object, action, assertion 
     		$this->allow('member', 'storeModel', 'view', new Application_Model_Acl_Stores_UserAssertion);
     		$this->allow('member', 'storeModel', 'update', new Application_Model_Acl_Stores_UserAssertion);
     		$this->allow('member', 'storeModel', 'manage', new Application_Model_Acl_Stores_UserAssertion);
@@ -71,7 +73,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
     		$this->allow('member', 'userShippingAddressModel', 'setAsDefault', new Application_Model_Acl_Users_ShippingAddressAssertion);
     		
     		
-    		
+    	    		
     	// Allow admin to do anything
     		$this->allow('admin');
     		

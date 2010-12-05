@@ -1,5 +1,4 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
-<a href="/public/test/productinventorytest">productinventorytest</a> | 
-
+{include file="test/_headerPartial.tpl"}
 
 {include file="layouts/$layout/footer.tpl"}

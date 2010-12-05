@@ -39,7 +39,7 @@ class StoreController extends Custom_Zend_Controller_Action
     
     
 	public function profileAction() {
-		$storeName = $this->_request->getQuery('storeName');
+		$storeName = $this->_request->getParam('storeName');
 		
 		// if no storeName is provided
 			if(!isset($storeName) || $storeName == '') $this->errorAndRedirect('No storeName provided to view');

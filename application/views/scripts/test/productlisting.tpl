@@ -1,6 +1,7 @@
 {include file="layouts/$layout/header.tpl" lightbox=true}
 
-INDEX
+{include file="test/_headerPartial.tpl"}
+
 
 <form enctype="multipart/form-data" method="post" action="/public/test/imagetest">
 

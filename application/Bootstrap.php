@@ -41,12 +41,41 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		
 		$viewRenderer->setViewSuffix('tpl'); //make it search for .tpl files 
 		
-		Zend_Controller_Action_HelperBroker::addHelper($viewRenderer); //add it to the action helper broker
-		
+		Zend_Controller_Action_HelperBroker::addHelper($viewRenderer); //add it to the action helper broker	
 		
 	}
 	
-	
+	public function _initRoutes(){
+		$controller=Zend_Controller_Front::getInstance();
+		
+		
+		//store routes
+		$route = new Zend_Controller_Router_Route('store/profile/:storeName/*', array('controller'=>'store', 'action'=>'profile'));
+		$controller->getRouter()->addRoute('storeProfile', $route);
+		
+		//productlisting routes
+		$route = new Zend_Controller_Router_Route('productlisting/uploadbuynowproduct/store/:storeName/*', array('controller'=>'productlisting', 'action'=>'uploadbuynowproduct'));
+		$controller->getRouter()->addRoute('uploadbuynowfromstore', $route);
+		
+		$route = new Zend_Controller_Router_Route('productlisting/uploadbuynowproduct/member', array('controller'=>'productlisting', 'action'=>'uploadbuynowproduct'));
+		$controller->getRouter()->addRoute('uploadbuynowfrommember', $route);
+		
+		$route = new Zend_Controller_Router_Route('productlisting/editbuynowproduct/store/:storeName/*', array('controller'=>'productlisting', 'action'=>'editbuynowproduct'));
+		$controller->getRouter()->addRoute('editbuynowfromstore', $route);
+		
+		$route = new Zend_Controller_Router_Route('productlisting/editbuynowproduct/member/*', array('controller'=>'productlisting', 'action'=>'editbuynowproduct'));
+		$controller->getRouter()->addRoute('editbuynowfrommember', $route);
+		
+		
+		
+		
+		
+		//$route = new Zend_Controller_Router_Route('productlisting/:sellertype/*', array('controller'=>'productlisting', 'action'=>'index'));
+		//$controller->getRouter()->addRoute('memberproductlisting', $route);
+		
+		
+		//$controller->getRouter()->addRoute('productlisting', $route);
+	}
 	// Vincent's stuff
 	public function _initAll() {
 		

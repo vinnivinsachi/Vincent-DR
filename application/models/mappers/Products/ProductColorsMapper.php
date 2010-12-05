@@ -11,12 +11,10 @@ class Application_Model_Mapper_Products_ProductColorsMapper extends Custom_Model
 	
 	public function save(Application_Model_Products_ProductColor $productColor) {
 		//pre save
-		//public $inventoryReference;
-		//public $uniqueIdentifierForJS; need to set unique id;
+		
 		echo 'presave';
 		return parent::save($productColor);
-		//echo 'postsave';
-		//post save
+		
 	} 
 }
 ?>
