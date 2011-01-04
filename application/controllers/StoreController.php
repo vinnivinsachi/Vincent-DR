@@ -89,7 +89,7 @@ class StoreController extends Custom_Zend_Controller_Action
 			if(!$this->_acl->isAllowed($this->user, $this->store, 'update')) $this->errorAndRedirect('You do not have priveleges to edit this store\'s info', 'details', 'store', array('storeName' => $this->_request->getParam('storeName')));
 			
 		// process the form if it was submitted
-			if($this->isJsonContext()) {
+			if($this->_request->isPost()) {
 				$request = $this->getRequest();
 				$form = new Application_Form_Store_BasicInfo;
 	
@@ -98,9 +98,10 @@ class StoreController extends Custom_Zend_Controller_Action
 	               		$this->store->setOptions($form->getValues());
 	                	$this->storesMapper->save($this->store);      
 	               // display success message
-	                	$this->view->jsFlashMessage = 'Changes have been successfully saved!';         	
+	                	$this->msg('Changes have been successfully saved!');
+	                	$this->redirect('details', null, array('storeName' => $this->store->storeName));      	
 	            }
-				else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
+				else $this->errorAndRedirect('Your submission was not valid'); // If form is NOT valid	
 			}
 			
 		// send the store to the view

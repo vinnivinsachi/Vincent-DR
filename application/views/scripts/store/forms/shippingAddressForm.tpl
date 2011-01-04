@@ -44,7 +44,7 @@
 			
 			<tr>
 				<td><a href='{$siteRoot}/store/details?storeName={$store->storeName}'>Cancel</a></td>
-				<td><input type='submit' value='Save Address' /></td>
+				<td><input type='submit' loading-text='saving...' value='Save Address' /></td>
 			</tr>
 		
 		</table>

@@ -1,4 +1,4 @@
-<form id='login-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/authentication/login' method='post'>
+<form id='login-form' enctype='application/x-www-form-urlencoded' action='' method='post'>
 
 	<table>
 	
@@ -17,7 +17,7 @@
 		
 		<tr>
 			<td>&nbsp;</td>
-			<td><input type='submit' name='login' id='login' value='Login'></td>
+			<td><input type='submit' loading-text='processing...' value='Login'></td>
 		</tr>
 	
 	</table>

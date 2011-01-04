@@ -73,7 +73,7 @@ class AccountController extends Custom_Zend_Controller_Action
 			$this->view->user = $this->user;
 			
 		// process the form if it was submitted
-			if($this->isJsonContext()) {
+			if($this->_request->isPost()) {
 				$request = $this->getRequest();
 				$form = new Application_Form_Account_BasicInfo;
 	
@@ -82,9 +82,9 @@ class AccountController extends Custom_Zend_Controller_Action
 	               		$this->user->setOptions($form->getValues());
 	                	$this->usersMapper->save($this->user);      
 	               // display success message
-	                	$this->view->jsFlashMessage = 'Changes have been successfully saved!';         	
+	                	$this->msg('Changes have been successfully saved!');         	
 	            }
-				else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
+				else $this->errorAndRedirect('Your submission was not valid'); // If form is NOT valid	
 			}
 	}
 	

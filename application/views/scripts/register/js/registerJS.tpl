@@ -3,7 +3,7 @@
 <script type='text/javascript'>
 
 	// validate the form
-		$j('#register-form').validate({submitHandler: function(form){showLoadingAndSubmit();}}); // form validation
+		$j('#register-form').validate({submitHandler: function(form){showLoadingAndSubmit(form);}}); // form validation
 
 	
 	// --------------------------------------- CHECK USERNAME ----------------------------

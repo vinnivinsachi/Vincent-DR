@@ -5,9 +5,14 @@ function hideLoadingImage() {
 	$j('#loading-image').fadeOut(400);
 }
 
-function showLoadingAndSubmit(form) {
-	showLoadingImage();
-	form.submit();
+function showLoadingAndSubmit(form, ajaxSubmit) {
+	submitBtn = $j(form).find('input:submit');
+	submitBtn.button('disable').attr('value', submitBtn.attr('loading-text'));
+	//showLoadingImage();
+	// IF ajax submit
+		if(ajaxSubmit) $j(form).ajaxSubmit(ajaxComplete);
+	// ELSE (a regular submit)
+		else form.submit();
 }
 
 function flashMessage(message) {

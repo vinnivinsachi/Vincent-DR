@@ -1,4 +1,4 @@
-<form id='change-password-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/authentication/changepassword/format/json' method='post'>
+<form id='change-password-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/authentication/changepassword' method='post'>
 
 	<table>
 	
@@ -19,7 +19,7 @@
 		
 		<tr>
 			<td>&nbsp;</td>
-			<td><input type='submit' value='Change'></td>
+			<td><input type='submit' loading-text='processing...' value='Change'></td>
 		</tr>
 	
 	</table>

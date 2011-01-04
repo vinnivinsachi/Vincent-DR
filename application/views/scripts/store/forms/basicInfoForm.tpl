@@ -1,4 +1,4 @@
-<form id='store-basic-info-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/store/editbasicinfo/format/json' method='post'>
+<form id='store-basic-info-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/store/editbasicinfo' method='post'>
 <input type='hidden' name='storeName' value='{$store->storeName}' />
 
 	<table>
@@ -30,7 +30,7 @@
 		
 		<tr>
 			<td><a href='{$siteRoot}/store/details?storeName={$store->storeName}'>Cancel</a></td>
-			<td><input type='submit' value='Save'></td>
+			<td><input type='submit' loading-text='saving...' value='Save'></td>
 		</tr>
 	
 	</table>

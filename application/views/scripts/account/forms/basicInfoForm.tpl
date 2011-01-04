@@ -1,4 +1,4 @@
-<form id='basic-info-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/account/editbasicinfo/format/json' method='post'>
+<form id='basic-info-form' enctype='application/x-www-form-urlencoded' action='{$siteRoot}/account/editbasicinfo' method='post'>
 
 	<table>
 	
@@ -51,7 +51,7 @@
 		
 		<tr>
 			<td><a href='{$siteRoot}/account/details'>Cancel</a></td>
-			<td><input type='submit' value='Save'></td>
+			<td><input type='submit' loading-text='saving...' value='Save'></td>
 		</tr>
 	
 	</table>

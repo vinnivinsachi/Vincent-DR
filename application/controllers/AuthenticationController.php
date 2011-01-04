@@ -61,29 +61,26 @@ class AuthenticationController extends Custom_Zend_Controller_Action
 		// get the logged in user's info from the database
 			$this->getLoggedInUser();
 			
-		// process the form if it was submitted
-			if($this->isJsonContext()) {
-				$request = $this->getRequest();
-				$form = new Application_Form_Authentication_ChangePassword;
-	
-				if($form->isValid($request->getPost())) {
-					// check the old password
-						$adapter = self::_getAuthAdapter();
-				        $adapter->setIdentity($this->user->username); // set username to check
-				        $adapter->setCredential($form->getValue('oldPassword')); // set password to check
-				        if(!$adapter->authenticate()->isValid()) {
-				        	$this->view->jsFlashMessage = 'Could not verify your old password, please try again';
-				        	return;
-				        }
-					
-	            	// save the user info
-	               		$this->user->setOptions($form->getValues());
-	                	$this->usersMapper->save($this->user);      
-	            	// display success message
-	                	$this->view->jsFlashMessage = 'New password has been saved!';         	
-	            }
-				else $this->view->jsFlashMessage = 'Your submission was not valid'; // If form is NOT valid	
-			}
+		$request = $this->getRequest();
+		$form = new Application_Form_Authentication_ChangePassword;
+
+		if($form->isValid($request->getPost())) {
+			// check the old password
+				$adapter = self::_getAuthAdapter();
+		        $adapter->setIdentity($this->user->username); // set username to check
+		        $adapter->setCredential($form->getValue('oldPassword')); // set password to check
+		        if(!$adapter->authenticate()->isValid()) {
+		        	$this->errorAndRedirect('Could not verify your old password, please try again', 'editbasicinfo', 'account');
+		        }
+			
+            // save the user info
+               	$this->user->setOptions($form->getValues());
+                $this->usersMapper->save($this->user);      
+            // display success message
+                $this->msg('New password has been saved!');
+                $this->redirect('editbasicinfo', 'account');       	
+            }
+		else $this->errorAndRedirect('Your submission was not valid', 'editbasicinfo', 'account'); // If form is NOT valid	
 			
 	} // END changepasswordAction()
     

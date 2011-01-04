@@ -35,7 +35,7 @@
 		
 		<tr>
 			<td>&nbsp;</td>
-			<td><input type='submit' value='Register'></td>
+			<td><input type='submit' loading-text='registering...' value='Register'></td>
 		</tr>
 	
 	</table>
