@@ -23,3 +23,7 @@ public/userdata/uploaded-files
 public/userdata/uploaded-files/
 public/userdata/uploaded-files/*
 public/userdata/uploaded-files/*/*
+build
+build/
+build/*
+build/*/*
