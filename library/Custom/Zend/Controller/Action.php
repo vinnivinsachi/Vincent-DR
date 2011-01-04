@@ -13,7 +13,8 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 			$this->_ajaxContext = $this->_helper->getHelper('AjaxContext');
 		
 		// Enable ACL
-			$this->_acl = new Application_Model_Acl_Acl;
+			$this->_acl = new Application_Model_Acl_Acl;			
+			
 	}
 	
 	public function preDispatch() {
@@ -71,5 +72,19 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 		if($params == null) $params = array();
 		$this->_helper->redirector($action, $controller, null, $params);
 	}
+	
+	// add a javascript to view and inlineScript
+	protected function addScript($script) {
+		// initiate view->scripts variable (used for AJAX calls)
+			if(!$this->view->scripts) $this->view->scripts = '';
+		// add script to $scripts variable (AJAX calls)
+			$this->view->scripts .= $script;	
+		
+		// initiate inlineScripts (non-AJAX calls)
+			$inlineScripts = $this->view->inlineScript();		
+		// add scripts to inlineScripts (non-AJAX calls)
+			$inlineScripts->appendScript($script);
+		
+	} // END addScript()
 	
 }

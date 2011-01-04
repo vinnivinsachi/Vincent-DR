@@ -5,10 +5,11 @@ class IndexController extends Custom_Zend_Controller_Action
 
     public function init() {
 		parent::init();  // Because this is a custom controller class
+		$this->_ajaxContext->addActionContext('test', 'json')
+			 			   ->initContext();
     }
 
     public function indexAction() {
-    	    	
     	// LINK TABLES
 //    	$mapper = new Application_Model_Mapper_Stores_StoresUsersLinksMapper;
 //    	$exists = $mapper->linkExists(3, 64);
@@ -35,5 +36,10 @@ class IndexController extends Custom_Zend_Controller_Action
 //        $mapper = new Application_Model_Mapper_ExampleMapper;
 //        $mapper->saveForAssociatedID($user->profiles, $user->userID);
 //        print var_dump($user);
-    }
+    } // END indexAction()
+    
+    
+    public function testAction() {
+    	$this->addScript('alert("SFSFSFSFSF");');
+    } // END testAction()
 }

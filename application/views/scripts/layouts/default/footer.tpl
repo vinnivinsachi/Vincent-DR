@@ -9,4 +9,8 @@
 </page>
 
 </body>
+
+<!-- INLINE JAVASCRIPTS FOR AJAX CALLS -->
+	{$this->inlineScript()}
+
 </html>

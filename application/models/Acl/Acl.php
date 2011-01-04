@@ -42,6 +42,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('guest', 'find', 'index'); //m
 	    	
 	    	$this->allow('guest', 'index', 'index');
+	    	$this->allow('guest', 'index', 'test'); //m
 	    		    	
 	    	$this->allow('guest', 'register', 'checkemail');
 	    	$this->allow('guest', 'register', 'checkusername');

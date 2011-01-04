@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2011-01-04 12:31:07
+<?php /* Smarty version 2.6.26, created on 2011-01-04 13:48:11
          compiled from layouts/default/footer.tpl */ ?>
 
 <!-- set up all rollover images -->
@@ -13,4 +13,9 @@
 </page>
 
 </body>
+
+<!-- INLINE JAVASCRIPTS FOR AJAX CALLS -->
+	<?php echo $this->_tpl_vars['this']->inlineScript(); ?>
+
+
 </html>

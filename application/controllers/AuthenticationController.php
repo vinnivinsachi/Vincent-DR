@@ -38,7 +38,7 @@ class AuthenticationController extends Custom_Zend_Controller_Action
                 		$user = $usersMapper->findByUsername($this->_auth->getIdentity()->username);
                 		$user->lastLogin = date('Y-m-d H:i:s');
                 		$usersMapper->save($user);
-                		$this->_helper->redirector('index', 'account');
+                		$this->addScript('top.location.reload()');
                 	}
                 
                 // Display error (authentication failure)
@@ -52,7 +52,7 @@ class AuthenticationController extends Custom_Zend_Controller_Action
     
 	public function logoutAction() {
         $this->logoutUser();
-        $this->_helper->redirector('login', 'authentication'); // back to login page
+        $this->_helper->redirector('index', 'index'); // back to home page
     }
     
     // an ajax function to change the logged in user's password
