@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-11-11 02:11:41
+<?php /* Smarty version 2.6.26, created on 2011-01-04 12:31:07
          compiled from layouts/default/footer.tpl */ ?>
 
 <!-- set up all rollover images -->

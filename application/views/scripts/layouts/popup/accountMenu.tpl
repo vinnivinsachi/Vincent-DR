@@ -11,6 +11,6 @@
 
 {literal}
 <script type='text/javascript'>
-	$j('a#login-link').fancybox({content: '<object width="300" height="300" data="{/literal}{$siteRoot}/authentication/login{literal}">???</object>'});
+	$j('a#login-link').fancybox({content: '<object width="300" height="300" data="{/literal}{$siteRoot}/account{literal}">???</object>'});
 </script>
 {/literal}

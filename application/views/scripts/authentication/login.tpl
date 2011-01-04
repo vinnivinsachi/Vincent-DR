@@ -1,6 +1,6 @@
-{include file="layouts/$layout/header.tpl"}
+{include file='layouts/popup/header.tpl'}
 
-<div id='content-wide'>
+<div id='content-popup'>
 
 	{include file='authentication/forms/loginForm.tpl'}
 	
@@ -10,4 +10,10 @@
 
 </div>
 
-{include file="layouts/$layout/footer.tpl"}
+{literal}
+<script type='text/javascript'>
+	$j('a').attr('target', '_top');
+</script>
+{/literal}
+
+{include file='layouts/popup/footer.tpl'}
