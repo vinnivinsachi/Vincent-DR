@@ -1,14 +1,16 @@
-{include file='layouts/popup/doctype.tpl'}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
 		
 <!-- JAVASCRIPT -->
-	{include file='layouts/popup/js.tpl'}
+	{include file='layouts/default/js.tpl'}
 
 <!-- CSS -->
-	{include file='layouts/popup/css.tpl'}
+	{include file='layouts/default/css.tpl'}
+	<!-- POPUP SPECIFIC CSS -->
+		<link rel="stylesheet" href="{$cssDir}/popup.css" type="text/css" media="screen"/>
 
 </head>
 
@@ -20,6 +22,6 @@
 <!-- OTHER STUFF -->
 	{$this->flashMessenger()}<!-- PHP FLASH MESSENGER -->
 		
-	{include file='layouts/popup/loadingImage.tpl'}<!-- LOADING IMAGE -->
+	{include file='layouts/default/loadingImage.tpl'}<!-- LOADING IMAGE -->
 	
-	{include file='layouts/popup/jsFlashMessage.tpl'}<!-- JS FLASH MESSAGE -->
+	{include file='layouts/default/jsFlashMessage.tpl'}<!-- JS FLASH MESSAGE -->

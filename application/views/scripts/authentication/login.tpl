@@ -10,10 +10,6 @@
 
 </div>
 
-{literal}
-<script type='text/javascript'>
-	$j('a').attr('target', '_top');
-</script>
-{/literal}
+{include file='helpers/linksTargetTop.tpl'}
 
 {include file='layouts/popup/footer.tpl'}
