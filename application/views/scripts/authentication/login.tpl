@@ -1,4 +1,4 @@
-{include file='layouts/popup/header.tpl'}
+{include file="layouts/$layout/header.tpl"}
 
 <div id='content-popup'>
 
@@ -10,6 +10,4 @@
 
 </div>
 
-{include file='helpers/linksTargetTop.tpl'}
-
-{include file='layouts/popup/footer.tpl'}
+{include file="layouts/$layout/footer.tpl"}

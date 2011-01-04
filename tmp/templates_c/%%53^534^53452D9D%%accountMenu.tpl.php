@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2011-01-04 12:32:49
+<?php /* Smarty version 2.6.26, created on 2011-01-04 15:50:18
          compiled from layouts/default/accountMenu.tpl */ ?>
 <div id='account_menu'>
 	<?php if ($this->_tpl_vars['loggedInUser']): ?>
@@ -9,17 +9,9 @@
         <a href='<?php echo $this->_tpl_vars['siteRoot']; ?>
 /authentication/logout'>Logout</a>
 	<?php else: ?>
-		<a id='login-link' href='<?php echo $this->_tpl_vars['siteRoot']; ?>
-/authentication/login'>Login</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+		<a href='<?php echo $this->_tpl_vars['siteRoot']; ?>
+/authentication/login' onclick='return Login.popup();'>Login</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 		<a href='<?php echo $this->_tpl_vars['siteRoot']; ?>
 /register'>Register</a>
 	<?php endif; ?>
 </div>
-
-<?php echo '
-<script type=\'text/javascript\'>
-	$j(\'a#login-link\').fancybox({content: \'<object width="300" height="300" data="'; ?>
-<?php echo $this->_tpl_vars['siteRoot']; ?>
-/authentication/login<?php echo '">???</object>\'});
-</script>
-'; ?>

@@ -24,8 +24,9 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 			$this->view->imagesDir = IMAGES_DIR;
 			$this->view->jsDir = JS_DIR;
 		
-		// default layout variable
-			$this->view->layout = 'default';
+		// set layout
+			$this->view->layout = DEFAULT_LAYOUT;
+			if($layout = $this->_request->getParam('layout')) $this->view->layout = $layout;
 		
 		// Logged in user
 			$this->_auth = Zend_Auth::getInstance();
