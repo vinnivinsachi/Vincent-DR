@@ -13,7 +13,7 @@
 		
 		<tr>
 			<td>&nbsp;</td>
-			<td><input type='submit' value='Reset'></td>
+			<td><input type='submit' loading-text='processing...' value='Reset'></td>
 		</tr>
 	
 	</table>

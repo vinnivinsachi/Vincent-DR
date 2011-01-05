@@ -20,7 +20,7 @@
 		
 		<tr>
 			<td>&nbsp;</td>
-			<td><input type='submit' value='Set New Password'></td>
+			<td><input type='submit' loading-text='processing...' value='Set New Password'></td>
 		</tr>
 	
 	</table>
