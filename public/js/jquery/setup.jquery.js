@@ -44,3 +44,7 @@
 // ----------------------------------------- APPLY JQUERY UI -------------------------------------------
 	// apply button ui to regular buttons and form submit buttons
 		$j('button, input:submit').button();
+		
+		
+// ----------------------------------------- SELECT FIRST FORM ELEMENT -------------------------------------------
+		$j('input:visible:enabled:first').focus();
