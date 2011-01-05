@@ -4,7 +4,7 @@ abstract class Custom_Model_Mapper_Abstract
 {
 
 	//abstract protected $_dbTableClass = array(); NEED TO DEFINE IN CHILD CLASS
-	//abstract protected $_modelClass; NEED TO DEFINE IN CHILD CLASS
+	//abstract public const $_modelClass; NEED TO DEFINE IN CHILD CLASS
 	
 	protected $_dbTable;
 	protected $_columns;
