@@ -27,6 +27,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			define('IMAGES_DIR', SITE_ROOT.$config->paths->public->imagesDir);
 			define('JS_DIR', SITE_ROOT.$config->paths->public->jsDir);
 			define('USERDATA_DIR', SITE_ROOT.$config->paths->public->userdataDir);
+			define('JS_TEMPLATES_DIR', SITE_ROOT.$config->paths->public->jsTemplatesDir);
+			
 			define('DEFAULT_LAYOUT', $config->layouts->default);
 			define('POPUP_LAYOUT', $config->layouts->popup);
 	}

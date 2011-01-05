@@ -5,16 +5,27 @@ class FindController extends Custom_Zend_Controller_Action
 
     public function init() {
         parent::init();  // Because this is a custom controller class
+        $this->_ajaxContext->addActionContext('fetchmoreproducts', 'json')
+			 			   ->initContext();
     }
 
     public function indexAction() {
-    	// TEMP DATA
-        	$products = $this->getTestData();
-        	
-        // send data to view
-        	$this->view->products = $products;
-        	
+    	//index action
     } // END indexAction()
+    
+    public function fetchmoreproductsAction() {
+    	// get products
+    		$products = $this->getTestData();
+    		
+    	// get properties of each object
+    		foreach($products as $product) $productObjects[] = $product->getProperties();
+    		$this->view->products = $productObjects;
+    		
+    	// send products to view
+    		$this->view->products = $productObjects;    		
+    		
+    } // END fetchMoreProducts()
+    
     
     // TEST DATA
     private function getTestData() {
@@ -55,6 +66,6 @@ class FindController extends Custom_Zend_Controller_Action
 	        	$products[] = $product;
 	        }
 		return $products;
-    }
+    } // END getTestData()
 }
 

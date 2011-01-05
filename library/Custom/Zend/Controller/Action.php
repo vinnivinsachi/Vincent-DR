@@ -23,7 +23,8 @@ class Custom_Zend_Controller_Action extends Zend_Controller_Action
 			$this->view->cssDir = CSS_DIR;
 			$this->view->imagesDir = IMAGES_DIR;
 			$this->view->jsDir = JS_DIR;
-		
+			$this->view->jsTemplatesDir = JS_TEMPLATES_DIR;
+					
 		// set layout
 			$this->view->layout = DEFAULT_LAYOUT;
 			if($layout = $this->_request->getParam('layout')) $this->view->layout = $layout;

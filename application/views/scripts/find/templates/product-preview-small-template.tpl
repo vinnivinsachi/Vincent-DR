@@ -1,0 +1,12 @@
+{literal}
+<div class='product-preview-small'>
+	<table width='150'><tbody>
+		<tr>
+			<td><a href='javascript:;'><img width='150' height='150' src='${_images[0].filename}' /></a></td>
+		</tr>
+		<tr>
+			<td class='product-price'>$${price}</td>
+		</tr>
+	</tbody></table>
+</div>
+{/literal}

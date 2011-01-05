@@ -37,6 +37,29 @@ abstract class Custom_Model_Abstract
 		return $this;
 	}
 
+	// returns an array of all the properties of the object, private or public (for JSON)
+	public function getProperties() {
+		$object = array();
+		foreach($this as $k=>$v) {
+			if(is_object($v) && get_parent_class($v) == 'Custom_Model_Abstract') $object[$k] = $v->getProperties();
+			else if(is_array($v)) $object[$k] = $this->getArrayProperties($v);
+			else $object[$k] = $v;
+		}
+		return $object;
+	}  // END getProperties()
+	
+	// traverse an array to see if any values are objects that have the method getProperties() (for JSON)
+	private function getArrayProperties($array) {
+		$newArray = array();
+		foreach($array as $k=>$v) {
+			if(is_object($v) && get_parent_class($v) == 'Custom_Model_Abstract') $newArray[$k] = $v->getProperties();
+			else if(is_array($v)) $newArray[$k] = $this->getArrayProperties($v);
+			else $newArray[$k] = $v;
+		}
+		return $newArray;
+	} // END getArrayProperties()
+	
+	
 	
 //	public function __set($name, $value)
 //        {

@@ -23,7 +23,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
 			$this->addResource('test'); //v
 			$this->addResource('productlisting');//v
 
-	    	//accounts
+	    	// accounts
 	    	$this->allow('guest', 'account', 'profile');
 	    	$this->allow('member', 'account', 'details');
 	    	$this->allow('member', 'account', 'deleteshipping');
@@ -32,23 +32,29 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'account', 'index');
 	    	$this->allow('member', 'account', 'setdefaultshipping');
 	    		    	
-
+			// authentication
 	    	$this->allow('guest', 'authentication', 'login');
 	    	$this->allow('member', 'authentication', 'changepassword');
 	    	$this->allow('member', 'authentication', 'logout');
 	    	
+	    	// error
 	    	$this->allow('guest', 'error', 'error');
 	    	
+	    	// find
 	    	$this->allow('guest', 'find', 'index'); //m
+	    	$this->allow('guest', 'find', 'fetchmoreproducts'); //m
 	    	
+	    	// index
 	    	$this->allow('guest', 'index', 'index');
 	    	$this->allow('guest', 'index', 'test'); //m
-	    		    	
+	    	
+	    	// register
 	    	$this->allow('guest', 'register', 'checkemail');
 	    	$this->allow('guest', 'register', 'checkusername');
 	    	$this->allow('guest', 'register', 'index');
 	    	$this->allow('guest', 'register', 'resetpassword'); //m
 	    	
+	    	// store
 	    	$this->allow('guest', 'store', 'index');
 	    	$this->allow('guest', 'store', 'profile');
 	    	$this->allow('member', 'store', 'details');
@@ -56,8 +62,11 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	$this->allow('member', 'store', 'editshipping');
 	    	$this->allow('member', 'store', 'setdefaultshipping');
 	    	$this->allow('member', 'store', 'deleteshipping');
-	    	    	
+
+	    	// test
 	    	$this->allow('guest', 'test'); //v
+	    	
+	    	// product listing
 	    	$this->allow('member','productlisting');//v
     	
 	    	
