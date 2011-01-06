@@ -68,7 +68,9 @@ class FindController extends Custom_Zend_Controller_Action
     	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress2.jpg'));
     	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes2.jpg'));
     	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress3.jpg'));
-    	//$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes3.jpg'));
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes3.jpg'));
+    	// randomize items in this array
+    	shuffle($images);
     	return $images;
     }// END addImages()
 }
