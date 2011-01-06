@@ -31,41 +31,45 @@ class FindController extends Custom_Zend_Controller_Action
     private function getTestData() {
 	    // mappers
 	        $productsMapper = New Application_Model_Mapper_Products_ProductsMapper;
-	        $imagesMapper = New Application_Model_Mapper_Products_ProductImagesMapper;
+	        
 	    // products
 	        $products = array();
 	        for($i=0; $i<3; $i++) {
 	        	$product = New $productsMapper->_modelClass(array('price'=>50.79, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress1.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        	
 	        	$product = New $productsMapper->_modelClass(array('price'=>60, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes1.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        	
 	        	$product = New $productsMapper->_modelClass(array('price'=>41.30, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress2.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        	
 	        	$product = New $productsMapper->_modelClass(array('price'=>72, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes2.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        	
 	        	$product = New $productsMapper->_modelClass(array('price'=>100.50, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress3.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        	
 	        	$product = New $productsMapper->_modelClass(array('price'=>3050.99, 'productUniqueID'=>rand()));
-	        	$image = New $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes3.jpg'));
-	        	$product->_images[] = $image;
+	        	$product->_images = $this->addImages();
 	        	$products[] = $product;
 	        }
 		return $products;
     } // END getTestData()
+    private function addImages() {
+    	$imagesMapper = New Application_Model_Mapper_Products_ProductImagesMapper;
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes1.jpg'));
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress1.jpg'));
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress2.jpg'));
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes2.jpg'));
+    	$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/dress3.jpg'));
+    	//$images[] = new $imagesMapper->_modelClass(array('filename'=>IMAGES_DIR.'/TEST/shoes3.jpg'));
+    	return $images;
+    }// END addImages()
 }
 

@@ -7,9 +7,6 @@
 		$j(window).scroll(checkScroll);
 
 		addProducts();
-
-		$j('.ss').fancybox();
-		alert('sss');
 	});
 
 	// see if the page is full of products, if not, add more
@@ -31,9 +28,21 @@
 	function addProducts() {
 		loading = true;
 		$j.post('{/literal}{$siteRoot}{literal}/find/fetchmoreproducts/format/json', function(data){
-			$j('#product-preview-small-template').tmpl(data.products).appendTo('#product-grid');
-			loading = false;
-			checkPage();
+			// add the products to the page using a template
+				$j('#product-preview-small-template').tmpl(data.products).appendTo('#product-grid');
+			// toggle the loading var (allow the next call for more products)
+				loading = false;
+			// apply fancybox to all product previews
+				$j('.product-preview-small').find('a:first').fancybox();
+			// setup all buttons in product previews
+				$j('.product-preview-large').find('button').button().click(function(){$j(this).button('disable').text($j(this).attr('loading-text'));});
+			// setup small image rollovers in large product previews
+				$j('.product-preview-large img.mini-img').mouseover(function(){
+					var smallImage = $j(this);
+					smallImage.parents('.product-preview-large').find('img.large-img').attr('src', smallImage.attr('src'));
+				});
+			// check if the page is full of products
+				checkPage();
 		});
 	} // END addProducts()
 </script>
