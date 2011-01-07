@@ -37,11 +37,15 @@ class ErrorController extends Custom_Zend_Controller_Action
         }
         
         // conditionally display exceptions
-        if ($this->getInvokeArg('displayExceptions') == true) {
-            $this->view->exception = $errors->exception;
-        }
+//        if ($this->getInvokeArg('displayExceptions') == true) {
+//            $this->view->exception = $errors->exception;
+//        }
+
+        // display exceptions
+        	$this->view->exception = $errors->exception;
         
-        $this->view->request = $errors->request;
+        // display request info
+        	$this->view->request = $errors->request;
        
         // IF application in PRODUCTION ENVIRONMENT
         	if(APPLICATION_ENV == 'production') {
