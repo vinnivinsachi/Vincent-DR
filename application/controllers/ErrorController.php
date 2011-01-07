@@ -41,11 +41,16 @@ class ErrorController extends Custom_Zend_Controller_Action
             $this->view->exception = $errors->exception;
         }
         
-        $this->view->request = $errors->request;        
+        $this->view->request = $errors->request;
        
-        // send an error email
-        	$this->sendErrorEmail();
-    }
+        // IF application in PRODUCTION ENVIRONMENT
+        	if(APPLICATION_ENV == 'production') {
+        		// send an email to us with the error info
+	        		$this->sendErrorEmail();
+        		// display a friendly error page
+        			$this->redirect('friendlyerror');
+        	}
+    } // END errorAction()
 
     public function getLog() {
         $bootstrap = $this->getInvokeArg('bootstrap');
@@ -54,7 +59,11 @@ class ErrorController extends Custom_Zend_Controller_Action
         }
         $log = $bootstrap->getResource('Log');
         return $log;
-    }
+    } // END getLog()
+    
+    public function friendlyerrorAction() {
+    	// friendlyerror action
+    } // END friendlyerrorAction()
     
 	// send an error email
     private function sendErrorEmail() {

@@ -27,3 +27,4 @@ build
 build/
 build/*
 build/*/*
+public/.htaccess

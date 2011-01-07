@@ -39,6 +39,7 @@ class Application_Model_Acl_Acl extends Zend_Acl
 	    	
 	    	// error
 	    	$this->allow('guest', 'error', 'error');
+	    	$this->allow('guest', 'error', 'friendlyerror'); //m
 	    	
 	    	// find
 	    	$this->allow('guest', 'find', 'index'); //m
