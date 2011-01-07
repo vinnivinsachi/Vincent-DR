@@ -41,7 +41,10 @@ class ErrorController extends Custom_Zend_Controller_Action
             $this->view->exception = $errors->exception;
         }
         
-        $this->view->request   = $errors->request;
+        $this->view->request = $errors->request;        
+       
+        // send an error email
+        	$this->sendErrorEmail();
     }
 
     public function getLog() {
@@ -52,7 +55,19 @@ class ErrorController extends Custom_Zend_Controller_Action
         $log = $bootstrap->getResource('Log');
         return $log;
     }
-
+    
+	// send an error email
+    private function sendErrorEmail() {
+       	// capture view in variable
+       		$bodyHtml = $this->view->render('error/error.tpl');
+       	// create
+       		$mail = new Zend_Mail('utf-8');
+       		$mail->addTo('markisacat@gmail.com');
+			$mail->setSubject('ERROR REPORT');
+			$mail->setFrom('admin@dancerialto.com','Dance Rialto');
+			$mail->setBodyHtml($bodyHtml);
+			$mail->send();
+    } // END sendErrorEmail()
 
 }
 
